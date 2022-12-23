@@ -19,7 +19,8 @@ export class PlainDate {
     this.year = utc.getUTCFullYear();
     this.month = utc.getUTCMonth() + 1;
     this.day = utc.getUTCDate();
-
-    Object.freeze(this);
+    Object.defineProperties(this, {
+      year: { writable: false },
+    });
   }
 }
