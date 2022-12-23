@@ -14,10 +14,14 @@ Deno.test("constructor accepts string date parts", () => {
   assertObjectMatch(plainDate, { year: 2022, month: 12, day: 22 });
 });
 
-Deno.test("year property can't be set", () => {
+Deno.test("enumerable properties can not be set", async (t) => {
   const plainDate = new PlainDate({ year: "2022", month: "12", day: "22" });
-  assertThrows(() => {
-    // @ts-ignore: Bypass readonly
-    plainDate.year = 2023;
-  });
+  for (const property in plainDate) {
+    await t.step(`property '${property}'`, () => {
+      assertThrows(() => {
+        // @ts-ignore: Bypass readonly
+        plainDate[property] = 1;
+      });
+    });
+  }
 });
