@@ -32,9 +32,5 @@ export const PlainDate = (
     },
   };
 
-  for (const property in plainDate) {
-    Object.defineProperty(plainDate, property, { enumerable: true });
-  }
-
   return plainDate;
 };
