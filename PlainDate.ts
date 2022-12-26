@@ -5,7 +5,7 @@ type SloppyPlainDate = {
 };
 
 export const PlainDate = (
-  { year: initialYear, month: initialMonth = 1, day: initialDay = 1 }:
+  { year: initialYear = NaN, month: initialMonth = 1, day: initialDay = 1 }:
     SloppyPlainDate,
 ) => {
   const utcDate = new Date(Date.UTC(
@@ -14,7 +14,17 @@ export const PlainDate = (
     Number(initialDay),
   ));
 
-  // TODO: throw if utcDate is invalid
+  if (isNaN(utcDate.valueOf())) {
+    throw new TypeError(
+      `Input is not a valid date ${
+        JSON.stringify({
+          year: initialYear,
+          month: initialMonth,
+          day: initialDay,
+        })
+      }`,
+    );
+  }
 
   const year = utcDate.getUTCFullYear();
   const month = utcDate.getUTCMonth() + 1;
