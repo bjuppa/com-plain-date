@@ -4,24 +4,37 @@ type SloppyPlainDate = {
   day?: number | string;
 };
 
-export class PlainDate {
-  readonly year: number;
-  readonly month: number;
-  readonly day: number;
+export const PlainDate = (
+  { year: initialYear, month: initialMonth = 1, day: initialDay = 1 }:
+    SloppyPlainDate,
+) => {
+  const utcDate = new Date(Date.UTC(
+    Number(initialYear),
+    Number(initialMonth) - 1,
+    Number(initialDay),
+  ));
 
-  constructor(plain: SloppyPlainDate) {
-    const utc = new Date(Date.UTC(
-      Number(plain.year),
-      Number(plain.month) - 1,
-      Number(plain.day),
-    ));
+  // TODO: throw if utcDate is invalid
 
-    this.year = utc.getUTCFullYear();
-    this.month = utc.getUTCMonth() + 1;
-    this.day = utc.getUTCDate();
+  const year = utcDate.getUTCFullYear();
+  const month = utcDate.getUTCMonth() + 1;
+  const day = utcDate.getUTCDate();
 
-    for (const property in this) {
-      Object.defineProperty(this, property, { writable: false });
-    }
+  const plainDate = {
+    get year() {
+      return year;
+    },
+    get month() {
+      return month;
+    },
+    get day() {
+      return day;
+    },
+  };
+
+  for (const property in plainDate) {
+    Object.defineProperty(plainDate, property, { enumerable: true });
   }
-}
+
+  return plainDate;
+};
