@@ -36,20 +36,10 @@ export const PlainDate = (
     );
   }
 
-  const year = utcDate.getUTCFullYear();
-  const month = utcDate.getUTCMonth() + 1;
-  const day = utcDate.getUTCDate();
-
   const plainDate: PlainDateContract = {
-    get year() {
-      return year;
-    },
-    get month() {
-      return month;
-    },
-    get day() {
-      return day;
-    },
+    year: utcDate.getUTCFullYear(),
+    month: utcDate.getUTCMonth() + 1,
+    day: utcDate.getUTCDate(),
     map(f) {
       return PlainDate.of(f(this));
     },
