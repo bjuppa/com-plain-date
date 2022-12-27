@@ -6,7 +6,7 @@ type SloppyPlainDate = {
   day?: number | string;
 };
 
-interface PlainDateContract {
+export interface PlainDateContract {
   year: number;
   month: number;
   day: number;

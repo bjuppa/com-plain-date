@@ -1,4 +1,4 @@
-import { PlainDate } from "./PlainDate.ts";
+import { PlainDate, PlainDateContract } from "./PlainDate.ts";
 import {
   assertObjectMatch,
   assertThrows,
@@ -30,4 +30,27 @@ Deno.test("enumerable properties can not be set", async (t) => {
       });
     });
   }
+});
+
+Deno.test("functor obeys identity law", () => {
+  const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
+  const identityFunction = <T>(x: T): T => x;
+
+  assertObjectMatch({ ...plainDate }, { ...plainDate.map(identityFunction) });
+});
+
+Deno.test("functor obeys composition law", () => {
+  const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
+  const addYear = (plainDate: PlainDateContract) => ({
+    ...plainDate,
+    year: plainDate.year + 1,
+  });
+  const doubleYear = (plainDate: PlainDateContract) => ({
+    ...plainDate,
+    year: plainDate.year * 2,
+  });
+
+  assertObjectMatch({ ...plainDate.map(addYear).map(doubleYear) }, {
+    ...plainDate.map((x) => doubleYear(addYear(x))),
+  });
 });
