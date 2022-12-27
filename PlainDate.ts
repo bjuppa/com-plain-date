@@ -4,6 +4,14 @@ type SloppyPlainDate = {
   day?: number | string;
 };
 
+interface PlainDateContract {
+  year: number;
+  month: number;
+  day: number;
+
+  map: (f: (x: PlainDateContract) => SloppyPlainDate) => PlainDateContract;
+}
+
 export const PlainDate = (
   { year: initialYear = NaN, month: initialMonth = 1, day: initialDay = 1 }:
     SloppyPlainDate,
@@ -30,7 +38,7 @@ export const PlainDate = (
   const month = utcDate.getUTCMonth() + 1;
   const day = utcDate.getUTCDate();
 
-  const plainDate = {
+  const plainDate: PlainDateContract = {
     get year() {
       return year;
     },
@@ -40,7 +48,13 @@ export const PlainDate = (
     get day() {
       return day;
     },
+    map: function (f) {
+      return PlainDate.of(f(this));
+    },
   };
 
   return plainDate;
 };
+
+// Type lift
+PlainDate.of = PlainDate;
