@@ -1,3 +1,5 @@
+const ENUMERABLE_PROPERTIES = ["year", "month", "day"];
+
 type SloppyPlainDate = {
   year: number | string;
   month?: number | string;
@@ -48,10 +50,16 @@ export const PlainDate = (
     get day() {
       return day;
     },
-    map: function (f) {
+    map(f) {
       return PlainDate.of(f(this));
     },
   };
+
+  for (const p in plainDate) {
+    Object.defineProperty(plainDate, p, {
+      enumerable: ENUMERABLE_PROPERTIES.includes(p),
+    });
+  }
 
   return plainDate;
 };
