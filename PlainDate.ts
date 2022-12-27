@@ -64,5 +64,5 @@ export const PlainDate = (
   return plainDate;
 };
 
-// Type lift
+// Type lift (unit)
 PlainDate.of = PlainDate;
