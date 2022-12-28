@@ -6,6 +6,7 @@ import {
 
 Deno.test("factory accepts number date parts", () => {
   const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
+
   assertObjectMatch({ ...plainDate }, { year: 2022, month: 2, day: 2 });
 });
 
@@ -22,6 +23,7 @@ Deno.test("factory throws when date is invalid", () => {
 
 Deno.test("enumerable properties can not be set", async (t) => {
   const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
+
   for (const property in plainDate) {
     await t.step(`property '${property}'`, () => {
       assertThrows(() => {
