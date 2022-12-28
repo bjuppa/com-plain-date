@@ -6,12 +6,12 @@ import {
 
 Deno.test("factory accepts number date parts", () => {
   const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
-  assertObjectMatch(plainDate, { year: 2022, month: 2, day: 2 });
+  assertObjectMatch({ ...plainDate }, { year: 2022, month: 2, day: 2 });
 });
 
 Deno.test("factory accepts string date parts", () => {
   const plainDate = PlainDate({ year: "2022", month: "02", day: "02" });
-  assertObjectMatch(plainDate, { year: 2022, month: 2, day: 2 });
+  assertObjectMatch({ ...plainDate }, { year: 2022, month: 2, day: 2 });
 });
 
 Deno.test("factory throws when date is invalid", () => {
