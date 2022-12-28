@@ -1,3 +1,5 @@
+import { addDays } from "./utils/addDays.ts";
+
 const ENUMERABLE_PROPERTIES = ["year", "month", "day"];
 
 interface SloppyPlainDate {
@@ -17,6 +19,8 @@ export interface PlainDateContract {
   toJSON: () => string;
 
   map: (f: (x: PlainDateContract) => SloppyPlainDate) => PlainDateContract;
+
+  addDays: (days: number) => PlainDateContract;
 }
 
 export const PlainDate = (
@@ -59,6 +63,10 @@ export const PlainDate = (
 
     map(f) {
       return PlainDate.of(f(this));
+    },
+
+    addDays(days) {
+      return addDays(days)(this);
     },
   };
 
