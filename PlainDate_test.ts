@@ -1,5 +1,6 @@
 import { PlainDate, PlainDateContract } from "./PlainDate.ts";
 import {
+  assertEquals,
   assertObjectMatch,
   assertThrows,
 } from "https://deno.land/std@0.168.0/testing/asserts.ts";
@@ -32,6 +33,17 @@ Deno.test("enumerable properties can not be set", async (t) => {
       });
     });
   }
+});
+
+Deno.test("all string representations are the same ISO standard string", () => {
+  const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
+  const iso = "2022-02-02";
+
+  assertEquals(plainDate.iso, iso);
+  assertEquals(plainDate.valueOf(), iso);
+  assertEquals(plainDate.toString(), iso);
+  assertEquals(plainDate.toJSON(), iso);
+  assertEquals(String(plainDate), iso);
 });
 
 Deno.test("functor obeys identity law", () => {
