@@ -46,6 +46,18 @@ Deno.test("all string representations are the same ISO standard string", () => {
   assertEquals(String(plainDate), iso);
 });
 
+Deno.test("up to 6-digit years can be represented in ISO string", () => {
+  const plainDate = PlainDate({ year: 100000, month: 1, day: 1 });
+
+  assertEquals(plainDate.iso, "+100000-01-01");
+});
+
+Deno.test("negative years can be represented in ISO string", () => {
+  const plainDate = PlainDate({ year: -1, month: 1, day: 1 });
+
+  assertEquals(plainDate.iso, "-000001-01-01");
+});
+
 Deno.test("functor obeys identity law", () => {
   const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
   const identityFunction = <T>(x: T): T => x;
