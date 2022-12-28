@@ -1,10 +1,10 @@
 const ENUMERABLE_PROPERTIES = ["year", "month", "day"];
 
-type SloppyPlainDate = {
+interface SloppyPlainDate {
   year: number | string;
   month?: number | string;
   day?: number | string;
-};
+}
 
 export interface PlainDateContract {
   year: number;
