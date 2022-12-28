@@ -62,7 +62,6 @@ export const PlainDate = (
     },
   };
 
-  // TODO: should we let all properties be enumerable, so that spread works to build new object from a PlainDate?
   for (const p in plainDate) {
     Object.defineProperty(plainDate, p, {
       enumerable: ENUMERABLE_PROPERTIES.includes(p),
