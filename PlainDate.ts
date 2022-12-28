@@ -11,6 +11,11 @@ export interface PlainDateContract {
   month: number;
   day: number;
 
+  iso: string;
+  valueOf: () => string;
+  toString: () => string;
+  toJSON: () => string;
+
   map: (f: (x: PlainDateContract) => SloppyPlainDate) => PlainDateContract;
 }
 
@@ -40,6 +45,18 @@ export const PlainDate = (
     year: utcDate.getUTCFullYear(),
     month: utcDate.getUTCMonth() + 1,
     day: utcDate.getUTCDate(),
+
+    iso: utcDate.toISOString().split("T")[0],
+    valueOf() {
+      return this.iso;
+    },
+    toString() {
+      return this.iso;
+    },
+    toJSON() {
+      return this.iso;
+    },
+
     map(f) {
       return PlainDate.of(f(this));
     },
