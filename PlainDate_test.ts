@@ -41,7 +41,7 @@ Deno.test("functor obeys identity law", () => {
 
 Deno.test("functor obeys composition law", () => {
   const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
-  const addYear = (plainDate: PlainDateContract) => ({
+  const addOneYear = (plainDate: PlainDateContract) => ({
     ...plainDate,
     year: plainDate.year + 1,
   });
@@ -50,7 +50,7 @@ Deno.test("functor obeys composition law", () => {
     year: plainDate.year * 2,
   });
 
-  assertObjectMatch({ ...plainDate.map(addYear).map(doubleYear) }, {
-    ...plainDate.map((x) => doubleYear(addYear(x))),
+  assertObjectMatch({ ...plainDate.map(addOneYear).map(doubleYear) }, {
+    ...plainDate.map((x) => doubleYear(addOneYear(x))),
   });
 });
