@@ -95,6 +95,26 @@ Deno.test("can be created from now in local timezone", () => {
   assert(PlainDate.fromLocalTimezone());
 });
 
+Deno.test("can be created from Date in specific timezone", () => {
+  const date = new Date("2022-12-31T23:59Z");
+
+  assertObjectMatch({ ...PlainDate.fromTimezone("Asia/Tokyo", date) }, {
+    year: 2023,
+    month: 1,
+    day: 1,
+  });
+});
+
+Deno.test("can be created from now in specific timezone", () => {
+  assert(PlainDate.fromTimezone("Europe/Stockholm"));
+});
+
+Deno.test("throws when created from invalid specific timezone", () => {
+  assertThrows(() => {
+    PlainDate.fromTimezone("invalid/timezone");
+  });
+});
+
 Deno.test("functor obeys identity law", () => {
   const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
   const identityFunction = <T>(x: T): T => x;
