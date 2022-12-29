@@ -68,3 +68,15 @@ Deno.test("invalid year produces invalid date object", () => {
 
   assert(isNaN(utcDate.valueOf()));
 });
+
+Deno.test("invalid month produces invalid date object", () => {
+  const utcDate = createUtcDate({ year: 2022, month: NaN });
+
+  assert(isNaN(utcDate.valueOf()));
+});
+
+Deno.test("invalid day produces invalid date object", () => {
+  const utcDate = createUtcDate({ year: 2022, month: 1, day: NaN });
+
+  assert(isNaN(utcDate.valueOf()));
+});
