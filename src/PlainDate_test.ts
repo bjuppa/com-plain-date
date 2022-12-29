@@ -68,12 +68,12 @@ Deno.test("throws when string only contains year part", () => {
 });
 
 Deno.test("can be created from Date in UTC", () => {
-  const date = new Date("2022-02-03");
+  const date = new Date("2022-02-03T23:59Z");
 
   assertObjectMatch({ ...PlainDate.fromUtc(date) }, {
-    year: date.getUTCFullYear(),
-    month: date.getUTCMonth() + 1,
-    day: date.getUTCDate(),
+    year: 2022,
+    month: 2,
+    day: 3,
   });
 });
 
@@ -82,7 +82,7 @@ Deno.test("can be created from now in UTC", () => {
 });
 
 Deno.test("can be created from Date in local timezone", () => {
-  const date = new Date("2022-02-03T23:59");
+  const date = new Date("2022-02-03");
 
   assertObjectMatch({ ...PlainDate.fromLocalTimezone(date) }, {
     year: date.getFullYear(),
