@@ -1,5 +1,9 @@
 import { createUtcDate } from "./createUtcDate.ts";
-import { assert, assertEquals, assertInstanceOf } from "../testing/asserts.ts";
+import {
+  assert,
+  assertEquals,
+  assertInstanceOf,
+} from "../../testing/asserts.ts";
 
 Deno.test("returned date object is valid", () => {
   const utcDate = createUtcDate({ year: 2022, month: 1, day: 1 });
