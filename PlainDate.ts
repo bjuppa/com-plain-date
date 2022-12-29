@@ -1,12 +1,7 @@
 import { addDays } from "./utils/addDays.ts";
+import { createUtcDate, SloppyPlainDate } from "./utils/createUtcDate.ts";
 
 const ENUMERABLE_PROPERTIES = ["year", "month", "day"];
-
-interface SloppyPlainDate {
-  year: number | string;
-  month?: number | string;
-  day?: number | string;
-}
 
 export interface PlainDateContract {
   year: number;
@@ -23,26 +18,10 @@ export interface PlainDateContract {
   addDays: (days: number) => PlainDateContract;
 }
 
-export const PlainDate = (
-  { year: initialYear = NaN, month: initialMonth = 1, day: initialDay = 1 }:
-    SloppyPlainDate,
-) => {
-  const utcDate = new Date(Date.UTC(
-    Number(initialYear),
-    Number(initialMonth) - 1,
-    Number(initialDay),
-  ));
-
+export const PlainDate = (parts: SloppyPlainDate) => {
+  const utcDate = createUtcDate(parts);
   if (isNaN(utcDate.valueOf())) {
-    throw new TypeError(
-      `Input is not a valid date ${
-        JSON.stringify({
-          year: initialYear,
-          month: initialMonth,
-          day: initialDay,
-        })
-      }`,
-    );
+    throw new TypeError(`Input is not a valid date ${JSON.stringify(parts)}`);
   }
 
   const plainDate: PlainDateContract = {
