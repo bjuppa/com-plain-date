@@ -70,3 +70,21 @@ PlainDate.fromString = (s: string) => {
   }
   return PlainDate.of(parts);
 };
+
+PlainDate.fromUtc = (date?: Date) => {
+  date ??= new Date();
+  return PlainDate.of({
+    year: date.getUTCFullYear(),
+    month: date.getUTCMonth() + 1,
+    day: date.getUTCDate(),
+  });
+};
+
+PlainDate.fromLocalTimezone = (date?: Date) => {
+  date ??= new Date();
+  return PlainDate.of({
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: date.getDate(),
+  });
+};

@@ -1,5 +1,6 @@
 import { PlainDate, PlainDateContract } from "./PlainDate.ts";
 import {
+  assert,
   assertEquals,
   assertObjectMatch,
   assertThrows,
@@ -64,6 +65,34 @@ Deno.test("can be created from string", () => {
 
 Deno.test("throws when string only contains year part", () => {
   assertThrows(() => PlainDate.fromString("2022"));
+});
+
+Deno.test("can be created from Date in UTC", () => {
+  const date = new Date("2022-02-03");
+
+  assertObjectMatch({ ...PlainDate.fromUtc(date) }, {
+    year: date.getUTCFullYear(),
+    month: date.getUTCMonth() + 1,
+    day: date.getUTCDate(),
+  });
+});
+
+Deno.test("can be created from now in UTC", () => {
+  assert(PlainDate.fromUtc());
+});
+
+Deno.test("can be created from Date in local timezone", () => {
+  const date = new Date("2022-02-03T23:59");
+
+  assertObjectMatch({ ...PlainDate.fromLocalTimezone(date) }, {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: date.getDate(),
+  });
+});
+
+Deno.test("can be created from now in local timezone", () => {
+  assert(PlainDate.fromLocalTimezone());
 });
 
 Deno.test("functor obeys identity law", () => {
