@@ -3,7 +3,7 @@ import {
   assertEquals,
   assertObjectMatch,
   assertThrows,
-} from "https://deno.land/std@0.168.0/testing/asserts.ts";
+} from "./testing/asserts.ts";
 
 Deno.test("factory accepts number date parts", () => {
   const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
