@@ -1,5 +1,6 @@
 import { addDays } from "./utils/addDays.ts";
 import { createUtcDate, SloppyPlainDate } from "./utils/createUtcDate.ts";
+import { dateParts } from "./utils/dateParts.ts";
 
 const ENUMERABLE_PROPERTIES = ["year", "month", "day"];
 
@@ -61,3 +62,11 @@ export const PlainDate = (parts: SloppyPlainDate) => {
 
 // Type lift (unit)
 PlainDate.of = PlainDate;
+
+PlainDate.fromString = (s: string) => {
+  const parts = dateParts(s);
+  if (!parts) {
+    throw TypeError(`No date parts found in string: ${s}`);
+  }
+  return PlainDate.of(parts);
+};

@@ -58,6 +58,14 @@ Deno.test("negative years can be represented in ISO string", () => {
   assertEquals(plainDate.iso, "-000001-01-01");
 });
 
+Deno.test("can be created from string", () => {
+  assertEquals(String(PlainDate.fromString("2022-02-02")), "2022-02-02");
+});
+
+Deno.test("throws when string only contains year part", () => {
+  assertThrows(() => PlainDate.fromString("2022"));
+});
+
 Deno.test("functor obeys identity law", () => {
   const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
   const identityFunction = <T>(x: T): T => x;
