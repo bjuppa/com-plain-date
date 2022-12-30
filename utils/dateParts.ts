@@ -1,5 +1,7 @@
 export const dateParts = (s: string) => {
-  const matches = s.match(/(?<year>[+-]?\d+)-(?<month>\d+)(-(?<day>\d+))?/);
+  const matches = String(s).match(
+    /(?<year>[+-]?\d+)-(?<month>\d+)(-(?<day>\d+))?/,
+  );
 
   return matches &&
     {
