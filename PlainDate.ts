@@ -1,5 +1,6 @@
+import { SloppyPlainDate } from "./support/sloppy-types.ts";
 import { addDays } from "./utils/addDays.ts";
-import { createUtcDate, SloppyPlainDate } from "./utils/createUtcDate.ts";
+import { createUtcDate } from "./utils/createUtcDate.ts";
 import { dateParts } from "./utils/dateParts.ts";
 
 const ENUMERABLE_PROPERTIES = new Set(["year", "month", "day"]);

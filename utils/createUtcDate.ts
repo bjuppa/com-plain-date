@@ -1,8 +1,4 @@
-export type SloppyPlainDate = {
-  year: number | string;
-  month?: number | string;
-  day?: number | string;
-};
+import { SloppyPlainDate } from "../support/sloppy-types.ts";
 
 export const createUtcDate = (
   { year = NaN, month = 1, day = 1 }: SloppyPlainDate,
