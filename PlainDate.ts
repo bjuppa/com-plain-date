@@ -1,4 +1,4 @@
-import { SloppyPlainDate } from "./support/sloppy-types.ts";
+import { SloppyPlainDate, SloppyPlainTime } from "./support/sloppy-types.ts";
 import { addDays } from "./utils/addDays.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { dateParts } from "./utils/dateParts.ts";
@@ -17,6 +17,8 @@ export interface PlainDateContract {
   valueOf: () => string;
   toString: () => string;
   toJSON: () => string;
+
+  toUtcInstant: (time?: SloppyPlainTime) => Date;
 
   map: (f: (x: PlainDateContract) => SloppyPlainDate) => PlainDateContract;
 
@@ -47,6 +49,10 @@ export const PlainDate = (
     },
     toJSON() {
       return this.iso;
+    },
+
+    toUtcInstant(time) {
+      return createUtcInstant({ ...this, ...time });
     },
 
     map(f) {

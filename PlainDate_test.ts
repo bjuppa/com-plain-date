@@ -115,6 +115,16 @@ Deno.test("throws when created from invalid specific timezone", () => {
   });
 });
 
+Deno.test("can be converted to instant in UTC", () => {
+  const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
+  const time = { hour: 23, minute: 59, second: 59, millisecond: 999 };
+
+  assertEquals(
+    plainDate.toUtcInstant(time).toISOString(),
+    "2022-02-02T23:59:59.999Z",
+  );
+});
+
 Deno.test("functor obeys identity law", () => {
   const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
   const identityFunction = <T>(x: T): T => x;
