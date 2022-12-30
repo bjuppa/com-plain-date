@@ -19,6 +19,8 @@ export interface PlainDateContract {
   toJSON: () => string;
 
   toUtcInstant: (time?: SloppyPlainTime) => Date;
+  //TODO: toLocalInstant: (time?: SloppyPlainTime) => Date;
+  //TODO: toInstant: (timezone: string, time?: SloppyPlainTime) => Date;
 
   map: (f: (x: PlainDateContract) => SloppyPlainDate) => PlainDateContract;
 
@@ -85,6 +87,9 @@ PlainDate.fromString = (s: string) => {
   return PlainDate.of(parts);
 };
 
+// TODO: move these factories to utils
+// TODO: make these factories split PlainDate and PlainTime into tuple
+// Call them splitDateTimeInUtc, splitDateTimeInLocalTimezone & splitDateTime
 PlainDate.fromUtc = (date?: Date) => {
   date ??= new Date();
   return PlainDate.of({
@@ -105,6 +110,7 @@ PlainDate.fromLocalTimezone = (date?: Date) => {
 
 PlainDate.fromTimezone = (timezone: string, date?: Date) => {
   date ??= new Date();
+  // TODO: use formatToParts() to extract parts in one go
   const options = { timeZone: timezone };
   return PlainDate.of({
     year: date.toLocaleDateString([], { ...options, year: "numeric" }),
