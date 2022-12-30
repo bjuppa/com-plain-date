@@ -19,10 +19,14 @@ export interface PlainDateContract {
   addDays: (days: number) => PlainDateContract;
 }
 
-export const PlainDate = (parts: SloppyPlainDate) => {
-  const utcDate = createUtcDate(parts);
+export const PlainDate = (
+  { year = NaN, month = 1, day = 1 }: SloppyPlainDate,
+) => {
+  const utcDate = createUtcDate({ year, month, day });
   if (isNaN(utcDate.valueOf())) {
-    throw new TypeError(`Input is not a valid date ${JSON.stringify(parts)}`);
+    throw new TypeError(
+      `Input is not a valid date ${JSON.stringify({ year, month, day })}`,
+    );
   }
 
   const plainDate: PlainDateContract = {
