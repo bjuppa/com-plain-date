@@ -1,8 +1,8 @@
-export interface SloppyPlainDate {
+export type SloppyPlainDate = {
   year: number | string;
   month?: number | string;
   day?: number | string;
-}
+};
 
 export const createUtcDate = (
   { year = NaN, month = 1, day = 1 }: SloppyPlainDate,
