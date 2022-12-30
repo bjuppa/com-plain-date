@@ -25,7 +25,7 @@ export const PlainDate = (
   const utcDate = createUtcDate({ year, month, day });
   if (isNaN(utcDate.valueOf())) {
     throw new TypeError(
-      `Input is not a valid date ${JSON.stringify({ year, month, day })}`,
+      `Input is not a valid date: ${JSON.stringify({ year, month, day })}`,
     );
   }
 
