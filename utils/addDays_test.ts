@@ -1,6 +1,6 @@
 import { addDays } from "./addDays.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { assertEquals } from "../../testing/asserts.ts";
+import { assertEquals } from "../testing/asserts.ts";
 
 Deno.test("days can be added with positive argument", () => {
   const plainDate = PlainDate({ year: 2022, month: 1, day: 31 });

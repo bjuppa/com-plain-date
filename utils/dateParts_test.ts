@@ -1,5 +1,5 @@
 import { dateParts } from "./dateParts.ts";
-import { assert, assertObjectMatch } from "../../testing/asserts.ts";
+import { assert, assertObjectMatch } from "../testing/asserts.ts";
 
 Deno.test("year, month, and day parts are extracted from string", () => {
   const parts = dateParts("2022-02-03");
