@@ -6,7 +6,7 @@ export const dateParts = (s: string) => {
   return matches &&
     {
       year: Number(matches.groups?.year),
-      month: matches.groups?.month ? Number(matches.groups?.month) : undefined,
+      month: Number(matches.groups?.month),
       day: matches.groups?.day ? Number(matches.groups?.day) : undefined,
     };
 };
