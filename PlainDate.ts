@@ -2,7 +2,7 @@ import { addDays } from "./utils/addDays.ts";
 import { createUtcDate, SloppyPlainDate } from "./utils/createUtcDate.ts";
 import { dateParts } from "./utils/dateParts.ts";
 
-const ENUMERABLE_PROPERTIES = ["year", "month", "day"];
+const ENUMERABLE_PROPERTIES = new Set(["year", "month", "day"]);
 
 export interface PlainDateContract {
   /** Year may be negative and up to 6 digits */
@@ -59,7 +59,7 @@ export const PlainDate = (
 
   for (const p in plainDate) {
     Object.defineProperty(plainDate, p, {
-      enumerable: ENUMERABLE_PROPERTIES.includes(p),
+      enumerable: ENUMERABLE_PROPERTIES.has(p),
     });
   }
   Object.freeze(plainDate);
