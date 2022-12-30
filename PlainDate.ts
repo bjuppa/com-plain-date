@@ -5,8 +5,11 @@ import { dateParts } from "./utils/dateParts.ts";
 const ENUMERABLE_PROPERTIES = ["year", "month", "day"];
 
 export interface PlainDateContract {
+  /** Year may be negative and up to 6 digits */
   year: number;
+  /** Month (1-12) */
   month: number;
+  /** Day in month (1-31) */
   day: number;
 
   iso: string;
