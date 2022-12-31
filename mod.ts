@@ -1,4 +1,6 @@
 /**
+ * # ComPlainDate
+ *
  * Date-time utilities that keeps timezones on the surface.
  *
  * Date-time handling in JavaScript has always been hard.
@@ -6,11 +8,22 @@
  * using the JavaScript features already available in today's browsers and
  * runtime systems.
  *
- * Confusion is often caused by doing operations on native `Date` or other
- * DateTime-like objects where the timezone information is hidden away.
+ * ## Explicit timezones
  *
  * These utilities are explicit about the timezone used for every operation that
- * actually need one.
+ * actually need one. This avoids confusion caused by doing operations on native
+ * `Date` or other DateTime-like objects where the timezone information is
+ * hidden away.
+ *
+ * ## Immutable PlainDate objects
+ *
+ * For timezone-agnostic operations on days.
+ *
+ * ## Immutable PlainTime objects
+ *
+ * For timezone-agnostic operations on times.
+ *
+ * ## Composable functions
  *
  * @module()
  */
