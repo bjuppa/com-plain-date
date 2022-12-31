@@ -11,4 +11,4 @@ export type SloppyPlainTime = {
   millisecond?: number | string;
 };
 
-export type SloppyDateTime = SloppyPlainDate & SloppyPlainTime;
+export type SloppyPlainDateTime = SloppyPlainDate & SloppyPlainTime;

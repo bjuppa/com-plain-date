@@ -1,4 +1,4 @@
-import { SloppyDateTime } from "../support/sloppy-types.ts";
+import { SloppyPlainDateTime } from "../support/sloppy-types.ts";
 
 export const createUtcInstant = (
   {
@@ -9,7 +9,7 @@ export const createUtcInstant = (
     minute = 0,
     second = 0,
     millisecond = 0,
-  }: SloppyDateTime,
+  }: SloppyPlainDateTime,
 ): Date => {
   const utcDate = new Date(0);
   utcDate.setUTCFullYear(Number(year), Number(month) - 1, Number(day));
