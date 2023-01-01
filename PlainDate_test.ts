@@ -3,6 +3,7 @@ import {
   assert,
   assertEquals,
   assertObjectMatch,
+  assertStringIncludes,
   assertThrows,
 } from "./testing/asserts.ts";
 
@@ -74,6 +75,16 @@ Deno.test("can be converted to instant in UTC", () => {
   assertEquals(
     plainDate.toUtcInstant(time).toISOString(),
     "2022-02-02T23:59:59.999Z",
+  );
+});
+
+Deno.test("can be converted to instant in local timezone", () => {
+  const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
+  const time = { hour: 23, minute: 59, second: 59, millisecond: 999 };
+
+  assertStringIncludes(
+    plainDate.toLocalTimezoneInstant(time).toString(),
+    "Feb 02 2022 23:59:59",
   );
 });
 
