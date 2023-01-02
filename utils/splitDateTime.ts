@@ -1,12 +1,12 @@
 import { PlainDate } from "../PlainDate.ts";
 
-export const splitDateTime = (timezone: string) => (date?: Date) => {
-  date ??= new Date();
+export const splitDateTime = (timezone: string) => (instant?: Date) => {
+  instant ??= new Date();
   const options = { timeZone: timezone };
   const plainDate = PlainDate.of({
-    year: date.toLocaleDateString([], { ...options, year: "numeric" }),
-    month: date.toLocaleDateString([], { ...options, month: "numeric" }),
-    day: date.toLocaleDateString([], { ...options, day: "numeric" }),
+    year: instant.toLocaleDateString([], { ...options, year: "numeric" }),
+    month: instant.toLocaleDateString([], { ...options, month: "numeric" }),
+    day: instant.toLocaleDateString([], { ...options, day: "numeric" }),
   });
   return [plainDate];
 };
