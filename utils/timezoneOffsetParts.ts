@@ -13,7 +13,7 @@ export const timezoneOffsetParts = (s: string) => {
 
   return matches &&
     {
-      hour: Number(matches.groups?.hour || 0) * multiplier,
-      minute: Number(matches.groups?.minute || 0),
+      hour: multiplier * Number(matches.groups?.hour || 0),
+      minute: multiplier * Number(matches.groups?.minute || 0),
     };
 };

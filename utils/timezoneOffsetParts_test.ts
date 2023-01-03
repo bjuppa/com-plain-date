@@ -25,7 +25,7 @@ Deno.test("positive offset", () => {
 Deno.test("negative offset", () => {
   assertObjectMatch({ ...timezoneOffsetParts("-0330") }, {
     hour: -3,
-    minute: 30,
+    minute: -30,
   });
 });
 
