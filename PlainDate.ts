@@ -54,10 +54,12 @@ export const PlainDate = (
       return this.iso;
     },
 
-    toUtcInstant(time) {
+    toUtcInstant(time = { hour: 0, minute: 0, second: 0, millisecond: 0 }) {
       return createUtcInstant({ ...this, ...time });
     },
-    toLocalTimezoneInstant(time) {
+    toLocalTimezoneInstant(
+      time = { hour: 0, minute: 0, second: 0, millisecond: 0 },
+    ) {
       return createLocalTimezoneInstant({ ...this, ...time });
     },
 
