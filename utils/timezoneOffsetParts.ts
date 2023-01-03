@@ -1,5 +1,5 @@
 export const timezoneOffsetParts = (s: string) => {
-  if (["UTC", "GMT"].includes(s)) {
+  if (["UTC", "GMT"].includes(s) || String(s).endsWith("Z")) {
     return { hour: 0, minute: 0 };
   }
 
