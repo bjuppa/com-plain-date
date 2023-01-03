@@ -4,7 +4,7 @@ export const timezoneOffsetParts = (s: string) => {
   }
 
   const matches = String(s).match(
-    /(^|(GMT|UTC))\s*(?<sign>[-+])?(?<hour>\d{1,2}):?(?<minute>\d{2})?/,
+    /(?<sign>[-+])?(?<hour>\d{1,2}):?(?<minute>\d{2})?(?=\D*$)/,
   );
 
   const multiplier = (matches?.groups?.sign && matches.groups.sign != "+")

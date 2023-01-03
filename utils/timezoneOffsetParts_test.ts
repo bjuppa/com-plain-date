@@ -50,6 +50,13 @@ Deno.test("Intl shortOffset with minute", () => {
   });
 });
 
+Deno.test("ISO 8601", () => {
+  assertObjectMatch({ ...timezoneOffsetParts("2007-04-05T12:30-02:00") }, {
+    hour: -2,
+    minute: 0,
+  });
+});
+
 Deno.test("ISO 8601 Zulu", () => {
   assertObjectMatch({ ...timezoneOffsetParts("2007-04-05T12:30Z") }, {
     hour: 0,
