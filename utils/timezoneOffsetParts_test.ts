@@ -50,6 +50,20 @@ Deno.test("Intl shortOffset with minute", () => {
   });
 });
 
+Deno.test("GMT", () => {
+  assertObjectMatch({ ...timezoneOffsetParts("GMT") }, {
+    hour: 0,
+    minute: 0,
+  });
+});
+
+Deno.test("UTC", () => {
+  assertObjectMatch({ ...timezoneOffsetParts("UTC") }, {
+    hour: 0,
+    minute: 0,
+  });
+});
+
 Deno.test("full text string format", () => {
   assertObjectMatch({
     ...timezoneOffsetParts(
