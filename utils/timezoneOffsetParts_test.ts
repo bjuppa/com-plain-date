@@ -1,10 +1,17 @@
 import { timezoneOffsetParts } from "./timezoneOffsetParts.ts";
 import { assertObjectMatch } from "../testing/asserts.ts";
 
-Deno.test("no given offset", () => {
-  assertObjectMatch({ ...timezoneOffsetParts("0530") }, {
+Deno.test("time string", () => {
+  assertObjectMatch({ ...timezoneOffsetParts("5:30") }, {
     hour: 5,
     minute: 30,
+  });
+});
+
+Deno.test("hour only", () => {
+  assertObjectMatch({ ...timezoneOffsetParts("5") }, {
+    hour: 5,
+    minute: 0,
   });
 });
 
@@ -22,6 +29,34 @@ Deno.test("negative offset", () => {
   });
 });
 
-// TODO: test Intl longOffset GMT-0800
-// TODO: test Intl shortOffset GMT-8
-// TODO: test whole Date.toString()
+Deno.test("Intl longOffset", () => {
+  assertObjectMatch({ ...timezoneOffsetParts("GMT+01:00") }, {
+    hour: 1,
+    minute: 0,
+  });
+});
+
+Deno.test("Intl shortOffset without minute", () => {
+  assertObjectMatch({ ...timezoneOffsetParts("GMT+1") }, {
+    hour: 1,
+    minute: 0,
+  });
+});
+
+Deno.test("Intl shortOffset with minute", () => {
+  assertObjectMatch({ ...timezoneOffsetParts("GMT+5:30") }, {
+    hour: 5,
+    minute: 30,
+  });
+});
+
+Deno.test("full text string format", () => {
+  assertObjectMatch({
+    ...timezoneOffsetParts(
+      "Tue Jan 03 -2023 12:01:20 GMT+0100 (Central European Standard Time)",
+    ),
+  }, {
+    hour: 1,
+    minute: 0,
+  });
+});

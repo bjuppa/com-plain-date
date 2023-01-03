@@ -1,7 +1,6 @@
 export const timezoneOffsetParts = (s: string) => {
   const matches = String(s).match(
-    // /(GMT|UTC)\s*(?<sign>[-+]?)(?<hour>\d{1,2}):?(?<minute>\d{2})?(\s.*)?$/,
-    /(?<sign>[-+])?(?<hour>\d{1,2}):?(?<minute>\d{2})?/,
+    /(^|(GMT|UTC))\s*(?<sign>[-+])?(?<hour>\d{1,2}):?(?<minute>\d{2})?/,
   );
 
   const multiplier = (matches?.groups?.sign && matches.groups.sign != "+")
