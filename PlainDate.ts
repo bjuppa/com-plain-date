@@ -4,6 +4,7 @@ import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
 import { dateParts } from "./utils/dateParts.ts";
 import { addDays } from "./utils/addDays.ts";
+import { addMonths } from "./utils/addMonths.ts";
 
 const ENUMERABLE_PROPERTIES = new Set(["year", "month", "day"]);
 
@@ -27,6 +28,7 @@ export interface PlainDateContract {
   map: (f: (x: PlainDateContract) => SloppyPlainDate) => PlainDateContract;
 
   addDays: (days: number) => PlainDateContract;
+  addMonths: (months: number) => PlainDateContract;
 }
 
 export const PlainDate = (
@@ -76,6 +78,9 @@ export const PlainDate = (
 
     addDays(days) {
       return addDays(days)(this);
+    },
+    addMonths(months) {
+      return addMonths(months)(this);
     },
   };
 
