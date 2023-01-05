@@ -5,6 +5,7 @@ import { createInstant } from "./utils/createInstant.ts";
 import { dateParts } from "./utils/dateParts.ts";
 import { addDays } from "./utils/addDays.ts";
 import { addMonths } from "./utils/addMonths.ts";
+import { addYears } from "./utils/addYears.ts";
 
 const ENUMERABLE_PROPERTIES = new Set(["year", "month", "day"]);
 
@@ -29,6 +30,7 @@ export interface PlainDateContract {
 
   addDays: (days: number) => PlainDateContract;
   addMonths: (months: number) => PlainDateContract;
+  addYears: (years: number) => PlainDateContract;
 }
 
 export const PlainDate = (
@@ -81,6 +83,9 @@ export const PlainDate = (
     },
     addMonths(months) {
       return addMonths(months)(this);
+    },
+    addYears(years) {
+      return addYears(years)(this);
     },
   };
 
