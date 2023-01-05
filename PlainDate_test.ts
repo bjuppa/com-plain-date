@@ -83,7 +83,7 @@ Deno.test("can be converted to instant in local timezone", () => {
   const time = { hour: 23, minute: 59, second: 59, millisecond: 999 };
 
   assertStringIncludes(
-    plainDate.toLocalTimezoneInstant(time).toString(),
+    plainDate.toLocalInstant(time).toString(),
     "Feb 02 2022 23:59:59",
   );
 });

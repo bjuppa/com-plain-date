@@ -1,6 +1,6 @@
 import { SloppyPlainDateTime } from "../support/sloppy-types.ts";
 
-export const createLocalTimezoneInstant = (
+export const createLocalInstant = (
   {
     year = NaN,
     month = 1,
