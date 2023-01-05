@@ -1,8 +1,9 @@
 import { SloppyPlainDateTime } from "../support/sloppy-types.ts";
 import { createUtcInstant } from "./createUtcInstant.ts";
 import { addTime } from "./addTime.ts";
-import { timezoneOffsetParts } from "./timezoneOffsetParts.ts";
+import { subtractTime } from "./subtractTime.ts";
 import { intlParts } from "./intlParts.ts";
+import { timezoneOffsetParts } from "./timezoneOffsetParts.ts";
 
 const intlOptions: Intl.DateTimeFormatOptions = {
   hourCycle: "h23",
@@ -53,10 +54,7 @@ export const createInstant = (timezone: string) =>
     if (!offset) {
       continue;
     }
-    const candidateInstant = addTime({
-      hour: -offset.hour,
-      minute: -offset.minute,
-    })(utcRepresentation);
+    const candidateInstant = subtractTime(offset)(utcRepresentation);
     const candidateParts = intlParts(intlTimezoneFormat)(candidateInstant);
     if (
       candidateParts.minute === targetParts.minute &&
