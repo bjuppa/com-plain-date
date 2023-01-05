@@ -1,6 +1,6 @@
 import { PlainDate } from "../PlainDate.ts";
 
-export const splitDateTimeInLocalTimezone = (date?: Date) => {
+export const splitLocalDateTime = (date?: Date) => {
   date ??= new Date();
   const plainDate = PlainDate.of({
     year: date.getFullYear(),

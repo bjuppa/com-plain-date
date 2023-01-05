@@ -1,6 +1,6 @@
 import { PlainDate } from "../PlainDate.ts";
 
-export const splitDateTimeInUtc = (date?: Date) => {
+export const splitUtcDateTime = (date?: Date) => {
   date ??= new Date();
   const plainDate = PlainDate.of({
     year: date.getUTCFullYear(),

@@ -1,9 +1,9 @@
 import { assert, assertObjectMatch } from "../testing/asserts.ts";
-import { splitDateTimeInLocalTimezone } from "./splitDateTimeInLocalTimezone.ts";
+import { splitLocalDateTime } from "./splitLocalDateTime.ts";
 
 Deno.test("splits instant to date and time in local timezone", () => {
   const instant = new Date("2022-02-03");
-  const [plainDate, plainTime] = splitDateTimeInLocalTimezone(instant);
+  const [plainDate, plainTime] = splitLocalDateTime(instant);
 
   assertObjectMatch({ ...plainDate }, {
     year: instant.getFullYear(),
@@ -14,5 +14,5 @@ Deno.test("splits instant to date and time in local timezone", () => {
 });
 
 Deno.test("splits now in local timezone", () => {
-  assert(splitDateTimeInLocalTimezone());
+  assert(splitLocalDateTime());
 });
