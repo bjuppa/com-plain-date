@@ -1,6 +1,5 @@
 import { PlainDate, PlainDateContract } from "./PlainDate.ts";
 import {
-  assert,
   assertEquals,
   assertObjectMatch,
   assertStringIncludes,
