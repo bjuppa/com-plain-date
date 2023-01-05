@@ -78,13 +78,13 @@ export const PlainDate = (
       return PlainDate.of(f(this));
     },
 
-    addDays(days) {
+    addDays(days = 0) {
       return addDays(days)(this);
     },
-    addMonths(months) {
+    addMonths(months = 0) {
       return addMonths(months)(this);
     },
-    addYears(years) {
+    addYears(years = 0) {
       return addYears(years)(this);
     },
   };
