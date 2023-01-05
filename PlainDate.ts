@@ -1,8 +1,9 @@
 import { SloppyPlainDate, SloppyPlainTime } from "./support/sloppy-types.ts";
-import { addDays } from "./utils/addDays.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { createLocalTimezoneInstant } from "./utils/createLocalTimezoneInstant.ts";
+import { createInstant } from "./utils/createInstant.ts";
 import { dateParts } from "./utils/dateParts.ts";
+import { addDays } from "./utils/addDays.ts";
 
 const ENUMERABLE_PROPERTIES = new Set(["year", "month", "day"]);
 
@@ -21,7 +22,7 @@ export interface PlainDateContract {
 
   toUtcInstant: (time?: SloppyPlainTime) => Date;
   toLocalTimezoneInstant: (time?: SloppyPlainTime) => Date;
-  //TODO: toInstant: (timezone: string, time?: SloppyPlainTime) => Date;
+  toInstant: (timezone: string, time?: SloppyPlainTime) => Date;
 
   map: (f: (x: PlainDateContract) => SloppyPlainDate) => PlainDateContract;
 
@@ -61,6 +62,12 @@ export const PlainDate = (
       time = { hour: 0, minute: 0, second: 0, millisecond: 0 },
     ) {
       return createLocalTimezoneInstant({ ...this, ...time });
+    },
+    toInstant(
+      timezone,
+      time = { hour: 0, minute: 0, second: 0, millisecond: 0 },
+    ) {
+      return createInstant(timezone)({ ...this, ...time });
     },
 
     map(f) {
