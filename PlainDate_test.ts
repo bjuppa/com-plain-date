@@ -36,7 +36,7 @@ Deno.test("enumerable properties can not be set", async (t) => {
   }
 });
 
-Deno.test("all string representations are the same ISO standard string", () => {
+Deno.test("main string representations are the same ISO standard string", () => {
   const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
   const iso = "2022-02-02";
 
@@ -59,7 +59,16 @@ Deno.test("negative years can be represented in ISO string", () => {
   assertEquals(plainDate.iso, "-000001-01-01");
 });
 
-Deno.test("can be created from string", () => {
+Deno.test("can be localized", () => {
+  const plainDate = PlainDate({ year: 2020, month: 6, day: 13 });
+
+  assertEquals(
+    plainDate.toLocaleString("sv", { dateStyle: "full" }),
+    "lördag 13 juni 2020",
+  );
+});
+
+Deno.test("can be created from ISO string", () => {
   assertEquals(String(PlainDate.fromString("2022-02-02")), "2022-02-02");
 });
 

@@ -6,6 +6,10 @@ import { dateParts } from "./utils/dateParts.ts";
 import { addDays } from "./utils/addDays.ts";
 import { addMonths } from "./utils/addMonths.ts";
 import { addYears } from "./utils/addYears.ts";
+import {
+  formatPlainDate,
+  FormatPlainDateOptions,
+} from "./utils/formatPlainDate.ts";
 
 const ENUMERABLE_PROPERTIES = new Set(["year", "month", "day"]);
 
@@ -21,6 +25,10 @@ export interface PlainDateContract {
   valueOf: () => string;
   toString: () => string;
   toJSON: () => string;
+  toLocaleString: (
+    locale?: Intl.LocalesArgument,
+    options?: FormatPlainDateOptions,
+  ) => string;
 
   toUtcInstant: (time?: SloppyPlainTime) => Date;
   toLocalInstant: (time?: SloppyPlainTime) => Date;
@@ -57,6 +65,9 @@ export const PlainDate = (
     },
     toJSON() {
       return this.iso;
+    },
+    toLocaleString(locale = undefined, options = {}) {
+      return formatPlainDate(locale)(options)(this);
     },
 
     toUtcInstant(time = { hour: 0, minute: 0, second: 0, millisecond: 0 }) {
