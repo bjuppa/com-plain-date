@@ -17,7 +17,7 @@ Deno.test("splits now in specific timezone", () => {
   assert(splitDateTime("Europe/Stockholm")());
 });
 
-Deno.test("throws when splitting invalid specific timezone", () => {
+Deno.test("throws error when splitting using invalid specific timezone", () => {
   assertThrows(() => {
     splitDateTime("invalid/timezone")();
   });

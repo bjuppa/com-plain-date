@@ -17,7 +17,7 @@ Deno.test("factory accepts string date parts", () => {
   assertObjectMatch({ ...plainDate }, { year: 2022, month: 2, day: 2 });
 });
 
-Deno.test("factory throws when date is invalid", () => {
+Deno.test("factory throws error when date is invalid", () => {
   assertThrows(() => {
     PlainDate({ year: NaN });
   });
@@ -108,7 +108,7 @@ Deno.test("can be created from ISO string", () => {
   assertEquals(String(PlainDate.fromString("2022-02-02")), "2022-02-02");
 });
 
-Deno.test("throws when string only contains year part", () => {
+Deno.test("throws error when string only contains year part", () => {
   assertThrows(() => PlainDate.fromString("2022"));
 });
 
