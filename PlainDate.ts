@@ -32,6 +32,9 @@ export interface PlainDateContract {
   dayName: (locale?: Intl.LocalesArgument) => string;
   dayNameShort: (locale?: Intl.LocalesArgument) => string;
   dayNameNarrow: (locale?: Intl.LocalesArgument) => string;
+  monthName: (locale?: Intl.LocalesArgument) => string;
+  monthNameShort: (locale?: Intl.LocalesArgument) => string;
+  monthNameNarrow: (locale?: Intl.LocalesArgument) => string;
 
   toUtcInstant: (time?: SloppyPlainTime) => Date;
   toLocalInstant: (time?: SloppyPlainTime) => Date;
@@ -80,6 +83,15 @@ export const PlainDate = (
     },
     dayNameNarrow(locale = undefined) {
       return formatPlainDate(locale)({ weekday: "narrow" })(this);
+    },
+    monthName(locale = undefined) {
+      return formatPlainDate(locale)({ month: "long" })(this);
+    },
+    monthNameShort(locale = undefined) {
+      return formatPlainDate(locale)({ month: "short" })(this);
+    },
+    monthNameNarrow(locale = undefined) {
+      return formatPlainDate(locale)({ month: "narrow" })(this);
     },
 
     toUtcInstant(time = { hour: 0, minute: 0, second: 0, millisecond: 0 }) {
