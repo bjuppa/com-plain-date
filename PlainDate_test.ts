@@ -68,6 +68,24 @@ Deno.test("can be localized", () => {
   );
 });
 
+Deno.test("day name can be localized", () => {
+  const plainDate = PlainDate({ year: 2020, month: 6, day: 13 });
+
+  assertEquals(plainDate.dayName("sv"), "lördag");
+});
+
+Deno.test("short day name can be localized", () => {
+  const plainDate = PlainDate({ year: 2020, month: 6, day: 13 });
+
+  assertEquals(plainDate.dayNameShort("sv"), "lör");
+});
+
+Deno.test("narrow day name can be localized", () => {
+  const plainDate = PlainDate({ year: 2020, month: 6, day: 13 });
+
+  assertEquals(plainDate.dayNameNarrow("sv"), "L");
+});
+
 Deno.test("can be created from ISO string", () => {
   assertEquals(String(PlainDate.fromString("2022-02-02")), "2022-02-02");
 });
