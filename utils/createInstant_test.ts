@@ -99,9 +99,9 @@ Deno.test("just after going out of DST", () => {
   assertEquals(instant.toISOString(), "2022-10-30T02:00:00.001Z");
 });
 
-Deno.test("uses the latter of repeated times during transition out of DST", () => {
+Deno.test("during transition out of DST, it uses the last repeated time", () => {
   // Stockholm went out of DST 2022-10-30 03:00 repeating 02:00 and going back to UTC+1
-  // Times between 2:00 and 3:00 exists twice during transition, so should use the latter
+  // Times between 2:00 and 3:00 exists twice during transition
   const instant = createInstant("Europe/Stockholm")({
     year: 2022,
     month: 10,
@@ -113,4 +113,20 @@ Deno.test("uses the latter of repeated times during transition out of DST", () =
   });
 
   assertEquals(instant.toISOString(), "2022-10-30T01:59:59.999Z");
+});
+
+Deno.test("during transition out of DST when hours overflow into the next day, it uses the first repeated time", () => {
+  // Stockholm went out of DST 2022-10-30 03:00 repeating 02:00 and going back to UTC+1
+  // Times between 2:00 and 3:00 exists twice during transition
+  const instant = createInstant("Europe/Stockholm")({
+    year: 2022,
+    month: 10,
+    day: 29,
+    hour: 26,
+    minute: 59,
+    second: 59,
+    millisecond: 999,
+  });
+
+  assertEquals(instant.toISOString(), "2022-10-30T00:59:59.999Z");
 });

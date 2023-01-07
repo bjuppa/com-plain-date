@@ -47,9 +47,9 @@ export const createInstant = (timezone: string) =>
   const targetParts = intlParts(intlUtcFormat)(utcRepresentation);
 
   for (
-    const [, offset] of offsetCandidatesMap(timezone)(
-      utcRepresentation,
-    )
+    const [, offset] of offsetCandidatesMap(timezone)({
+      prioritizeLaterCandidate: Number(hour) < 24,
+    })(utcRepresentation)
   ) {
     if (!offset) {
       continue;
@@ -78,21 +78,24 @@ export const createInstant = (timezone: string) =>
   });
 };
 
-const offsetCandidatesMap = (timezone: string) => (instant: Date) => {
-  const intlLongOffsetFormat = Intl.DateTimeFormat("en", {
-    timeZone: timezone,
-    timeZoneName: "longOffset",
-  });
-  return new Map(
-    [
-      addTime({ hour: 24 })(instant),
-      addTime({ hour: -24 })(instant),
-    ].map((instant) =>
-      timezoneOffsetParts(
-        intlParts(intlLongOffsetFormat)(instant).timeZoneName || "",
-      )
-    ).map((
-      offset,
-    ) => [JSON.stringify(offset), offset]),
-  );
-};
+const offsetCandidatesMap =
+  (timezone: string) =>
+  ({ prioritizeLaterCandidate = true }) =>
+  (instant: Date) => {
+    const intlLongOffsetFormat = Intl.DateTimeFormat("en", {
+      timeZone: timezone,
+      timeZoneName: "longOffset",
+    });
+    const future = addTime({ hour: 24 })(instant);
+    const past = addTime({ hour: -24 })(instant);
+    return new Map(
+      (prioritizeLaterCandidate ? [future, past] : [past, future])
+        .map((instant) =>
+          timezoneOffsetParts(
+            intlParts(intlLongOffsetFormat)(instant).timeZoneName || "",
+          )
+        ).map((
+          offset,
+        ) => [JSON.stringify(offset), offset]),
+    );
+  };
