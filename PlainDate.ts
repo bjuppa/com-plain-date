@@ -6,6 +6,8 @@ import { dateParts } from "./utils/dateParts.ts";
 import { addDays } from "./utils/addDays.ts";
 import { addMonths } from "./utils/addMonths.ts";
 import { addYears } from "./utils/addYears.ts";
+import { startOfMonth } from "./utils/startOfMonth.ts";
+import { startOfYear } from "./utils/startOfYear.ts";
 import {
   formatPlainDate,
   FormatPlainDateOptions,
@@ -45,6 +47,9 @@ export interface PlainDateContract {
   addDays: (days: number) => PlainDateContract;
   addMonths: (months: number) => PlainDateContract;
   addYears: (years: number) => PlainDateContract;
+
+  startOfMonth: () => PlainDateContract;
+  startOfYear: () => PlainDateContract;
 }
 
 export const PlainDate = (
@@ -121,6 +126,13 @@ export const PlainDate = (
     },
     addYears(years = 0) {
       return addYears(years)(this);
+    },
+
+    startOfMonth() {
+      return startOfMonth(this);
+    },
+    startOfYear() {
+      return startOfYear(this);
     },
   };
 
