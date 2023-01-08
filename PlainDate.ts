@@ -8,6 +8,7 @@ import { addMonths } from "./utils/addMonths.ts";
 import { addYears } from "./utils/addYears.ts";
 import { startOfMonth } from "./utils/startOfMonth.ts";
 import { startOfYear } from "./utils/startOfYear.ts";
+import { differenceInDays } from "./utils/differenceInDays.ts";
 import { differenceInMonths } from "./utils/differenceInMonths.ts";
 import { differenceInYears } from "./utils/differenceInYears.ts";
 import {
@@ -53,6 +54,7 @@ export interface PlainDateContract {
   startOfMonth: () => PlainDateContract;
   startOfYear: () => PlainDateContract;
 
+  differenceInDays: (to: PlainDateContract) => number;
   differenceInMonths: (to: PlainDateContract) => number;
   differenceInYears: (to: PlainDateContract) => number;
 }
@@ -140,6 +142,9 @@ export const PlainDate = (
       return startOfYear(this);
     },
 
+    differenceInDays(to) {
+      return differenceInDays(this)(to);
+    },
     differenceInMonths(to) {
       return differenceInMonths(this)(to);
     },
