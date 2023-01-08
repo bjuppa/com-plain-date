@@ -143,6 +143,16 @@ Deno.test("can be converted to instant in given timezone", () => {
   );
 });
 
+Deno.test("Months and days can be added in any order with same result", () => {
+  // The next month only has 28 days
+  const plainDate = PlainDate({ year: 2022, month: 1, day: 31 });
+
+  assertEquals(
+    String(plainDate.addDays(1).addMonths(1)),
+    String(plainDate.addMonths(1).addDays(1)),
+  );
+});
+
 Deno.test("functor obeys identity law", () => {
   const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
   const identityFunction = <T>(x: T): T => x;
