@@ -11,6 +11,7 @@ import { startOfYear } from "./utils/startOfYear.ts";
 import { differenceInDays } from "./utils/differenceInDays.ts";
 import { differenceInMonths } from "./utils/differenceInMonths.ts";
 import { differenceInYears } from "./utils/differenceInYears.ts";
+import { weekDay } from "./utils/weekDay.ts";
 import {
   formatPlainDate,
   FormatPlainDateOptions,
@@ -25,6 +26,9 @@ export interface PlainDateContract {
   month: number;
   /** Day in month (1-31) */
   day: number;
+
+  /** Day in week (1-7 starting with Monday) */
+  weekDay: number;
 
   iso: string;
   valueOf: () => string;
@@ -131,6 +135,10 @@ export const PlainDate = (
 
     map(f) {
       return PlainDate.of(f(this));
+    },
+
+    get weekDay() {
+      return weekDay(this);
     },
 
     addDays(days = 0) {
