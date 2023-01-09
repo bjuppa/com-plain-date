@@ -12,6 +12,8 @@ import { differenceInDays } from "./utils/differenceInDays.ts";
 import { differenceInMonths } from "./utils/differenceInMonths.ts";
 import { differenceInYears } from "./utils/differenceInYears.ts";
 import { weekDay } from "./utils/weekDay.ts";
+import { daysInYear } from "./utils/daysInYear.ts";
+import { isLeapYear } from "./utils/isLeapYear.ts";
 import {
   formatPlainDate,
   FormatPlainDateOptions,
@@ -29,6 +31,10 @@ export interface PlainDateContract {
 
   /** Day in week (1-7 starting with Monday) */
   weekDay: number;
+  /** Is date in a leap year? */
+  isInLeapYear: boolean;
+  /** Common years have 365 days while leap years have 366 */
+  daysInYear: number;
 
   iso: string;
   valueOf: () => string;
@@ -139,6 +145,12 @@ export const PlainDate = (
 
     get weekDay() {
       return weekDay(this);
+    },
+    get isInLeapYear() {
+      return isLeapYear(this.year);
+    },
+    get daysInYear() {
+      return daysInYear(this.year);
     },
 
     addDays(days = 0) {
