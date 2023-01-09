@@ -4,6 +4,7 @@ import { addTime } from "./addTime.ts";
 import { subtractTime } from "./subtractTime.ts";
 import { intlParts } from "./intlParts.ts";
 import { timezoneOffsetParts } from "./timezoneOffsetParts.ts";
+import { HOURS_IN_DAY } from "../constants.ts";
 
 const intlOptions: Intl.DateTimeFormatOptions = {
   hourCycle: "h23",
@@ -48,7 +49,7 @@ export const createInstant = (timezone: string) =>
 
   for (
     const [, offset] of offsetCandidatesMap(timezone)({
-      prioritizeLaterCandidate: Number(hour) < 24,
+      prioritizeLaterCandidate: Number(hour) < HOURS_IN_DAY,
     })(utcRepresentation)
   ) {
     if (!offset) {
@@ -86,16 +87,14 @@ const offsetCandidatesMap =
       timeZone: timezone,
       timeZoneName: "longOffset",
     });
-    const future = addTime({ hour: 24 })(instant);
-    const past = addTime({ hour: -24 })(instant);
+    const future = addTime({ hour: HOURS_IN_DAY })(instant);
+    const past = addTime({ hour: -HOURS_IN_DAY })(instant);
     return new Map(
       (prioritizeLaterCandidate ? [future, past] : [past, future])
         .map((instant) =>
           timezoneOffsetParts(
             intlParts(intlLongOffsetFormat)(instant).timeZoneName || "",
           )
-        ).map((
-          offset,
-        ) => [JSON.stringify(offset), offset]),
+        ).map((offset) => [JSON.stringify(offset), offset]),
     );
   };
