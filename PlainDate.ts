@@ -112,15 +112,21 @@ export const PlainDate = (
         : utcDate;
     },
     toLocalInstant(
-      time = { hour: 0, minute: 0, second: 0, millisecond: 0 },
+      { hour = 0, minute = 0, second = 0, millisecond = 0 } = {},
     ) {
-      return createLocalInstant({ ...this, ...time });
+      return createLocalInstant({ ...this, hour, minute, second, millisecond });
     },
     toInstant(
       timezone,
-      time = { hour: 0, minute: 0, second: 0, millisecond: 0 },
+      { hour = 0, minute = 0, second = 0, millisecond = 0 } = {},
     ) {
-      return createInstant(timezone)({ ...this, ...time });
+      return createInstant(timezone)({
+        ...this,
+        hour,
+        minute,
+        second,
+        millisecond,
+      });
     },
 
     map(f) {
