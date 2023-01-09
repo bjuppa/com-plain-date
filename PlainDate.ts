@@ -106,8 +106,10 @@ export const PlainDate = (
       return formatPlainDate(locale)({ month: "narrow" })(this);
     },
 
-    toUtcInstant(time = { hour: 0, minute: 0, second: 0, millisecond: 0 }) {
-      return createUtcInstant({ ...this, ...time });
+    toUtcInstant({ hour = 0, minute = 0, second = 0, millisecond = 0 } = {}) {
+      return (hour || minute || second || millisecond)
+        ? createUtcInstant({ ...this, hour, minute, second, millisecond })
+        : utcDate;
     },
     toLocalInstant(
       time = { hour: 0, minute: 0, second: 0, millisecond: 0 },
