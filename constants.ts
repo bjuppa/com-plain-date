@@ -7,3 +7,13 @@ export const HOURS_IN_DAY = 24;
 export const DAYS_IN_WEEK = 7;
 export const DAYS_IN_COMMON_YEAR = 365;
 export const DAYS_IN_LEAP_YEAR = DAYS_IN_COMMON_YEAR + 1;
+
+export enum WeekDay {
+  MONDAY = 1,
+  TUESDAY,
+  WEDNESDAY,
+  THURSDAY,
+  FRIDAY,
+  SATURDAY,
+  SUNDAY,
+}
