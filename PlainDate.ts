@@ -1,4 +1,5 @@
 import { SloppyPlainDate, SloppyPlainTime } from "./support/sloppy-types.ts";
+import { WeekDay } from "./constants.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
@@ -8,6 +9,7 @@ import { addMonths } from "./utils/addMonths.ts";
 import { addYears } from "./utils/addYears.ts";
 import { startOfMonth } from "./utils/startOfMonth.ts";
 import { startOfYear } from "./utils/startOfYear.ts";
+import { firstWeekDay } from "./utils/firstWeekDay.ts";
 import { differenceInDays } from "./utils/differenceInDays.ts";
 import { differenceInMonths } from "./utils/differenceInMonths.ts";
 import { differenceInYears } from "./utils/differenceInYears.ts";
@@ -63,6 +65,14 @@ export interface PlainDateContract {
 
   startOfMonth: () => PlainDateContract;
   startOfYear: () => PlainDateContract;
+
+  firstMonday: () => PlainDateContract;
+  firstTuesday: () => PlainDateContract;
+  firstWednesday: () => PlainDateContract;
+  firstThursday: () => PlainDateContract;
+  firstFriday: () => PlainDateContract;
+  firstSaturday: () => PlainDateContract;
+  firstSunday: () => PlainDateContract;
 
   differenceInDays: (to: PlainDateContract) => number;
   differenceInMonths: (to: PlainDateContract) => number;
@@ -168,6 +178,28 @@ export const PlainDate = (
     },
     startOfYear() {
       return startOfYear(this);
+    },
+
+    firstMonday() {
+      return firstWeekDay(WeekDay.MONDAY)(this);
+    },
+    firstTuesday() {
+      return firstWeekDay(WeekDay.TUESDAY)(this);
+    },
+    firstWednesday() {
+      return firstWeekDay(WeekDay.WEDNESDAY)(this);
+    },
+    firstThursday() {
+      return firstWeekDay(WeekDay.THURSDAY)(this);
+    },
+    firstFriday() {
+      return firstWeekDay(WeekDay.FRIDAY)(this);
+    },
+    firstSaturday() {
+      return firstWeekDay(WeekDay.SATURDAY)(this);
+    },
+    firstSunday() {
+      return firstWeekDay(WeekDay.SUNDAY)(this);
     },
 
     differenceInDays(to) {
