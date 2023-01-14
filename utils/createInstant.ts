@@ -5,6 +5,7 @@ import { subtractTime } from "./subtractTime.ts";
 import { intlParts } from "./intlParts.ts";
 import { timezoneOffsetParts } from "./timezoneOffsetParts.ts";
 import { HOURS_IN_DAY } from "../constants.ts";
+import { isTruthy } from "./isTruthy.ts";
 
 const intlOptions: Intl.DateTimeFormatOptions = {
   hourCycle: "h23",
@@ -52,9 +53,6 @@ export const createInstant = (timezone: string) =>
       prioritizeLaterCandidate: Number(hour) < HOURS_IN_DAY,
     })(utcRepresentation)
   ) {
-    if (!offset) {
-      continue;
-    }
     const candidateInstant = subtractTime(offset)(utcRepresentation);
     const candidateParts = intlParts(intlTimezoneFormat)(candidateInstant);
     if (
@@ -95,6 +93,8 @@ const offsetCandidatesMap =
           timezoneOffsetParts(
             intlParts(intlLongOffsetFormat)(instant).timeZoneName || "",
           )
-        ).map((offset) => [JSON.stringify(offset), offset]),
+        ).filter(isTruthy).map((
+          offset,
+        ) => [JSON.stringify(offset), offset]),
     );
   };
