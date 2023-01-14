@@ -13,6 +13,7 @@ import { firstWeekDay } from "./utils/firstWeekDay.ts";
 import { differenceInDays } from "./utils/differenceInDays.ts";
 import { differenceInMonths } from "./utils/differenceInMonths.ts";
 import { differenceInYears } from "./utils/differenceInYears.ts";
+import { ordinal } from "./utils/ordinal.ts";
 import { weekDay } from "./utils/weekDay.ts";
 import { daysInYear } from "./utils/daysInYear.ts";
 import { isLeapYear } from "./utils/isLeapYear.ts";
@@ -31,11 +32,13 @@ export interface PlainDateContract {
   /** Day in month (1-31) */
   day: number;
 
-  /** Day in week (1-7 starting with Monday) */
+  /** Day of the year (1-366) */
+  ordinal: number;
+  /** Day of the week (1-7 starting with Monday) */
   weekDay: number;
   /** Is date in a leap year? */
   isInLeapYear: boolean;
-  /** Common years have 365 days while leap years have 366 */
+  /** Common years have 365 days, leap years have 366 */
   daysInYear: number;
 
   iso: string;
@@ -153,6 +156,9 @@ export const PlainDate = (
       return PlainDate.of(f(this));
     },
 
+    get ordinal() {
+      return ordinal(this);
+    },
     get weekDay() {
       return weekDay(this);
     },
