@@ -23,6 +23,8 @@ import {
   formatPlainDate,
   FormatPlainDateOptions,
 } from "./utils/formatPlainDate.ts";
+import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
+import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 
 const ENUMERABLE_PROPERTIES = new Set(["year", "month", "day"]);
 
@@ -40,9 +42,12 @@ export interface PlainDateContract {
   weekDay: WeekDay;
   /** Monday to Friday */
   isBusinessDay: boolean;
-  /** Saturday & Sunday */
+  /** Saturday or Sunday */
   isWeekendDay: boolean;
-  /** Is date in a leap year? */
+  /** Jan 1 */
+  isFirstDayOfYear: boolean;
+  /** Dec 31 */
+  isLastDayOfYear: boolean;
   isInLeapYear: boolean;
   /** Common years have 365 days, leap years have 366 */
   daysInYear: number;
@@ -173,6 +178,12 @@ export const PlainDate = (
     },
     get isWeekendDay() {
       return isWeekendDay(this);
+    },
+    get isFirstDayOfYear() {
+      return isFirstDayOfYear(this);
+    },
+    get isLastDayOfYear() {
+      return isLastDayOfYear(this);
     },
     get isInLeapYear() {
       return isLeapYear(this.year);
