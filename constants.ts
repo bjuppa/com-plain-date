@@ -8,12 +8,16 @@ export const DAYS_IN_WEEK = 7;
 export const DAYS_IN_COMMON_YEAR = 365;
 export const DAYS_IN_LEAP_YEAR = DAYS_IN_COMMON_YEAR + 1;
 
-export enum WeekDay {
-  MONDAY = 1,
-  TUESDAY = 2,
-  WEDNESDAY = 3,
-  THURSDAY = 4,
-  FRIDAY = 5,
-  SATURDAY = 6,
-  SUNDAY = 7,
-}
+export const WeekDay = {
+  MONDAY: 1,
+  TUESDAY: 2,
+  WEDNESDAY: 3,
+  THURSDAY: 4,
+  FRIDAY: 5,
+  SATURDAY: 6,
+  SUNDAY: 7,
+} as const;
+
+export type WeekDayNumber = typeof WeekDay[
+  keyof typeof WeekDay
+];

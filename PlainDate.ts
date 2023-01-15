@@ -1,5 +1,5 @@
 import { SloppyPlainDate, SloppyPlainTime } from "./support/sloppy-types.ts";
-import { WeekDay } from "./constants.ts";
+import { WeekDay, WeekDayNumber } from "./constants.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
@@ -39,7 +39,7 @@ export interface PlainDateContract {
   /** Day of the year (1-366) */
   ordinal: number;
   /** Day of the week (1-7) starting with Monday */
-  weekDay: WeekDay;
+  weekDay: WeekDayNumber;
   /** Monday to Friday */
   isBusinessDay: boolean;
   /** Saturday or Sunday */

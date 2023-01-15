@@ -1,9 +1,9 @@
-import { DAYS_IN_WEEK, WeekDay } from "../constants.ts";
+import { DAYS_IN_WEEK, WeekDayNumber } from "../constants.ts";
 import { PlainDateContract } from "../PlainDate.ts";
 import { addDays } from "./addDays.ts";
 import { weekDay } from "./weekDay.ts";
 
-export const firstWeekDay = (targetWeekDay: WeekDay) => {
+export const firstWeekDay = (targetWeekDay: WeekDayNumber) => {
   if (targetWeekDay < 1 || targetWeekDay > 7) {
     throw new TypeError(
       `Target week day must be between 1 and 7: ${targetWeekDay}`,

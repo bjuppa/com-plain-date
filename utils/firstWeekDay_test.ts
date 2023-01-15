@@ -1,7 +1,7 @@
 import { firstWeekDay } from "./firstWeekDay.ts";
 import { assertEquals, assertThrows } from "../testing/asserts.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { WeekDay } from "../constants.ts";
+import { WeekDay, WeekDayNumber } from "../constants.ts";
 
 Deno.test("returns same day from a monday", () => {
   assertEquals(
@@ -47,9 +47,13 @@ Deno.test("returns next sunday from a monday", () => {
 
 Deno.test("throws when parameter is not between 1 and 7", () => {
   assertThrows(() => {
-    firstWeekDay(0)(PlainDate({ year: 2023, month: 1, day: 1 }));
+    firstWeekDay(0 as WeekDayNumber)(
+      PlainDate({ year: 2023, month: 1, day: 1 }),
+    );
   });
   assertThrows(() => {
-    firstWeekDay(8)(PlainDate({ year: 2023, month: 1, day: 1 }));
+    firstWeekDay(8 as WeekDayNumber)(
+      PlainDate({ year: 2023, month: 1, day: 1 }),
+    );
   });
 });
