@@ -16,6 +16,8 @@ import { differenceInYears } from "./utils/differenceInYears.ts";
 import { ordinal } from "./utils/ordinal.ts";
 import { weekDay } from "./utils/weekDay.ts";
 import { daysInYear } from "./utils/daysInYear.ts";
+import { isBusinessDay } from "./utils/isBusinessDay.ts";
+import { isWeekendDay } from "./utils/isWeekendDay.ts";
 import { isLeapYear } from "./utils/isLeapYear.ts";
 import {
   formatPlainDate,
@@ -36,6 +38,10 @@ export interface PlainDateContract {
   ordinal: number;
   /** Day of the week (1-7 starting with Monday) */
   weekDay: number;
+  /** Monday to Friday */
+  isBusinessDay: boolean;
+  /** Saturday & Sunday */
+  isWeekendDay: boolean;
   /** Is date in a leap year? */
   isInLeapYear: boolean;
   /** Common years have 365 days, leap years have 366 */
@@ -161,6 +167,12 @@ export const PlainDate = (
     },
     get weekDay() {
       return weekDay(this);
+    },
+    get isBusinessDay() {
+      return isBusinessDay(this);
+    },
+    get isWeekendDay() {
+      return isWeekendDay(this);
     },
     get isInLeapYear() {
       return isLeapYear(this.year);
