@@ -36,8 +36,8 @@ export interface PlainDateContract {
 
   /** Day of the year (1-366) */
   ordinal: number;
-  /** Day of the week (1-7 starting with Monday) */
-  weekDay: number;
+  /** Day of the week (1-7) starting with Monday */
+  weekDay: WeekDay;
   /** Monday to Friday */
   isBusinessDay: boolean;
   /** Saturday & Sunday */
