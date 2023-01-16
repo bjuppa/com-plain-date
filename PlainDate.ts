@@ -14,17 +14,18 @@ import { differenceInDays } from "./utils/differenceInDays.ts";
 import { differenceInMonths } from "./utils/differenceInMonths.ts";
 import { differenceInYears } from "./utils/differenceInYears.ts";
 import { ordinal } from "./utils/ordinal.ts";
+import { quarter } from "./utils/quarter.ts";
 import { weekDay } from "./utils/weekDay.ts";
 import { daysInYear } from "./utils/daysInYear.ts";
 import { isBusinessDay } from "./utils/isBusinessDay.ts";
 import { isWeekendDay } from "./utils/isWeekendDay.ts";
 import { isLeapYear } from "./utils/isLeapYear.ts";
+import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
+import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 import {
   formatPlainDate,
   FormatPlainDateOptions,
 } from "./utils/formatPlainDate.ts";
-import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
-import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 
 const ENUMERABLE_PROPERTIES = new Set(["year", "month", "day"]);
 
@@ -38,6 +39,8 @@ export interface PlainDateContract {
 
   /** Day of the year (1-366) */
   ordinal: number;
+  /** Quarter of the year (1-4) */
+  quarter: number;
   /** Day of the week (1-7) starting with Monday */
   weekDay: WeekDayNumber;
   /** Monday to Friday */
@@ -169,6 +172,9 @@ export const PlainDate = (
 
     get ordinal() {
       return ordinal(this);
+    },
+    get quarter() {
+      return quarter(this);
     },
     get weekDay() {
       return weekDay(this);
