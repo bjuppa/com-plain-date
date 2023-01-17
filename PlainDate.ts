@@ -192,10 +192,10 @@ export const PlainDate = (
       return isLastDayOfYear(this);
     },
     get isInLeapYear() {
-      return isLeapYear(this.year);
+      return isLeapYear(this);
     },
     get daysInYear() {
-      return daysInYear(this.year);
+      return daysInYear(this);
     },
 
     addDays(days = 0) {
