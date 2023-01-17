@@ -16,6 +16,7 @@ import { differenceInYears } from "./utils/differenceInYears.ts";
 import { ordinal } from "./utils/ordinal.ts";
 import { quarter } from "./utils/quarter.ts";
 import { weekDay } from "./utils/weekDay.ts";
+import { daysInMonth } from "./utils/daysInMonth.ts";
 import { daysInYear } from "./utils/daysInYear.ts";
 import { isBusinessDay } from "./utils/isBusinessDay.ts";
 import { isWeekendDay } from "./utils/isWeekendDay.ts";
@@ -52,6 +53,7 @@ export interface PlainDateContract {
   /** Dec 31 */
   isLastDayOfYear: boolean;
   isInLeapYear: boolean;
+  daysInMonth: number;
   /** Common years have 365 days, leap years have 366 */
   daysInYear: number;
 
@@ -196,6 +198,9 @@ export const PlainDate = (
     },
     get daysInYear() {
       return daysInYear(this);
+    },
+    get daysInMonth() {
+      return daysInMonth(this);
     },
 
     addDays(days = 0) {
