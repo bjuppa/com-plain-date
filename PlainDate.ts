@@ -18,9 +18,11 @@ import { quarter } from "./utils/quarter.ts";
 import { weekDay } from "./utils/weekDay.ts";
 import { daysInMonth } from "./utils/daysInMonth.ts";
 import { daysInYear } from "./utils/daysInYear.ts";
+import { isLeapYear } from "./utils/isLeapYear.ts";
 import { isBusinessDay } from "./utils/isBusinessDay.ts";
 import { isWeekendDay } from "./utils/isWeekendDay.ts";
-import { isLeapYear } from "./utils/isLeapYear.ts";
+import { isFirstDayOfMonth } from "./utils/isFirstDayOfMonth.ts";
+import { isLastDayOfMonth } from "./utils/isLastDayOfMonth.ts";
 import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
 import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 import {
@@ -48,9 +50,9 @@ export interface PlainDateContract {
   isBusinessDay: boolean;
   /** Saturday or Sunday */
   isWeekendDay: boolean;
-  /** Jan 1 */
+  isFirstDayOfMonth: boolean;
+  isLastDayOfMonth: boolean;
   isFirstDayOfYear: boolean;
-  /** Dec 31 */
   isLastDayOfYear: boolean;
   isInLeapYear: boolean;
   daysInMonth: number;
@@ -186,6 +188,12 @@ export const PlainDate = (
     },
     get isWeekendDay() {
       return isWeekendDay(this);
+    },
+    get isFirstDayOfMonth() {
+      return isFirstDayOfMonth(this);
+    },
+    get isLastDayOfMonth() {
+      return isLastDayOfMonth(this);
     },
     get isFirstDayOfYear() {
       return isFirstDayOfYear(this);
