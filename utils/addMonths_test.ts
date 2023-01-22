@@ -1,6 +1,7 @@
 import { addMonths } from "./addMonths.ts";
 import { PlainDate } from "../PlainDate.ts";
 import { assertEquals } from "../testing/asserts.ts";
+import { differenceInMonths } from "./differenceInMonths.ts";
 
 Deno.test("months can be added with positive argument", () => {
   const plainDate = PlainDate({ year: 2022, month: 1, day: 10 });
@@ -40,6 +41,6 @@ Deno.test("has parity with difference-in-months", () => {
   // Months before and after March have fewer than 31 days
   const plainDate = PlainDate({ year: 2022, month: 3, day: 31 });
 
-  assertEquals(plainDate.differenceInMonths(addMonths(13)(plainDate)), 13);
-  assertEquals(plainDate.differenceInMonths(addMonths(-13)(plainDate)), -13);
+  assertEquals(differenceInMonths(plainDate)(addMonths(13)(plainDate)), 13);
+  assertEquals(differenceInMonths(plainDate)(addMonths(-13)(plainDate)), -13);
 });
