@@ -8,6 +8,7 @@ import { addDays } from "./utils/addDays.ts";
 import { addMonths } from "./utils/addMonths.ts";
 import { addYears } from "./utils/addYears.ts";
 import { startOfMonth } from "./utils/startOfMonth.ts";
+import { startOfQuarter } from "./utils/startOfQuarter.ts";
 import { startOfYear } from "./utils/startOfYear.ts";
 import { firstWeekDay } from "./utils/firstWeekDay.ts";
 import { differenceInDays } from "./utils/differenceInDays.ts";
@@ -85,6 +86,7 @@ export interface PlainDateContract {
   addYears: (years: number) => PlainDateContract;
 
   startOfMonth: () => PlainDateContract;
+  startOfQuarter: () => PlainDateContract;
   startOfYear: () => PlainDateContract;
 
   firstMonday: () => PlainDateContract;
@@ -223,6 +225,9 @@ export const PlainDate = (
 
     startOfMonth() {
       return startOfMonth(this);
+    },
+    startOfQuarter() {
+      return startOfQuarter(this);
     },
     startOfYear() {
       return startOfYear(this);
