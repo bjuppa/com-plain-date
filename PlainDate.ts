@@ -6,6 +6,8 @@ import { createInstant } from "./utils/createInstant.ts";
 import { dateParts } from "./utils/dateParts.ts";
 import { addDays } from "./utils/addDays.ts";
 import { addMonths } from "./utils/addMonths.ts";
+import { startOfBusinessWeek } from "./utils/startOfBusinessWeek.ts";
+import { startOfWeekend } from "./utils/startOfWeekend.ts";
 import { addYears } from "./utils/addYears.ts";
 import { startOfMonth } from "./utils/startOfMonth.ts";
 import { startOfQuarter } from "./utils/startOfQuarter.ts";
@@ -85,6 +87,8 @@ export interface PlainDateContract {
   addMonths: (months: number) => PlainDateContract;
   addYears: (years: number) => PlainDateContract;
 
+  startOfBusinessWeek: () => PlainDateContract;
+  startOfWeekend: () => PlainDateContract;
   startOfMonth: () => PlainDateContract;
   startOfQuarter: () => PlainDateContract;
   startOfYear: () => PlainDateContract;
@@ -223,6 +227,12 @@ export const PlainDate = (
       return addYears(years)(this);
     },
 
+    startOfBusinessWeek() {
+      return startOfBusinessWeek(this);
+    },
+    startOfWeekend() {
+      return startOfWeekend(this);
+    },
     startOfMonth() {
       return startOfMonth(this);
     },
