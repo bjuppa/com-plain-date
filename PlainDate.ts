@@ -14,6 +14,7 @@ import { startOfQuarter } from "./utils/startOfQuarter.ts";
 import { startOfYear } from "./utils/startOfYear.ts";
 import { firstWeekDay } from "./utils/firstWeekDay.ts";
 import { differenceInDays } from "./utils/differenceInDays.ts";
+import { differenceInBusinessDays } from "./utils/differenceInBusinessDays.ts";
 import { differenceInMonths } from "./utils/differenceInMonths.ts";
 import { differenceInYears } from "./utils/differenceInYears.ts";
 import { ordinal } from "./utils/ordinal.ts";
@@ -102,6 +103,7 @@ export interface PlainDateContract {
   firstSunday: () => PlainDateContract;
 
   differenceInDays: (to: PlainDateContract) => number;
+  differenceInBusinessDays: (to: PlainDateContract) => number;
   differenceInMonths: (to: PlainDateContract) => number;
   differenceInYears: (to: PlainDateContract) => number;
 }
@@ -267,6 +269,9 @@ export const PlainDate = (
 
     differenceInDays(to) {
       return differenceInDays(this)(to);
+    },
+    differenceInBusinessDays(to) {
+      return differenceInBusinessDays(this)(to);
     },
     differenceInMonths(to) {
       return differenceInMonths(this)(to);
