@@ -21,7 +21,7 @@ Deno.test("returns negative difference when 1st day is after 2nd day", () => {
 });
 
 Deno.test("returns number of calendar days between plain dates that are really far apart", () => {
-  const a = PlainDate({ year: 1979 });
+  const a = PlainDate({ year: 1970 });
   const b = PlainDate({ year: 100000 });
-  assertEquals(differenceInDays(a)(b), 35801435);
+  assertEquals(differenceInDays(a)(b), 35804722);
 });
