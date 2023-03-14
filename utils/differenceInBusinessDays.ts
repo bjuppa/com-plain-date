@@ -1,5 +1,5 @@
 import { differenceInDays } from "./differenceInDays.ts";
-import { weekDay } from "./weekDay.ts";
+import { weekDayNumber } from "./weekDayNumber.ts";
 import { PlainDateContract } from "../PlainDate.ts";
 import { DAYS_IN_WEEK, WeekDay } from "../constants.ts";
 
@@ -12,7 +12,7 @@ export const differenceInBusinessDays =
     const fullWeeks = Math.trunc(Math.abs(totalDays) / DAYS_IN_WEEK);
     const fullDays = Math.abs(totalDays) % DAYS_IN_WEEK;
 
-    const weekDayBase = weekDay(from < to ? from : to);
+    const weekDayBase = weekDayNumber(from < to ? from : to);
     const weekDayRelative = weekDayBase + fullDays;
 
     const businessDays = weekDayRelative > WeekDay.SUNDAY

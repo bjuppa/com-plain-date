@@ -19,7 +19,7 @@ import { differenceInMonths } from "./utils/differenceInMonths.ts";
 import { differenceInYears } from "./utils/differenceInYears.ts";
 import { ordinal } from "./utils/ordinal.ts";
 import { quarter } from "./utils/quarter.ts";
-import { weekDay } from "./utils/weekDay.ts";
+import { weekDayNumber } from "./utils/weekDayNumber.ts";
 import { daysInMonth } from "./utils/daysInMonth.ts";
 import { daysInYear } from "./utils/daysInYear.ts";
 import { isLeapYear } from "./utils/isLeapYear.ts";
@@ -48,8 +48,8 @@ export interface PlainDateContract {
   ordinal: number;
   /** Quarter of the year (1-4) */
   quarter: number;
-  /** Day of the week (1-7) starting with Monday */
-  weekDay: WeekDayNumber;
+  /** ISO weekday number (1-7) starting with Monday */
+  weekDayNumber: WeekDayNumber;
   /** Monday to Friday */
   isBusinessDay: boolean;
   /** Saturday or Sunday */
@@ -188,8 +188,8 @@ export const PlainDate = (
     get quarter() {
       return quarter(this);
     },
-    get weekDay() {
-      return weekDay(this);
+    get weekDayNumber() {
+      return weekDayNumber(this);
     },
     get isBusinessDay() {
       return isBusinessDay(this);

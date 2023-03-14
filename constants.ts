@@ -18,6 +18,9 @@ export const WeekDay = {
   SUNDAY: 7,
 } as const;
 
+/**
+ * ISO weekday number (1-7) starting with Monday
+ */
 export type WeekDayNumber = typeof WeekDay[
   keyof typeof WeekDay
 ];
