@@ -42,12 +42,12 @@ Deno.test("returns 4 when comparing a Monday with the Friday in the same week", 
   assertStrictEquals(differenceInBusinessDays(aFriday)(aMonday), -4);
 });
 
-Deno.test("returns 4 when comparing a Sunday with the Saturday in the next week", () => {
+Deno.test("returns 5 when comparing a Sunday with the Saturday in the next week", () => {
   const aSunday = PlainDate({ year: 2023, month: 3, day: 5 });
   const aSaturday = PlainDate({ year: 2023, month: 3, day: 11 });
 
-  assertStrictEquals(differenceInBusinessDays(aSunday)(aSaturday), 4);
-  assertStrictEquals(differenceInBusinessDays(aSaturday)(aSunday), -4);
+  assertStrictEquals(differenceInBusinessDays(aSunday)(aSaturday), 5);
+  assertStrictEquals(differenceInBusinessDays(aSaturday)(aSunday), -5);
 });
 
 Deno.test("returns 1 when comparing a Thursday with the Friday in the same week", () => {

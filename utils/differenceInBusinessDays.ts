@@ -15,11 +15,18 @@ export const differenceInBusinessDays =
     const weekDayBase = weekDayNumber(from < to ? from : to);
     const weekDayRelative = weekDayBase + fullDays;
 
-    const businessDays = weekDayRelative > WeekDay.SUNDAY
-      ? Math.max(1, fullDays - 2)
-      : weekDayBase >= WeekDay.FRIDAY
-      ? 0
-      : fullDays - Math.max(0, weekDayRelative - WeekDay.FRIDAY);
+    const businessDays = Math.max(
+      0,
+      Math.min(
+        5,
+        weekDayRelative < WeekDay.SATURDAY || weekDayBase === WeekDay.SUNDAY
+          ? fullDays
+          : weekDayRelative === WeekDay.SATURDAY ||
+              weekDayBase === WeekDay.SATURDAY
+          ? fullDays - 1
+          : fullDays - 2,
+      ),
+    );
 
     return Math.sign(totalDays) *
       (fullWeeks * (DAYS_IN_WEEK - 2) + businessDays);
