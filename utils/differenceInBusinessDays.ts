@@ -1,7 +1,7 @@
 import { differenceInDays } from "./differenceInDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 import { PlainDateContract } from "../PlainDate.ts";
-import { DAYS_IN_WEEK, WeekDay } from "../constants.ts";
+import { BUSINESS_DAYS_IN_WEEK, DAYS_IN_WEEK, WeekDay } from "../constants.ts";
 
 /**
  * Get the number of crossings into non-weekend days between two dates.
@@ -21,6 +21,6 @@ export const differenceInBusinessDays =
         ? 1
         : 2;
 
-    return Math.sign(totalDays) * (fullWeeks * (DAYS_IN_WEEK - 2) +
-      Math.max(0, Math.min(5, fullDays - weekendDays)));
+    return Math.sign(totalDays) * (fullWeeks * BUSINESS_DAYS_IN_WEEK +
+      Math.max(0, Math.min(BUSINESS_DAYS_IN_WEEK, fullDays - weekendDays)));
   };

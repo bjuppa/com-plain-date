@@ -5,6 +5,7 @@ export const MS_IN_HOUR = 60 * MS_IN_MINUTE;
 export const HOURS_IN_DAY = 24;
 
 export const DAYS_IN_WEEK = 7;
+export const BUSINESS_DAYS_IN_WEEK = DAYS_IN_WEEK - 2;
 export const DAYS_IN_COMMON_YEAR = 365;
 export const DAYS_IN_LEAP_YEAR = DAYS_IN_COMMON_YEAR + 1;
 

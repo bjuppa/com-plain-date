@@ -1,4 +1,4 @@
-import { DAYS_IN_WEEK } from "../constants.ts";
+import { BUSINESS_DAYS_IN_WEEK } from "../constants.ts";
 import { PlainDate } from "../PlainDate.ts";
 import { assertStrictEquals } from "../testing/asserts.ts";
 import { differenceInBusinessDays } from "./differenceInBusinessDays.ts";
@@ -14,7 +14,7 @@ Deno.test("returns the number of crossings into non-weekend days between plain d
     month: 2,
     day: 7,
   });
-  const expectedBusinessDays = 6 * (DAYS_IN_WEEK - 2) + 1;
+  const expectedBusinessDays = 6 * BUSINESS_DAYS_IN_WEEK + 1;
 
   assertStrictEquals(
     differenceInBusinessDays(
@@ -129,7 +129,8 @@ Deno.test("returns 0 when comparing the same non-business day", () => {
 Deno.test("returns the number of business days between plain dates that are really far apart", () => {
   const aThursday = PlainDate({ year: 1970 });
   const aSaturday = PlainDate({ year: 100000 }); // 35804722 days later
-  const expectedBusinessDays = Math.trunc(35804722 / 7) * 5 + 1;
+  const expectedBusinessDays =
+    Math.trunc(35804722 / 7) * BUSINESS_DAYS_IN_WEEK + 1;
 
   assertStrictEquals(
     differenceInBusinessDays(aThursday)(aSaturday),
