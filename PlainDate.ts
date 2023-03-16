@@ -5,10 +5,11 @@ import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
 import { dateParts } from "./utils/dateParts.ts";
 import { addDays } from "./utils/addDays.ts";
+import { addBusinessDays } from "./utils/addBusinessDays.ts";
 import { addMonths } from "./utils/addMonths.ts";
+import { addYears } from "./utils/addYears.ts";
 import { startOfBusinessWeek } from "./utils/startOfBusinessWeek.ts";
 import { startOfWeekend } from "./utils/startOfWeekend.ts";
-import { addYears } from "./utils/addYears.ts";
 import { startOfMonth } from "./utils/startOfMonth.ts";
 import { startOfQuarter } from "./utils/startOfQuarter.ts";
 import { startOfYear } from "./utils/startOfYear.ts";
@@ -85,6 +86,7 @@ export interface PlainDateContract {
   map: (f: (x: PlainDateContract) => SloppyPlainDate) => PlainDateContract;
 
   addDays: (days: number) => PlainDateContract;
+  addBusinessDays: (days: number) => PlainDateContract;
   addMonths: (months: number) => PlainDateContract;
   addYears: (years: number) => PlainDateContract;
 
@@ -221,6 +223,9 @@ export const PlainDate = (
 
     addDays(days = 0) {
       return addDays(days)(this);
+    },
+    addBusinessDays(days = 0) {
+      return addBusinessDays(days)(this);
     },
     addMonths(months = 0) {
       return addMonths(months)(this);
