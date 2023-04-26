@@ -3,6 +3,7 @@ import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
 import { dateParts } from "./utils/dateParts.ts";
+import { FormatPlainDateOptions, formatPlainDate } from "./utils/formatPlainDate.ts";
 
 const ENUMERABLE_PROPERTIES = new Set(["year", "month", "day"]);
 
@@ -18,6 +19,10 @@ export interface PlainDateContract {
   valueOf: () => string;
   toString: () => string;
   toJSON: () => string;
+  toLocaleString: (
+    locale?: Intl.LocalesArgument,
+    options?: FormatPlainDateOptions,
+  ) => string;
 
   toUtcInstant: (time?: SloppyPlainTime) => Date;
   toLocalInstant: (time?: SloppyPlainTime) => Date;
@@ -53,6 +58,9 @@ export const PlainDate = (
     },
     toJSON() {
       return this.iso;
+    },
+    toLocaleString(locale = undefined, options = {}) {
+      return formatPlainDate(locale)(options)(this);
     },
 
     toUtcInstant({ hour = 0, minute = 0, second = 0, millisecond = 0 } = {}) {
