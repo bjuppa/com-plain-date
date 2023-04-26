@@ -5,8 +5,8 @@ import { weekDayNumber } from "./weekDayNumber.ts";
 
 export const addBusinessDays: (
   businessDays: number,
-) => (plainDate: PlainDateContract) => PlainDateContract =
-  (businessDays = 0) => (plainDate: PlainDateContract) => {
+) => <T extends PlainDateContract>(plainDate: T) => T =
+  (businessDays = 0) => (plainDate) => {
     const fullWeeks = Math.trunc(
       Math.abs(businessDays) / BUSINESS_DAYS_IN_WEEK,
     );

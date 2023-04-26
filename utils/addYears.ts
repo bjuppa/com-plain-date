@@ -2,6 +2,6 @@ import { PlainDateContract } from "../PlainDate.ts";
 
 export const addYears: (
   years: number,
-) => (plainDate: PlainDateContract) => PlainDateContract =
-  (years = 0) => (plainDate: PlainDateContract) =>
+) => <T extends PlainDateContract>(plainDate: T) => T =
+  (years = 0) => (plainDate) =>
     plainDate.map((x) => ({ ...x, year: x.year + years }));

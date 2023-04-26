@@ -1,9 +1,10 @@
 import { PlainDateContract } from "../PlainDate.ts";
 
-export const startOfYear: (plainDate: PlainDateContract) => PlainDateContract =
-  (plainDate: PlainDateContract) =>
-    plainDate.map((x) => ({
-      year: x.year,
-      month: 1,
-      day: 1,
-    }));
+export const startOfYear: <T extends PlainDateContract>(plainDate: T) => T = (
+  plainDate,
+) =>
+  plainDate.map((x) => ({
+    year: x.year,
+    month: 1,
+    day: 1,
+  }));
