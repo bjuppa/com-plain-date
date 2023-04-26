@@ -1,7 +1,6 @@
 import { PlainDate, PlainDateContract } from "./PlainDate.ts";
 import {
   assertEquals,
-  assertObjectMatch,
   assertStringIncludes,
   assertThrows,
 } from "./testing/asserts.ts";
@@ -9,12 +8,13 @@ import {
 Deno.test("factory accepts number date parts", () => {
   const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
 
-  assertObjectMatch({ ...plainDate }, { year: 2022, month: 2, day: 2 });
+  assertEquals(String(plainDate), "2022-02-02");
 });
 
 Deno.test("factory accepts string date parts", () => {
   const plainDate = PlainDate({ year: "2022", month: "02", day: "02" });
-  assertObjectMatch({ ...plainDate }, { year: 2022, month: 2, day: 2 });
+
+  assertEquals(String(plainDate), "2022-02-02");
 });
 
 Deno.test("factory throws error when date is invalid", () => {
@@ -111,7 +111,10 @@ Deno.test("functor obeys identity law", () => {
   const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
   const identityFunction = <T>(x: T): T => x;
 
-  assertObjectMatch({ ...plainDate }, { ...plainDate.map(identityFunction) });
+  assertEquals(
+    String(plainDate),
+    String(plainDate.map(identityFunction)),
+  );
 });
 
 Deno.test("functor obeys composition law", () => {
@@ -125,7 +128,8 @@ Deno.test("functor obeys composition law", () => {
     year: plainDate.year * 2,
   });
 
-  assertObjectMatch({ ...plainDate.map(addOneYear).map(doubleYear) }, {
-    ...plainDate.map((x) => doubleYear(addOneYear(x))),
-  });
+  assertEquals(
+    String(plainDate.map(addOneYear).map(doubleYear)),
+    String(plainDate.map((x) => doubleYear(addOneYear(x)))),
+  );
 });
