@@ -36,7 +36,7 @@ export interface PlainDateContract {
 
 export const PlainDate = (
   { year = NaN, month = 1, day = 1 }: SloppyPlainDate,
-) => {
+): PlainDateContract => {
   const utcDate = createUtcInstant({ year, month, day });
   if (isNaN(utcDate.valueOf())) {
     throw new TypeError(
