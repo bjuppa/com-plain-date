@@ -23,7 +23,10 @@ export interface PlainDateContract {
   toLocalInstant: (time?: SloppyPlainTime) => Date;
   toInstant: (timezone: string, time?: SloppyPlainTime) => Date;
 
-  map: (f: (x: PlainDateContract) => SloppyPlainDate) => PlainDateContract;
+  map: <T extends PlainDateContract>(
+    this: T,
+    f: (x: T) => SloppyPlainDate,
+  ) => T;
 }
 
 export const PlainDate = (
@@ -75,8 +78,8 @@ export const PlainDate = (
       });
     },
 
-    map(f) {
-      return PlainDate.of(f(this));
+    map<T>(this: T, f: (x: T) => SloppyPlainDate) {
+      return PlainDate.of(f(this)) as T;
     },
   };
 
