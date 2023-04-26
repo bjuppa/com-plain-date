@@ -1,9 +1,16 @@
 import { ExPlainDate, ExtendedPlainDateContract } from "./ExPlainDate.ts";
+import { PlainDate } from "./PlainDate.ts";
 import {
   assertEquals,
   assertStringIncludes,
   assertThrows,
 } from "./testing/asserts.ts";
+
+Deno.test("factory accepts PlainDate", () => {
+  const plainDate = ExPlainDate(PlainDate({ year: 2022, month: 2, day: 2 }));
+
+  assertEquals(String(plainDate), "2022-02-02");
+});
 
 Deno.test("factory accepts number date parts", () => {
   const plainDate = ExPlainDate({ year: 2022, month: 2, day: 2 });
