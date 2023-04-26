@@ -1,9 +1,6 @@
-import { SloppyPlainDate, SloppyPlainTime } from "./support/sloppy-types.ts";
+import { SloppyPlainDate } from "./support/sloppy-types.ts";
 import { PlainDate, PlainDateContract } from "./PlainDate.ts";
 import { WeekDay, WeekDayNumber } from "./constants.ts";
-import { createUtcInstant } from "./utils/createUtcInstant.ts";
-import { createLocalInstant } from "./utils/createLocalInstant.ts";
-import { createInstant } from "./utils/createInstant.ts";
 import { dateParts } from "./utils/dateParts.ts";
 import { addDays } from "./utils/addDays.ts";
 import { addBusinessDays } from "./utils/addBusinessDays.ts";
@@ -31,10 +28,7 @@ import { isFirstDayOfMonth } from "./utils/isFirstDayOfMonth.ts";
 import { isLastDayOfMonth } from "./utils/isLastDayOfMonth.ts";
 import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
 import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
-import {
-  formatPlainDate,
-  FormatPlainDateOptions,
-} from "./utils/formatPlainDate.ts";
+import { formatPlainDate } from "./utils/formatPlainDate.ts";
 
 export interface ExtendedPlainDateContract extends PlainDateContract {
   /** Day of the year (1-366) */

@@ -1,5 +1,5 @@
 import { firstWeekDay } from "./firstWeekDay.ts";
-import { assertEquals, assertThrows } from "../testing/asserts.ts";
+import { assertEquals } from "../testing/asserts.ts";
 import { PlainDate } from "../PlainDate.ts";
 import { WeekDay, WeekDayNumber } from "../constants.ts";
 
