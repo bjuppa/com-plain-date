@@ -1,4 +1,5 @@
 import { SloppyPlainDate, SloppyPlainTime } from "./support/sloppy-types.ts";
+import { PlainDateContract } from "./PlainDate.ts";
 import { WeekDay, WeekDayNumber } from "./constants.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
@@ -37,14 +38,7 @@ import {
 
 const ENUMERABLE_PROPERTIES = new Set(["year", "month", "day"]);
 
-export interface PlainDateContract {
-  /** Year may be negative and up to 6 digits */
-  year: number;
-  /** Month (1-12) */
-  month: number;
-  /** Day in month (1-31) */
-  day: number;
-
+export interface ExtendedPlainDateContract extends PlainDateContract {
   /** Day of the year (1-366) */
   ordinal: number;
   /** Quarter of the year (1-4) */
@@ -64,14 +58,6 @@ export interface PlainDateContract {
   /** Common years have 365 days, leap years have 366 */
   daysInYear: number;
 
-  iso: string;
-  valueOf: () => string;
-  toString: () => string;
-  toJSON: () => string;
-  toLocaleString: (
-    locale?: Intl.LocalesArgument,
-    options?: FormatPlainDateOptions,
-  ) => string;
   dayName: (locale?: Intl.LocalesArgument) => string;
   dayNameShort: (locale?: Intl.LocalesArgument) => string;
   dayNameNarrow: (locale?: Intl.LocalesArgument) => string;
@@ -79,35 +65,29 @@ export interface PlainDateContract {
   monthNameShort: (locale?: Intl.LocalesArgument) => string;
   monthNameNarrow: (locale?: Intl.LocalesArgument) => string;
 
-  toUtcInstant: (time?: SloppyPlainTime) => Date;
-  toLocalInstant: (time?: SloppyPlainTime) => Date;
-  toInstant: (timezone: string, time?: SloppyPlainTime) => Date;
+  addDays: (days: number) => ExtendedPlainDateContract;
+  addBusinessDays: (days: number) => ExtendedPlainDateContract;
+  addMonths: (months: number) => ExtendedPlainDateContract;
+  addYears: (years: number) => ExtendedPlainDateContract;
 
-  map: (f: (x: PlainDateContract) => SloppyPlainDate) => PlainDateContract;
+  startOfBusinessWeek: () => ExtendedPlainDateContract;
+  startOfWeekend: () => ExtendedPlainDateContract;
+  startOfMonth: () => ExtendedPlainDateContract;
+  startOfQuarter: () => ExtendedPlainDateContract;
+  startOfYear: () => ExtendedPlainDateContract;
 
-  addDays: (days: number) => PlainDateContract;
-  addBusinessDays: (days: number) => PlainDateContract;
-  addMonths: (months: number) => PlainDateContract;
-  addYears: (years: number) => PlainDateContract;
+  firstMonday: () => ExtendedPlainDateContract;
+  firstTuesday: () => ExtendedPlainDateContract;
+  firstWednesday: () => ExtendedPlainDateContract;
+  firstThursday: () => ExtendedPlainDateContract;
+  firstFriday: () => ExtendedPlainDateContract;
+  firstSaturday: () => ExtendedPlainDateContract;
+  firstSunday: () => ExtendedPlainDateContract;
 
-  startOfBusinessWeek: () => PlainDateContract;
-  startOfWeekend: () => PlainDateContract;
-  startOfMonth: () => PlainDateContract;
-  startOfQuarter: () => PlainDateContract;
-  startOfYear: () => PlainDateContract;
-
-  firstMonday: () => PlainDateContract;
-  firstTuesday: () => PlainDateContract;
-  firstWednesday: () => PlainDateContract;
-  firstThursday: () => PlainDateContract;
-  firstFriday: () => PlainDateContract;
-  firstSaturday: () => PlainDateContract;
-  firstSunday: () => PlainDateContract;
-
-  differenceInDays: (to: PlainDateContract) => number;
-  differenceInBusinessDays: (to: PlainDateContract) => number;
-  differenceInMonths: (to: PlainDateContract) => number;
-  differenceInYears: (to: PlainDateContract) => number;
+  differenceInDays: (to: ExtendedPlainDateContract) => number;
+  differenceInBusinessDays: (to: ExtendedPlainDateContract) => number;
+  differenceInMonths: (to: ExtendedPlainDateContract) => number;
+  differenceInYears: (to: ExtendedPlainDateContract) => number;
 }
 
 export const PlainDate = (
@@ -120,7 +100,7 @@ export const PlainDate = (
     );
   }
 
-  const plainDate: PlainDateContract = {
+  const plainDate: ExtendedPlainDateContract = {
     year: utcDate.getUTCFullYear(),
     month: utcDate.getUTCMonth() + 1,
     day: utcDate.getUTCDate(),
