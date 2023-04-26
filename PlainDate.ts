@@ -3,9 +3,10 @@ import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
 import { dateParts } from "./utils/dateParts.ts";
-import { FormatPlainDateOptions, formatPlainDate } from "./utils/formatPlainDate.ts";
-
-const ENUMERABLE_PROPERTIES = new Set(["year", "month", "day"]);
+import {
+  formatPlainDate,
+  FormatPlainDateOptions,
+} from "./utils/formatPlainDate.ts";
 
 export interface PlainDateContract {
   /** Year may be negative and up to 6 digits */
@@ -91,11 +92,6 @@ export const PlainDate = (
     },
   };
 
-  for (const p in plainDate) {
-    Object.defineProperty(plainDate, p, {
-      enumerable: ENUMERABLE_PROPERTIES.has(p),
-    });
-  }
   Object.freeze(plainDate);
 
   return plainDate;

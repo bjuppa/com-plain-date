@@ -36,8 +36,6 @@ import {
   FormatPlainDateOptions,
 } from "./utils/formatPlainDate.ts";
 
-const ENUMERABLE_PROPERTIES = new Set(["year", "month", "day"]);
-
 export interface ExtendedPlainDateContract extends PlainDateContract {
   /** Day of the year (1-366) */
   ordinal: number;
@@ -96,7 +94,6 @@ export const ExPlainDate = (
   const plainDate = PlainDate({ year, month, day });
 
   const exPlainDate: ExtendedPlainDateContract = {
-    // TODO: this spread doesn't work because most relevant properties are not enumerable
     ...plainDate,
 
     dayName(locale = undefined) {
@@ -224,11 +221,6 @@ export const ExPlainDate = (
     },
   };
 
-  for (const p in exPlainDate) {
-    Object.defineProperty(exPlainDate, p, {
-      enumerable: ENUMERABLE_PROPERTIES.has(p),
-    });
-  }
   Object.freeze(exPlainDate);
 
   return exPlainDate;
