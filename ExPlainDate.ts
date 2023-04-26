@@ -90,7 +90,7 @@ export interface ExtendedPlainDateContract extends PlainDateContract {
   differenceInYears: (to: ExtendedPlainDateContract) => number;
 }
 
-export const PlainDate = (
+export const ExPlainDate = (
   { year = NaN, month = 1, day = 1 }: SloppyPlainDate,
 ) => {
   const utcDate = createUtcInstant({ year, month, day });
@@ -161,7 +161,7 @@ export const PlainDate = (
     },
 
     map(f) {
-      return PlainDate.of(f(this));
+      return ExPlainDate.of(f(this));
     },
 
     get ordinal() {
@@ -277,12 +277,12 @@ export const PlainDate = (
 };
 
 // Type lift (unit)
-PlainDate.of = PlainDate;
+ExPlainDate.of = ExPlainDate;
 
-PlainDate.fromString = (s: string) => {
+ExPlainDate.fromString = (s: string) => {
   const parts = dateParts(s);
   if (!parts) {
     throw TypeError(`No date parts found in string: ${s}`);
   }
-  return PlainDate.of(parts);
+  return ExPlainDate.of(parts);
 };

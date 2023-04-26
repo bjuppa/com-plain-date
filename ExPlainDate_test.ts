@@ -1,4 +1,4 @@
-import { PlainDate, ExtendedPlainDateContract } from "./ExPlainDate.ts";
+import { ExPlainDate, ExtendedPlainDateContract } from "./ExPlainDate.ts";
 import {
   assertEquals,
   assertObjectMatch,
@@ -7,24 +7,24 @@ import {
 } from "./testing/asserts.ts";
 
 Deno.test("factory accepts number date parts", () => {
-  const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
+  const plainDate = ExPlainDate({ year: 2022, month: 2, day: 2 });
 
   assertObjectMatch({ ...plainDate }, { year: 2022, month: 2, day: 2 });
 });
 
 Deno.test("factory accepts string date parts", () => {
-  const plainDate = PlainDate({ year: "2022", month: "02", day: "02" });
+  const plainDate = ExPlainDate({ year: "2022", month: "02", day: "02" });
   assertObjectMatch({ ...plainDate }, { year: 2022, month: 2, day: 2 });
 });
 
 Deno.test("factory throws error when date is invalid", () => {
   assertThrows(() => {
-    PlainDate({ year: NaN });
+    ExPlainDate({ year: NaN });
   });
 });
 
 Deno.test("enumerable properties can not be set", async (t) => {
-  const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
+  const plainDate = ExPlainDate({ year: "2022", month: "12", day: "22" });
 
   for (const property in plainDate) {
     await t.step(`property '${property}'`, () => {
@@ -37,7 +37,7 @@ Deno.test("enumerable properties can not be set", async (t) => {
 });
 
 Deno.test("main string representations are the same ISO standard string", () => {
-  const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
+  const plainDate = ExPlainDate({ year: 2022, month: 2, day: 2 });
   const iso = "2022-02-02";
 
   assertEquals(plainDate.iso, iso);
@@ -48,19 +48,19 @@ Deno.test("main string representations are the same ISO standard string", () => 
 });
 
 Deno.test("up to 6-digit years can be represented in ISO string", () => {
-  const plainDate = PlainDate({ year: 100000, month: 1, day: 1 });
+  const plainDate = ExPlainDate({ year: 100000, month: 1, day: 1 });
 
   assertEquals(plainDate.iso, "+100000-01-01");
 });
 
 Deno.test("negative years can be represented in ISO string", () => {
-  const plainDate = PlainDate({ year: -1, month: 1, day: 1 });
+  const plainDate = ExPlainDate({ year: -1, month: 1, day: 1 });
 
   assertEquals(plainDate.iso, "-000001-01-01");
 });
 
 Deno.test("can be localized", () => {
-  const plainDate = PlainDate({ year: 2020, month: 6, day: 13 });
+  const plainDate = ExPlainDate({ year: 2020, month: 6, day: 13 });
 
   assertEquals(
     plainDate.toLocaleString("sv", { dateStyle: "full" }),
@@ -69,51 +69,51 @@ Deno.test("can be localized", () => {
 });
 
 Deno.test("day name can be localized", () => {
-  const plainDate = PlainDate({ year: 2020, month: 6, day: 13 });
+  const plainDate = ExPlainDate({ year: 2020, month: 6, day: 13 });
 
   assertEquals(plainDate.dayName("sv"), "lördag");
 });
 
 Deno.test("short day name can be localized", () => {
-  const plainDate = PlainDate({ year: 2020, month: 6, day: 13 });
+  const plainDate = ExPlainDate({ year: 2020, month: 6, day: 13 });
 
   assertEquals(plainDate.dayNameShort("sv"), "lör");
 });
 
 Deno.test("narrow day name can be localized", () => {
-  const plainDate = PlainDate({ year: 2020, month: 6, day: 13 });
+  const plainDate = ExPlainDate({ year: 2020, month: 6, day: 13 });
 
   assertEquals(plainDate.dayNameNarrow("sv"), "L");
 });
 
 Deno.test("month name can be localized", () => {
-  const plainDate = PlainDate({ year: 2020, month: 2, day: 13 });
+  const plainDate = ExPlainDate({ year: 2020, month: 2, day: 13 });
 
   assertEquals(plainDate.monthName("sv"), "februari");
 });
 
 Deno.test("short month name can be localized", () => {
-  const plainDate = PlainDate({ year: 2020, month: 2, day: 13 });
+  const plainDate = ExPlainDate({ year: 2020, month: 2, day: 13 });
 
   assertEquals(plainDate.monthNameShort("sv"), "feb.");
 });
 
 Deno.test("narrow month name can be localized", () => {
-  const plainDate = PlainDate({ year: 2020, month: 2, day: 13 });
+  const plainDate = ExPlainDate({ year: 2020, month: 2, day: 13 });
 
   assertEquals(plainDate.monthNameNarrow("sv"), "F");
 });
 
 Deno.test("can be created from ISO string", () => {
-  assertEquals(String(PlainDate.fromString("2022-02-02")), "2022-02-02");
+  assertEquals(String(ExPlainDate.fromString("2022-02-02")), "2022-02-02");
 });
 
 Deno.test("throws error when string only contains year part", () => {
-  assertThrows(() => PlainDate.fromString("2022"));
+  assertThrows(() => ExPlainDate.fromString("2022"));
 });
 
 Deno.test("can be converted to instant in UTC", () => {
-  const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
+  const plainDate = ExPlainDate({ year: 2022, month: 2, day: 2 });
   const time = { hour: 23, minute: 59, second: 59, millisecond: 999 };
 
   assertEquals(
@@ -123,7 +123,7 @@ Deno.test("can be converted to instant in UTC", () => {
 });
 
 Deno.test("can be converted to instant in local timezone", () => {
-  const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
+  const plainDate = ExPlainDate({ year: 2022, month: 2, day: 2 });
   const time = { hour: 23, minute: 59, second: 59, millisecond: 999 };
 
   assertStringIncludes(
@@ -133,7 +133,7 @@ Deno.test("can be converted to instant in local timezone", () => {
 });
 
 Deno.test("can be converted to instant in given timezone", () => {
-  const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
+  const plainDate = ExPlainDate({ year: 2022, month: 2, day: 2 });
   const time = { hour: 23, minute: 59, second: 59, millisecond: 999 };
 
   // India Standard Time is UTC+5:30
@@ -145,7 +145,7 @@ Deno.test("can be converted to instant in given timezone", () => {
 
 Deno.test("Months and days can be added in any order with same result", () => {
   // The next month only has 28 days
-  const plainDate = PlainDate({ year: 2022, month: 1, day: 31 });
+  const plainDate = ExPlainDate({ year: 2022, month: 1, day: 31 });
 
   assertEquals(
     String(plainDate.addDays(1).addMonths(1)),
@@ -154,14 +154,14 @@ Deno.test("Months and days can be added in any order with same result", () => {
 });
 
 Deno.test("functor obeys identity law", () => {
-  const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
+  const plainDate = ExPlainDate({ year: "2022", month: "12", day: "22" });
   const identityFunction = <T>(x: T): T => x;
 
   assertObjectMatch({ ...plainDate }, { ...plainDate.map(identityFunction) });
 });
 
 Deno.test("functor obeys composition law", () => {
-  const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
+  const plainDate = ExPlainDate({ year: "2022", month: "12", day: "22" });
   const addOneYear = (plainDate: ExtendedPlainDateContract) => ({
     ...plainDate,
     year: plainDate.year + 1,
