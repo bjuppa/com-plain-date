@@ -16,10 +16,15 @@ export interface PlainDateContract {
   /** Day in month (1-31) */
   day: number;
 
+  /** YYYY-MM-DD (ISO 8601) */
   iso: string;
-  valueOf: () => string;
-  toString: () => string;
-  toJSON: () => string;
+  /** YYYY-MM-DD (ISO 8601) */
+  valueOf: () => PlainDateContract["iso"];
+  /** YYYY-MM-DD (ISO 8601) */
+  toString: () => PlainDateContract["iso"];
+  /** YYYY-MM-DD (ISO 8601) */
+  toJSON: () => PlainDateContract["iso"];
+
   toLocaleString: (
     locale?: Intl.LocalesArgument,
     options?: FormatPlainDateOptions,
@@ -60,6 +65,7 @@ export const PlainDate = (
     toJSON() {
       return this.iso;
     },
+
     toLocaleString(locale = undefined, options = {}) {
       return formatPlainDate(locale)(options)(this);
     },
