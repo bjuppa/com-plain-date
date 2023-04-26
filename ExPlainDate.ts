@@ -1,5 +1,5 @@
 import { SloppyPlainDate, SloppyPlainTime } from "./support/sloppy-types.ts";
-import { PlainDateContract } from "./PlainDate.ts";
+import { PlainDate, PlainDateContract } from "./PlainDate.ts";
 import { WeekDay, WeekDayNumber } from "./constants.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
@@ -92,32 +92,13 @@ export interface ExtendedPlainDateContract extends PlainDateContract {
 
 export const ExPlainDate = (
   { year = NaN, month = 1, day = 1 }: SloppyPlainDate,
-) => {
-  const utcDate = createUtcInstant({ year, month, day });
-  if (isNaN(utcDate.valueOf())) {
-    throw new TypeError(
-      `Input is not a valid date: ${JSON.stringify({ year, month, day })}`,
-    );
-  }
+): ExtendedPlainDateContract => {
+  const plainDate = PlainDate({ year, month, day });
 
-  const plainDate: ExtendedPlainDateContract = {
-    year: utcDate.getUTCFullYear(),
-    month: utcDate.getUTCMonth() + 1,
-    day: utcDate.getUTCDate(),
+  const exPlainDate: ExtendedPlainDateContract = {
+    // TODO: this spread doesn't work because most relevant properties are not enumerable
+    ...plainDate,
 
-    iso: utcDate.toISOString().split("T")[0],
-    valueOf() {
-      return this.iso;
-    },
-    toString() {
-      return this.iso;
-    },
-    toJSON() {
-      return this.iso;
-    },
-    toLocaleString(locale = undefined, options = {}) {
-      return formatPlainDate(locale)(options)(this);
-    },
     dayName(locale = undefined) {
       return formatPlainDate(locale)({ weekday: "long" })(this);
     },
@@ -137,31 +118,8 @@ export const ExPlainDate = (
       return formatPlainDate(locale)({ month: "narrow" })(this);
     },
 
-    toUtcInstant({ hour = 0, minute = 0, second = 0, millisecond = 0 } = {}) {
-      return (hour || minute || second || millisecond)
-        ? createUtcInstant({ ...this, hour, minute, second, millisecond })
-        : utcDate;
-    },
-    toLocalInstant(
-      { hour = 0, minute = 0, second = 0, millisecond = 0 } = {},
-    ) {
-      return createLocalInstant({ ...this, hour, minute, second, millisecond });
-    },
-    toInstant(
-      timezone,
-      { hour = 0, minute = 0, second = 0, millisecond = 0 } = {},
-    ) {
-      return createInstant(timezone)({
-        ...this,
-        hour,
-        minute,
-        second,
-        millisecond,
-      });
-    },
-
-    map(f) {
-      return ExPlainDate.of(f(this));
+    map<T>(this: T, f: (x: T) => SloppyPlainDate) {
+      return ExPlainDate.of(f(this)) as T;
     },
 
     get ordinal() {
@@ -266,14 +224,14 @@ export const ExPlainDate = (
     },
   };
 
-  for (const p in plainDate) {
-    Object.defineProperty(plainDate, p, {
+  for (const p in exPlainDate) {
+    Object.defineProperty(exPlainDate, p, {
       enumerable: ENUMERABLE_PROPERTIES.has(p),
     });
   }
-  Object.freeze(plainDate);
+  Object.freeze(exPlainDate);
 
-  return plainDate;
+  return exPlainDate;
 };
 
 // Type lift (unit)
