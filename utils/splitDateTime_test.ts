@@ -2,11 +2,16 @@ import { assert, assertEquals, assertThrows } from "../testing/asserts.ts";
 import { splitDateTime } from "./splitDateTime.ts";
 
 Deno.test("splits instant to date and time in specific timezone", () => {
-  const instant = new Date("2022-12-31T23:59Z");
-  const [plainDate, plainTime] = splitDateTime("Asia/Tokyo")(instant);
+  const instant = new Date("2022-12-31T23:59:30.999Z");
+  const [plainDate, plainTime] = splitDateTime("Asia/Tokyo")(instant); // Tokyo is 9 hours ahead of UTC
 
-  assertEquals(String(plainDate), "2023-01-01");
-  // TODO: assert plainTime matches
+  assertEquals(plainDate.year, 2023);
+  assertEquals(plainDate.month, 1);
+  assertEquals(plainDate.day, 1);
+  assertEquals(plainTime.hour, 8);
+  assertEquals(plainTime.minute, 59);
+  assertEquals(plainTime.second, 30);
+  assertEquals(plainTime.millisecond, 999);
 });
 
 Deno.test("splits now in specific timezone", () => {
