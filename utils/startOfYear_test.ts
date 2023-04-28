@@ -1,6 +1,6 @@
 import { startOfYear } from "./startOfYear.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 
 Deno.test("returns first day of the year", () => {
   const plainDate = PlainDate({ year: 2022, month: 2, day: 15 });

@@ -1,5 +1,5 @@
 import { createUtcInstant } from "./createUtcInstant.ts";
-import { assert, assertEquals, assertInstanceOf } from "../testing/asserts.ts";
+import { assert, assertEquals, assertInstanceOf } from "../dev_deps.ts";
 
 Deno.test("returned date object is valid", () => {
   const utcDate = createUtcInstant({

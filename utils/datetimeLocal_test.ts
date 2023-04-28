@@ -1,5 +1,5 @@
 import { datetimeLocal } from "./datetimeLocal.ts";
-import { assertEquals, assertThrows } from "../testing/asserts.ts";
+import { assertEquals, assertThrows } from "../dev_deps.ts";
 
 Deno.test("formats string for HTML datetime-local input", () => {
   assertEquals(

@@ -1,5 +1,5 @@
 import { createInstant } from "./createInstant.ts";
-import { assert, assertEquals, assertInstanceOf } from "../testing/asserts.ts";
+import { assert, assertEquals, assertInstanceOf } from "../dev_deps.ts";
 
 Deno.test("returned date object is valid", () => {
   // Stockholm is 1 hour ahead of UTC when not in DST

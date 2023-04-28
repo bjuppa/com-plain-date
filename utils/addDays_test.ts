@@ -1,6 +1,6 @@
 import { addDays } from "./addDays.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 import { differenceInDays } from "./differenceInDays.ts";
 
 Deno.test("days can be added with positive argument", () => {

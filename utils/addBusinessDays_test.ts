@@ -1,6 +1,6 @@
 import { addBusinessDays } from "./addBusinessDays.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 import { differenceInBusinessDays } from "./differenceInBusinessDays.ts";
 
 Deno.test("business days can be added with positive argument", () => {

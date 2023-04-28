@@ -1,4 +1,4 @@
-import { assert, assertEquals, assertThrows } from "../testing/asserts.ts";
+import { assert, assertEquals, assertThrows } from "../dev_deps.ts";
 import { splitDateTime } from "./splitDateTime.ts";
 
 Deno.test("splits instant to date and time in specific timezone", () => {

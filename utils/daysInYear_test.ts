@@ -1,5 +1,5 @@
 import { daysInYear } from "./daysInYear.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 
 Deno.test("1900 was a common year", () => {
   assertEquals(daysInYear({ year: 1900 }), 365);

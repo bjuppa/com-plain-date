@@ -1,6 +1,6 @@
 import { BUSINESS_DAYS_IN_WEEK } from "../constants.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { assertStrictEquals } from "../testing/asserts.ts";
+import { assertStrictEquals } from "../dev_deps.ts";
 import { differenceInBusinessDays } from "./differenceInBusinessDays.ts";
 
 Deno.test("returns the number of crossings into non-weekend days between plain dates", () => {

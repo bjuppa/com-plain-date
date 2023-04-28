@@ -1,6 +1,6 @@
 import { ordinal } from "./ordinal.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 
 Deno.test("returns 1 for the first day of the year", () => {
   assertEquals(ordinal(PlainDate({ year: 2023, month: 1, day: 1 })), 1);

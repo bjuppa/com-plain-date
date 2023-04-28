@@ -1,6 +1,6 @@
 import { weekDayNumber } from "./weekDayNumber.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 
 // Unix epoch Jan 1 1970 is a Thursday
 

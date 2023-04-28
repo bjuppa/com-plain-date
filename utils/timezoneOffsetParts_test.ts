@@ -1,5 +1,5 @@
 import { timezoneOffsetParts } from "./timezoneOffsetParts.ts";
-import { assertObjectMatch } from "../testing/asserts.ts";
+import { assertObjectMatch } from "../dev_deps.ts";
 
 Deno.test("time string", () => {
   assertObjectMatch({ ...timezoneOffsetParts("5:30") }, {

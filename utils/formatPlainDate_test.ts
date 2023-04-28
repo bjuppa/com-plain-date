@@ -1,6 +1,6 @@
 import { formatPlainDate } from "./formatPlainDate.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { assert, assertEquals } from "../testing/asserts.ts";
+import { assert, assertEquals } from "../dev_deps.ts";
 
 Deno.test("returns localized string for English locale", () => {
   const plainDate = PlainDate({ year: 2022, month: 2, day: 3 });

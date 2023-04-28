@@ -1,7 +1,7 @@
 import { addQuarters } from "./addQuarters.ts";
 import { differenceInQuarters } from "./differenceInQuarters.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 
 Deno.test("quarters can be added with positive argument", () => {
   const plainDate = PlainDate({ year: 2022, month: 2, day: 10 });

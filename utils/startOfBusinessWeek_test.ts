@@ -1,6 +1,6 @@
 import { PlainDate } from "../PlainDate.ts";
 import { startOfBusinessWeek } from "./startOfBusinessWeek.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 
 Deno.test("returns same day for a Monday", () => {
   assertEquals(

@@ -1,4 +1,4 @@
-import { assertObjectMatch } from "../testing/asserts.ts";
+import { assertObjectMatch } from "../dev_deps.ts";
 import { createUtcInstant } from "./createUtcInstant.ts";
 import { intlParts } from "./intlParts.ts";
 

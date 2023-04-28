@@ -1,5 +1,5 @@
 import { differenceInMilliseconds } from "./differenceInMilliseconds.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 
 Deno.test("returns number of milliseconds between Date objects", () => {
   const a = new Date(0);

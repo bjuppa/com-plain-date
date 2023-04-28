@@ -1,5 +1,5 @@
 import { daysInMonth } from "./daysInMonth.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 
 Deno.test("Jan has 31 days", () => {
   assertEquals(daysInMonth({ year: 2023, month: 1 }), 31);

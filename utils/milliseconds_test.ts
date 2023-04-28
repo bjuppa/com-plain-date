@@ -1,4 +1,4 @@
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 import { milliseconds } from "./milliseconds.ts";
 
 Deno.test("sums time parts into milliseconds", () => {

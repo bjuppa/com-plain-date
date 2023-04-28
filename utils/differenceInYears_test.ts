@@ -1,5 +1,5 @@
 import { PlainDate } from "../PlainDate.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 import { differenceInYears } from "./differenceInYears.ts";
 
 Deno.test("returns number of calendar years between plain dates", () => {

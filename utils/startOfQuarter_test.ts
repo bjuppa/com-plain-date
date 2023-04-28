@@ -1,5 +1,5 @@
 import { PlainDate } from "../PlainDate.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 import { startOfQuarter } from "./startOfQuarter.ts";
 
 Deno.test("start of Q1 is January 1", () => {

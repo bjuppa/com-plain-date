@@ -1,5 +1,5 @@
 import { isLeapYear } from "./isLeapYear.ts";
-import { assert, assertFalse } from "../testing/asserts.ts";
+import { assert, assertFalse } from "../dev_deps.ts";
 
 Deno.test("1900 was a common year", () => {
   assertFalse(isLeapYear({ year: 1900 }));

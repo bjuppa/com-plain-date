@@ -1,6 +1,6 @@
 import { quarter } from "./quarter.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { assertEquals } from "../testing/asserts.ts";
+import { assertEquals } from "../dev_deps.ts";
 
 Deno.test("Last of March is Q1", () => {
   assertEquals(quarter(PlainDate({ year: 2023, month: 3, day: 31 })), 1);

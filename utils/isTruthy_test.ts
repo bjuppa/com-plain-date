@@ -1,5 +1,5 @@
 import { isTruthy } from "./isTruthy.ts";
-import { assert, assertFalse } from "../testing/asserts.ts";
+import { assert, assertFalse } from "../dev_deps.ts";
 
 Deno.test("returns true for a non-zero number", () => {
   assert(isTruthy(-1));

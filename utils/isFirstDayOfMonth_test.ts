@@ -1,6 +1,6 @@
 import { isFirstDayOfMonth } from "./isFirstDayOfMonth.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { assert, assertFalse } from "../testing/asserts.ts";
+import { assert, assertFalse } from "../dev_deps.ts";
 
 Deno.test("true for first day of month", () => {
   assert(isFirstDayOfMonth(PlainDate({ year: 2023, month: 2, day: 1 })));

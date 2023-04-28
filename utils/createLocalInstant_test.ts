@@ -4,7 +4,7 @@ import {
   assertEquals,
   assertInstanceOf,
   assertStringIncludes,
-} from "../testing/asserts.ts";
+} from "../dev_deps.ts";
 
 Deno.test("returned date object is valid", () => {
   const localDate = createLocalInstant({
