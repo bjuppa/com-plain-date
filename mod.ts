@@ -10,24 +10,30 @@
  *
  * ## Explicit timezones
  *
- * These utilities are explicit about the timezone used for every operation that
- * actually need one. This avoids confusion caused by doing operations on native
- * `Date` or other DateTime-like objects where the timezone information is
- * hidden away.
+ * These utilities are designed to always require a named timezone as the first
+ * parameter for every operation that would be ambiguous without one.
  *
- * ## Immutable PlainDate objects
+ * This avoids confusion caused by working with native `Date` or other
+ * DateTime-like objects where the timezone information is hidden away.
+ * Something that becomes especially problematic when passing such objects over
+ * context boundaries.
  *
- * For timezone-agnostic operations on days.
+ * ## Separate plain-date and plain-time objects
  *
- * ## Immutable PlainTime objects
+ * By keeping the calendar date and the time-of-day information in separate
+ * objects we are free to do any operations on them both in an expressive way,
+ * with no need to worry about such things as crossings into daylight savings
+ * time (DST) or what start-of-hour means in a timezone with a 30-minute offset.
  *
- * For timezone-agnostic operations on times.
+ * The only operations where we need an explicit timezone are when we split a
+ * universal representation of an instant (e.g. `Date` object) into separate
+ * plain-date and plain-time objects, and when we merge them back together.
  *
  * ## Composable functions
  *
  * ## Limitations
  *
- * Current JavaScript Date objects support the Gregorian calendar only,
+ * Current JavaScript `Date` objects support the Gregorian calendar only,
  * and therefore these tools have the same limitations.
  *
  * @module()
