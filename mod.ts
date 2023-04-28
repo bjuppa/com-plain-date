@@ -45,6 +45,5 @@
  *
  * @module()
  */
-
 export { PlainDate } from "./PlainDate.ts";
 export { ExPlainDate } from "./ExPlainDate.ts";
