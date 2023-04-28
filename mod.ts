@@ -4,9 +4,9 @@
  * Date-time utilities that keeps timezones on the surface.
  *
  * Date-time handling in JavaScript has always been hard.
- * While we're all waiting for Temporal to arrive, this is a collection of tools
- * for manipulation of dates and times on top of the JavaScript features already
- * available in today's browsers and runtime systems.
+ * While we're all waiting for `Temporal` to arrive, this is a collection of
+ * tools for manipulation of dates and times on top of the JavaScript features
+ * already available in today's browsers and runtime systems.
  *
  * ## Explicit timezones
  *
@@ -30,6 +30,13 @@
  * plain-date and plain-time objects, and when we merge them back together.
  *
  * ## Composable functions
+ *
+ * Inspired by concepts from functional programming, all functions are pure and
+ * composable and all operations requiring multiple arguments are implemented as
+ * higher-order functions for currying.
+ *
+ * Don't let this scare you, the utilities are just as easy to use in a
+ * non-functional paradigm too!
  *
  * ## Limitations
  *
