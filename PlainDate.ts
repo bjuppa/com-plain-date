@@ -52,7 +52,7 @@ export const PlainDate = (
   }
 
   const plainDate: PlainDateContract = {
-    constructor<T extends PlainDateContract>(x: SloppyPlainDate) {
+    constructor<T>(x: SloppyPlainDate) {
       return PlainDate(x) as T;
     },
 
