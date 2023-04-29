@@ -34,6 +34,7 @@ export interface PlainDateContract {
   toLocalInstant: (time?: SloppyPlainTime) => Date;
   toInstant: (timezone: string, time?: SloppyPlainTime) => Date;
 
+  constructor: <T extends PlainDateContract>(this: T, x: SloppyPlainDate) => T;
   map: <T extends PlainDateContract>(
     this: T,
     f: (x: T) => SloppyPlainDate,
@@ -51,6 +52,10 @@ export const PlainDate = (
   }
 
   const plainDate: PlainDateContract = {
+    constructor<T extends PlainDateContract>(x: SloppyPlainDate) {
+      return PlainDate(x) as T;
+    },
+
     year: utcDate.getUTCFullYear(),
     month: utcDate.getUTCMonth() + 1,
     day: utcDate.getUTCDate(),
@@ -93,8 +98,8 @@ export const PlainDate = (
       });
     },
 
-    map<T>(this: T, f: (x: T) => SloppyPlainDate) {
-      return PlainDate.of(f(this)) as T;
+    map(f) {
+      return this.constructor(f(this));
     },
   };
 
@@ -106,6 +111,7 @@ export const PlainDate = (
 // Type lift (unit)
 PlainDate.of = PlainDate;
 
+// TODO: make this a real function and return this.of() instead
 PlainDate.fromString = (s: string) => {
   const parts = dateParts(s);
   if (!parts) {
