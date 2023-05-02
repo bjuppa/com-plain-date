@@ -44,10 +44,7 @@ export interface PlainDateContract {
 
 /** Factory that creates plain date objects */
 export interface PlainDateFactory<T extends PlainDateContract> {
-  /** Create a new plain date object */
   (x: SloppyPlainDate): T;
-  /** Overload for correct type when factory is attached to a plain date instance */
-  (this: T, x: SloppyPlainDate): T;
   /** Type lift (unit) */
   of: PlainDateFactory<T>;
   /** Create a new plain date object from an ISO string */
