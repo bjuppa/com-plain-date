@@ -89,8 +89,6 @@ export const ExPlainDate: PlainDateFactory<ExtendedPlainDateContract> = (
 
   const exPlainDate: ExtendedPlainDateContract = {
     ...plainDate,
-    // TODO: The typing still allows this incorrect constructor to be set, try to prevent this:
-    // constructor: PlainDate,
     constructor: ExPlainDate,
 
     dayName(locale = undefined) {

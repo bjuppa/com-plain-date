@@ -35,7 +35,7 @@ export interface PlainDateContract {
   toLocalInstant: (time?: SloppyPlainTime) => Date;
   toInstant: (timezone: string, time?: SloppyPlainTime) => Date;
 
-  constructor: <T>(this: T, x: SloppyPlainDate) => T;
+  constructor: (x: SloppyPlainDate) => this;
   map: <T extends PlainDateContract>(
     this: T,
     f: (x: T) => SloppyPlainDate,
