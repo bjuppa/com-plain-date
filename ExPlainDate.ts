@@ -1,7 +1,6 @@
 import { SloppyPlainDate } from "./support/sloppy-types.ts";
-import { PlainDate, PlainDateContract } from "./PlainDate.ts";
+import { PlainDate, PlainDateContract, PlainDateFactory } from "./PlainDate.ts";
 import { WeekDay, WeekDayNumber } from "./constants.ts";
-import { dateParts } from "./utils/dateParts.ts";
 import { addDays } from "./utils/addDays.ts";
 import { addBusinessDays } from "./utils/addBusinessDays.ts";
 import { addMonths } from "./utils/addMonths.ts";
@@ -30,6 +29,7 @@ import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
 import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 import { formatPlainDate } from "./utils/formatPlainDate.ts";
 
+/** An extended plain date object with convenience methods, of which many are chainable. */
 export interface ExtendedPlainDateContract extends PlainDateContract {
   /** Day of the year (1-366) */
   ordinal: number;
@@ -82,13 +82,16 @@ export interface ExtendedPlainDateContract extends PlainDateContract {
   differenceInYears: (to: ExtendedPlainDateContract) => number;
 }
 
-export const ExPlainDate = (
+export const ExPlainDate: PlainDateFactory<ExtendedPlainDateContract> = (
   { year = NaN, month = 1, day = 1 }: SloppyPlainDate,
-): ExtendedPlainDateContract => {
+) => {
   const plainDate = PlainDate({ year, month, day });
 
   const exPlainDate: ExtendedPlainDateContract = {
     ...plainDate,
+    // TODO: The typing still allows this incorrect constructor to be set, try to prevent this:
+    // constructor: PlainDate,
+    constructor: ExPlainDate,
 
     dayName(locale = undefined) {
       return formatPlainDate(locale)({ weekday: "long" })(this);
@@ -107,10 +110,6 @@ export const ExPlainDate = (
     },
     monthNameNarrow(locale = undefined) {
       return formatPlainDate(locale)({ month: "narrow" })(this);
-    },
-
-    map<T>(this: T, f: (x: T) => SloppyPlainDate) {
-      return ExPlainDate.of(f(this)) as T;
     },
 
     get ordinal() {
@@ -220,13 +219,5 @@ export const ExPlainDate = (
   return exPlainDate;
 };
 
-// Type lift (unit)
 ExPlainDate.of = ExPlainDate;
-
-ExPlainDate.fromString = (s: string) => {
-  const parts = dateParts(s);
-  if (!parts) {
-    throw TypeError(`No date parts found in string: ${s}`);
-  }
-  return ExPlainDate.of(parts);
-};
+ExPlainDate.fromString = PlainDate.fromString;

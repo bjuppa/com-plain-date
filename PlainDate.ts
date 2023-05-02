@@ -8,6 +8,7 @@ import {
   FormatPlainDateOptions,
 } from "./utils/formatPlainDate.ts";
 
+/** A basic plain date object with minimal properties */
 export interface PlainDateContract {
   /** Year may be negative and up to 6 digits */
   year: number;
@@ -41,9 +42,24 @@ export interface PlainDateContract {
   ) => T;
 }
 
-export const PlainDate = (
+/** Factory that creates plain date objects */
+export interface PlainDateFactory<T extends PlainDateContract> {
+  /** Create a new plain date object */
+  (x: SloppyPlainDate): T;
+  /** Overload for correct type when function is attached to an instance */
+  <O extends PlainDateContract>(this: O, x: SloppyPlainDate): O;
+  /** Type lift (unit) */
+  of: PlainDateFactory<T>;
+  /** Create a new plain date object from an ISO string */
+  fromString: <T extends PlainDateContract>(
+    this: PlainDateFactory<T>,
+    s: string,
+  ) => T;
+}
+
+export const PlainDate: PlainDateFactory<PlainDateContract> = (
   { year = NaN, month = 1, day = 1 }: SloppyPlainDate,
-): PlainDateContract => {
+) => {
   const utcDate = createUtcInstant({ year, month, day });
   if (isNaN(utcDate.valueOf())) {
     throw new TypeError(
@@ -52,9 +68,7 @@ export const PlainDate = (
   }
 
   const plainDate: PlainDateContract = {
-    constructor<T>(x: SloppyPlainDate) {
-      return PlainDate(x) as T;
-    },
+    constructor: PlainDate,
 
     year: utcDate.getUTCFullYear(),
     month: utcDate.getUTCMonth() + 1,
@@ -108,14 +122,12 @@ export const PlainDate = (
   return plainDate;
 };
 
-// Type lift (unit)
 PlainDate.of = PlainDate;
 
-// TODO: make this a real function and return this.of() instead
-PlainDate.fromString = (s: string) => {
+PlainDate.fromString = function (s) {
   const parts = dateParts(s);
   if (!parts) {
     throw TypeError(`No date parts found in string: ${s}`);
   }
-  return PlainDate.of(parts);
+  return this.of(parts);
 };
