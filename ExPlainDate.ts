@@ -1,4 +1,3 @@
-import { SloppyPlainDate } from "./support/sloppy-types.ts";
 import { PlainDate, PlainDateContract, PlainDateFactory } from "./PlainDate.ts";
 import { WeekDay, WeekDayNumber } from "./constants.ts";
 import { addDays } from "./utils/addDays.ts";
@@ -83,7 +82,7 @@ export interface ExtendedPlainDateContract extends PlainDateContract {
 }
 
 export const ExPlainDate: PlainDateFactory<ExtendedPlainDateContract> = (
-  { year = NaN, month = 1, day = 1 }: SloppyPlainDate,
+  { year = NaN, month = 1, day = 1 },
 ) => {
   const plainDate = PlainDate({ year, month, day });
 

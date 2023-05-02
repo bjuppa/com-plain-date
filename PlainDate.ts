@@ -55,7 +55,7 @@ export interface PlainDateFactory<T extends PlainDateContract> {
 }
 
 export const PlainDate: PlainDateFactory<PlainDateContract> = (
-  { year = NaN, month = 1, day = 1 }: SloppyPlainDate,
+  { year = NaN, month = 1, day = 1 },
 ) => {
   const utcDate = createUtcInstant({ year, month, day });
   if (isNaN(utcDate.valueOf())) {
