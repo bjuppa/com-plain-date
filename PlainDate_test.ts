@@ -86,27 +86,6 @@ Deno.test("can be converted to instant in UTC", () => {
   );
 });
 
-Deno.test("can be converted to instant in local timezone", () => {
-  const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
-  const time = { hour: 23, minute: 59, second: 59, millisecond: 999 };
-
-  assertStringIncludes(
-    plainDate.toLocalInstant(time).toString(),
-    "Feb 02 2022 23:59:59",
-  );
-});
-
-Deno.test("can be converted to instant in given timezone", () => {
-  const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
-  const time = { hour: 23, minute: 59, second: 59, millisecond: 999 };
-
-  // India Standard Time is UTC+5:30
-  assertStringIncludes(
-    plainDate.toInstant("IST", time).toISOString(),
-    "2022-02-02T18:29:59.999Z",
-  );
-});
-
 Deno.test("functor obeys identity law", () => {
   const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
   const identityFunction = <T>(x: T): T => x;

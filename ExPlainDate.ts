@@ -1,4 +1,7 @@
 import { PlainDate, PlainDateContract, PlainDateFactory } from "./PlainDate.ts";
+import { SloppyPlainTime } from "./support/sloppy-types.ts";
+import { createLocalInstant } from "./utils/createLocalInstant.ts";
+import { createInstant } from "./utils/createInstant.ts";
 import { WeekDay, WeekDayNumber } from "./constants.ts";
 import { addDays } from "./utils/addDays.ts";
 import { addBusinessDays } from "./utils/addBusinessDays.ts";
@@ -30,6 +33,9 @@ import { formatPlainDate } from "./utils/formatPlainDate.ts";
 
 /** An extended plain date object with convenience methods, of which many are chainable. */
 export interface ExtendedPlainDateContract extends PlainDateContract {
+  toLocalInstant: (time?: SloppyPlainTime) => Date;
+  toInstant: (timezone: string, time?: SloppyPlainTime) => Date;
+
   /** Day of the year (1-366) */
   ordinal: number;
   /** Quarter of the year (1-4) */
@@ -89,6 +95,24 @@ export const ExPlainDate: PlainDateFactory<ExtendedPlainDateContract> = (
   const exPlainDate: ExtendedPlainDateContract = {
     ...plainDate,
     constructor: ExPlainDate,
+
+    toLocalInstant(
+      { hour = 0, minute = 0, second = 0, millisecond = 0 } = {},
+    ) {
+      return createLocalInstant({ ...this, hour, minute, second, millisecond });
+    },
+    toInstant(
+      timezone,
+      { hour = 0, minute = 0, second = 0, millisecond = 0 } = {},
+    ) {
+      return createInstant(timezone)({
+        ...this,
+        hour,
+        minute,
+        second,
+        millisecond,
+      });
+    },
 
     dayName(locale = undefined) {
       return formatPlainDate(locale)({ weekday: "long" })(this);

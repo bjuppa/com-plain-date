@@ -1,6 +1,10 @@
 import { ExPlainDate, ExtendedPlainDateContract } from "./ExPlainDate.ts";
 import { PlainDate } from "./PlainDate.ts";
-import { assertEquals, assertThrows } from "./dev_deps.ts";
+import {
+  assertEquals,
+  assertStringIncludes,
+  assertThrows,
+} from "./dev_deps.ts";
 
 Deno.test("factory accepts PlainDate", () => {
   const exPlainDate = ExPlainDate(PlainDate({ year: 2022, month: 2, day: 2 }));
@@ -19,6 +23,27 @@ Deno.test("enumerable properties can not be set", async (t) => {
       });
     });
   }
+});
+
+Deno.test("can be converted to instant in local timezone", () => {
+  const exPlainDate = ExPlainDate({ year: 2022, month: 2, day: 2 });
+  const time = { hour: 23, minute: 59, second: 59, millisecond: 999 };
+
+  assertStringIncludes(
+    exPlainDate.toLocalInstant(time).toString(),
+    "Feb 02 2022 23:59:59",
+  );
+});
+
+Deno.test("can be converted to instant in given timezone", () => {
+  const exPlainDate = ExPlainDate({ year: 2022, month: 2, day: 2 });
+  const time = { hour: 23, minute: 59, second: 59, millisecond: 999 };
+
+  // India Standard Time is UTC+5:30
+  assertStringIncludes(
+    exPlainDate.toInstant("IST", time).toISOString(),
+    "2022-02-02T18:29:59.999Z",
+  );
 });
 
 Deno.test("day name can be localized", () => {

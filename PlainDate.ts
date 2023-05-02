@@ -1,7 +1,5 @@
 import { SloppyPlainDate, SloppyPlainTime } from "./support/sloppy-types.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
-import { createLocalInstant } from "./utils/createLocalInstant.ts";
-import { createInstant } from "./utils/createInstant.ts";
 import { dateParts } from "./utils/dateParts.ts";
 import {
   formatPlainDate,
@@ -32,9 +30,6 @@ export interface PlainDateContract {
   ) => string;
 
   toUtcInstant: (time?: SloppyPlainTime) => Date;
-  toLocalInstant: (time?: SloppyPlainTime) => Date;
-  toInstant: (timezone: string, time?: SloppyPlainTime) => Date;
-
   constructor: (x: SloppyPlainDate) => this;
   map: <T extends PlainDateContract>(
     this: T,
@@ -91,24 +86,6 @@ export const PlainDate: PlainDateFactory<PlainDateContract> = (
         ? createUtcInstant({ ...this, hour, minute, second, millisecond })
         : utcDate;
     },
-    toLocalInstant(
-      { hour = 0, minute = 0, second = 0, millisecond = 0 } = {},
-    ) {
-      return createLocalInstant({ ...this, hour, minute, second, millisecond });
-    },
-    toInstant(
-      timezone,
-      { hour = 0, minute = 0, second = 0, millisecond = 0 } = {},
-    ) {
-      return createInstant(timezone)({
-        ...this,
-        hour,
-        minute,
-        second,
-        millisecond,
-      });
-    },
-
     map(f) {
       return this.constructor(f(this));
     },
