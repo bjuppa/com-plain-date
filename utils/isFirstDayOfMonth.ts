@@ -1,3 +1,3 @@
-import { PlainDateContract } from "../PlainDate.ts";
+import { PlainDatePredicateFn } from "../support/function-signatures.ts";
 
-export const isFirstDayOfMonth = ({ day }: PlainDateContract) => day === 1;
+export const isFirstDayOfMonth: PlainDatePredicateFn = ({ day }) => day === 1;

@@ -1,6 +1,4 @@
-import { PlainDateContract } from "../PlainDate.ts";
+import { HOPlainDatesDifferenceFn } from "../support/function-signatures.ts";
 
-export const differenceInYears =
-  (from: PlainDateContract) => (to: PlainDateContract) => {
-    return to.year - from.year;
-  };
+export const differenceInYears: HOPlainDatesDifferenceFn = (from) => (to) =>
+  to.year - from.year;

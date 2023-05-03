@@ -1,5 +1,5 @@
 import { createUtcInstant } from "./createUtcInstant.ts";
-import { SloppyPlainDate } from "../support/sloppy-types.ts";
+import { SloppyPlainDatePredicateFn } from "../support/function-signatures.ts";
 
-export const isLeapYear = ({ year }: SloppyPlainDate) =>
+export const isLeapYear: SloppyPlainDatePredicateFn = ({ year }) =>
   createUtcInstant({ year, month: 2, day: 29 }).getUTCDate() === 29;

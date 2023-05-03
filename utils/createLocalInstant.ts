@@ -1,6 +1,6 @@
-import { SloppyPlainDateTime } from "../support/sloppy-types.ts";
+import { NativeDateFactory } from "../support/function-signatures.ts";
 
-export const createLocalInstant = (
+export const createLocalInstant: NativeDateFactory = (
   {
     year = NaN,
     month = 1,
@@ -9,8 +9,8 @@ export const createLocalInstant = (
     minute = 0,
     second = 0,
     millisecond = 0,
-  }: SloppyPlainDateTime,
-): Date => {
+  },
+) => {
   const localDate = new Date(0);
   localDate.setFullYear(Number(year), Number(month) - 1, Number(day));
   localDate.setHours(

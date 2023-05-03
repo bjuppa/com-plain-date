@@ -1,13 +1,13 @@
 import { differenceInDays } from "./differenceInDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
-import { PlainDateContract } from "../PlainDate.ts";
 import { BUSINESS_DAYS_IN_WEEK, DAYS_IN_WEEK, WeekDay } from "../constants.ts";
+import { HOPlainDatesDifferenceFn } from "../support/function-signatures.ts";
 
 /**
  * Get the number of crossings into non-weekend days between two dates.
  */
-export const differenceInBusinessDays =
-  (from: PlainDateContract) => (to: PlainDateContract) => {
+export const differenceInBusinessDays: HOPlainDatesDifferenceFn =
+  (from) => (to) => {
     const totalDays = differenceInDays(from)(to);
     const fullWeeks = Math.trunc(Math.abs(totalDays) / DAYS_IN_WEEK);
     const fullDays = Math.abs(totalDays) % DAYS_IN_WEEK;

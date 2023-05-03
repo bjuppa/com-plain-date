@@ -1,4 +1,4 @@
-import { PlainDateContract } from "../PlainDate.ts";
+import { PlainDateNumberFn } from "../support/function-signatures.ts";
 
-export const quarter = (plainDate: PlainDateContract) =>
+export const quarter: PlainDateNumberFn = (plainDate) =>
   Math.ceil(plainDate.month / 3);

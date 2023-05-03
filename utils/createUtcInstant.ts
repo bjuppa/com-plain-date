@@ -1,6 +1,6 @@
-import { SloppyPlainDateTime } from "../support/sloppy-types.ts";
+import { NativeDateFactory } from "../support/function-signatures.ts";
 
-export const createUtcInstant = (
+export const createUtcInstant: NativeDateFactory = (
   {
     year = NaN,
     month = 1,
@@ -9,8 +9,8 @@ export const createUtcInstant = (
     minute = 0,
     second = 0,
     millisecond = 0,
-  }: SloppyPlainDateTime,
-): Date => {
+  },
+) => {
   const utcDate = new Date(0);
   utcDate.setUTCFullYear(Number(year), Number(month) - 1, Number(day));
   utcDate.setUTCHours(

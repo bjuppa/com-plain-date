@@ -1,7 +1,4 @@
-import { PlainDateContract } from "../PlainDate.ts";
+import { HOTimeUnitPlainDateMapFn } from "../support/function-signatures.ts";
 
-export const addDays: (
-  days: number,
-) => <T extends PlainDateContract>(plainDate: T) => T =
-  (days = 0) => (plainDate) =>
-    plainDate.map((x) => ({ ...x, day: x.day + days }));
+export const addDays: HOTimeUnitPlainDateMapFn = (days = 0) => (plainDate) =>
+  plainDate.map((x) => ({ ...x, day: x.day + days }));

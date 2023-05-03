@@ -1,5 +1,5 @@
 import { PlainDate } from "../PlainDate.ts";
-import { SloppyPlainDate } from "../support/sloppy-types.ts";
+import { SloppyPlainDateNumberFn } from "../support/function-signatures.ts";
 
-export const daysInMonth = ({ year, month }: SloppyPlainDate) =>
+export const daysInMonth: SloppyPlainDateNumberFn = ({ year, month }) =>
   32 - PlainDate({ year, month, day: 32 }).day;

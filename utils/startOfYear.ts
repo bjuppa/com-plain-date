@@ -1,8 +1,6 @@
-import { PlainDateContract } from "../PlainDate.ts";
+import { PlainDateMapFn } from "../support/function-signatures.ts";
 
-export const startOfYear: <T extends PlainDateContract>(plainDate: T) => T = (
-  plainDate,
-) =>
+export const startOfYear: PlainDateMapFn = (plainDate) =>
   plainDate.map((x) => ({
     year: x.year,
     month: 1,

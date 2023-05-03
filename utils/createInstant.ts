@@ -1,4 +1,4 @@
-import { SloppyPlainDateTime } from "../support/sloppy-types.ts";
+import { NativeDateFactory } from "../support/function-signatures.ts";
 import { createUtcInstant } from "./createUtcInstant.ts";
 import { addTime } from "./addTime.ts";
 import { subtractTime } from "./subtractTime.ts";
@@ -16,7 +16,7 @@ const intlOptions: Intl.DateTimeFormatOptions = {
   minute: "numeric",
 };
 
-export const createInstant = (timezone: string) =>
+export const createInstant = (timezone: string): NativeDateFactory =>
 (
   {
     year = NaN,
@@ -26,8 +26,8 @@ export const createInstant = (timezone: string) =>
     minute = 0,
     second = 0,
     millisecond = 0,
-  }: SloppyPlainDateTime,
-): Date => {
+  },
+) => {
   const intlUtcFormat = Intl.DateTimeFormat("en", {
     ...intlOptions,
     timeZone: "UTC",

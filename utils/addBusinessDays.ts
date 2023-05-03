@@ -1,11 +1,9 @@
 import { BUSINESS_DAYS_IN_WEEK, DAYS_IN_WEEK, WeekDay } from "../constants.ts";
-import { PlainDateContract } from "../PlainDate.ts";
+import { HOTimeUnitPlainDateMapFn } from "../support/function-signatures.ts";
 import { addDays } from "./addDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 
-export const addBusinessDays: (
-  businessDays: number,
-) => <T extends PlainDateContract>(plainDate: T) => T =
+export const addBusinessDays: HOTimeUnitPlainDateMapFn =
   (businessDays = 0) => (plainDate) => {
     const fullWeeks = Math.trunc(
       Math.abs(businessDays) / BUSINESS_DAYS_IN_WEEK,

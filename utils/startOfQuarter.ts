@@ -1,9 +1,7 @@
-import { PlainDateContract } from "../PlainDate.ts";
+import { PlainDateMapFn } from "../support/function-signatures.ts";
 import { quarter } from "./quarter.ts";
 
-export const startOfQuarter: <T extends PlainDateContract>(
-  plainDate: T,
-) => T = (plainDate) =>
+export const startOfQuarter: PlainDateMapFn = (plainDate) =>
   plainDate.map((x) => ({
     year: x.year,
     month: quarter(x) * 3 - 2,

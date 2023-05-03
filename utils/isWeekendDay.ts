@@ -1,5 +1,5 @@
-import { PlainDateContract } from "../PlainDate.ts";
+import { PlainDatePredicateFn } from "../support/function-signatures.ts";
 import { isBusinessDay } from "./isBusinessDay.ts";
 
-export const isWeekendDay = (plainDate: PlainDateContract) =>
+export const isWeekendDay: PlainDatePredicateFn = (plainDate) =>
   !isBusinessDay(plainDate);

@@ -1,9 +1,7 @@
-import { PlainDate, PlainDateContract } from "../PlainDate.ts";
+import { PlainDate } from "../PlainDate.ts";
+import { NativeDateSplitterFn } from "../support/function-signatures.ts";
 
-export const splitUtcDateTime = (date?: Date): [
-  PlainDateContract,
-  { hour: number; minute: number; second: number; millisecond: number },
-] => {
+export const splitUtcDateTime: NativeDateSplitterFn = (date) => {
   date ??= new Date();
   const plainDate = PlainDate.of({
     year: date.getUTCFullYear(),

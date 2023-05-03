@@ -1,6 +1,6 @@
 import { WeekDay } from "../constants.ts";
-import { PlainDateContract } from "../PlainDate.ts";
+import { PlainDatePredicateFn } from "../support/function-signatures.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 
-export const isBusinessDay = (plainDate: PlainDateContract) =>
+export const isBusinessDay: PlainDatePredicateFn = (plainDate) =>
   weekDayNumber(plainDate) < WeekDay.SATURDAY;
