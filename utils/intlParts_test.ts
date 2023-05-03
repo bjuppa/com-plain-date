@@ -2,7 +2,7 @@ import { assertObjectMatch } from "../dev_deps.ts";
 import { createUtcInstant } from "./createUtcInstant.ts";
 import { intlParts } from "./intlParts.ts";
 
-Deno.test("returns all Intl date time format parts", () => {
+Deno.test("returns all Intl date-time format parts", () => {
   const parts = intlParts(
     Intl.DateTimeFormat("en", {
       hourCycle: "h23",
