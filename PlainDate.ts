@@ -18,11 +18,11 @@ export interface PlainDateContract {
   /** YYYY-MM-DD (ISO 8601) */
   iso: string;
   /** YYYY-MM-DD (ISO 8601) */
-  valueOf: () => PlainDateContract["iso"];
+  valueOf: () => this["iso"];
   /** YYYY-MM-DD (ISO 8601) */
-  toString: () => PlainDateContract["iso"];
+  toString: () => this["iso"];
   /** YYYY-MM-DD (ISO 8601) */
-  toJSON: () => PlainDateContract["iso"];
+  toJSON: () => this["iso"];
 
   toLocaleString: (
     locale?: Intl.LocalesArgument,
