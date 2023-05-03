@@ -18,7 +18,7 @@
  * Something that becomes especially problematic when passing such objects over
  * context boundaries.
  *
- * ## Separate plain-date and plain-time objects
+ * ## Separate plain date and plain time objects
  *
  * By keeping the calendar date and the time-of-day information in separate
  * objects we are free to do any operations on them both in an expressive way,
@@ -27,7 +27,7 @@
  *
  * The only operations where we need an explicit timezone are when we split a
  * universal representation of an instant (e.g. `Date` object) into separate
- * plain-date and plain-time objects, and when we merge them back together.
+ * plain date and plain time objects, and when we merge them back together.
  *
  * ## Composable functions
  *
