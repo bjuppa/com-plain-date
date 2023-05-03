@@ -45,6 +45,66 @@
  *
  * @module()
  */
+
 export * from "./PlainDate.ts";
 export * from "./ExPlainDate.ts";
 export * from "./constants.ts";
+
+// Utils for generating a new plain date from an existing one
+export * from "./utils/addBusinessDays.ts";
+export * from "./utils/addDays.ts";
+export * from "./utils/addMonths.ts";
+export * from "./utils/addQuarters.ts";
+export * from "./utils/addYears.ts";
+export * from "./utils/firstWeekDay.ts";
+export * from "./utils/startOfBusinessWeek.ts";
+export * from "./utils/startOfMonth.ts";
+export * from "./utils/startOfQuarter.ts";
+export * from "./utils/startOfWeekend.ts";
+export * from "./utils/startOfYear.ts";
+
+// Utils for generating a new native JS Date from an existing one
+export * from "./utils/addTime.ts";
+export * from "./utils/subtractTime.ts";
+
+// Utils for creating native JS Date objects
+export * from "./utils/createInstant.ts";
+export * from "./utils/createLocalInstant.ts";
+export * from "./utils/createUtcInstant.ts";
+
+// Utils for splitting things into parts
+export * from "./utils/dateParts.ts";
+export * from "./utils/intlParts.ts";
+export * from "./utils/splitDateTime.ts";
+export * from "./utils/splitLocalDateTime.ts";
+export * from "./utils/splitUtcDateTime.ts";
+export * from "./utils/timezoneOffsetParts.ts";
+
+// Utils for making strings
+export * from "./utils/datetimeLocal.ts";
+export * from "./utils/formatPlainDate.ts";
+
+// Utils for getting information about an object
+export * from "./utils/daysInMonth.ts";
+export * from "./utils/daysInYear.ts";
+export * from "./utils/isBusinessDay.ts";
+export * from "./utils/isFirstDayOfMonth.ts";
+export * from "./utils/isFirstDayOfYear.ts";
+export * from "./utils/isLastDayOfMonth.ts";
+export * from "./utils/isLastDayOfYear.ts";
+export * from "./utils/isLeapYear.ts";
+export * from "./utils/isWeekendDay.ts";
+export * from "./utils/milliseconds.ts";
+export * from "./utils/ordinal.ts";
+export * from "./utils/quarter.ts";
+export * from "./utils/weekDayNumber.ts";
+
+// Utils for comparing plain date objects
+export * from "./utils/differenceInBusinessDays.ts";
+export * from "./utils/differenceInDays.ts";
+export * from "./utils/differenceInMonths.ts";
+export * from "./utils/differenceInQuarters.ts";
+export * from "./utils/differenceInYears.ts";
+
+// Utils for comparing native JS Date objects
+export * from "./utils/differenceInMilliseconds.ts";
