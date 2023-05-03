@@ -3,7 +3,7 @@ import { PlainDate } from "../PlainDate.ts";
 import { assertStrictEquals } from "../dev_deps.ts";
 import { differenceInBusinessDays } from "./differenceInBusinessDays.ts";
 
-Deno.test("returns the number of crossings into non-weekend days between plain dates", () => {
+Deno.test("returns the number of crossings into non-weekend days between plain-dates", () => {
   const lastMondayInDecember2022 = PlainDate({
     year: 2022,
     month: 12,
@@ -126,7 +126,7 @@ Deno.test("returns 0 when comparing the same non-business day", () => {
   assertStrictEquals(differenceInBusinessDays(aSaturday)(aSaturday), 0);
 });
 
-Deno.test("returns the number of business days between plain dates that are really far apart", () => {
+Deno.test("returns the number of business days between plain-dates that are really far apart", () => {
   const aThursday = PlainDate({ year: 1970 });
   const aSaturday = PlainDate({ year: 100000 }); // 35804722 days later
   const expectedBusinessDays =

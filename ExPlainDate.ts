@@ -31,7 +31,7 @@ import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
 import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 import { formatPlainDate } from "./utils/formatPlainDate.ts";
 
-/** An extended plain date object with convenience methods, of which many are chainable. */
+/** An extended plain-date object with convenience methods for common operations, of which many are chainable. */
 export interface ExtendedPlainDateContract extends PlainDateContract {
   toLocalInstant: (time?: SloppyPlainTime) => Date;
   toInstant: (timezone: string, time?: SloppyPlainTime) => Date;

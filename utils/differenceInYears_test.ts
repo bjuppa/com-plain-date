@@ -2,7 +2,7 @@ import { PlainDate } from "../PlainDate.ts";
 import { assertEquals } from "../dev_deps.ts";
 import { differenceInYears } from "./differenceInYears.ts";
 
-Deno.test("returns number of calendar years between plain dates", () => {
+Deno.test("returns number of calendar years between plain-dates", () => {
   const a = PlainDate({ year: 2022, month: 12, day: 31 });
   const b = PlainDate({ year: 2023, month: 1, day: 1 });
   assertEquals(differenceInYears(a)(b), 1);

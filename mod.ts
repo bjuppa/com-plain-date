@@ -18,7 +18,7 @@
  * Something that becomes especially problematic when passing such objects over
  * context boundaries.
  *
- * ## Separate plain date and plain time objects
+ * ## Separate plain-date and plain time objects
  *
  * By keeping the calendar date and the time-of-day information in separate
  * objects we are free to do any operations on them both in an expressive way,
@@ -27,7 +27,7 @@
  *
  * The only operations where we need an explicit timezone are when we split a
  * universal representation of an instant (e.g. `Date` object) into separate
- * plain date and plain time objects, and when we merge them back together.
+ * plain-date and plain time objects, and when we merge them back together.
  *
  * ## Composable functions
  *
@@ -64,7 +64,7 @@ export {
 } from "./constants.ts";
 export type { WeekDayNumber } from "./constants.ts";
 
-// Utils for generating a new plain date from an existing one
+// Utils for generating a new plain-date from an existing one
 export { addBusinessDays } from "./utils/addBusinessDays.ts";
 export { addDays } from "./utils/addDays.ts";
 export { addMonths } from "./utils/addMonths.ts";
@@ -113,7 +113,7 @@ export { ordinal } from "./utils/ordinal.ts";
 export { quarter } from "./utils/quarter.ts";
 export { weekDayNumber } from "./utils/weekDayNumber.ts";
 
-// Utils for comparing plain date objects
+// Utils for comparing plain-date objects
 export { differenceInBusinessDays } from "./utils/differenceInBusinessDays.ts";
 export { differenceInDays } from "./utils/differenceInDays.ts";
 export { differenceInMonths } from "./utils/differenceInMonths.ts";
