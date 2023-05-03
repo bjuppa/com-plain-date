@@ -46,42 +46,6 @@ Deno.test("can be converted to instant in given timezone", () => {
   );
 });
 
-Deno.test("day name can be localized", () => {
-  const exPlainDate = ExPlainDate({ year: 2020, month: 6, day: 13 });
-
-  assertEquals(exPlainDate.dayName("sv"), "lördag");
-});
-
-Deno.test("short day name can be localized", () => {
-  const exPlainDate = ExPlainDate({ year: 2020, month: 6, day: 13 });
-
-  assertEquals(exPlainDate.dayNameShort("sv"), "lör");
-});
-
-Deno.test("narrow day name can be localized", () => {
-  const exPlainDate = ExPlainDate({ year: 2020, month: 6, day: 13 });
-
-  assertEquals(exPlainDate.dayNameNarrow("sv"), "L");
-});
-
-Deno.test("month name can be localized", () => {
-  const exPlainDate = ExPlainDate({ year: 2020, month: 2, day: 13 });
-
-  assertEquals(exPlainDate.monthName("sv"), "februari");
-});
-
-Deno.test("short month name can be localized", () => {
-  const exPlainDate = ExPlainDate({ year: 2020, month: 2, day: 13 });
-
-  assertEquals(exPlainDate.monthNameShort("sv"), "feb.");
-});
-
-Deno.test("narrow month name can be localized", () => {
-  const exPlainDate = ExPlainDate({ year: 2020, month: 2, day: 13 });
-
-  assertEquals(exPlainDate.monthNameNarrow("sv"), "F");
-});
-
 Deno.test("can be created from ISO string", () => {
   assertEquals(String(ExPlainDate.fromString("2022-02-02")), "2022-02-02");
 });

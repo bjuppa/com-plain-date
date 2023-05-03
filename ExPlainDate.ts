@@ -29,7 +29,6 @@ import { isFirstDayOfMonth } from "./utils/isFirstDayOfMonth.ts";
 import { isLastDayOfMonth } from "./utils/isLastDayOfMonth.ts";
 import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
 import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
-import { formatPlainDate } from "./utils/formatPlainDate.ts";
 
 /** An extended plain-date object with convenience methods for common operations, of which many are chainable. */
 export interface ExtendedPlainDateContract extends PlainDateContract {
@@ -54,13 +53,6 @@ export interface ExtendedPlainDateContract extends PlainDateContract {
   daysInMonth: number;
   /** Common years have 365 days, leap years have 366 */
   daysInYear: number;
-
-  dayName: (locale?: Intl.LocalesArgument) => string;
-  dayNameShort: (locale?: Intl.LocalesArgument) => string;
-  dayNameNarrow: (locale?: Intl.LocalesArgument) => string;
-  monthName: (locale?: Intl.LocalesArgument) => string;
-  monthNameShort: (locale?: Intl.LocalesArgument) => string;
-  monthNameNarrow: (locale?: Intl.LocalesArgument) => string;
 
   addDays: (days: number) => this;
   addBusinessDays: (days: number) => this;
@@ -112,25 +104,6 @@ export const ExPlainDate: PlainDateFactory<ExtendedPlainDateContract> = (
         second,
         millisecond,
       });
-    },
-
-    dayName(locale = undefined) {
-      return formatPlainDate(locale)({ weekday: "long" })(this);
-    },
-    dayNameShort(locale = undefined) {
-      return formatPlainDate(locale)({ weekday: "short" })(this);
-    },
-    dayNameNarrow(locale = undefined) {
-      return formatPlainDate(locale)({ weekday: "narrow" })(this);
-    },
-    monthName(locale = undefined) {
-      return formatPlainDate(locale)({ month: "long" })(this);
-    },
-    monthNameShort(locale = undefined) {
-      return formatPlainDate(locale)({ month: "short" })(this);
-    },
-    monthNameNarrow(locale = undefined) {
-      return formatPlainDate(locale)({ month: "narrow" })(this);
     },
 
     get ordinal() {

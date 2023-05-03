@@ -28,6 +28,12 @@ export interface PlainDateContract {
     locale?: Intl.LocalesArgument,
     options?: FormatPlainDateOptions,
   ) => string;
+  dayName: (locale?: Intl.LocalesArgument) => string;
+  dayNameShort: (locale?: Intl.LocalesArgument) => string;
+  dayNameNarrow: (locale?: Intl.LocalesArgument) => string;
+  monthName: (locale?: Intl.LocalesArgument) => string;
+  monthNameShort: (locale?: Intl.LocalesArgument) => string;
+  monthNameNarrow: (locale?: Intl.LocalesArgument) => string;
 
   toUtcInstant: (time?: SloppyPlainTime) => Date;
   constructor: (x: SloppyPlainDate) => this;
@@ -79,6 +85,24 @@ export const PlainDate: PlainDateFactory<PlainDateContract> = (
 
     toLocaleString(locale = undefined, options = {}) {
       return formatPlainDate(locale)(options)(this);
+    },
+    dayName(locale = undefined) {
+      return formatPlainDate(locale)({ weekday: "long" })(this);
+    },
+    dayNameShort(locale = undefined) {
+      return formatPlainDate(locale)({ weekday: "short" })(this);
+    },
+    dayNameNarrow(locale = undefined) {
+      return formatPlainDate(locale)({ weekday: "narrow" })(this);
+    },
+    monthName(locale = undefined) {
+      return formatPlainDate(locale)({ month: "long" })(this);
+    },
+    monthNameShort(locale = undefined) {
+      return formatPlainDate(locale)({ month: "short" })(this);
+    },
+    monthNameNarrow(locale = undefined) {
+      return formatPlainDate(locale)({ month: "narrow" })(this);
     },
 
     toUtcInstant({ hour = 0, minute = 0, second = 0, millisecond = 0 } = {}) {
