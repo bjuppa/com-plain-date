@@ -7,7 +7,7 @@ import {
 } from "./utils/formatPlainDate.ts";
 
 /** A basic plain-date object with minimal properties */
-export interface PlainDateContract {
+export interface ComPlainDate {
   /** Year may be negative and up to 6 digits */
   year: number;
   /** Month (1-12) */
@@ -37,25 +37,25 @@ export interface PlainDateContract {
 
   toUtcInstant: (time?: SloppyPlainTime) => Date;
   constructor: (x: SloppyPlainDate) => this;
-  map: <T extends PlainDateContract>(
+  map: <T extends ComPlainDate>(
     this: T,
     f: (x: T) => SloppyPlainDate,
   ) => T;
 }
 
 /** Factory that creates plain-date objects */
-export interface PlainDateFactory<T extends PlainDateContract> {
+export interface PlainDateFactory<T extends ComPlainDate> {
   (x: SloppyPlainDate): T;
   /** Type lift (unit) */
   of: PlainDateFactory<T>;
   /** Create a new plain-date object from an ISO string */
-  fromString: <T extends PlainDateContract>(
+  fromString: <T extends ComPlainDate>(
     this: PlainDateFactory<T>,
     s: string,
   ) => T;
 }
 
-export const PlainDate: PlainDateFactory<PlainDateContract> = (
+export const PlainDate: PlainDateFactory<ComPlainDate> = (
   { year = NaN, month = 1, day = 1 },
 ) => {
   const utcDate = createUtcInstant({ year, month, day });
@@ -65,7 +65,7 @@ export const PlainDate: PlainDateFactory<PlainDateContract> = (
     );
   }
 
-  const plainDate: PlainDateContract = {
+  const plainDate: ComPlainDate = {
     constructor: PlainDate,
 
     year: utcDate.getUTCFullYear(),

@@ -1,4 +1,4 @@
-import { PlainDateContract } from "../PlainDate.ts";
+import { ComPlainDate } from "../PlainDate.ts";
 import {
   SloppyPlainDate,
   SloppyPlainDateTime,
@@ -6,7 +6,7 @@ import {
 } from "./sloppy-types.ts";
 
 /** Function taking a plain-date and returning a boolean */
-export type PlainDatePredicateFn = (plainDate: PlainDateContract) => boolean;
+export type PlainDatePredicateFn = (plainDate: ComPlainDate) => boolean;
 
 /** Function taking a sloppy plain-date and returning a boolean */
 export type SloppyPlainDatePredicateFn = (
@@ -14,7 +14,7 @@ export type SloppyPlainDatePredicateFn = (
 ) => boolean;
 
 /** Function taking a plain-date and returning a number */
-export type PlainDateNumberFn = (plainDate: PlainDateContract) => number;
+export type PlainDateNumberFn = (plainDate: ComPlainDate) => number;
 
 /** Function taking a sloppy plain-date and returning a number */
 export type SloppyPlainDateNumberFn = (plainDate: SloppyPlainDate) => number;
@@ -23,7 +23,7 @@ export type SloppyPlainDateNumberFn = (plainDate: SloppyPlainDate) => number;
 export type SloppyPlainTimeNumberFn = (plainTime: SloppyPlainTime) => number;
 
 /** Function taking a plain-date object and returning the same */
-export type PlainDateMapFn = <T extends PlainDateContract>(plainDate: T) => T;
+export type PlainDateMapFn = <T extends ComPlainDate>(plainDate: T) => T;
 
 /** Higher order function taking a number and returning a plain-date map function */
 export type HOTimeUnitPlainDateMapFn = (count: number) => PlainDateMapFn;
@@ -32,7 +32,7 @@ export type HOTimeUnitPlainDateMapFn = (count: number) => PlainDateMapFn;
 export type HODifferenceFn<T> = (from: T) => (to: T) => number;
 
 /** Higher order function for calculating a difference between two plain-date objects */
-export type HOPlainDatesDifferenceFn = HODifferenceFn<PlainDateContract>;
+export type HOPlainDatesDifferenceFn = HODifferenceFn<ComPlainDate>;
 
 /** Function taking a JS Date object and returning the same */
 export type NativeDateMapFn = (instant: Date) => Date;
@@ -42,7 +42,7 @@ export type NativeDateFactory = (dateTime: SloppyPlainDateTime) => Date;
 
 /** Function splitting a JS Date object into a tuple of plain-date and plain time objects */
 export type NativeDateSplitterFn = (instant?: Date) => [
-  PlainDateContract,
+  ComPlainDate,
   {
     hour: number;
     minute: number;

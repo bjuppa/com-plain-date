@@ -49,10 +49,10 @@
  * @module()
  */
 export { PlainDate } from "./PlainDate.ts";
-export type { PlainDateContract, PlainDateFactory } from "./PlainDate.ts";
+export type { ComPlainDate, PlainDateFactory } from "./PlainDate.ts";
 
 export { ExPlainDate } from "./ExPlainDate.ts";
-export type { ExtendedPlainDateContract } from "./ExPlainDate.ts";
+export type { ExtendedPlainDate } from "./ExPlainDate.ts";
 
 export {
   BUSINESS_DAYS_IN_WEEK,

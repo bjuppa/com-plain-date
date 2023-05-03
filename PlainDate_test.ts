@@ -1,4 +1,4 @@
-import { PlainDate, PlainDateContract } from "./PlainDate.ts";
+import { PlainDate, ComPlainDate } from "./PlainDate.ts";
 import {
   assertEquals,
   assertStringIncludes,
@@ -134,11 +134,11 @@ Deno.test("functor obeys identity law", () => {
 
 Deno.test("functor obeys composition law", () => {
   const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
-  const addOneYear = (plainDate: PlainDateContract) => ({
+  const addOneYear = (plainDate: ComPlainDate) => ({
     ...plainDate,
     year: plainDate.year + 1,
   });
-  const doubleYear = (plainDate: PlainDateContract) => ({
+  const doubleYear = (plainDate: ComPlainDate) => ({
     ...plainDate,
     year: plainDate.year * 2,
   });

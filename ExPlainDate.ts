@@ -1,4 +1,4 @@
-import { PlainDate, PlainDateContract, PlainDateFactory } from "./PlainDate.ts";
+import { ComPlainDate, PlainDate, PlainDateFactory } from "./PlainDate.ts";
 import { SloppyPlainTime } from "./support/sloppy-types.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
@@ -31,7 +31,7 @@ import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
 import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 
 /** An extended plain-date object with convenience methods for common operations, of which many are chainable. */
-export interface ExtendedPlainDateContract extends PlainDateContract {
+export interface ExtendedPlainDate extends ComPlainDate {
   toLocalInstant: (time?: SloppyPlainTime) => Date;
   toInstant: (timezone: string, time?: SloppyPlainTime) => Date;
 
@@ -73,18 +73,18 @@ export interface ExtendedPlainDateContract extends PlainDateContract {
   firstSaturday: () => this;
   firstSunday: () => this;
 
-  differenceInDays: (to: PlainDateContract) => number;
-  differenceInBusinessDays: (to: PlainDateContract) => number;
-  differenceInMonths: (to: PlainDateContract) => number;
-  differenceInYears: (to: PlainDateContract) => number;
+  differenceInDays: (to: ComPlainDate) => number;
+  differenceInBusinessDays: (to: ComPlainDate) => number;
+  differenceInMonths: (to: ComPlainDate) => number;
+  differenceInYears: (to: ComPlainDate) => number;
 }
 
-export const ExPlainDate: PlainDateFactory<ExtendedPlainDateContract> = (
+export const ExPlainDate: PlainDateFactory<ExtendedPlainDate> = (
   { year = NaN, month = 1, day = 1 },
 ) => {
   const plainDate = PlainDate({ year, month, day });
 
-  const exPlainDate: ExtendedPlainDateContract = {
+  const exPlainDate: ExtendedPlainDate = {
     ...plainDate,
     constructor: ExPlainDate,
 
