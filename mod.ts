@@ -8,7 +8,7 @@
  * tools for manipulation of dates and times on top of the JavaScript features
  * already available in today's browsers and runtime systems.
  *
- * ## Explicit timezones
+ * ## Explicit named timezones
  *
  * These utilities are designed to always require a named timezone as the first
  * parameter for every operation that would be ambiguous without one.
@@ -34,6 +34,9 @@
  * Inspired by concepts from functional programming, all functions are pure and
  * composable and all operations requiring multiple arguments are implemented as
  * higher-order functions for currying.
+ *
+ * Also, there are no classes here, only objects adhering to interfaces and
+ * factory function to create them.
  *
  * Don't let this scare you, the utilities are just as easy to use in a
  * non-functional paradigm too!
