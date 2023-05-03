@@ -62,29 +62,29 @@ export interface ExtendedPlainDateContract extends PlainDateContract {
   monthNameShort: (locale?: Intl.LocalesArgument) => string;
   monthNameNarrow: (locale?: Intl.LocalesArgument) => string;
 
-  addDays: (days: number) => ExtendedPlainDateContract;
-  addBusinessDays: (days: number) => ExtendedPlainDateContract;
-  addMonths: (months: number) => ExtendedPlainDateContract;
-  addYears: (years: number) => ExtendedPlainDateContract;
+  addDays: (days: number) => this;
+  addBusinessDays: (days: number) => this;
+  addMonths: (months: number) => this;
+  addYears: (years: number) => this;
 
-  startOfBusinessWeek: () => ExtendedPlainDateContract;
-  startOfWeekend: () => ExtendedPlainDateContract;
-  startOfMonth: () => ExtendedPlainDateContract;
-  startOfQuarter: () => ExtendedPlainDateContract;
-  startOfYear: () => ExtendedPlainDateContract;
+  startOfBusinessWeek: () => this;
+  startOfWeekend: () => this;
+  startOfMonth: () => this;
+  startOfQuarter: () => this;
+  startOfYear: () => this;
 
-  firstMonday: () => ExtendedPlainDateContract;
-  firstTuesday: () => ExtendedPlainDateContract;
-  firstWednesday: () => ExtendedPlainDateContract;
-  firstThursday: () => ExtendedPlainDateContract;
-  firstFriday: () => ExtendedPlainDateContract;
-  firstSaturday: () => ExtendedPlainDateContract;
-  firstSunday: () => ExtendedPlainDateContract;
+  firstMonday: () => this;
+  firstTuesday: () => this;
+  firstWednesday: () => this;
+  firstThursday: () => this;
+  firstFriday: () => this;
+  firstSaturday: () => this;
+  firstSunday: () => this;
 
-  differenceInDays: (to: ExtendedPlainDateContract) => number;
-  differenceInBusinessDays: (to: ExtendedPlainDateContract) => number;
-  differenceInMonths: (to: ExtendedPlainDateContract) => number;
-  differenceInYears: (to: ExtendedPlainDateContract) => number;
+  differenceInDays: (to: PlainDateContract) => number;
+  differenceInBusinessDays: (to: PlainDateContract) => number;
+  differenceInMonths: (to: PlainDateContract) => number;
+  differenceInYears: (to: PlainDateContract) => number;
 }
 
 export const ExPlainDate: PlainDateFactory<ExtendedPlainDateContract> = (
