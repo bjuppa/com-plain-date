@@ -17,7 +17,7 @@ export type SloppyDateNumberFn = (date: SloppyDate) => number;
 export type SloppyTimeNumberFn = (time: SloppyTime) => number;
 
 /** Describes a function taking a plain-date object and returning the same */
-export type PlainDateMapFn = <T extends ComPlainDate>(plainDate: T) => T;
+export type PlainDateMapFn = <T extends ComPlainDate>(date: T) => T;
 
 /** Describes a higher order function taking a number and returning a plain-date map function */
 export type HOTimeUnitPlainDateMapFn = (count: number) => PlainDateMapFn;

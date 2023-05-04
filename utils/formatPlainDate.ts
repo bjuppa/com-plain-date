@@ -8,9 +8,8 @@ export type FormatPlainDateOptions = Omit<
 export const formatPlainDate =
   (locale: Intl.LocalesArgument = undefined) =>
   (options: FormatPlainDateOptions = {}) =>
-  (plainDate: ComPlainDate) => {
-    return plainDate.toUtcInstant().toLocaleDateString(locale, {
+  (date: ComPlainDate) =>
+    date.toUtcInstant().toLocaleDateString(locale, {
       ...options,
       timeZone: "UTC",
     });
-  };

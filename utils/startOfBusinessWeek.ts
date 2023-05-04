@@ -4,5 +4,5 @@ import { addDays } from "./addDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 
 /** Monday of the current week */
-export const startOfBusinessWeek: PlainDateMapFn = (plainDate) =>
-  addDays(WeekDay.MONDAY - weekDayNumber(plainDate))(plainDate);
+export const startOfBusinessWeek: PlainDateMapFn = (date) =>
+  addDays(WeekDay.MONDAY - weekDayNumber(date))(date);

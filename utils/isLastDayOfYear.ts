@@ -1,4 +1,4 @@
 import { PlainDatePredicateFn } from "../support/function-signatures.ts";
 
-export const isLastDayOfYear: PlainDatePredicateFn = (plainDate) =>
-  plainDate.month === 12 && plainDate.day === 31;
+export const isLastDayOfYear: PlainDatePredicateFn = (date) =>
+  date.month === 12 && date.day === 31;

@@ -5,13 +5,13 @@ import { weekDayNumber } from "./weekDayNumber.ts";
 
 /** @function */
 export const addBusinessDays: HOTimeUnitPlainDateMapFn =
-  (businessDays = 0) => (plainDate) => {
+  (businessDays = 0) => (date) => {
     const fullWeeks = Math.trunc(
       Math.abs(businessDays) / BUSINESS_DAYS_IN_WEEK,
     );
     const fullDays = Math.abs(businessDays) % BUSINESS_DAYS_IN_WEEK;
 
-    const dayBase = weekDayNumber(plainDate);
+    const dayBase = weekDayNumber(date);
     const dayRelative = dayBase + Math.sign(businessDays) * fullDays;
     const weekendDays =
       (dayBase < WeekDay.SATURDAY && dayRelative > WeekDay.FRIDAY) ||
@@ -26,7 +26,5 @@ export const addBusinessDays: HOTimeUnitPlainDateMapFn =
       Math.sign(businessDays) *
         (fullWeeks * DAYS_IN_WEEK +
           Math.max(0, Math.min(DAYS_IN_WEEK, fullDays + weekendDays))),
-    )(
-      plainDate,
-    );
+    )(date);
   };

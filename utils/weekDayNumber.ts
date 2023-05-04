@@ -4,9 +4,7 @@ import { ComPlainDate } from "../PlainDate.ts";
 /**
  * ISO weekday number (1-7) starting with Monday
  */
-export const weekDayNumber = (
-  plainDate: ComPlainDate,
-) =>
+export const weekDayNumber = (date: ComPlainDate) =>
   (
-    (plainDate.toUtcInstant().getUTCDay() + 6) % DAYS_IN_WEEK + 1
+    (date.toUtcInstant().getUTCDay() + 6) % DAYS_IN_WEEK + 1
   ) as WeekDayNumber;
