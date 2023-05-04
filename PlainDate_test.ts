@@ -1,9 +1,5 @@
-import { PlainDate, ComPlainDate } from "./PlainDate.ts";
-import {
-  assertEquals,
-  assertStringIncludes,
-  assertThrows,
-} from "./dev_deps.ts";
+import { ComPlainDate, PlainDate } from "./PlainDate.ts";
+import { assertEquals, assertThrows } from "./dev_deps.ts";
 
 Deno.test("factory accepts number date parts", () => {
   const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
