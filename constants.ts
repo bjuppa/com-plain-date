@@ -22,6 +22,16 @@ export const WeekDay = {
 /**
  * ISO weekday number (1-7) starting with Monday
  */
-export type WeekDayNumber = typeof WeekDay[
-  keyof typeof WeekDay
-];
+export type WeekDayNumber = typeof WeekDay[keyof typeof WeekDay];
+
+export const Quarter = {
+  Q1: 1,
+  Q2: 2,
+  Q3: 3,
+  Q4: 4,
+} as const;
+
+/**
+ * Quarter of year (1-4)
+ */
+export type QuarterNumber = typeof Quarter[keyof typeof Quarter];
