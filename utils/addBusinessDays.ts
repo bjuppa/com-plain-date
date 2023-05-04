@@ -1,9 +1,17 @@
 import { BUSINESS_DAYS_IN_WEEK, DAYS_IN_WEEK, WeekDay } from "../constants.ts";
-import { HOTimeUnitPlainDateMapFn } from "../support/function-signatures.ts";
+import {
+  HOTimeUnitPlainDateMapFn,
+  PlainDateMapFn,
+} from "../support/function-signatures.ts";
 import { addDays } from "./addDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 
-/** @function */
+/**
+ * Get a function curried with a number of business days to add to a plain-date
+ *
+ * @param {number} businessDays
+ * @returns {PlainDateMapFn}
+ */
 export const addBusinessDays: HOTimeUnitPlainDateMapFn =
   (businessDays = 0) => (date) => {
     const fullWeeks = Math.trunc(
