@@ -82,10 +82,8 @@ export interface ExtendedPlainDate extends ComPlainDate {
 export const ExPlainDate: PlainDateFactory<ExtendedPlainDate> = (
   { year = NaN, month = 1, day = 1 },
 ) => {
-  const plainDate = PlainDate({ year, month, day });
-
   const exPlainDate: ExtendedPlainDate = {
-    ...plainDate,
+    ...PlainDate({ year, month, day }),
     constructor: ExPlainDate,
 
     toLocalInstant(
