@@ -2,8 +2,10 @@ import { SloppyDateTime } from "../support/sloppy-types.ts";
 import { createUtcInstant } from "./createUtcInstant.ts";
 
 /**
- * Format suitable for HTML datetime-local input:
+ * Format a date-time as a string suitable for HTML datetime-local inputs:
  * YYYY-MM-DDTHH:MM
+ *
+ * @function
  */
 export const datetimeLocal = (
   {
