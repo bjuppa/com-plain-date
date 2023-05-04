@@ -19,7 +19,7 @@ export type PlainDateNumberFn = (plainDate: ComPlainDate) => number;
 /** Function taking a sloppy plain-date and returning a number */
 export type SloppyPlainDateNumberFn = (plainDate: SloppyPlainDate) => number;
 
-/** Function taking a sloppy plain time and returning a number */
+/** Function taking a sloppy plain-time and returning a number */
 export type SloppyPlainTimeNumberFn = (plainTime: SloppyPlainTime) => number;
 
 /** Function taking a plain-date object and returning the same */
@@ -40,7 +40,7 @@ export type NativeDateMapFn = (instant: Date) => Date;
 /** Function taking a sloppy date-time object and returning a JS Date object */
 export type NativeDateFactory = (dateTime: SloppyPlainDateTime) => Date;
 
-/** Function splitting a JS Date object into a tuple of plain-date and plain time objects */
+/** Function splitting a JS Date object into a tuple of plain-date and plain-time objects */
 export type NativeDateSplitterFn = (instant?: Date) => [
   ComPlainDate,
   {
