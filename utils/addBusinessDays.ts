@@ -3,6 +3,7 @@ import { HOTimeUnitPlainDateMapFn } from "../support/function-signatures.ts";
 import { addDays } from "./addDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 
+/** @function */
 export const addBusinessDays: HOTimeUnitPlainDateMapFn =
   (businessDays = 0) => (plainDate) => {
     const fullWeeks = Math.trunc(
