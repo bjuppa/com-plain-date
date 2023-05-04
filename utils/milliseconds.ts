@@ -1,7 +1,7 @@
 import { MS_IN_HOUR, MS_IN_MINUTE, MS_IN_SECOND } from "../constants.ts";
-import { SloppyPlainTimeNumberFn } from "../support/function-signatures.ts";
+import { SloppyTimeNumberFn } from "../support/function-signatures.ts";
 
-export const milliseconds: SloppyPlainTimeNumberFn = ({
+export const milliseconds: SloppyTimeNumberFn = ({
   hour = 0,
   minute = 0,
   second = 0,

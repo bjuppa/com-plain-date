@@ -68,8 +68,8 @@ export {
 export type { WeekDayNumber } from "./constants.ts";
 
 export type {
-  SloppyPlainDate,
-  SloppyPlainTime,
+  SloppyDate,
+  SloppyTime,
 } from "./support/sloppy-types.ts";
 
 export type {
@@ -82,9 +82,9 @@ export type {
   PlainDateMapFn,
   PlainDateNumberFn,
   PlainDatePredicateFn,
-  SloppyPlainDateNumberFn,
-  SloppyPlainDatePredicateFn,
-  SloppyPlainTimeNumberFn,
+  SloppyDateNumberFn,
+  SloppyDatePredicateFn,
+  SloppyTimeNumberFn,
 } from "./support/function-signatures.ts";
 
 // Utils for generating a new plain-date from an existing one

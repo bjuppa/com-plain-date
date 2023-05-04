@@ -1,4 +1,4 @@
-import { SloppyPlainDate, SloppyPlainTime } from "./support/sloppy-types.ts";
+import { SloppyDate, SloppyTime } from "./support/sloppy-types.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { dateParts } from "./utils/dateParts.ts";
 import {
@@ -35,17 +35,17 @@ export interface ComPlainDate {
   monthNameShort: (locale?: Intl.LocalesArgument) => string;
   monthNameNarrow: (locale?: Intl.LocalesArgument) => string;
 
-  toUtcInstant: (time?: SloppyPlainTime) => Date;
-  constructor: (x: SloppyPlainDate) => this;
+  toUtcInstant: (time?: SloppyTime) => Date;
+  constructor: (x: SloppyDate) => this;
   map: <T extends ComPlainDate>(
     this: T,
-    f: (x: T) => SloppyPlainDate,
+    f: (x: T) => SloppyDate,
   ) => T;
 }
 
 /** Describes a factory that creates plain-date objects */
 export interface PlainDateFactory<T extends ComPlainDate> {
-  (x: SloppyPlainDate): T;
+  (x: SloppyDate): T;
   /** Type lift (unit) */
   of: PlainDateFactory<T>;
   /** Create a new plain-date object from an ISO string */

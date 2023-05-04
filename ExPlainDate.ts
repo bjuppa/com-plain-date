@@ -1,5 +1,5 @@
 import { ComPlainDate, PlainDate, PlainDateFactory } from "./PlainDate.ts";
-import { SloppyPlainTime } from "./support/sloppy-types.ts";
+import { SloppyTime } from "./support/sloppy-types.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
 import { WeekDay, WeekDayNumber } from "./constants.ts";
@@ -32,8 +32,8 @@ import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 
 /** Describes an extended plain-date object with convenience methods for common operations, of which many are chainable. */
 export interface ExtendedPlainDate extends ComPlainDate {
-  toLocalInstant: (time?: SloppyPlainTime) => Date;
-  toInstant: (timezone: string, time?: SloppyPlainTime) => Date;
+  toLocalInstant: (time?: SloppyTime) => Date;
+  toInstant: (timezone: string, time?: SloppyTime) => Date;
 
   /** Day of the year (1-366) */
   ordinal: number;

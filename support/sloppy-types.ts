@@ -1,14 +1,14 @@
-export type SloppyPlainDate = {
+export type SloppyDate = {
   year: number | string;
   month?: number | string;
   day?: number | string;
 };
 
-export type SloppyPlainTime = {
+export type SloppyTime = {
   hour?: number | string;
   minute?: number | string;
   second?: number | string;
   millisecond?: number | string;
 };
 
-export type SloppyPlainDateTime = SloppyPlainDate & SloppyPlainTime;
+export type SloppyDateTime = SloppyDate & SloppyTime;

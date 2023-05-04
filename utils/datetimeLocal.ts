@@ -1,4 +1,4 @@
-import { SloppyPlainDateTime } from "../support/sloppy-types.ts";
+import { SloppyDateTime } from "../support/sloppy-types.ts";
 import { createUtcInstant } from "./createUtcInstant.ts";
 
 /**
@@ -12,7 +12,7 @@ export const datetimeLocal = (
     day = 1,
     hour = 0,
     minute = 0,
-  }: SloppyPlainDateTime,
+  }: SloppyDateTime,
 ): string => {
   if (Number(year) < 1) {
     throw new TypeError(
