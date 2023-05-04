@@ -60,13 +60,14 @@ export {
   DAYS_IN_LEAP_YEAR,
   DAYS_IN_WEEK,
   HOURS_IN_DAY,
+  Month,
   MS_IN_HOUR,
   MS_IN_MINUTE,
   MS_IN_SECOND,
   Quarter,
   WeekDay,
 } from "./constants.ts";
-export type { QuarterNumber, WeekDayNumber } from "./constants.ts";
+export type { MonthNumber, QuarterNumber, WeekDayNumber } from "./constants.ts";
 
 export type { SloppyDate, SloppyTime } from "./support/sloppy-types.ts";
 
