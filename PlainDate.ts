@@ -6,7 +6,7 @@ import {
   FormatPlainDateOptions,
 } from "./utils/formatPlainDate.ts";
 
-/** A basic plain-date object with minimal properties */
+/** Describes a basic plain-date object with minimal properties */
 export interface ComPlainDate {
   /** Year may be negative and up to 6 digits */
   year: number;
@@ -43,7 +43,7 @@ export interface ComPlainDate {
   ) => T;
 }
 
-/** Factory that creates plain-date objects */
+/** Describes a factory that creates plain-date objects */
 export interface PlainDateFactory<T extends ComPlainDate> {
   (x: SloppyPlainDate): T;
   /** Type lift (unit) */
