@@ -36,7 +36,7 @@
  * higher-order functions for currying.
  *
  * Also, there are no classes here, only objects adhering to interfaces and
- * factory function to create them.
+ * factory functions to create them.
  *
  * Don't let this scare you, the utilities are just as easy to use in a
  * non-functional paradigm too!
