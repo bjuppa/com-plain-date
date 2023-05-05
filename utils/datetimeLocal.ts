@@ -2,11 +2,14 @@ import { SloppyDateTime } from "../support/sloppy-types.ts";
 import { createUtcInstant } from "./createUtcInstant.ts";
 
 /**
- * Format a date-time object as a string suitable for HTML datetime-local inputs:
+ * Format a string suitable for HTML datetime-local inputs from a date-time object.
+ *
+ * @remarks
+ *
  * YYYY-MM-DDTHH:MM
  *
- * @param {SloppyDateTime} dateTime
- * @returns string
+ * @throws {TypeError} Year must be after year 0.
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local | HTML input datetime-local on MDN}
  */
 export const datetimeLocal = (
   {

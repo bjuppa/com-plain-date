@@ -16,6 +16,10 @@ const intlOptions: Intl.DateTimeFormatOptions = {
   minute: "numeric",
 };
 
+/**
+ * Get a function curried with a timezone, to create native JS Date objects
+ * from date-time objects interpreted in the timezone.
+ */
 export const createInstant = (timezone: string): NativeDateFactory =>
 (
   {

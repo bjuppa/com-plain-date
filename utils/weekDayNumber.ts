@@ -2,7 +2,7 @@ import { DAYS_IN_WEEK, WeekDayNumber } from "../constants.ts";
 import { ComPlainDate } from "../PlainDate.ts";
 
 /**
- * ISO weekday number (1-7) starting with Monday
+ * Get the ISO weekday number (1-7) starting with Monday from a plain-date.
  */
 export const weekDayNumber = (date: ComPlainDate) =>
   (

@@ -4,7 +4,8 @@ import { BUSINESS_DAYS_IN_WEEK, DAYS_IN_WEEK, WeekDay } from "../constants.ts";
 import { HOPlainDatesDifferenceFn } from "../support/function-signatures.ts";
 
 /**
- * Get the number of crossings into non-weekend days between two dates.
+ * Get a function curried with a date, from which to get the number of
+ * crossings into non-weekend days between it and other dates.
  */
 export const differenceInBusinessDays: HOPlainDatesDifferenceFn =
   (from) => (to) => {

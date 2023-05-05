@@ -1,6 +1,10 @@
 import { PlainDate } from "../PlainDate.ts";
 import { NativeDateSplitterFn } from "../support/function-signatures.ts";
 
+/**
+ * Get a function curried with a timezone, to split native JS Date objects
+ * into separate plain-date and plain-time parts.
+ */
 export const splitDateTime =
   (timezone: string): NativeDateSplitterFn => (instant) => {
     instant ??= new Date();

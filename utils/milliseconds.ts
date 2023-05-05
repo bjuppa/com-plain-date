@@ -1,6 +1,10 @@
 import { MS_IN_HOUR, MS_IN_MINUTE, MS_IN_SECOND } from "../constants.ts";
 import { SloppyTimeNumberFn } from "../support/function-signatures.ts";
 
+// TODO: Consider moving milliseconds util to support
+/**
+ * Convert a sloppy time to a total number of milliseconds.
+ */
 export const milliseconds: SloppyTimeNumberFn = ({
   hour = 0,
   minute = 0,

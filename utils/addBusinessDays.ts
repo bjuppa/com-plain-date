@@ -1,16 +1,14 @@
 import { BUSINESS_DAYS_IN_WEEK, DAYS_IN_WEEK, WeekDay } from "../constants.ts";
-import {
-  HOTimeUnitPlainDateMapFn,
-  PlainDateMapFn,
-} from "../support/function-signatures.ts";
+import { HOTimeUnitPlainDateMapFn } from "../support/function-signatures.ts";
 import { addDays } from "./addDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 
 /**
- * Get a function curried with a number of business days to add to a plain-date
+ * Get a function curried with a number of business days to add to its plain-date arguments.
  *
- * @param {number} businessDays
- * @returns {PlainDateMapFn}
+ * @remarks
+ *
+ * Monday-Friday are business days.
  */
 export const addBusinessDays: HOTimeUnitPlainDateMapFn =
   (businessDays = 0) => (date) => {

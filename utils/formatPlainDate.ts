@@ -5,6 +5,10 @@ export type FormatPlainDateOptions = Omit<
   "timeZone"
 >;
 
+/**
+ * Get a function curried with a locale, to get another function curried with format options,
+ * from which to get localized strings of its plain-date arguments.
+ */
 export const formatPlainDate =
   (locale: Intl.LocalesArgument = undefined) =>
   (options: FormatPlainDateOptions = {}) =>

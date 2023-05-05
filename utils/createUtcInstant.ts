@@ -1,5 +1,8 @@
 import { NativeDateFactory } from "../support/function-signatures.ts";
 
+/**
+ * Create a native JS Date object from a date-time interpreted in UTC.
+ */
 export const createUtcInstant: NativeDateFactory = (
   {
     year = NaN,

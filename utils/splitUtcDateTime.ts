@@ -1,6 +1,9 @@
 import { PlainDate } from "../PlainDate.ts";
 import { NativeDateSplitterFn } from "../support/function-signatures.ts";
 
+/**
+ * Split native JS Date objects into separate plain-date and plain-time parts in UTC.
+ */
 export const splitUtcDateTime: NativeDateSplitterFn = (date) => {
   date ??= new Date();
   const plainDate = PlainDate.of({

@@ -3,6 +3,8 @@ import { PlainDateMapFn } from "../support/function-signatures.ts";
 import { addDays } from "./addDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 
-/** Saturday of the current week */
+/**
+ * Jump to the Saturday of a plain-date's week.
+ */
 export const startOfWeekend: PlainDateMapFn = (date) =>
   addDays(WeekDay.SATURDAY - weekDayNumber(date))(date);
