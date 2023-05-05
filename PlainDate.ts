@@ -25,6 +25,11 @@ export interface ComPlainDate {
   /** YYYY-MM-DD (ISO 8601) */
   toJSON: () => this["iso"];
 
+  /**
+   * Localize the date for display to a user.
+   *
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat | Intl.DateTimeFormat options on MDN}
+   */
   toLocaleString: (
     locale?: Intl.LocalesArgument,
     options?: FormatPlainDateOptions,
@@ -36,8 +41,16 @@ export interface ComPlainDate {
   monthNameShort: (locale?: Intl.LocalesArgument) => string;
   monthNameNarrow: (locale?: Intl.LocalesArgument) => string;
 
+  /**
+   * Get a native JS Date object in UTC.
+   */
   toUtcInstant: (time?: SloppyTime) => Date;
+
   constructor: (x: SloppyDate) => this;
+
+  /**
+   * Create a new plain-date object, modified by a callback function.
+   */
   map: <T extends ComPlainDate>(
     this: T,
     f: (x: T) => SloppyDate,
@@ -111,6 +124,7 @@ export const PlainDate: PlainDateFactory<ComPlainDate> = (
         ? createUtcInstant({ ...this, hour, minute, second, millisecond })
         : utcDate;
     },
+
     map(f) {
       return this.constructor(f(this));
     },

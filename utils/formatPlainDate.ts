@@ -8,6 +8,8 @@ export type FormatPlainDateOptions = Omit<
 /**
  * Get a function curried with a locale, to get another function curried with format options,
  * from which to get localized strings of its plain-date arguments.
+ *
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat | Intl.DateTimeFormat options on MDN}
  */
 export const formatPlainDate =
   (locale: Intl.LocalesArgument = undefined) =>

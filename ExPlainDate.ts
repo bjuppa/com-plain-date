@@ -32,7 +32,13 @@ import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 
 /** Describes an extended plain-date object with convenience methods for common operations, of which many are chainable. */
 export interface ExtendedPlainDate extends ComPlainDate {
+  /**
+   * Get a native JS Date object in the system's local timezone.
+   */
   toLocalInstant: (time?: SloppyTime) => Date;
+  /**
+   * Get a native JS Date object in a named timezone.
+   */
   toInstant: (timezone: string, time?: SloppyTime) => Date;
 
   /** Day of the year (1-366) */
@@ -59,7 +65,9 @@ export interface ExtendedPlainDate extends ComPlainDate {
   addMonths: (months: number) => this;
   addYears: (years: number) => this;
 
+  /** Monday of the current week */
   startOfBusinessWeek: () => this;
+  /** Saturday of the current week */
   startOfWeekend: () => this;
   startOfMonth: () => this;
   startOfQuarter: () => this;
