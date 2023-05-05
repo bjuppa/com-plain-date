@@ -1,5 +1,5 @@
 import { assertObjectMatch } from "../dev_deps.ts";
-import { createUtcInstant } from "./createUtcInstant.ts";
+import { createUtcInstant } from "../utils/createUtcInstant.ts";
 import { intlParts } from "./intlParts.ts";
 
 Deno.test("returns all Intl date-time format parts", () => {

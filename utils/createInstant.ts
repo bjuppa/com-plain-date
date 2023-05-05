@@ -2,7 +2,7 @@ import { NativeDateFactory } from "../support/function-signatures.ts";
 import { createUtcInstant } from "./createUtcInstant.ts";
 import { addTime } from "./addTime.ts";
 import { subtractTime } from "./subtractTime.ts";
-import { intlParts } from "./intlParts.ts";
+import { intlParts } from "../support/intlParts.ts";
 import { timezoneOffsetParts } from "./timezoneOffsetParts.ts";
 import { HOURS_IN_DAY } from "../constants.ts";
 import { isTruthy } from "../support/isTruthy.ts";
