@@ -1,8 +1,8 @@
-import { ComPlainDate } from "../PlainDate.ts";
+import { SloppyDate } from "../support/sloppy-types.ts";
 
-// TODO: take SloppyDate instead!
 /**
- * Check if a plain-date is the first day of its year.
+ * Check if a date is the first day of its year.
  */
-export const isFirstDayOfYear = (date: ComPlainDate) =>
-  date.month === 1 && date.day === 1;
+export const isFirstDayOfYear = (
+  { month, day }: Partial<SloppyDate>,
+): boolean => Number(month) === 1 && Number(day) === 1;
