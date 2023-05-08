@@ -3,9 +3,6 @@ import { SloppyDate, SloppyDateTime, SloppyTime } from "./sloppy-types.ts";
 
 // TODO: remove the types for predicate-, number- and higher order functions, they actually makes the docs less readable!
 
-/** Describes a function taking a plain-date and returning a number. */
-export type PlainDateNumberFn = (date: ComPlainDate) => number;
-
 /** Describes a function taking a sloppy date and returning a number. */
 export type SloppyDateNumberFn = (date: SloppyDate) => number;
 
