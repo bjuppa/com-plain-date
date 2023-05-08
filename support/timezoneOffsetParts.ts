@@ -1,6 +1,5 @@
-// TODO: Consider moving timezoneOffsetParts util to support
 /**
- * Extract hour & minute of timezone offset from an ISO 8601 string representation of a date.
+ * Extract timezone offset in hour & minute parts from an ISO 8601 string representation of a date.
  */
 export const timezoneOffsetParts = (s: string) => {
   if (["UTC", "GMT"].includes(s) || String(s).endsWith("Z")) {

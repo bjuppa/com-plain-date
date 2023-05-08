@@ -112,7 +112,6 @@ export { createUtcInstant } from "./utils/createUtcInstant.ts";
 export { splitDateTime } from "./utils/splitDateTime.ts";
 export { splitLocalDateTime } from "./utils/splitLocalDateTime.ts";
 export { splitUtcDateTime } from "./utils/splitUtcDateTime.ts";
-export { timezoneOffsetParts } from "./utils/timezoneOffsetParts.ts";
 
 // Utils for making strings
 export { datetimeLocal } from "./utils/datetimeLocal.ts";
