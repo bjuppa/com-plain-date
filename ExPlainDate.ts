@@ -29,6 +29,7 @@ import { isFirstDayOfMonth } from "./utils/isFirstDayOfMonth.ts";
 import { isLastDayOfMonth } from "./utils/isLastDayOfMonth.ts";
 import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
 import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
+import { SloppyDate } from "./mod.ts";
 
 /**
  * Describes an extended plain-date object with extra properties and
@@ -90,6 +91,8 @@ export interface ExtendedPlainDate extends ComPlainDate {
   differenceInYears: (to: ComPlainDate) => number;
 }
 
+// TODO: force type-checking of PlainDateFactory<ExtendedPlainDate> somehow, even though ExPlainDate is a function
+
 /**
  * Factory function for making extended plain-date objects with extra properties
  * and convenience methods.
@@ -97,9 +100,9 @@ export interface ExtendedPlainDate extends ComPlainDate {
  * @param date - A sloppy date object with properties `year`, `month` & `day`
  * @returns A new immutable extended plain-date object
  */
-export const ExPlainDate: PlainDateFactory<ExtendedPlainDate> = (
-  { year = NaN, month = 1, day = 1 },
-) => {
+export function ExPlainDate(
+  { year = NaN, month = 1, day = 1 }: SloppyDate,
+): ExtendedPlainDate {
   const exPlainDate: ExtendedPlainDate = {
     ...PlainDate({ year, month, day }),
     constructor: ExPlainDate,
@@ -227,7 +230,7 @@ export const ExPlainDate: PlainDateFactory<ExtendedPlainDate> = (
   Object.freeze(exPlainDate);
 
   return exPlainDate;
-};
+}
 
 ExPlainDate.of = ExPlainDate;
 ExPlainDate.fromString = PlainDate.fromString;

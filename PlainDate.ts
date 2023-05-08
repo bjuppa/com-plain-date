@@ -75,9 +75,9 @@ export interface PlainDateFactory<T extends ComPlainDate> {
  * @param date - A sloppy date object with properties `year`, `month` & `day`
  * @returns A new immutable plain-date object
  */
-export const PlainDate: PlainDateFactory<ComPlainDate> = (
-  { year = NaN, month = 1, day = 1 },
-) => {
+export function PlainDate(
+  { year = NaN, month = 1, day = 1 }: SloppyDate,
+): ComPlainDate {
   const utcDate = createUtcInstant({ year, month, day });
   if (isNaN(utcDate.valueOf())) {
     throw new TypeError(
@@ -139,14 +139,17 @@ export const PlainDate: PlainDateFactory<ComPlainDate> = (
   Object.freeze(plainDate);
 
   return plainDate;
-};
+}
 
 PlainDate.of = PlainDate;
 
-PlainDate.fromString = function (s) {
-  const parts = dateParts(s);
+PlainDate.fromString = function <T extends ComPlainDate>(
+  this: PlainDateFactory<T>,
+  isoDateString: string,
+): T {
+  const parts = dateParts(isoDateString);
   if (!parts) {
-    throw TypeError(`No date parts found in string: ${s}`);
+    throw TypeError(`No date parts found in string: ${isoDateString}`);
   }
   return this.of(parts);
 };
