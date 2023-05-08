@@ -9,6 +9,9 @@ import { weekDayNumber } from "./weekDayNumber.ts";
  * @remarks
  *
  * Monday-Friday are business days.
+ *
+ * @param businessDays - The number of business days to add or subtract
+ * @returns A curried function that operates on plain-dates
  */
 export function addBusinessDays(businessDays = 0): PlainDateMapFn {
   return (date) => {
