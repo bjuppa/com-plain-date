@@ -1,5 +1,5 @@
 import { PlainDate } from "../PlainDate.ts";
-import { SloppyDateNumberFn } from "../support/function-signatures.ts";
+import { SloppyDate } from "../support/sloppy-types.ts";
 
 /**
  * Get the number of days in a month for a given year.
@@ -8,5 +8,5 @@ import { SloppyDateNumberFn } from "../support/function-signatures.ts";
  *
  * February has 29 days in a leap year, otherwise 28.
  */
-export const daysInMonth: SloppyDateNumberFn = ({ year, month }) =>
+export const daysInMonth = ({ year, month }: SloppyDate) =>
   32 - PlainDate({ year, month, day: 32 }).day;

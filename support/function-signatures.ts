@@ -1,10 +1,7 @@
 import { ComPlainDate } from "../PlainDate.ts";
-import { SloppyDate, SloppyDateTime, SloppyTime } from "./sloppy-types.ts";
+import { SloppyDateTime, SloppyTime } from "./sloppy-types.ts";
 
 // TODO: remove the types for predicate-, number- and higher order functions, they actually makes the docs less readable!
-
-/** Describes a function taking a sloppy date and returning a number. */
-export type SloppyDateNumberFn = (date: SloppyDate) => number;
 
 /** Describes a function taking a sloppy time and returning a number. */
 export type SloppyTimeNumberFn = (time: SloppyTime) => number;

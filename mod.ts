@@ -79,7 +79,6 @@ export type {
   NativeDateMapFn,
   NativeDateSplitterFn,
   PlainDateMapFn,
-  SloppyDateNumberFn,
   SloppyTimeNumberFn,
 } from "./support/function-signatures.ts";
 
