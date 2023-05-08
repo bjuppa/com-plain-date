@@ -80,7 +80,6 @@ export type {
   NativeDateSplitterFn,
   PlainDateMapFn,
   PlainDateNumberFn,
-  PlainDatePredicateFn,
   SloppyDateNumberFn,
   SloppyDatePredicateFn,
   SloppyTimeNumberFn,
