@@ -1,5 +1,5 @@
+import { ComPlainDate } from "../PlainDate.ts";
 import { BUSINESS_DAYS_IN_WEEK, DAYS_IN_WEEK, WeekDay } from "../constants.ts";
-import { PlainDateMapFn } from "../support/function-signatures.ts";
 import { addDays } from "./addDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 
@@ -13,8 +13,8 @@ import { weekDayNumber } from "./weekDayNumber.ts";
  * @param businessDays - The number of business days to add or subtract
  * @returns A curried function that operates on plain-dates
  */
-export function addBusinessDays(businessDays = 0): PlainDateMapFn {
-  return (date) => {
+export function addBusinessDays(businessDays = 0) {
+  return <T extends ComPlainDate>(date: T): T => {
     const fullWeeks = Math.trunc(
       Math.abs(businessDays) / BUSINESS_DAYS_IN_WEEK,
     );

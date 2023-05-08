@@ -1,13 +1,13 @@
+import { ComPlainDate } from "../PlainDate.ts";
 import { DAYS_IN_WEEK, WeekDay } from "../constants.ts";
-import { PlainDateMapFn } from "../support/function-signatures.ts";
 import { addDays } from "./addDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 
 /**
  * Get a function curried with a weekday to jump to from its plain-date arguments.
  */
-export function firstWeekDay(targetWeekDay: WeekDay): PlainDateMapFn {
-  return (date) =>
+export function firstWeekDay(targetWeekDay: WeekDay) {
+  return <T extends ComPlainDate>(date: T): T =>
     addDays(
       (
         ((targetWeekDay - weekDayNumber(date)) % DAYS_IN_WEEK) +

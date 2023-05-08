@@ -70,11 +70,7 @@ export {
 
 export type { SloppyDate, SloppyTime } from "./support/sloppy-types.ts";
 
-export type {
-  NativeDateMapFn,
-  PlainDateMapFn,
-  SplitDateTime,
-} from "./support/function-signatures.ts";
+export type { SplitDateTime } from "./support/function-signatures.ts";
 
 // Utils for splitting native JS Date objects into separate date & time objects
 export { splitDateTime } from "./utils/splitDateTime.ts";

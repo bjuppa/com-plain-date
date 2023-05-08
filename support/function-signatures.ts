@@ -1,8 +1,5 @@
 import { ComPlainDate } from "../PlainDate.ts";
 
-/** Describes a function taking a plain-date object and returning the same. */
-export type PlainDateMapFn = <T extends ComPlainDate>(date: T) => T;
-
 /** Describes a function taking a native JS Date object and returning the same. */
 export type NativeDateMapFn = (instant: Date) => Date;
 
