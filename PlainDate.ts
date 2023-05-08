@@ -1,7 +1,7 @@
 import { SloppyDate, SloppyTime } from "./support/sloppy-types.ts";
 import { MonthNumber } from "./constants.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
-import { dateParts } from "./utils/dateParts.ts";
+import { dateParts } from "./support/dateParts.ts";
 import {
   formatPlainDate,
   FormatPlainDateOptions,

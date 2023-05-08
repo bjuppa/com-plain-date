@@ -1,4 +1,3 @@
-// TODO: Consider moving dateParts util to support
 /**
  * Extract year, month & day from an ISO 8601 string representation of a date.
  *

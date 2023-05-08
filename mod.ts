@@ -109,7 +109,6 @@ export { createLocalInstant } from "./utils/createLocalInstant.ts";
 export { createUtcInstant } from "./utils/createUtcInstant.ts";
 
 // Utils for splitting things into parts
-export { dateParts } from "./utils/dateParts.ts";
 export { splitDateTime } from "./utils/splitDateTime.ts";
 export { splitLocalDateTime } from "./utils/splitLocalDateTime.ts";
 export { splitUtcDateTime } from "./utils/splitUtcDateTime.ts";
