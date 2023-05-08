@@ -1,8 +1,7 @@
-import { ComPlainDate } from "../PlainDate.ts";
+import { SloppyDate } from "../support/sloppy-types.ts";
 
-// TODO: take SloppyDate instead!
 /**
- * Check if a plain-date is the last day of its year.
+ * Check if a date is the last day of its year.
  */
-export const isLastDayOfYear = (date: ComPlainDate) =>
-  date.month === 12 && date.day === 31;
+export const isLastDayOfYear = ({ month, day }: Partial<SloppyDate>): boolean =>
+  Number(month) === 12 && Number(day) === 31;
