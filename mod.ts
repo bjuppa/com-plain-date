@@ -79,7 +79,6 @@ export type {
   NativeDateMapFn,
   NativeDateSplitterFn,
   PlainDateMapFn,
-  SloppyTimeNumberFn,
 } from "./support/function-signatures.ts";
 
 // Utils for generating a new plain-date from an existing one
