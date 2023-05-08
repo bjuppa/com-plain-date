@@ -1,4 +1,3 @@
-import { NativeDateMapFn } from "../support/function-signatures.ts";
 import { SloppyTime } from "../support/sloppy-types.ts";
 import { tallyMilliseconds } from "../support/tallyMilliseconds.ts";
 
@@ -10,8 +9,8 @@ export function addTime({
   minute = 0,
   second = 0,
   millisecond = 0,
-}: SloppyTime): NativeDateMapFn {
-  return (instant) =>
+}: SloppyTime) {
+  return (instant: Date): Date =>
     new Date(
       instant.valueOf() +
         tallyMilliseconds({ hour, minute, second, millisecond }),
