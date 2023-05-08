@@ -13,8 +13,10 @@ import { weekDayNumber } from "./weekDayNumber.ts";
  * @param businessDays - The number of business days to add or subtract
  * @returns A curried function that operates on plain-dates
  */
-export function addBusinessDays(businessDays = 0) {
-  return <T extends ComPlainDate>(date: T): T => {
+export function addBusinessDays(
+  businessDays = 0,
+): <T extends ComPlainDate>(date: T) => T {
+  return (date) => {
     const fullWeeks = Math.trunc(
       Math.abs(businessDays) / BUSINESS_DAYS_IN_WEEK,
     );
