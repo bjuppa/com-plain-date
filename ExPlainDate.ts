@@ -30,7 +30,10 @@ import { isLastDayOfMonth } from "./utils/isLastDayOfMonth.ts";
 import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
 import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 
-/** Describes an extended plain-date object with convenience methods for common operations, of which many are chainable. */
+/**
+ * Describes an extended plain-date object with extra properties and
+ * convenience methods for common operations, of which many are chainable.
+ */
 export interface ExtendedPlainDate extends ComPlainDate {
   /**
    * Get a native JS Date object in the system's local timezone.
@@ -87,6 +90,13 @@ export interface ExtendedPlainDate extends ComPlainDate {
   differenceInYears: (to: ComPlainDate) => number;
 }
 
+/**
+ * Factory function for making extended plain-date objects with extra properties
+ * and convenience methods.
+ *
+ * @param date - A sloppy date object with properties `year`, `month` & `day`
+ * @returns A new immutable extended plain-date object
+ */
 export const ExPlainDate: PlainDateFactory<ExtendedPlainDate> = (
   { year = NaN, month = 1, day = 1 },
 ) => {

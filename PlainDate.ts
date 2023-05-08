@@ -57,7 +57,7 @@ export interface ComPlainDate {
   ) => T;
 }
 
-/** Describes a factory that creates plain-date objects */
+/** Describes a factory function that creates plain-date objects */
 export interface PlainDateFactory<T extends ComPlainDate> {
   (x: SloppyDate): T;
   /** Type lift (unit) */
@@ -69,6 +69,12 @@ export interface PlainDateFactory<T extends ComPlainDate> {
   ) => T;
 }
 
+/**
+ * Factory function for making basic plain-date objects with minimal properties.
+ *
+ * @param date - A sloppy date object with properties `year`, `month` & `day`
+ * @returns A new immutable plain-date object
+ */
 export const PlainDate: PlainDateFactory<ComPlainDate> = (
   { year = NaN, month = 1, day = 1 },
 ) => {
