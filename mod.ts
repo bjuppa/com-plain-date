@@ -77,6 +77,11 @@ export type {
   PlainDateMapFn,
 } from "./support/function-signatures.ts";
 
+// Utils for splitting native JS Date objects into separate date & time objects
+export { splitDateTime } from "./utils/splitDateTime.ts";
+export { splitLocalDateTime } from "./utils/splitLocalDateTime.ts";
+export { splitUtcDateTime } from "./utils/splitUtcDateTime.ts";
+
 // Utils for generating a new plain-date from an existing one
 export { addBusinessDays } from "./utils/addBusinessDays.ts";
 export { addDays } from "./utils/addDays.ts";
@@ -90,25 +95,11 @@ export { startOfQuarter } from "./utils/startOfQuarter.ts";
 export { startOfWeekend } from "./utils/startOfWeekend.ts";
 export { startOfYear } from "./utils/startOfYear.ts";
 
-// Utils for generating a new native JS Date from an existing one
-export { addTime } from "./utils/addTime.ts";
-export { subtractTime } from "./utils/subtractTime.ts";
-
-// Utils for creating native JS Date objects
-export { createInstant } from "./utils/createInstant.ts";
-export { createLocalInstant } from "./utils/createLocalInstant.ts";
-export { createUtcInstant } from "./utils/createUtcInstant.ts";
-
-// Utils for splitting things into parts
-export { splitDateTime } from "./utils/splitDateTime.ts";
-export { splitLocalDateTime } from "./utils/splitLocalDateTime.ts";
-export { splitUtcDateTime } from "./utils/splitUtcDateTime.ts";
-
 // Utils for making strings
 export { datetimeLocal } from "./utils/datetimeLocal.ts";
 export { formatPlainDate } from "./utils/formatPlainDate.ts";
 
-// Utils for getting information about an object
+// Utils for getting information about a date object
 export { daysInMonth } from "./utils/daysInMonth.ts";
 export { daysInYear } from "./utils/daysInYear.ts";
 export { isBusinessDay } from "./utils/isBusinessDay.ts";
@@ -128,6 +119,15 @@ export { differenceInDays } from "./utils/differenceInDays.ts";
 export { differenceInMonths } from "./utils/differenceInMonths.ts";
 export { differenceInQuarters } from "./utils/differenceInQuarters.ts";
 export { differenceInYears } from "./utils/differenceInYears.ts";
+
+// Utils for creating native JS Date objects from date & time objects
+export { createInstant } from "./utils/createInstant.ts";
+export { createLocalInstant } from "./utils/createLocalInstant.ts";
+export { createUtcInstant } from "./utils/createUtcInstant.ts";
+
+// Utils for generating a new native JS Date from an existing one
+export { addTime } from "./utils/addTime.ts";
+export { subtractTime } from "./utils/subtractTime.ts";
 
 // Utils for comparing native JS Date objects
 export { differenceInMilliseconds } from "./utils/differenceInMilliseconds.ts";
