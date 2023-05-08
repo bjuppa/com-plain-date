@@ -1,4 +1,4 @@
-import { SloppyDateTime } from "../support/sloppy-types.ts";
+import { SloppyDateTime } from "../support/date-time-types.ts";
 import { createUtcInstant } from "./createUtcInstant.ts";
 
 /**

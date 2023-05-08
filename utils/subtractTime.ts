@@ -1,4 +1,4 @@
-import { SloppyTime } from "../support/sloppy-types.ts";
+import { SloppyTime } from "../support/date-time-types.ts";
 import { tallyMilliseconds } from "../support/tallyMilliseconds.ts";
 
 /**

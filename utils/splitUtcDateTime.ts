@@ -1,5 +1,5 @@
 import { PlainDate } from "../PlainDate.ts";
-import { SplitDateTime } from "../support/function-signatures.ts";
+import { SplitDateTime } from "../support/date-time-types.ts";
 
 /**
  * Split native JS Date objects into separate plain-date and plain-time parts in UTC.

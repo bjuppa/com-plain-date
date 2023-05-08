@@ -1,6 +1,6 @@
 import { isLeapYear } from "./isLeapYear.ts";
 import { DAYS_IN_COMMON_YEAR, DAYS_IN_LEAP_YEAR } from "../constants.ts";
-import { SloppyDate } from "../support/sloppy-types.ts";
+import { SloppyDate } from "../support/date-time-types.ts";
 
 /**
  * Get the number of days in a given year.

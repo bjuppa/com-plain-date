@@ -1,4 +1,4 @@
-import { SloppyDate } from "../support/sloppy-types.ts";
+import { SloppyDate } from "../support/date-time-types.ts";
 import { daysInMonth } from "./daysInMonth.ts";
 
 /**

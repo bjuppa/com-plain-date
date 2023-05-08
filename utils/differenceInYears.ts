@@ -1,4 +1,4 @@
-import { SloppyDate } from "../support/sloppy-types.ts";
+import { SloppyDate } from "../support/date-time-types.ts";
 
 /**
  * Get a function curried with a date, from which to get the number of

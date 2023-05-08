@@ -1,5 +1,5 @@
 import { MS_IN_HOUR, MS_IN_MINUTE, MS_IN_SECOND } from "../constants.ts";
-import { SloppyTime } from "./sloppy-types.ts";
+import { SloppyTime } from "./date-time-types.ts";
 
 /**
  * Convert a sloppy time object to a total number of milliseconds.

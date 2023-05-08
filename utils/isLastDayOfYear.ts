@@ -1,4 +1,4 @@
-import { SloppyDate } from "../support/sloppy-types.ts";
+import { SloppyDate } from "../support/date-time-types.ts";
 
 /**
  * Check if a date is the last day of its year.

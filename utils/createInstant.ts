@@ -5,7 +5,7 @@ import { intlParts } from "../support/intlParts.ts";
 import { timezoneOffsetParts } from "../support/timezoneOffsetParts.ts";
 import { HOURS_IN_DAY } from "../constants.ts";
 import { isTruthy } from "../support/isTruthy.ts";
-import { SloppyDateTime } from "../support/sloppy-types.ts";
+import { SloppyDateTime } from "../support/date-time-types.ts";
 
 const intlOptions: Intl.DateTimeFormatOptions = {
   hourCycle: "h23",

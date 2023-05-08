@@ -1,4 +1,4 @@
-import { SloppyDateTime } from "../support/sloppy-types.ts";
+import { SloppyDateTime } from "../support/date-time-types.ts";
 
 /**
  * Create a native JS Date object from a date-time interpreted in UTC.

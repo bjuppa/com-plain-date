@@ -1,3 +1,5 @@
+import { ComPlainDate } from "../PlainDate.ts";
+
 /** Describes a date where parts can be numbers or strings. */
 export type SloppyDate = {
   year: number | string;
@@ -15,3 +17,14 @@ export type SloppyTime = {
 
 /** Describes a date-time where parts can be numbers or strings. */
 export type SloppyDateTime = SloppyDate & SloppyTime;
+
+/** Describes a tuple of separate plain-date and plain-time objects. */
+export type SplitDateTime = [
+  ComPlainDate,
+  {
+    hour: number;
+    minute: number;
+    second: number;
+    millisecond: number;
+  },
+];

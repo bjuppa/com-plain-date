@@ -1,5 +1,5 @@
 import { PlainDate } from "../PlainDate.ts";
-import { SloppyDate } from "../support/sloppy-types.ts";
+import { SloppyDate } from "../support/date-time-types.ts";
 
 /**
  * Get the number of days in a month for a given year.

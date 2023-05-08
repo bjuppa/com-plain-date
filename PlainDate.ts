@@ -1,4 +1,4 @@
-import { SloppyDate, SloppyTime } from "./support/sloppy-types.ts";
+import { SloppyDate, SloppyTime } from "./support/date-time-types.ts";
 import { Month } from "./constants.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { dateParts } from "./support/dateParts.ts";
