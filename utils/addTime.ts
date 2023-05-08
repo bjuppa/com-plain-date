@@ -1,6 +1,6 @@
 import { NativeDateMapFn } from "../support/function-signatures.ts";
 import { SloppyTime } from "../support/sloppy-types.ts";
-import { milliseconds } from "./milliseconds.ts";
+import { milliseconds } from "../support/milliseconds.ts";
 
 /**
  * Get a function curried with a time duration to add to its native JS Date arguments.

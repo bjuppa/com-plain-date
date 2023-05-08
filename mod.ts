@@ -128,7 +128,6 @@ export { isLastDayOfMonth } from "./utils/isLastDayOfMonth.ts";
 export { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 export { isLeapYear } from "./utils/isLeapYear.ts";
 export { isWeekendDay } from "./utils/isWeekendDay.ts";
-export { milliseconds } from "./utils/milliseconds.ts";
 export { ordinal } from "./utils/ordinal.ts";
 export { quarter } from "./utils/quarter.ts";
 export { weekDayNumber } from "./utils/weekDayNumber.ts";
