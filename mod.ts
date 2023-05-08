@@ -74,7 +74,6 @@ export type { SloppyDate, SloppyTime } from "./support/sloppy-types.ts";
 export type {
   HODifferenceFn,
   HOPlainDatesDifferenceFn,
-  HOTimeUnitPlainDateMapFn,
   NativeDateFactory,
   NativeDateMapFn,
   NativeDateSplitterFn,
