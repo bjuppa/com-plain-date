@@ -6,7 +6,6 @@ import { ComPlainDate } from "../PlainDate.ts";
  * @param days - The number of days to add or subtract
  * @returns A curried function that operates on plain-dates
  */
-export function addDays(days = 0) {
-  return <T extends ComPlainDate>(date: T): T =>
-    date.map((x) => ({ ...x, day: x.day + days }));
+export function addDays(days = 0): <T extends ComPlainDate>(date: T) => T {
+  return (date) => date.map((x) => ({ ...x, day: x.day + days }));
 }

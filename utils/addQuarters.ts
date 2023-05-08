@@ -9,6 +9,8 @@ import { addMonths } from "./addMonths.ts";
  * The resulting day-of-month will always be within the expected quarter,
  * days will not spill over into the next quarter.
  */
-export function addQuarters(quarters = 0) {
-  return <T extends ComPlainDate>(date: T): T => addMonths(3 * quarters)(date);
+export function addQuarters(
+  quarters = 0,
+): <T extends ComPlainDate>(date: T) => T {
+  return (date) => addMonths(3 * quarters)(date);
 }
