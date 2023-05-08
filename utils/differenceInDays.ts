@@ -6,8 +6,9 @@ import { differenceInMilliseconds } from "./differenceInMilliseconds.ts";
  * Get a function curried with a date, from which to get the number of
  * crossings into days between it and other dates.
  */
-export const differenceInDays = (from: ComPlainDate) => (to: ComPlainDate) =>
-  Math.round(
-    differenceInMilliseconds(from.toUtcInstant())(to.toUtcInstant()) /
-      (MS_IN_HOUR * HOURS_IN_DAY),
-  );
+export const differenceInDays =
+  (from: ComPlainDate) => (to: ComPlainDate): number =>
+    Math.round(
+      differenceInMilliseconds(from.toUtcInstant())(to.toUtcInstant()) /
+        (MS_IN_HOUR * HOURS_IN_DAY),
+    );

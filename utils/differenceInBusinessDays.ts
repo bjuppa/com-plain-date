@@ -8,7 +8,7 @@ import { ComPlainDate } from "../PlainDate.ts";
  * crossings into non-weekend days between it and other dates.
  */
 export const differenceInBusinessDays =
-  (from: ComPlainDate) => (to: ComPlainDate) => {
+  (from: ComPlainDate) => (to: ComPlainDate): number => {
     const totalDays = differenceInDays(from)(to);
     const fullWeeks = Math.trunc(Math.abs(totalDays) / DAYS_IN_WEEK);
     const fullDays = Math.abs(totalDays) % DAYS_IN_WEEK;

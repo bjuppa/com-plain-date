@@ -7,5 +7,5 @@ import { startOfYear } from "./startOfYear.ts";
  *
  * @see {@link https://en.wikipedia.org/wiki/Ordinal_date | ordinal date on Wikipedia}
  */
-export const ordinal = (date: ComPlainDate) =>
+export const ordinal = (date: ComPlainDate): number =>
   differenceInDays(startOfYear(date))(date) + 1;

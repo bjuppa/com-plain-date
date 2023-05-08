@@ -9,5 +9,5 @@ import { SloppyDate } from "../support/sloppy-types.ts";
  *
  * Leap years have 366 days, otherwise 365.
  */
-export const daysInYear = ({ year }: SloppyDate) =>
+export const daysInYear = ({ year }: SloppyDate): number =>
   isLeapYear({ year }) ? DAYS_IN_LEAP_YEAR : DAYS_IN_COMMON_YEAR;

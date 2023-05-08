@@ -7,5 +7,5 @@ import { quarter } from "./quarter.ts";
  * crossings over quarters between it and other dates.
  */
 export const differenceInQuarters =
-  (from: ComPlainDate) => (to: ComPlainDate) =>
+  (from: ComPlainDate) => (to: ComPlainDate): number =>
     differenceInYears(from)(to) * 4 + quarter(to) - quarter(from);
