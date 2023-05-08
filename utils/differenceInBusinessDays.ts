@@ -1,14 +1,14 @@
 import { differenceInDays } from "./differenceInDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 import { BUSINESS_DAYS_IN_WEEK, DAYS_IN_WEEK, WeekDay } from "../constants.ts";
-import { HOPlainDatesDifferenceFn } from "../support/function-signatures.ts";
+import { ComPlainDate } from "../PlainDate.ts";
 
 /**
  * Get a function curried with a date, from which to get the number of
  * crossings into non-weekend days between it and other dates.
  */
-export const differenceInBusinessDays: HOPlainDatesDifferenceFn =
-  (from) => (to) => {
+export const differenceInBusinessDays =
+  (from: ComPlainDate) => (to: ComPlainDate) => {
     const totalDays = differenceInDays(from)(to);
     const fullWeeks = Math.trunc(Math.abs(totalDays) / DAYS_IN_WEEK);
     const fullDays = Math.abs(totalDays) % DAYS_IN_WEEK;

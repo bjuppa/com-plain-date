@@ -72,8 +72,6 @@ export type { MonthNumber, QuarterNumber, WeekDayNumber } from "./constants.ts";
 export type { SloppyDate, SloppyTime } from "./support/sloppy-types.ts";
 
 export type {
-  HODifferenceFn,
-  HOPlainDatesDifferenceFn,
   NativeDateFactory,
   NativeDateMapFn,
   NativeDateSplitterFn,
