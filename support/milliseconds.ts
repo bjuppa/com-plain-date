@@ -9,6 +9,6 @@ export const milliseconds = ({
   minute = 0,
   second = 0,
   millisecond = 0,
-}: SloppyTime) =>
+}: SloppyTime): number =>
   Number(hour) * MS_IN_HOUR + Number(minute) * MS_IN_MINUTE +
   Number(second) * MS_IN_SECOND + Number(millisecond);
