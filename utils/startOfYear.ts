@@ -1,11 +1,12 @@
-import { PlainDateMapFn } from "../support/function-signatures.ts";
+import { ComPlainDate } from "../PlainDate.ts";
 
 /**
  * Jump to January 1 of a plain-date's year.
  */
-export const startOfYear: PlainDateMapFn = (date) =>
-  date.map((x) => ({
+export function startOfYear<T extends ComPlainDate>(date: T): T {
+  return date.map((x) => ({
     year: x.year,
     month: 1,
     day: 1,
   }));
+}

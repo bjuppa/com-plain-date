@@ -71,10 +71,9 @@ export {
 export type { SloppyDate, SloppyTime } from "./support/sloppy-types.ts";
 
 export type {
-  NativeDateFactory,
   NativeDateMapFn,
-  NativeDateSplitterFn,
   PlainDateMapFn,
+  SplitDateTime,
 } from "./support/function-signatures.ts";
 
 // Utils for splitting native JS Date objects into separate date & time objects
@@ -113,7 +112,7 @@ export { ordinal } from "./utils/ordinal.ts";
 export { quarter } from "./utils/quarter.ts";
 export { weekDayNumber } from "./utils/weekDayNumber.ts";
 
-// Utils for comparing plain-date objects
+// Utils for comparing date objects
 export { differenceInBusinessDays } from "./utils/differenceInBusinessDays.ts";
 export { differenceInDays } from "./utils/differenceInDays.ts";
 export { differenceInMonths } from "./utils/differenceInMonths.ts";

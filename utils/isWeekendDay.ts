@@ -4,5 +4,6 @@ import { isBusinessDay } from "./isBusinessDay.ts";
 /**
  * Check if a plain-date is a Saturday or Sunday.
  */
-export const isWeekendDay = (date: ComPlainDate): boolean =>
-  !isBusinessDay(date);
+export function isWeekendDay(date: ComPlainDate): boolean {
+  return !isBusinessDay(date);
+}

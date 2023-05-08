@@ -6,11 +6,14 @@
  * YYYY-MM-DD & YYYY-MM are the most common formats, but others are handled too.
  *
  * - Handles negative years
- * - Ignores any time or timezone information
- * - Returns null when no match was found
+ * - Ignores any time or timezone information in the given string
+ *
+ * @param isoDateString - A string containing an ISO 8601 date
+ * @returns An object containing year, month & day properties extracted from the string
+ * @returns `null` if no date was found in the string
  */
-export const dateParts = (s: string) => {
-  const matches = String(s).match(
+export function dateParts(isoDateString: string) {
+  const matches = String(isoDateString).match(
     /(?<year>[+-]?\d+)-(?<month>\d+)(-(?<day>\d+))?/,
   );
 
@@ -20,4 +23,4 @@ export const dateParts = (s: string) => {
       month: Number(matches.groups?.month),
       day: matches.groups?.day ? Number(matches.groups?.day) : undefined,
     };
-};
+}

@@ -11,11 +11,11 @@ export type FormatPlainDateOptions = Omit<
  *
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat | Intl.DateTimeFormat options on MDN}
  */
-export const formatPlainDate =
-  (locale: Intl.LocalesArgument = undefined) =>
-  (options: FormatPlainDateOptions = {}) =>
+export function formatPlainDate(locale: Intl.LocalesArgument = undefined) {
+  return (options: FormatPlainDateOptions = {}) =>
   (date: ComPlainDate): string =>
     date.toUtcInstant().toLocaleDateString(locale, {
       ...options,
       timeZone: "UTC",
     });
+}

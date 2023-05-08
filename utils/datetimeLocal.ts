@@ -11,15 +11,13 @@ import { createUtcInstant } from "./createUtcInstant.ts";
  * @throws {TypeError} Year must be after year 0.
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local | HTML input datetime-local on MDN}
  */
-export const datetimeLocal = (
-  {
-    year = NaN,
-    month = 1,
-    day = 1,
-    hour = 0,
-    minute = 0,
-  }: SloppyDateTime,
-): string => {
+export function datetimeLocal({
+  year = NaN,
+  month = 1,
+  day = 1,
+  hour = 0,
+  minute = 0,
+}: SloppyDateTime): string {
   if (Number(year) < 1) {
     throw new TypeError(
       `Years before 0001 can't be represented by HTML datetime-local: ${year}`,
@@ -33,4 +31,4 @@ export const datetimeLocal = (
     minute,
   });
   return utcRepresentation.toISOString().replace("+", "").slice(0, -8);
-};
+}

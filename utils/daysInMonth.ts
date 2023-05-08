@@ -8,5 +8,6 @@ import { SloppyDate } from "../support/sloppy-types.ts";
  *
  * February has 29 days in a leap year, otherwise 28.
  */
-export const daysInMonth = ({ year, month }: SloppyDate): number =>
-  32 - PlainDate({ year, month, day: 32 }).day;
+export function daysInMonth({ year, month }: SloppyDate): number {
+  return 32 - PlainDate({ year, month, day: 32 }).day;
+}

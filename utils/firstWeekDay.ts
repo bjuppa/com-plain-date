@@ -6,11 +6,12 @@ import { weekDayNumber } from "./weekDayNumber.ts";
 /**
  * Get a function curried with a weekday to jump to from its plain-date arguments.
  */
-export const firstWeekDay =
-  (targetWeekDay: WeekDay): PlainDateMapFn => (date) =>
+export function firstWeekDay(targetWeekDay: WeekDay): PlainDateMapFn {
+  return (date) =>
     addDays(
       (
         ((targetWeekDay - weekDayNumber(date)) % DAYS_IN_WEEK) +
         DAYS_IN_WEEK
       ) % DAYS_IN_WEEK,
     )(date);
+}

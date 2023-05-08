@@ -4,5 +4,6 @@ import { daysInMonth } from "./daysInMonth.ts";
 /**
  * Check if a date is the last day of its month.
  */
-export const isLastDayOfMonth = (date: SloppyDate): boolean =>
-  Number(date.day) === daysInMonth(date);
+export function isLastDayOfMonth(date: SloppyDate): boolean {
+  return Number(date.day) === daysInMonth(date);
+}

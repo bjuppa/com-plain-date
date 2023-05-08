@@ -1,21 +1,21 @@
 import { PlainDate } from "../PlainDate.ts";
-import { NativeDateSplitterFn } from "../support/function-signatures.ts";
+import { SplitDateTime } from "../support/function-signatures.ts";
 
 /**
  * Split native JS Date objects into separate plain-date and plain-time parts in the system's local timezone.
  */
-export const splitLocalDateTime: NativeDateSplitterFn = (date) => {
-  date ??= new Date();
+export function splitLocalDateTime(instant?: Date): SplitDateTime {
+  instant ??= new Date();
   const plainDate = PlainDate.of({
-    year: date.getFullYear(),
-    month: date.getMonth() + 1,
-    day: date.getDate(),
+    year: instant.getFullYear(),
+    month: instant.getMonth() + 1,
+    day: instant.getDate(),
   });
   const plainTime = {
-    hour: date.getHours(),
-    minute: date.getMinutes(),
-    second: date.getSeconds(),
-    millisecond: date.getMilliseconds(),
+    hour: instant.getHours(),
+    minute: instant.getMinutes(),
+    second: instant.getSeconds(),
+    millisecond: instant.getMilliseconds(),
   };
   return [plainDate, plainTime];
-};
+}
