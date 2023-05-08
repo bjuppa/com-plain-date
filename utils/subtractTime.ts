@@ -1,6 +1,6 @@
 import { NativeDateMapFn } from "../support/function-signatures.ts";
 import { SloppyTime } from "../support/sloppy-types.ts";
-import { milliseconds } from "../support/milliseconds.ts";
+import { tallyMilliseconds } from "../support/tallyMilliseconds.ts";
 
 /**
  * Get a function curried with a time duration to subtract from its native JS Date arguments.
@@ -13,5 +13,5 @@ export const subtractTime = ({
 }: SloppyTime): NativeDateMapFn =>
 (instant) =>
   new Date(
-    instant.valueOf() - milliseconds({ hour, minute, second, millisecond }),
+    instant.valueOf() - tallyMilliseconds({ hour, minute, second, millisecond }),
   );

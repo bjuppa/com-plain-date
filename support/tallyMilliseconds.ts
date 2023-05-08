@@ -4,7 +4,7 @@ import { SloppyTime } from "./sloppy-types.ts";
 /**
  * Convert a sloppy time to a total number of milliseconds.
  */
-export const milliseconds = ({
+export const tallyMilliseconds = ({
   hour = 0,
   minute = 0,
   second = 0,
