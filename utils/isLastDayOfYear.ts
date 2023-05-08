@@ -1,5 +1,6 @@
 import { ComPlainDate } from "../PlainDate.ts";
 
+// TODO: take SloppyDate instead!
 /**
  * Check if a plain-date is the last day of its year.
  */
