@@ -1,12 +1,20 @@
+/** Milliseconds in a second */
 export const MS_IN_SECOND = 1000;
+/** Milliseconds in a minute */
 export const MS_IN_MINUTE = 60 * MS_IN_SECOND;
+/** Milliseconds in an hour */
 export const MS_IN_HOUR = 60 * MS_IN_MINUTE;
 
+/** 24 */
 export const HOURS_IN_DAY = 24;
 
+/** 7 */
 export const DAYS_IN_WEEK = 7;
+/** 5 */
 export const BUSINESS_DAYS_IN_WEEK = DAYS_IN_WEEK - 2;
+/** 365 */
 export const DAYS_IN_COMMON_YEAR = 365;
+/** 366 */
 export const DAYS_IN_LEAP_YEAR = DAYS_IN_COMMON_YEAR + 1;
 
 /** ISO weekday number (1-7) starting with Monday */
