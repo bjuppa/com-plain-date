@@ -1,5 +1,5 @@
 import { SloppyDate, SloppyTime } from "./support/sloppy-types.ts";
-import { MonthNumber } from "./constants.ts";
+import { Month } from "./constants.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { dateParts } from "./support/dateParts.ts";
 import {
@@ -12,7 +12,7 @@ export interface ComPlainDate {
   /** Year may be negative and up to 6 digits */
   year: number;
   /** Month (1-12) */
-  month: MonthNumber;
+  month: Month;
   /** Day in month (1-31) */
   day: number;
 
@@ -83,7 +83,7 @@ export const PlainDate: PlainDateFactory<ComPlainDate> = (
     constructor: PlainDate,
 
     year: utcDate.getUTCFullYear(),
-    month: utcDate.getUTCMonth() + 1 as MonthNumber,
+    month: utcDate.getUTCMonth() + 1 as Month,
     day: utcDate.getUTCDate(),
 
     iso: utcDate.toISOString().split("T")[0],

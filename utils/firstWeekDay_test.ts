@@ -1,7 +1,7 @@
 import { firstWeekDay } from "./firstWeekDay.ts";
 import { assertEquals } from "../dev_deps.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { WeekDay, WeekDayNumber } from "../constants.ts";
+import { WeekDay } from "../constants.ts";
 
 Deno.test("returns same day from a monday", () => {
   assertEquals(
@@ -60,7 +60,7 @@ Deno.test("returns next sunday from a monday", () => {
 Deno.test("returns sunday when given 0, even if outside range 1-7", () => {
   assertEquals(
     String(
-      firstWeekDay(0 as WeekDayNumber)(
+      firstWeekDay(0 as WeekDay)(
         PlainDate(
           // a monday
           { year: 2023, month: 1, day: 16 },
@@ -74,7 +74,7 @@ Deno.test("returns sunday when given 0, even if outside range 1-7", () => {
 Deno.test("returns monday when given 8, even if outside range 1-7", () => {
   assertEquals(
     String(
-      firstWeekDay(8 as WeekDayNumber)(
+      firstWeekDay(8 as WeekDay)(
         PlainDate(
           // a tuesday
           { year: 2023, month: 1, day: 10 },
@@ -88,7 +88,7 @@ Deno.test("returns monday when given 8, even if outside range 1-7", () => {
 Deno.test("returns saturday when given -1, even if outside range 1-7", () => {
   assertEquals(
     String(
-      firstWeekDay(-1 as WeekDayNumber)(
+      firstWeekDay(-1 as WeekDay)(
         PlainDate(
           // a sunday
           { year: 2023, month: 1, day: 8 },

@@ -1,8 +1,8 @@
 import { ComPlainDate } from "../PlainDate.ts";
-import { QuarterNumber } from "../constants.ts";
+import { Quarter } from "../constants.ts";
 
 /**
  * Get the quarter of the year for a plain-date.
  */
-export const quarter = (date: ComPlainDate): QuarterNumber =>
-  Math.ceil(date.month / 3) as QuarterNumber;
+export const quarter = (date: ComPlainDate): Quarter =>
+  Math.ceil(date.month / 3) as Quarter;
