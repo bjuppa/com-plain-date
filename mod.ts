@@ -81,7 +81,6 @@ export type {
   PlainDateMapFn,
   PlainDateNumberFn,
   SloppyDateNumberFn,
-  SloppyDatePredicateFn,
   SloppyTimeNumberFn,
 } from "./support/function-signatures.ts";
 
