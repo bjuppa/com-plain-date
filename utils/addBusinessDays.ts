@@ -6,9 +6,7 @@ import { weekDayNumber } from "./weekDayNumber.ts";
 /**
  * Get a function curried with a number of business days to add to its plain-date arguments.
  *
- * @remarks
- *
- * Monday-Friday are business days.
+ * Business days are Monday–Friday.
  *
  * @param {number} businessDays The number of business days to add or subtract
  * @returns A curried function that operates on plain-dates
