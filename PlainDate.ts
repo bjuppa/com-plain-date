@@ -16,13 +16,13 @@ export interface ComPlainDate {
   /** Day in month (1-31) */
   day: number;
 
-  /** YYYY-MM-DD (ISO 8601) */
+  /** `yyyy-mm-dd` (ISO 8601) */
   iso: string;
-  /** YYYY-MM-DD (ISO 8601) */
+  /** `yyyy-mm-dd` (ISO 8601) */
   valueOf: () => this["iso"];
-  /** YYYY-MM-DD (ISO 8601) */
+  /** `yyyy-mm-dd` (ISO 8601) */
   toString: () => this["iso"];
-  /** YYYY-MM-DD (ISO 8601) */
+  /** `yyyy-mm-dd` (ISO 8601) */
   toJSON: () => this["iso"];
 
   /**

@@ -4,7 +4,7 @@ import { createUtcInstant } from "./createUtcInstant.ts";
 /**
  * Format a string suitable for HTML datetime-local inputs from a date-time object.
  *
- * YYYY-MM-DDTHH:MM
+ * @returns A string in format `yyyy-mm-ddThh:mm`
  *
  * @throws {TypeError} Year must be after year 0.
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local | HTML input datetime-local on MDN}

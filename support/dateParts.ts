@@ -1,7 +1,7 @@
 /**
  * Extract year, month & day from an ISO 8601 string representation of a date.
  *
- * YYYY-MM-DD & YYYY-MM are the most common formats, but others are handled too.
+ * `yyyy-mm-dd` & `yyyy-mm` are the most common formats, but others are handled too.
  *
  * - Handles negative years
  * - Ignores any time or timezone information in the given string
