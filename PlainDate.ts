@@ -72,7 +72,7 @@ export interface PlainDateFactory<T extends ComPlainDate> {
 /**
  * Factory function for making basic plain-date objects with minimal properties.
  *
- * @param date - A sloppy date object with properties `year`, `month` & `day`
+ * @param date A sloppy date object with properties `year`, `month` & `day`
  * @returns A new immutable plain-date object
  */
 export function PlainDate(
