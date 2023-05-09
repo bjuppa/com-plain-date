@@ -17,7 +17,7 @@ const intlOptions: Intl.DateTimeFormatOptions = {
 };
 
 /**
- * Get a function curried with a timezone, to create native JS Date objects
+ * Get a function curried with a timezone, to create native JS `Date` objects
  * from date-time objects interpreted in the timezone.
  */
 export function createInstant(timezone: string) {

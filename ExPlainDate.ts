@@ -37,11 +37,11 @@ import { SloppyDate } from "./mod.ts";
  */
 export interface ExtendedPlainDate extends ComPlainDate {
   /**
-   * Get a native JS Date object in the system's local timezone.
+   * Get a native JS `Date` object in the system's local timezone.
    */
   toLocalInstant: (time?: SloppyTime) => Date;
   /**
-   * Get a native JS Date object in a named timezone.
+   * Get a native JS `Date` object in a named timezone.
    */
   toInstant: (timezone: string, time?: SloppyTime) => Date;
 

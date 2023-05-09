@@ -2,7 +2,8 @@ import { SloppyTime } from "../support/date-time-types.ts";
 import { tallyMilliseconds } from "../support/tallyMilliseconds.ts";
 
 /**
- * Get a function curried with a time duration to add to its native JS Date arguments.
+ * Get a function curried with a time duration
+ * to add to its native JS `Date` arguments.
  */
 export function addTime({
   hour = 0,

@@ -1,7 +1,7 @@
 import { SloppyDateTime } from "../support/date-time-types.ts";
 
 /**
- * Create a native JS Date object from a date-time interpreted in UTC.
+ * Create a native JS `Date` object from a date-time interpreted in UTC.
  */
 export function createUtcInstant({
   year = NaN,

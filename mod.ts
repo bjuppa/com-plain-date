@@ -75,7 +75,7 @@ export type {
   SplitDateTime,
 } from "./support/date-time-types.ts";
 
-// Utils for splitting native JS Date objects into separate date & time objects
+// Utils for splitting native JS `Date` objects into separate date & time objects
 export { splitDateTime } from "./utils/splitDateTime.ts";
 export { splitLocalDateTime } from "./utils/splitLocalDateTime.ts";
 export { splitUtcDateTime } from "./utils/splitUtcDateTime.ts";
@@ -118,14 +118,14 @@ export { differenceInMonths } from "./utils/differenceInMonths.ts";
 export { differenceInQuarters } from "./utils/differenceInQuarters.ts";
 export { differenceInYears } from "./utils/differenceInYears.ts";
 
-// Utils for creating native JS Date objects from date & time objects
+// Utils for creating native JS `Date` objects from date & time objects
 export { createInstant } from "./utils/createInstant.ts";
 export { createLocalInstant } from "./utils/createLocalInstant.ts";
 export { createUtcInstant } from "./utils/createUtcInstant.ts";
 
-// Utils for generating a new native JS Date from an existing one
+// Utils for generating a new native JS `Date` object from an existing one
 export { addTime } from "./utils/addTime.ts";
 export { subtractTime } from "./utils/subtractTime.ts";
 
-// Utils for comparing native JS Date objects
+// Utils for comparing native JS `Date` objects
 export { differenceInMilliseconds } from "./utils/differenceInMilliseconds.ts";

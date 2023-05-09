@@ -1,7 +1,8 @@
 import { SloppyDateTime } from "../support/date-time-types.ts";
 
 /**
- * Create a native JS Date object from a date-time interpreted in the system's local timezone.
+ * Create a native JS `Date` object from a date-time
+ * interpreted in the system's local timezone.
  */
 export function createLocalInstant({
   year = NaN,

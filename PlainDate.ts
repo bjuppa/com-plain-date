@@ -42,7 +42,7 @@ export interface ComPlainDate {
   monthNameNarrow: (locale?: Intl.LocalesArgument) => string;
 
   /**
-   * Get a native JS Date object in UTC.
+   * Get a native JS `Date` object in UTC.
    */
   toUtcInstant: (time?: SloppyTime) => Date;
 

@@ -2,7 +2,7 @@ import { PlainDate } from "../PlainDate.ts";
 import { SplitDateTime } from "../support/date-time-types.ts";
 
 /**
- * Get a function curried with a timezone, to split native JS Date objects
+ * Get a function curried with a timezone, to split native JS `Date` objects
  * into separate plain-date and plain-time parts.
  */
 export function splitDateTime(timezone: string) {
