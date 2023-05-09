@@ -1,0 +1,21 @@
+name: Run tests
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1.1.1
+        with:
+          deno-version: v1.x # Run with latest stable Deno.
+
+      - name: Run linter
+        run: deno lint
+
+      - name: Run tests
+        run: deno test
