@@ -70,6 +70,7 @@ export {
 
 export type {
   SloppyDate,
+  SloppyDateTime,
   SloppyTime,
   SplitDateTime,
 } from "./support/date-time-types.ts";
