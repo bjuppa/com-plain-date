@@ -91,8 +91,6 @@ export interface ExtendedPlainDate extends ComPlainDate {
   differenceInYears: (to: ComPlainDate) => number;
 }
 
-// TODO: force type-checking of PlainDateFactory<ExtendedPlainDate> somehow, even though ExPlainDate is a function
-
 /**
  * Factory function for making extended plain-date objects with extra properties
  * and convenience methods.

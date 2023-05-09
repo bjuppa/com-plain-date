@@ -46,7 +46,7 @@ export interface ComPlainDate {
    */
   toUtcInstant: (time?: SloppyTime) => Date;
 
-  constructor: (x: SloppyDate) => this;
+  constructor: PlainDateFactory<this>;
 
   /**
    * Create a new plain-date object, modified by a callback function.
