@@ -95,7 +95,7 @@ export interface ExtendedPlainDate extends ComPlainDate {
  * Factory function for making extended plain-date objects with extra properties
  * and convenience methods.
  *
- * @param date A sloppy date object with properties `year`, `month` & `day`
+ * @param date A date object with properties `year`, `month` & `day`
  * @returns A new immutable extended plain-date object
  */
 export function ExPlainDate(
