@@ -3,10 +3,14 @@ import { addDays } from "./addDays.ts";
 import { startOfMonth } from "./startOfMonth.ts";
 
 /**
- * Get a function curried with a number of months to add to its plain-date arguments.
+ * Get a function curried with a number of months
+ * to add to its plain-date arguments.
  *
  * The resulting day-of-month will always be within the expected month,
  * days will not spill over into the next month.
+ *
+ * @param {number} months The number of months to add or subtract
+ * @returns A curried function that operates on plain-dates
  */
 export function addMonths(months = 0): <T extends ComPlainDate>(date: T) => T {
   return (date) =>
