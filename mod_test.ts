@@ -1,10 +1,10 @@
 import { assertExists } from "./dev_deps.ts";
-import * as module from "./mod.ts";
+import * as mod from "./mod.ts";
 
 Deno.test("module exports PlainDate factory", () => {
-  assertExists(module.PlainDate);
+  assertExists(mod.PlainDate);
 });
 
 Deno.test("module exports ExPlainDate factory", () => {
-  assertExists(module.ExPlainDate);
+  assertExists(mod.ExPlainDate);
 });
