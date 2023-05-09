@@ -1,4 +1,4 @@
-import { ComPlainDate, PlainDate, PlainDateFactory } from "./PlainDate.ts";
+import { ComPlainDate, PlainDate } from "./PlainDate.ts";
 import { SloppyTime } from "./support/date-time-types.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
