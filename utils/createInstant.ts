@@ -19,6 +19,9 @@ const intlOptions: Intl.DateTimeFormatOptions = {
 /**
  * Get a function curried with a timezone, to create native JS `Date` objects
  * from date-time objects interpreted in the timezone.
+ *
+ * @param timezone A named IANA timezone
+ * @returns A curried function that operates on date-time objects
  */
 export function createInstant(timezone: string) {
   return (

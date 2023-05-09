@@ -6,6 +6,9 @@ import { ComPlainDate } from "../PlainDate.ts";
 /**
  * Get a function curried with a date, from which to get the number of
  * crossings into non-weekend days between it and other dates.
+ *
+ * @param from A plain-date to calculate the difference from
+ * @returns A curried function that operates on plain-dates
  */
 export function differenceInBusinessDays(from: ComPlainDate) {
   return (to: ComPlainDate): number => {
