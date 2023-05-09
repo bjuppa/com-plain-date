@@ -5,8 +5,6 @@ import { startOfMonth } from "./startOfMonth.ts";
 /**
  * Get a function curried with a number of months to add to its plain-date arguments.
  *
- * @remarks
- *
  * The resulting day-of-month will always be within the expected month,
  * days will not spill over into the next month.
  */

@@ -4,8 +4,6 @@ import { createUtcInstant } from "./createUtcInstant.ts";
 /**
  * Format a string suitable for HTML datetime-local inputs from a date-time object.
  *
- * @remarks
- *
  * YYYY-MM-DDTHH:MM
  *
  * @throws {TypeError} Year must be after year 0.
