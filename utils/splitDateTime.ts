@@ -4,6 +4,9 @@ import { SplitDateTime } from "../support/date-time-types.ts";
 /**
  * Get a function curried with a timezone, to split native JS `Date` objects
  * into separate plain-date and plain-time parts.
+ *
+ * @param timezone A named IANA timezone
+ * @returns A curried function that operates on JS `Date` objects
  */
 export function splitDateTime(timezone: string) {
   return (instant?: Date): SplitDateTime => {
