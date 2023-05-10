@@ -46,23 +46,23 @@ export interface ExtendedPlainDate extends ComPlainDate {
   toInstant: (timezone: string, time?: SloppyTime) => Date;
 
   /** Day of the year (1-366) */
-  ordinal: number;
+  ordinal: () => number;
   /** Quarter of the year (1-4) */
-  quarter: Quarter;
+  quarter: () => Quarter;
   /** ISO weekday number (1-7) starting with Monday */
-  weekDayNumber: WeekDay;
+  weekDayNumber: () => WeekDay;
   /** Monday to Friday */
-  isBusinessDay: boolean;
+  isBusinessDay: () => boolean;
   /** Saturday or Sunday */
-  isWeekendDay: boolean;
-  isFirstDayOfMonth: boolean;
-  isLastDayOfMonth: boolean;
-  isFirstDayOfYear: boolean;
-  isLastDayOfYear: boolean;
-  isInLeapYear: boolean;
-  daysInMonth: number;
+  isWeekendDay: () => boolean;
+  isFirstDayOfMonth: () => boolean;
+  isLastDayOfMonth: () => boolean;
+  isFirstDayOfYear: () => boolean;
+  isLastDayOfYear: () => boolean;
+  isInLeapYear: () => boolean;
+  daysInMonth: () => number;
   /** Common years have 365 days, leap years have 366 */
-  daysInYear: number;
+  daysInYear: () => number;
 
   addDays: (days: number) => this;
   addBusinessDays: (days: number) => this;
@@ -123,40 +123,40 @@ export function ExPlainDate(
       });
     },
 
-    get ordinal() {
+    ordinal() {
       return ordinal(this);
     },
-    get quarter() {
+    quarter() {
       return quarter(this);
     },
-    get weekDayNumber() {
+    weekDayNumber() {
       return weekDayNumber(this);
     },
-    get isBusinessDay() {
+    isBusinessDay() {
       return isBusinessDay(this);
     },
-    get isWeekendDay() {
+    isWeekendDay() {
       return isWeekendDay(this);
     },
-    get isFirstDayOfMonth() {
+    isFirstDayOfMonth() {
       return isFirstDayOfMonth(this);
     },
-    get isLastDayOfMonth() {
+    isLastDayOfMonth() {
       return isLastDayOfMonth(this);
     },
-    get isFirstDayOfYear() {
+    isFirstDayOfYear() {
       return isFirstDayOfYear(this);
     },
-    get isLastDayOfYear() {
+    isLastDayOfYear() {
       return isLastDayOfYear(this);
     },
-    get isInLeapYear() {
+    isInLeapYear() {
       return isLeapYear(this);
     },
-    get daysInYear() {
+    daysInYear() {
       return daysInYear(this);
     },
-    get daysInMonth() {
+    daysInMonth() {
       return daysInMonth(this);
     },
 
