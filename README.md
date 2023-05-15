@@ -1,13 +1,35 @@
 # ComPlainDate
 
-Date-time utilities that keeps timezones on the surface.
-
 Date-time handling in JavaScript has always been hard. While we're all waiting
-for `Temporal` to arrive, this is a collection of tools for manipulation of
-dates and times on top of the JavaScript features already available in today's
-browsers and runtime systems.
+for `Temporal` to arrive, this is a collection of tools for **expressive and
+timezone-safe manipulation of dates and times** on top of the JavaScript
+features already available in today's browsers and runtime systems.
 
-## Explicit named timezones
+## Why another JavaScript date-time library?
+
+Most other date-time libraries either don't provide any real strategy for
+timezone handling, for example [date-fns](https://date-fns.org), or keep the
+timezone information hidden inside date-time objects, like
+[Luxon](https://moment.github.io/luxon/). ComPlainDate takes a lot of
+inspiration from both of them, but adds in some ideas from the suggested
+[Temporal API](https://tc39.es/proposal-temporal/docs/index.html) that makes
+calendar operations in any timezone very easy to do and maintain.
+
+The entire ComPlainDate API is explicitly designed to prevent developers from
+making hard-to-spot mistakes and aims to remove the need for testing of any
+timezone related edge cases. This is achieved with a few main principles:
+
+- [Explicit named timezones](#explicit-named-timezones) are required for all
+  operations that actually need a timezone for correct results. There is no risk
+  of accidentally working in an ambiguous timezone.
+- [Separate plain-date and plain-time objects](#separate-plain-date-and-plain-time-objects)
+  and their respective natural operations. There just is no way to accidentally
+  add hours to a plain-date, or days to a plain-time. Every function accepts
+  just the type of objects that makes sense for its purpose.
+
+## Guiding principles
+
+### Explicit named timezones
 
 These utilities are designed to always require a named timezone as the first
 parameter for every operation that would be ambiguous without one.
@@ -17,7 +39,7 @@ DateTime-like objects where the timezone information is hidden away. Something
 that becomes especially problematic when passing such objects over context
 boundaries.
 
-## Separate plain-date and plain-time objects
+### Separate plain-date and plain-time objects
 
 By keeping the calendar date and the time-of-day information in separate objects
 we are free to do any operations on them both in an expressive way, with no need
@@ -28,7 +50,12 @@ The only operations where we need an explicit timezone are when we split a
 universal representation of an instant (e.g. `Date` object) into separate
 plain-date and plain-time objects, and when we merge them back together.
 
-## Composable functions
+### Instants are represented by `Date` objects
+
+The native JavaScript `Date` object is actually good enough for keeping
+universal representations of specific instants in time.
+
+### Composable functions
 
 Inspired by concepts from functional programming, all functions are pure and
 composable and all operations requiring multiple arguments are implemented as
