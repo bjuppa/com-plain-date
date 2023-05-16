@@ -1,9 +1,12 @@
 # ComPlainDate
 
 Date-time handling in JavaScript has always been hard. While we're all waiting
-for `Temporal` to arrive, this is a collection of tools for **expressive and
+for Temporal to arrive, this is a collection of tools for **expressive and
 timezone-safe manipulation of dates and times** on top of the JavaScript
 features already available in today's browsers and runtime systems.
+
+It may well be that ComPlainDate will stay useful even after Temporal is
+available — only time can tell.
 
 ## Why another JavaScript date-time library?
 
@@ -11,21 +14,22 @@ Most other date-time libraries either don't provide any clear strategy for
 timezone handling, for example [date-fns](https://date-fns.org), or keep the
 timezone information hidden inside date-time objects, like
 [Luxon](https://moment.github.io/luxon/) does. ComPlainDate takes a lot of
-inspiration from both of them, while staying clear of some their pitfalls, and
-also adds in a few very useful ideas from the suggested
-[Temporal API](https://tc39.es/proposal-temporal/docs/index.html). The
+inspiration from both of them (while staying clear of their pitfalls) and also
+adds in some very useful ideas from the
+[suggested Temporal API](https://tc39.es/proposal-temporal/docs/index.html). The
 combination makes calendar operations in any timezone very easy to implement and
 maintain, for frontend and backend alike.
 
 The entire ComPlainDate API is explicitly designed to prevent developers from
 making hard-to-spot mistakes and aims to remove the need for testing of any
-timezone related edge cases. This is achieved with a few main principles:
+timezone related edge cases. This is achieved with a few core principles:
 
 - [Explicit named timezones](#explicit-named-timezones) must be given to any
   operation that actually require a timezone for results to be correct and
   predictable.
 - [Separate plain-date and plain-time objects](#separate-plain-date-and-plain-time-objects)
-  and provide independent operations that naturally apply to them.
+  and provide independent operations that naturally apply to each type of
+  object.
 
 The dangers of accidentally working in an ambiguous or incorrect timezone is
 meant to be completely eliminated by design. There just is no way to
@@ -41,7 +45,7 @@ make their meaning clear.
 These utilities are designed to always require a named timezone as the first
 parameter for every operation that would be ambiguous without one.
 
-This avoids confusion caused by working with native JavaScript `Date` or other
+This avoids confusion caused by working with JavaScript `Date` or other
 _DateTime_-like objects where the timezone information is hidden away. Something
 that becomes especially problematic when passing such objects over context
 boundaries.
@@ -60,7 +64,10 @@ plain-date and plain-time objects, and when we merge them back together.
 ### Instants are represented by `Date` objects
 
 The native JavaScript `Date` object is actually good enough for keeping
-universal representations of specific instants in time.
+universal representations of specific instants in time. `Date` doesn't have the
+prettiest interface, but it makes little sense to replace it here. ComPlainDate
+provides some useful utilities for those operations that are relevant to do
+directly on instants, but honestly, they are quite few.
 
 ### Composable functions
 
@@ -68,11 +75,11 @@ Inspired by concepts from functional programming, all functions are pure and
 composable and all operations requiring multiple arguments are implemented as
 higher-order functions for currying.
 
-Also, there are no classes here, only objects adhering to interfaces and factory
-functions to create them.
+Also, there are no classes here, only objects adhering to interfaces and the
+factory functions to create them.
 
-Don't let this scare you, the utilities are just as easy to use in a
-non-functional paradigm too!
+Please don't let this scare you, the ComPlainDate utilities are just as easy to
+use in a non-functional paradigm too!
 
 ## Limitations
 
