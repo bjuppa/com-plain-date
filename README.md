@@ -8,6 +8,8 @@ features already available in today's browsers and runtime systems.
 It may well be that ComPlainDate will stay useful even after Temporal is
 available — only time can tell.
 
+[API documentation](https://deno.land/x/complaindate/mod.ts).
+
 ## Why another JavaScript date-time library?
 
 Most other date-time libraries either don't provide any clear strategy for
