@@ -7,25 +7,31 @@ features already available in today's browsers and runtime systems.
 
 ## Why another JavaScript date-time library?
 
-Most other date-time libraries either don't provide any real strategy for
+Most other date-time libraries either don't provide any clear strategy for
 timezone handling, for example [date-fns](https://date-fns.org), or keep the
 timezone information hidden inside date-time objects, like
-[Luxon](https://moment.github.io/luxon/). ComPlainDate takes a lot of
-inspiration from both of them, but adds in some ideas from the suggested
-[Temporal API](https://tc39.es/proposal-temporal/docs/index.html) that makes
-calendar operations in any timezone very easy to do and maintain.
+[Luxon](https://moment.github.io/luxon/) does. ComPlainDate takes a lot of
+inspiration from both of them, while staying clear of some their pitfalls, and also adds in a few very useful
+ideas from the suggested
+[Temporal API](https://tc39.es/proposal-temporal/docs/index.html). The combination makes
+calendar operations in any timezone very easy to implement and maintain, for frontend and backend alike.
 
 The entire ComPlainDate API is explicitly designed to prevent developers from
 making hard-to-spot mistakes and aims to remove the need for testing of any
 timezone related edge cases. This is achieved with a few main principles:
 
-- [Explicit named timezones](#explicit-named-timezones) are required for all
-  operations that actually need a timezone for correct results. There is no risk
-  of accidentally working in an ambiguous timezone.
+- [Explicit named timezones](#explicit-named-timezones) must be given to any
+  operation that actually require a timezone for results to be correct and
+  predictable.
 - [Separate plain-date and plain-time objects](#separate-plain-date-and-plain-time-objects)
-  and their respective natural operations. There just is no way to accidentally
-  add hours to a plain-date, or days to a plain-time. Every function accepts
-  just the type of objects that makes sense for its purpose.
+  and provide independent operations that naturally apply to them.
+
+The dangers of accidentally working in an ambiguous or incorrect timezone is
+meant to be completely eliminated by design. There just is no way to
+accidentally add hours to a plain-date, subtract days from a plain-time or move
+to the start-of-day for a global instant in time. Every function accepts just
+the shape of objects that makes sense for its purpose and all returned objects
+make their meaning clear.
 
 ## Guiding principles
 
@@ -34,8 +40,8 @@ timezone related edge cases. This is achieved with a few main principles:
 These utilities are designed to always require a named timezone as the first
 parameter for every operation that would be ambiguous without one.
 
-This avoids confusion caused by working with native `Date` or other
-DateTime-like objects where the timezone information is hidden away. Something
+This avoids confusion caused by working with native JavaScript `Date` or other
+_DateTime_-like objects where the timezone information is hidden away. Something
 that becomes especially problematic when passing such objects over context
 boundaries.
 
