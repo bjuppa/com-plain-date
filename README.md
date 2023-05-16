@@ -11,10 +11,11 @@ Most other date-time libraries either don't provide any clear strategy for
 timezone handling, for example [date-fns](https://date-fns.org), or keep the
 timezone information hidden inside date-time objects, like
 [Luxon](https://moment.github.io/luxon/) does. ComPlainDate takes a lot of
-inspiration from both of them, while staying clear of some their pitfalls, and also adds in a few very useful
-ideas from the suggested
-[Temporal API](https://tc39.es/proposal-temporal/docs/index.html). The combination makes
-calendar operations in any timezone very easy to implement and maintain, for frontend and backend alike.
+inspiration from both of them, while staying clear of some their pitfalls, and
+also adds in a few very useful ideas from the suggested
+[Temporal API](https://tc39.es/proposal-temporal/docs/index.html). The
+combination makes calendar operations in any timezone very easy to implement and
+maintain, for frontend and backend alike.
 
 The entire ComPlainDate API is explicitly designed to prevent developers from
 making hard-to-spot mistakes and aims to remove the need for testing of any
