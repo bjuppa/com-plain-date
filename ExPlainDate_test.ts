@@ -5,6 +5,7 @@ import {
   assertStringIncludes,
   assertThrows,
 } from "./dev_deps.ts";
+import { PlainDateMapFn } from "./support/function-signatures.ts";
 
 Deno.test("factory accepts PlainDate", () => {
   const exPlainDate = ExPlainDate(PlainDate({ year: 2022, month: 2, day: 2 }));
@@ -99,4 +100,20 @@ Deno.test("functor obeys composition law", () => {
     String(exPlainDate.map(addOneYear).map(doubleYear)),
     String(exPlainDate.map((x) => doubleYear(addOneYear(x)))),
   );
+});
+
+Deno.test("can be passed through pipeline of functions", () => {
+  const exPlainDate = ExPlainDate({ year: "2022", month: "12", day: "22" });
+  const addOneYear: PlainDateMapFn = (plainDate) =>
+    plainDate.constructor({
+      ...plainDate,
+      year: plainDate.year + 1,
+    });
+  const doubleYear: PlainDateMapFn = (plainDate) =>
+    plainDate.constructor({
+      ...plainDate,
+      year: plainDate.year * 2,
+    });
+
+  assertEquals(String(exPlainDate.pipe(addOneYear, doubleYear)), "4046-12-22");
 });
