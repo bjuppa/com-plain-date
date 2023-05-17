@@ -1,9 +1,10 @@
 # ComPlainDate
 
 Date-time handling in JavaScript has always been hard. While we're all waiting
-for Temporal to arrive, this is a collection of tools for **expressive and
-timezone-safe manipulation of dates and times** on top of the JavaScript
-features already available in today's browsers and runtime systems.
+for [Temporal](https://tc39.es/proposal-temporal/) to arrive, this is a
+collection of tools for **expressive and timezone-safe manipulation of dates and
+times** on top of the JavaScript features already available in today's browsers
+and runtime systems.
 
 It may well be that ComPlainDate will stay useful even after Temporal is
 available — only time can tell.
