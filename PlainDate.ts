@@ -34,6 +34,9 @@ export interface ComPlainDate {
     locale?: Intl.LocalesArgument,
     options?: FormatPlainDateOptions,
   ) => string;
+  toLocaleStringMedium: (locale?: Intl.LocalesArgument) => string;
+  toLocaleStringLong: (locale?: Intl.LocalesArgument) => string;
+  toLocaleStringFull: (locale?: Intl.LocalesArgument) => string;
   dayName: (locale?: Intl.LocalesArgument) => string;
   dayNameShort: (locale?: Intl.LocalesArgument) => string;
   dayNameNarrow: (locale?: Intl.LocalesArgument) => string;
@@ -113,6 +116,15 @@ export function PlainDate(
 
     toLocaleString(locale = undefined, options = {}) {
       return formatPlainDate(locale)(options)(this);
+    },
+    toLocaleStringMedium(locale = undefined) {
+      return formatPlainDate(locale)({ dateStyle: "medium" })(this);
+    },
+    toLocaleStringLong(locale = undefined) {
+      return formatPlainDate(locale)({ dateStyle: "long" })(this);
+    },
+    toLocaleStringFull(locale = undefined) {
+      return formatPlainDate(locale)({ dateStyle: "full" })(this);
     },
     dayName(locale = undefined) {
       return formatPlainDate(locale)({ weekday: "long" })(this);
