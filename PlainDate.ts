@@ -49,6 +49,14 @@ export interface ComPlainDate {
   constructor: PlainDateFactory<this>;
 
   /**
+   * Create a new plain-date object, applying a pipeline of functions.
+   */
+  pipe: <T extends ComPlainDate>(
+    this: T,
+    ...fns: Array<(date: T) => T>
+  ) => T;
+
+  /**
    * Create a new plain-date object, modified by a callback function.
    */
   map: <T extends ComPlainDate>(
@@ -131,6 +139,9 @@ export function PlainDate(
         : utcDate;
     },
 
+    pipe(...fns) {
+      return fns.reduce((x, f) => f(x), this);
+    },
     map(f) {
       return this.constructor(f(this));
     },
