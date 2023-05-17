@@ -1,7 +1,10 @@
 import {
   addDays, // Utility function
   createInstant, // Utility function
+  daysInMonth, // Utility function
+  differenceInMonths, // Utility function
   firstWeekDay, // Utility function
+  isLeapYear, // Utility function
   splitDateTime, // Utility function
   startOfMonth, // Utility function
   startOfYear, // Utility function
@@ -36,8 +39,11 @@ secondTuesdayOfMonth.dayNameShort("fr"); // "mar."
 
 // Utility functions can be called directly with plain-dates
 const dateB = startOfYear(dateA); // 2023-01-01
+daysInMonth(dateB); // 31
+isLeapYear(dateB); // false
+differenceInMonths(dateA)(dateB); // -5
 
-// Combine a plain-date and a plain-time into a JS `Date`
+// Combine a plain-date and a plain-time into an "instant", a JS `Date`
 // ...and note that doing this requires a timezone
 createInstant(
   "Europe/London", // The UK is UTC+0 in January
