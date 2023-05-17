@@ -32,6 +32,8 @@ export type {
   SplitDateTime,
 } from "./support/date-time-types.ts";
 
+export type { PlainDateMapFn } from "./support/function-signatures.ts";
+
 // Utils for splitting native JS `Date` objects into separate date & time objects
 export { splitDateTime } from "./utils/splitDateTime.ts";
 export { splitLocalDateTime } from "./utils/splitLocalDateTime.ts";
