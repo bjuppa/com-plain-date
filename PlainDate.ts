@@ -28,7 +28,21 @@ export interface ComPlainDate {
   /**
    * Localize the date for display to a user.
    *
+   * Defaults to "short" date-style if no options given.
+   *
    * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat | Intl.DateTimeFormat options on MDN}
+   *
+   * @example
+   * ```ts
+   * // "6/12/2023"
+   * PlainDate.fromString('2023-06-12').toLocaleString('en');
+   *
+   * // "6/12"
+   * PlainDate.fromString('2023-06-12').toLocaleString('en', { month: 'numeric', day: 'numeric' });
+   *
+   * // "June 12"
+   * PlainDate.fromString('2023-06-12').toLocaleString('en', { month: 'long', day: 'numeric' });
+   * ```
    */
   toLocaleString: (
     locale?: Intl.LocalesArgument,
@@ -114,7 +128,7 @@ export function PlainDate(
       return this.iso;
     },
 
-    toLocaleString(locale = undefined, options = {}) {
+    toLocaleString(locale = undefined, options = { dateStyle: "short" }) {
       return formatPlainDate(locale)(options)(this);
     },
     toLocaleStringMedium(locale = undefined) {
