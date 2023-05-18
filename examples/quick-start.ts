@@ -1,53 +1,59 @@
+// If you're using Deno, you can import from deno.land
 import {
-  addDays, // Utility function
-  createInstant, // Utility function
-  daysInMonth, // Utility function
-  differenceInMonths, // Utility function
-  firstWeekDay, // Utility function
-  isLeapYear, // Utility function
-  splitDateTime, // Utility function
-  startOfMonth, // Utility function
-  startOfYear, // Utility function
-  WeekDay, // Enum
+  addDays,
+  createInstant,
+  DAYS_IN_WEEK,
+  daysInMonth,
+  differenceInMonths,
+  firstWeekDay,
+  isLastDayOfMonth,
+  splitDateTime,
+  startOfMonth,
+  startOfYear,
+  WeekDay,
 } from "https://deno.land/x/complaindate/mod.ts";
 
 // Extract a plain-date and a plain-time from any JS `Date`
-// ...and note that doing this requires a timezone
-const [dateA, timeA] = splitDateTime("Europe/Stockholm")(
-  // Sweden is UTC+2 in June, so this `Date` represents 13:30 wall-time there
-  new Date("2023-06-12T13:30:00+02:00"),
+// ...and note that doing so requires a timezone
+const [june6, time1337] = splitDateTime("Europe/Stockholm")(
+  // Sweden is UTC+2 in June, so this `Date` represents 13:37 wall-time there
+  new Date("2023-06-06T13:37+0200"),
   // Note: Leaving this parameter empty will give you current wall-time (now)
 );
 
 // The plain-date part is an object adhering to the full ComPlainDate interface
-dateA; // { year: 2023, month: 6, day: 12, iso: "2023-06-12", ...}
+june6; // { year: 2023, month: 6, day: 6, iso: "2023-06-06", ...}
 
 // The plain-time part is a simple object
-timeA; // { hour: 13, minute: 30, second: 0, millisecond: 0 }
+time1337; // { hour: 13, minute: 37, second: 0, millisecond: 0 }
 
-// Apply a pipeline of operations to get a new plain-date
-const secondTuesdayOfMonth = dateA.pipe(
+// Apply any pipeline of operations to get a new plain-date
+// ...free from any hassle involving timezones!
+const secondTuesdayOfJune = june6.pipe(
   startOfMonth, // Go back to the 1st day of the month
   firstWeekDay(WeekDay.TUESDAY), // Find the first Tuesday
-  addDays(7), // Move one week ahead
+  addDays(DAYS_IN_WEEK), // Move 7 days forward
 ); // 2023-06-13
 
-// A plain-date can quickly be formatted for a given locale in different formats
-secondTuesdayOfMonth.toLocaleString("en"); // "6/13/23"
-secondTuesdayOfMonth.toLocaleStringFull("sv"); // "tisdag 13 juni 2023"
-secondTuesdayOfMonth.dayNameShort("fr"); // "mar."
+// Some examples of quickly turning a plain-date into a localized string:
+secondTuesdayOfJune.toLocaleString("en"); // "6/13/23"
+secondTuesdayOfJune.toLocaleStringFull("sv"); // "tisdag 13 juni 2023"
+secondTuesdayOfJune.dayNameShort("fr"); // "mar."
 
-// Utility functions can be called directly with plain-dates
-const dateB = startOfYear(dateA); // 2023-01-01
-daysInMonth(dateB); // 31
-isLeapYear(dateB); // false
-differenceInMonths(dateA)(dateB); // -5
+// Utility functions can be called independently with plain-dates, for example:
+const newYearsDay = startOfYear(june6); // 2023-01-01
+daysInMonth(newYearsDay); // 31
+isLastDayOfMonth(newYearsDay); // false
+differenceInMonths(june6)(newYearsDay); // -5
+
+// Quickly turn a plain-date into a UTC "instant", a JS `Date` at UTC midnight
+newYearsDay.toUtcInstant(); // 2023-01-01T00:00:00.000Z
 
 // Combine a plain-date and a plain-time into an "instant", a JS `Date`
-// ...and note that doing this requires a timezone
+// ...and note that doing so requires a timezone
 createInstant(
-  "Europe/London", // The UK is UTC+0 in January
+  "Europe/Vienna", // The Wiener Musikverein is UTC+1 in January
 )({
-  ...dateB, // Spread the plain-date
-  hour: timeA.hour, // Take only the hour from the plain-time, truncating time
-}); // 2023-01-01T13:00:00.000Z
+  ...newYearsDay,
+  ...{ hour: 11, minute: 15 },
+}); // 2023-01-01T10:15:00.000Z
