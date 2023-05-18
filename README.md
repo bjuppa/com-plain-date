@@ -96,8 +96,7 @@ timezone related edge cases. This is achieved with a few core principles:
   operation that actually require a timezone for results to be correct and
   predictable.
 - [Separate plain-date and plain-time objects](#separate-plain-date-and-plain-time-objects)
-  and provide independent operations that naturally apply to each type of
-  object.
+  and independent operations that naturally apply to each type of object.
 
 The dangers of accidentally working in an ambiguous or incorrect timezone is
 meant to be completely eliminated by design. There just is no way to
@@ -143,8 +142,8 @@ Inspired by concepts from functional programming, all functions are pure and
 composable and all operations requiring multiple arguments are implemented as
 higher-order functions for currying.
 
-Also, there are no classes here, only objects adhering to interfaces and the
-factory functions to create them.
+Also, there are no classes here, only objects adhering to interfaces and
+accompanying factory functions to create them.
 
 Please don't let this scare you, the ComPlainDate utilities are just as easy to
 use in a non-functional paradigm too!
