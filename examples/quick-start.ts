@@ -2,7 +2,6 @@
 import {
   addDays,
   createInstant,
-  DAYS_IN_WEEK,
   daysInMonth,
   differenceInMonths,
   firstWeekDay,
@@ -11,6 +10,7 @@ import {
   startOfMonth,
   startOfYear,
   WeekDay,
+  weekDayNumber,
 } from "https://deno.land/x/complaindate/mod.ts";
 
 // Extract a plain-date and a plain-time from any JS `Date`
@@ -29,22 +29,23 @@ time1337; // { hour: 13, minute: 37, second: 0, millisecond: 0 }
 
 // Apply any pipeline of operations to get a new plain-date
 // ...free from any hassle involving timezones!
-const secondTuesdayOfJune = june6.pipe(
+const midsummersEve = june6.pipe(
   startOfMonth, // Go back to the 1st day of the month
-  firstWeekDay(WeekDay.TUESDAY), // Find the first Tuesday
-  addDays(DAYS_IN_WEEK), // Move 7 days forward
-); // 2023-06-13
+  addDays(18), // Move to the first possible midsummer's eve candidate (June 19)
+  firstWeekDay(WeekDay.FRIDAY), // Find the first Friday
+); // 2023-06-23
 
 // Some examples of quickly turning a plain-date into a localized string:
-secondTuesdayOfJune.toLocaleString("en"); // "6/13/23"
-secondTuesdayOfJune.toLocaleStringFull("sv"); // "tisdag 13 juni 2023"
-secondTuesdayOfJune.dayNameShort("fr"); // "mar."
+midsummersEve.toLocaleString("en"); // "6/23/23"
+midsummersEve.toLocaleStringFull("sv"); // "fredag 23 juni 2023"
+midsummersEve.dayNameShort("fr"); // "ven."
 
-// Utility functions can be called independently with plain-dates, for example:
-const newYearsDay = startOfYear(june6); // 2023-01-01
+// Utility functions can be used independently with plain-dates, for example:
+const newYearsDay = startOfYear(midsummersEve); // 2023-01-01
 daysInMonth(newYearsDay); // 31
 isLastDayOfMonth(newYearsDay); // false
-differenceInMonths(june6)(newYearsDay); // -5
+weekDayNumber(midsummersEve); // 5 (equal to `WeekDay.FRIDAY`)
+differenceInMonths(midsummersEve)(newYearsDay); // -5
 
 // Quickly turn a plain-date into a UTC "instant", a JS `Date` at UTC midnight
 newYearsDay.toUtcInstant(); // 2023-01-01T00:00:00.000Z
