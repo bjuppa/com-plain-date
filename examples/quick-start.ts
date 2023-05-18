@@ -1,4 +1,4 @@
-// If you're using Deno, you can import from deno.land
+// If you're using Deno, you can import directly from deno.land
 import {
   addDays,
   createInstant,
@@ -16,7 +16,7 @@ import {
 // Extract a plain-date and a plain-time from any JS `Date`
 // ...and note that doing so requires a timezone
 const [june6, time1337] = splitDateTime("Europe/Stockholm")(
-  // Sweden is UTC+2 in June, so this `Date` represents 13:37 wall-time there
+  // Sweden is at UTC+2 in June, so this `Date` represents 13:37 wall-time there
   new Date("2023-06-06T13:37+0200"),
   // Note: Leaving this parameter empty will give you current wall-time (now)
 );
@@ -50,10 +50,10 @@ differenceInMonths(midsummersEve)(newYearsDay); // -5
 // Quickly turn a plain-date into a UTC "instant", a JS `Date` at UTC midnight
 newYearsDay.toUtcInstant(); // 2023-01-01T00:00:00.000Z
 
-// Combine a plain-date and a plain-time into an "instant", a JS `Date`
+// Combine any plain-date with any plain-time into an "instant", a JS `Date`
 // ...and note that doing so requires a timezone
 createInstant(
-  "Europe/Vienna", // The Wiener Musikverein is UTC+1 in January
+  "Europe/Vienna", // The Wiener Musikverein is at UTC+1 in January
 )({
   ...newYearsDay,
   ...{ hour: 11, minute: 15 },
