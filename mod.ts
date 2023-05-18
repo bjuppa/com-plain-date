@@ -3,6 +3,16 @@
  *
  * Date-time utilities that keeps timezones on the surface.
  *
+ * ## Plain-date objects
+ *
+ * The {@link ComPlainDate} interface describes plain-date objects, that can be
+ * created with the {@link PlainDate} factory, described by the
+ * {@link PlainDateFactory} interface.
+ *
+ * There is also an extended type of plain-date objects, described by the
+ * {@link ExtendedPlainDate} interface. Those objects are created with the
+ * {@link ExPlainDate} factory.
+ *
  * @module()
  */
 export { PlainDate } from "./PlainDate.ts";
