@@ -230,5 +230,4 @@ export function ExPlainDate(
   return exPlainDate;
 }
 
-ExPlainDate.of = ExPlainDate;
 ExPlainDate.fromString = PlainDate.fromString;

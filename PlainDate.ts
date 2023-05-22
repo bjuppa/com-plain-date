@@ -85,8 +85,6 @@ export interface ComPlainDate {
 /** Describes a factory function that creates plain-date objects */
 export interface PlainDateFactory<T extends ComPlainDate> {
   (x: SloppyDate): T;
-  /** Type lift (unit) */
-  of: PlainDateFactory<T>;
   /** Create a new plain-date object from an ISO string */
   fromString: <T extends ComPlainDate>(
     this: PlainDateFactory<T>,
@@ -178,8 +176,6 @@ export function PlainDate(
   return plainDate;
 }
 
-PlainDate.of = PlainDate;
-
 PlainDate.fromString = function <T extends ComPlainDate>(
   this: PlainDateFactory<T>,
   isoDateString: string,
@@ -188,5 +184,5 @@ PlainDate.fromString = function <T extends ComPlainDate>(
   if (!parts) {
     throw TypeError(`No date parts found in string: ${isoDateString}`);
   }
-  return this.of(parts);
+  return this(parts);
 };
