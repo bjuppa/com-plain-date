@@ -11,6 +11,9 @@ available — only time will tell...
 
 [API documentation at deno.land](https://deno.land/x/complaindate/mod.ts)
 
+The footprint of a tree-shaken and compressed production build starts below
+`1.5 kB` when using just the `PlainDate` object API.
+
 ## Quick example
 
 ```ts
