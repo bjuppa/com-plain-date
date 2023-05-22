@@ -7,7 +7,7 @@ import { SplitDateTime } from "../support/date-time-types.ts";
  */
 export function splitLocalDateTime(instant?: Date): SplitDateTime {
   instant ??= new Date();
-  const plainDate = PlainDate.of({
+  const plainDate = PlainDate({
     year: instant.getFullYear(),
     month: instant.getMonth() + 1,
     day: instant.getDate(),

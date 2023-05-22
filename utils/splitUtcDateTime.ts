@@ -7,7 +7,7 @@ import { SplitDateTime } from "../support/date-time-types.ts";
  */
 export function splitUtcDateTime(instant?: Date): SplitDateTime {
   instant ??= new Date();
-  const plainDate = PlainDate.of({
+  const plainDate = PlainDate({
     year: instant.getUTCFullYear(),
     month: instant.getUTCMonth() + 1,
     day: instant.getUTCDate(),

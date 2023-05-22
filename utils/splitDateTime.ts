@@ -13,7 +13,7 @@ export function splitDateTime(timezone: string) {
     instant ??= new Date();
     const locale = "en";
     const options = { timeZone: timezone, hour12: false };
-    const plainDate = PlainDate.of({
+    const plainDate = PlainDate({
       year: instant.toLocaleDateString(locale, { ...options, year: "numeric" }),
       month: instant.toLocaleDateString(locale, {
         ...options,
