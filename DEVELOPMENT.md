@@ -33,7 +33,8 @@ an npm package from the current code into [the `npm/` directory](/npm):
 deno run -A scripts/build_npm.ts
 ```
 
-If you have an npm project setup locally for testing, you may install the built package using a local path:
+If you have an npm project setup locally for testing, you may install the built
+package using a local path:
 
 ```sh
 npm install path/to/com-plain-date/npm
