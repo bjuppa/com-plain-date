@@ -14,6 +14,9 @@ jobs:
         with:
           deno-version: v1.x # Run with latest stable Deno.
 
+      - name: Check formatting
+        run: deno fmt --check
+
       - name: Run linter
         run: deno lint
 
