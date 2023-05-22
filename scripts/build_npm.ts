@@ -1,4 +1,3 @@
-// ex. scripts/build_npm.ts
 import { build, emptyDir } from "https://deno.land/x/dnt/mod.ts";
 
 await emptyDir("./npm");
@@ -14,7 +13,7 @@ await build({
   package: {
     // package.json properties
     name: "complaindate",
-    version: Deno.args[0],
+    version: Deno.args[0]?.replace(/^v/, ""),
     description: "Date-time utilities that keeps timezones on the surface.",
     license: "MIT",
     repository: {
