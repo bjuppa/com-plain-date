@@ -14,6 +14,13 @@ available — only time will tell...
 The footprint of a tree-shaken and compressed production build starts below
 `1.5 kB` when using just the `PlainDate` object API.
 
+## Installation
+
+ComPlainDate is available as packages for both Deno and npm:
+
+- [deno.land/x/complaindate](https://deno.land/x/complaindate/mod.ts)
+- [npmjs.com/package/complaindate](https://www.npmjs.com/package/complaindate)
+
 ## Quick example
 
 ```ts
