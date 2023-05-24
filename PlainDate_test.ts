@@ -101,14 +101,6 @@ Deno.test("narrow month name can be localized", () => {
   assertEquals(plainDate.monthNameNarrow("sv"), "F");
 });
 
-Deno.test("can be created from ISO string", () => {
-  assertEquals(String(PlainDate.fromString("2022-02-02")), "2022-02-02");
-});
-
-Deno.test("throws error when string only contains year part", () => {
-  assertThrows(() => PlainDate.fromString("2022"));
-});
-
 Deno.test("can be converted to instant in UTC", () => {
   const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
   const time = { hour: 23, minute: 59, second: 59, millisecond: 999 };

@@ -45,6 +45,9 @@ export type {
 
 export type { PlainDateMapFn } from "./support/function-signatures.ts";
 
+// Utils for parsing strings
+export { parsePlainDate } from "./utils/parsePlainDate.ts";
+
 // Utils for splitting native JS `Date` objects into separate date & time objects
 export { splitDateTime } from "./utils/splitDateTime.ts";
 export { splitLocalDateTime } from "./utils/splitLocalDateTime.ts";

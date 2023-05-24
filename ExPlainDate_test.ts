@@ -47,14 +47,6 @@ Deno.test("can be converted to instant in given timezone", () => {
   );
 });
 
-Deno.test("can be created from ISO string", () => {
-  assertEquals(String(ExPlainDate.fromString("2022-02-02")), "2022-02-02");
-});
-
-Deno.test("throws error when string only contains year part", () => {
-  assertThrows(() => ExPlainDate.fromString("2022"));
-});
-
 Deno.test("can be converted to instant in UTC", () => {
   const exPlainDate = ExPlainDate({ year: 2022, month: 2, day: 2 });
   const time = { hour: 23, minute: 59, second: 59, millisecond: 999 };

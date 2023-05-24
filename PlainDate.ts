@@ -1,7 +1,6 @@
 import { SloppyDate, SloppyTime } from "./support/date-time-types.ts";
 import { MonthNumber } from "./constants.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
-import { dateParts } from "./support/dateParts.ts";
 import {
   formatPlainDate,
   FormatPlainDateOptions,
@@ -35,13 +34,13 @@ export interface ComPlainDate {
    * @example
    * ```ts
    * // "6/12/2023"
-   * PlainDate.fromString('2023-06-12').toLocaleString('en');
+   * PlainDate({ year: 2023, month: 6, day: 12 }).toLocaleString('en');
    *
    * // "6/12"
-   * PlainDate.fromString('2023-06-12').toLocaleString('en', { month: 'numeric', day: 'numeric' });
+   * PlainDate({ year: 2023, month: 6, day: 12 }).toLocaleString('en', { month: 'numeric', day: 'numeric' });
    *
    * // "June 12"
-   * PlainDate.fromString('2023-06-12').toLocaleString('en', { month: 'long', day: 'numeric' });
+   * PlainDate({ year: 2023, month: 6, day: 12 }).toLocaleString('en', { month: 'long', day: 'numeric' });
    * ```
    */
   toLocaleString: (
@@ -85,11 +84,6 @@ export interface ComPlainDate {
 /** Describes a factory function that creates plain-date objects */
 export interface PlainDateFactory<T extends ComPlainDate> {
   (x: SloppyDate): T;
-  /** Create a new plain-date object from an ISO string */
-  fromString: <T extends ComPlainDate>(
-    this: PlainDateFactory<T>,
-    s: string,
-  ) => T;
 }
 
 /**
@@ -175,14 +169,3 @@ export function PlainDate(
 
   return plainDate;
 }
-
-PlainDate.fromString = function <T extends ComPlainDate>(
-  this: PlainDateFactory<T>,
-  isoDateString: string,
-): T {
-  const parts = dateParts(isoDateString);
-  if (!parts) {
-    throw TypeError(`No date parts found in string: ${isoDateString}`);
-  }
-  return this(parts);
-};
