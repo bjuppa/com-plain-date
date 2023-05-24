@@ -19,7 +19,7 @@ ComPlainDate is available as packages for both Deno and npm:
 - [npmjs.com/package/complaindate](https://www.npmjs.com/package/complaindate)
 
 The footprint of a tree-shaken and compressed production build starts below
-`1.5 kB` when using just the `PlainDate` object API.
+`1 kB` when using just the `PlainDate` object API.
 
 ## Quick example
 
