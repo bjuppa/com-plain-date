@@ -34,6 +34,7 @@ export {
   Quarter,
   WeekDay,
 } from "./constants.ts";
+export type { MonthNumber, QuarterNumber, WeekDayNumber } from "./constants.ts";
 
 export type {
   SloppyDate,

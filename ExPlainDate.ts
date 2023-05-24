@@ -2,7 +2,7 @@ import { ComPlainDate, PlainDate } from "./PlainDate.ts";
 import { SloppyTime } from "./support/date-time-types.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
-import { Quarter, WeekDay } from "./constants.ts";
+import { QuarterNumber, WeekDay, WeekDayNumber } from "./constants.ts";
 import { addDays } from "./utils/addDays.ts";
 import { addBusinessDays } from "./utils/addBusinessDays.ts";
 import { addMonths } from "./utils/addMonths.ts";
@@ -48,9 +48,9 @@ export interface ExtendedPlainDate extends ComPlainDate {
   /** Day of the year (1-366) */
   ordinal: () => number;
   /** Quarter of the year (1-4) */
-  quarter: () => Quarter;
+  quarter: () => QuarterNumber;
   /** ISO weekday number (1-7) starting with Monday */
-  weekDayNumber: () => WeekDay;
+  weekDayNumber: () => WeekDayNumber;
   /** Monday to Friday */
   isBusinessDay: () => boolean;
   /** Saturday or Sunday */

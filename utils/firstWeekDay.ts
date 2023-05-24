@@ -1,5 +1,5 @@
 import { ComPlainDate } from "../PlainDate.ts";
-import { DAYS_IN_WEEK, WeekDay } from "../constants.ts";
+import { DAYS_IN_WEEK, WeekDayNumber } from "../constants.ts";
 import { addDays } from "./addDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 
@@ -22,7 +22,7 @@ import { weekDayNumber } from "./weekDayNumber.ts";
  * ```
  */
 export function firstWeekDay(
-  targetWeekDay: WeekDay,
+  targetWeekDay: WeekDayNumber,
 ): <T extends ComPlainDate>(date: T) => T {
   return (date) =>
     addDays(
