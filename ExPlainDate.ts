@@ -2,7 +2,7 @@ import { ComPlainDate, PlainDate } from "./PlainDate.ts";
 import { SloppyTime } from "./support/date-time-types.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
-import { Quarter, WeekDay } from "./constants.ts";
+import { QuarterNumber, WeekDay, WeekDayNumber } from "./constants.ts";
 import { addDays } from "./utils/addDays.ts";
 import { addBusinessDays } from "./utils/addBusinessDays.ts";
 import { addMonths } from "./utils/addMonths.ts";
@@ -30,6 +30,7 @@ import { isLastDayOfMonth } from "./utils/isLastDayOfMonth.ts";
 import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
 import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 import { SloppyDate } from "./mod.ts";
+import { formatPlainDate } from "./utils/formatPlainDate.ts";
 
 /**
  * Describes an extended plain-date object with extra properties and
@@ -45,12 +46,22 @@ export interface ExtendedPlainDate extends ComPlainDate {
    */
   toInstant: (timezone: string, time?: SloppyTime) => Date;
 
+  toLocaleStringMedium: (locale?: Intl.LocalesArgument) => string;
+  toLocaleStringLong: (locale?: Intl.LocalesArgument) => string;
+  toLocaleStringFull: (locale?: Intl.LocalesArgument) => string;
+  dayName: (locale?: Intl.LocalesArgument) => string;
+  dayNameShort: (locale?: Intl.LocalesArgument) => string;
+  dayNameNarrow: (locale?: Intl.LocalesArgument) => string;
+  monthName: (locale?: Intl.LocalesArgument) => string;
+  monthNameShort: (locale?: Intl.LocalesArgument) => string;
+  monthNameNarrow: (locale?: Intl.LocalesArgument) => string;
+
   /** Day of the year (1-366) */
   ordinal: () => number;
   /** Quarter of the year (1-4) */
-  quarter: () => Quarter;
+  quarter: () => QuarterNumber;
   /** ISO weekday number (1-7) starting with Monday */
-  weekDayNumber: () => WeekDay;
+  weekDayNumber: () => WeekDayNumber;
   /** Monday to Friday */
   isBusinessDay: () => boolean;
   /** Saturday or Sunday */
@@ -121,6 +132,34 @@ export function ExPlainDate(
         second,
         millisecond,
       });
+    },
+
+    toLocaleStringMedium(locale = undefined) {
+      return formatPlainDate(locale)({ dateStyle: "medium" })(this);
+    },
+    toLocaleStringLong(locale = undefined) {
+      return formatPlainDate(locale)({ dateStyle: "long" })(this);
+    },
+    toLocaleStringFull(locale = undefined) {
+      return formatPlainDate(locale)({ dateStyle: "full" })(this);
+    },
+    dayName(locale = undefined) {
+      return formatPlainDate(locale)({ weekday: "long" })(this);
+    },
+    dayNameShort(locale = undefined) {
+      return formatPlainDate(locale)({ weekday: "short" })(this);
+    },
+    dayNameNarrow(locale = undefined) {
+      return formatPlainDate(locale)({ weekday: "narrow" })(this);
+    },
+    monthName(locale = undefined) {
+      return formatPlainDate(locale)({ month: "long" })(this);
+    },
+    monthNameShort(locale = undefined) {
+      return formatPlainDate(locale)({ month: "short" })(this);
+    },
+    monthNameNarrow(locale = undefined) {
+      return formatPlainDate(locale)({ month: "narrow" })(this);
     },
 
     ordinal() {
@@ -229,5 +268,3 @@ export function ExPlainDate(
 
   return exPlainDate;
 }
-
-ExPlainDate.fromString = PlainDate.fromString;

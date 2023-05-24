@@ -34,6 +34,7 @@ export {
   Quarter,
   WeekDay,
 } from "./constants.ts";
+export type { MonthNumber, QuarterNumber, WeekDayNumber } from "./constants.ts";
 
 export type {
   SloppyDate,
@@ -43,6 +44,9 @@ export type {
 } from "./support/date-time-types.ts";
 
 export type { PlainDateMapFn } from "./support/function-signatures.ts";
+
+// Utils for parsing strings
+export { parsePlainDate } from "./utils/parsePlainDate.ts";
 
 // Utils for splitting native JS `Date` objects into separate date & time objects
 export { splitDateTime } from "./utils/splitDateTime.ts";
