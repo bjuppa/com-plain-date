@@ -17,6 +17,7 @@ export const DAYS_IN_COMMON_YEAR = 365;
 /** 366 */
 export const DAYS_IN_LEAP_YEAR = DAYS_IN_COMMON_YEAR + 1;
 
+/** ISO weekday number (1-7) starting with Monday */
 export const WeekDay = {
   MONDAY: 1,
   TUESDAY: 2,
@@ -30,6 +31,7 @@ export const WeekDay = {
 /** ISO weekday number (1-7) starting with Monday */
 export type WeekDayNumber = typeof WeekDay[keyof typeof WeekDay];
 
+/** Month (1-12) */
 export const Month = {
   JANUARY: 1,
   FEBRUARY: 2,
@@ -48,6 +50,7 @@ export const Month = {
 /** Month (1-12) */
 export type MonthNumber = typeof Month[keyof typeof Month];
 
+/** Quarter of year (1-4) */
 export const Quarter = {
   Q1: 1,
   Q2: 2,
