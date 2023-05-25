@@ -57,6 +57,14 @@ Deno.test("can be converted to instant in UTC", () => {
   );
 });
 
+Deno.test("can be created from ISO string", () => {
+  assertEquals(String(ExPlainDate.fromString("2022-02-02")), "2022-02-02");
+});
+
+Deno.test("throws error when string only contains year part", () => {
+  assertThrows(() => ExPlainDate.fromString("2022"));
+});
+
 Deno.test("day name can be localized", () => {
   const exPlainDate = ExPlainDate({ year: 2020, month: 6, day: 13 });
 

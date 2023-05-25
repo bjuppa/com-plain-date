@@ -1,5 +1,5 @@
-import { ComPlainDate, PlainDate } from "./PlainDate.ts";
-import { SloppyTime } from "./support/date-time-types.ts";
+import { ComPlainDate, PlainDate, PlainDateFactory } from "./PlainDate.ts";
+import { SloppyDate, SloppyTime } from "./support/date-time-types.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
 import { QuarterNumber, WeekDay, WeekDayNumber } from "./constants.ts";
@@ -29,8 +29,8 @@ import { isFirstDayOfMonth } from "./utils/isFirstDayOfMonth.ts";
 import { isLastDayOfMonth } from "./utils/isLastDayOfMonth.ts";
 import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
 import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
-import { SloppyDate } from "./mod.ts";
 import { formatPlainDate } from "./utils/formatPlainDate.ts";
+import { parsePlainDate } from "./utils/parsePlainDate.ts";
 
 /**
  * Describes an extended plain-date object with extra properties and
@@ -268,3 +268,10 @@ export function ExPlainDate(
 
   return exPlainDate;
 }
+
+ExPlainDate.fromString = function <T extends ComPlainDate>(
+  this: PlainDateFactory<T>,
+  isoDateString: string,
+): T {
+  return this(parsePlainDate(isoDateString));
+};
