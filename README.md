@@ -66,17 +66,16 @@ time1337; // { hour: 13, minute: 37, second: 0, millisecond: 0 }
 // Apply any pipeline of operations to get a new plain-date
 // ...free from any hassle involving timezones!
 const midsummersEve = june6.pipe(
-  startOfMonth, // Go back to the 1st day of the month
+  startOfMonth, // Go back to the 1st day of June
   addDays(18), // Move to the first possible midsummer's eve candidate (June 19)
   firstWeekDay(WeekDay.FRIDAY), // Find the first Friday
 ); // 2023-06-23
 
 // Quickly turn a plain-date into a localized string:
 midsummersEve.toLocaleString("en"); // "6/23/23"
-// Any valid combination of `Intl` options can be used:
 midsummersEve.toLocaleString(
   "sv",
-  { dateStyle: "full" },
+  { dateStyle: "full" }, // Any valid combination of `Intl` options can be used
 ); // "fredag 23 juni 2023"
 
 // Utility functions can be used independently with plain-dates, for example:
