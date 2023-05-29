@@ -72,13 +72,30 @@ export interface ComPlainDate {
   ) => T;
 }
 
-/** Describes a factory function that creates plain-date objects */
+/**
+ * Describes a factory function that creates plain-date objects.
+ *
+ * Specific implementations of the factory may provide additional methods that
+ * takes other kinds of arguments.
+ */
 export interface PlainDateFactory<T extends ComPlainDate> {
   (x: SloppyDate): T;
-  /** Create a new plain-date object from an ISO string */
   fromString?: <T extends ComPlainDate>(
     this: PlainDateFactory<T>,
     s: string,
+  ) => T;
+  fromUtcInstant?: <T extends ComPlainDate>(
+    this: PlainDateFactory<T>,
+    instant?: Date,
+  ) => T;
+  fromLocalInstant?: <T extends ComPlainDate>(
+    this: PlainDateFactory<T>,
+    instant?: Date,
+  ) => T;
+  fromInstant?: <T extends ComPlainDate>(
+    this: PlainDateFactory<T>,
+    timezone: string,
+    instant?: Date,
   ) => T;
 }
 

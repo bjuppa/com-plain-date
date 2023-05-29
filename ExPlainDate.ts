@@ -31,6 +31,9 @@ import { isFirstDayOfYear } from "./utils/isFirstDayOfYear.ts";
 import { isLastDayOfYear } from "./utils/isLastDayOfYear.ts";
 import { formatPlainDate } from "./utils/formatPlainDate.ts";
 import { parsePlainDate } from "./utils/parsePlainDate.ts";
+import { splitUtcDateTime } from "./utils/splitUtcDateTime.ts";
+import { splitLocalDateTime } from "./utils/splitLocalDateTime.ts";
+import { splitDateTime } from "./utils/splitDateTime.ts";
 
 /**
  * Describes an extended plain-date object with extra properties and
@@ -269,9 +272,52 @@ export function ExPlainDate(
   return exPlainDate;
 }
 
+/**
+ * Create a new plain-date object from an ISO string.
+ */
 ExPlainDate.fromString = function <T extends ComPlainDate>(
   this: PlainDateFactory<T>,
   isoDateString: string,
 ): T {
   return this(parsePlainDate(isoDateString));
+};
+
+/**
+ * Create a new plain-date object from a native JS `Date` object in UTC.
+ *
+ * @param instant Optional JS `Date`, fallback to current wall-time
+ */
+ExPlainDate.fromUtcInstant = function <T extends ComPlainDate>(
+  this: PlainDateFactory<T>,
+  instant?: Date,
+): T {
+  return this(splitUtcDateTime(instant)[0]);
+};
+
+/**
+ * Create a new plain-date object from a native JS `Date` object
+ * in the system's local timezone.
+ *
+ * @param instant Optional JS `Date`, fallback to current wall-time
+ */
+ExPlainDate.fromLocalInstant = function <T extends ComPlainDate>(
+  this: PlainDateFactory<T>,
+  instant?: Date,
+): T {
+  return this(splitLocalDateTime(instant)[0]);
+};
+
+/**
+ * Create a new plain-date object from a native JS `Date` object
+ * in a specific timezone.
+ *
+ * @param timezone A named IANA timezone
+ * @param instant Optional JS `Date`, fallback to current wall-time
+ */
+ExPlainDate.fromInstant = function <T extends ComPlainDate>(
+  this: PlainDateFactory<T>,
+  timezone: string,
+  instant?: Date,
+): T {
+  return this(splitDateTime(timezone)(instant)[0]);
 };
