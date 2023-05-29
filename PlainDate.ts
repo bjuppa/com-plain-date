@@ -72,45 +72,26 @@ export interface ComPlainDate {
   ) => T;
 }
 
-/** Describes a factory function that creates plain-date objects */
+/**
+ * Describes a factory function that creates plain-date objects.
+ *
+ * Specific implementations of the factory may provide additional methods that
+ * takes other kinds of arguments.
+ */
 export interface PlainDateFactory<T extends ComPlainDate> {
-  /** Callable signature */
   (x: SloppyDate): T;
-
-  /** Create a new plain-date object from an ISO string */
   fromString?: <T extends ComPlainDate>(
     this: PlainDateFactory<T>,
     s: string,
   ) => T;
-
-  /**
-   * Create a new plain-date object from a native JS `Date` object in UTC.
-   *
-   * @param instant Optional JS `Date`, fallback to current wall-time
-   */
   fromUtcInstant?: <T extends ComPlainDate>(
     this: PlainDateFactory<T>,
     instant?: Date,
   ) => T;
-
-  /**
-   * Create a new plain-date object from a native JS `Date` object
-   * in the system's local timezone.
-   *
-   * @param instant Optional JS `Date`, fallback to current wall-time
-   */
   fromLocalInstant?: <T extends ComPlainDate>(
     this: PlainDateFactory<T>,
     instant?: Date,
   ) => T;
-
-  /**
-   * Create a new plain-date object from a native JS `Date` object
-   * in a specific timezone.
-   *
-   * @param timezone A named IANA timezone
-   * @param instant Optional JS `Date`, fallback to current wall-time
-   */
   fromInstant?: <T extends ComPlainDate>(
     this: PlainDateFactory<T>,
     timezone: string,
