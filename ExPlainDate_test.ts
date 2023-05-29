@@ -65,6 +65,51 @@ Deno.test("throws error when string only contains year part", () => {
   assertThrows(() => ExPlainDate.fromString("2022"));
 });
 
+Deno.test("can be created from instant in UTC", () => {
+  assertEquals(
+    String(ExPlainDate.fromUtcInstant(new Date("2022-02-02T00:00:00Z"))),
+    "2022-02-02",
+  );
+});
+
+Deno.test("can be created from current wall-time in UTC", () => {
+  assertEquals(
+    String(ExPlainDate.fromUtcInstant(new Date())),
+    new Date().toLocaleDateString("sv", { timeZone: "UTC" }),
+  );
+});
+
+Deno.test("can be created from instant in system's local timezone", () => {
+  assertEquals(
+    String(ExPlainDate.fromLocalInstant(new Date("2022-02-02T00:00:00"))),
+    "2022-02-02",
+  );
+});
+
+Deno.test("can be created from current wall-time in system's local timezone", () => {
+  assertEquals(
+    String(ExPlainDate.fromLocalInstant()),
+    new Date().toLocaleDateString("sv"),
+  );
+});
+
+Deno.test("can be created from instant in a specific timezone", () => {
+  assertEquals(
+    String(
+      ExPlainDate.fromInstant("Asia/Tokyo", new Date("2022-02-02T00:00+0900")),
+    ),
+    "2022-02-02",
+  );
+});
+
+Deno.test("can be created from current wall-time in a specific timezone", () => {
+  const tz = "Asia/Tokyo";
+  assertEquals(
+    String(ExPlainDate.fromInstant(tz, new Date())),
+    new Date().toLocaleDateString("sv", { timeZone: tz }),
+  );
+});
+
 Deno.test("day name can be localized", () => {
   const exPlainDate = ExPlainDate({ year: 2020, month: 6, day: 13 });
 
