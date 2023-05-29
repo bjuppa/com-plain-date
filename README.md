@@ -23,6 +23,16 @@ The footprint of a tree-shaken and compressed production build starts below
 
 ## Quick example
 
+This will show you how to split a native JavaScript `Date` into separate
+plain-date and plain-time objects.
+
+We'll navigate from that plain-date to another using a _pipeline_ of operations,
+and then we'll describe how to use utility functions _independently_ for
+navigation and getting information about a plain-date.
+
+The final step will merge a plain-date and a plain-time into a native JavaScript
+`Date`, completing the circle.
+
 ```ts
 // If you're using Deno, you can import directly from deno.land
 import {
