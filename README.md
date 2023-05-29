@@ -61,10 +61,13 @@ const midsummersEve = june6.pipe(
   firstWeekDay(WeekDay.FRIDAY), // Find the first Friday
 ); // 2023-06-23
 
-// Some examples of quickly turning a plain-date into a localized string:
+// Quickly turn a plain-date into a localized string:
 midsummersEve.toLocaleString("en"); // "6/23/23"
-midsummersEve.toLocaleStringFull("sv"); // "fredag 23 juni 2023"
-midsummersEve.dayNameShort("fr"); // "ven."
+// Any valid combination of `Intl` options can be used:
+midsummersEve.toLocaleString(
+  "sv",
+  { dateStyle: "full" },
+); // "fredag 23 juni 2023"
 
 // Utility functions can be used independently with plain-dates, for example:
 const newYearsDay = startOfYear(midsummersEve); // 2023-01-01
