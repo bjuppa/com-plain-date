@@ -2,7 +2,7 @@ import { ComPlainDate } from "../PlainDate.ts";
 
 export type FormatPlainDateOptions = Omit<
   Intl.DateTimeFormatOptions,
-  "timeZone"
+  "timeZone" | "timeZoneName"
 >;
 
 /**
