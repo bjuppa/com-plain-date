@@ -7,7 +7,15 @@ import { isTruthy } from "./support/isTruthy.ts";
 type FormatPlainTimeOptions =
   & Omit<
     Intl.DateTimeFormatOptions,
-    "timeZone" | "timeZoneName" | "timeStyle"
+    | "timeZone"
+    | "timeZoneName"
+    | "timeStyle"
+    | "dateStyle"
+    | "weekday"
+    | "year"
+    | "month"
+    | "day"
+    | "era"
   >
   & { timeStyle?: "medium" | "short" };
 
