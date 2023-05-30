@@ -91,7 +91,7 @@ export function PlainTime(
   const plainTime: ComPlainTime = {
     constructor: PlainTime,
     hour: epochUtcDate.getUTCHours(),
-    minute: epochUtcDate.getUTCHours(),
+    minute: epochUtcDate.getUTCMinutes(),
     second: epochUtcDate.getUTCSeconds(),
     millisecond: epochUtcDate.getUTCMilliseconds(),
 
