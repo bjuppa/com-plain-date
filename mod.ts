@@ -21,6 +21,9 @@ export type { ComPlainDate, PlainDateFactory } from "./PlainDate.ts";
 export { ExPlainDate } from "./ExPlainDate.ts";
 export type { ExtendedPlainDate } from "./ExPlainDate.ts";
 
+export { PlainTime } from "./PlainTime.ts";
+export type { ComPlainTime, PlainTimeFactory } from "./PlainTime.ts";
+
 export {
   BUSINESS_DAYS_IN_WEEK,
   DAYS_IN_COMMON_YEAR,
