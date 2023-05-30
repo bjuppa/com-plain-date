@@ -4,7 +4,7 @@ import { tallyMilliseconds } from "./support/tallyMilliseconds.ts";
 import { intlParts } from "./support/intlParts.ts";
 import { isTruthy } from "./support/isTruthy.ts";
 
-type FormatPlainTimeOptions =
+export type FormatPlainTimeOptions =
   & Omit<
     Intl.DateTimeFormatOptions,
     | "timeZone"
