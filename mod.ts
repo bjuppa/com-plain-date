@@ -21,6 +21,9 @@ export type { ComPlainDate, PlainDateFactory } from "./PlainDate.ts";
 export { ExPlainDate } from "./ExPlainDate.ts";
 export type { ExtendedPlainDate } from "./ExPlainDate.ts";
 
+export { PlainTime } from "./PlainTime.ts";
+export type { ComPlainTime, PlainTimeFactory } from "./PlainTime.ts";
+
 export {
   BUSINESS_DAYS_IN_WEEK,
   DAYS_IN_COMMON_YEAR,
@@ -69,6 +72,7 @@ export { startOfYear } from "./utils/startOfYear.ts";
 // Utils for making strings
 export { datetimeLocal } from "./utils/datetimeLocal.ts";
 export { formatPlainDate } from "./utils/formatPlainDate.ts";
+export { formatPlainTime } from "./utils/formatPlainTime.ts";
 
 // Utils for getting information about a date object
 export { daysInMonth } from "./utils/daysInMonth.ts";
