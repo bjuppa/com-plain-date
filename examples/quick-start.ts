@@ -24,8 +24,8 @@ const [june6, time1337] = splitDateTime("Europe/Stockholm")(
 // The plain-date part is an object adhering to the full ComPlainDate interface
 june6; // { year: 2023, month: 6, day: 6, iso: "2023-06-06", ...}
 
-// The plain-time part is a simple object
-time1337; // { hour: 13, minute: 37, second: 0, millisecond: 0 }
+// The plain-time part is an object adhering to the full ComPlainTime interface
+time1337; // { hour: 13, minute: 37, second: 0, millisecond: 0, ... }
 
 // Apply any pipeline of operations to get a new plain-date
 // ...free from any hassle involving timezones!
@@ -41,6 +41,13 @@ midsummersEve.toLocaleString(
   "sv",
   { dateStyle: "full" }, // Any valid combination of `Intl` options can be used
 ); // "fredag 23 juni 2023"
+
+// Quickly turn a plain-time into a localized string:
+time1337.toLocaleString("en"); // "1:37 PM"
+time1337.toLocaleString(
+  "sv",
+  { timeStyle: "medium" }, // Any valid combination of `Intl` options can be used
+); // "13:37:00"
 
 // Utility functions can be used independently with plain-dates, for example:
 const newYearsDay = startOfYear(midsummersEve); // 2023-01-01
