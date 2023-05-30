@@ -8,3 +8,7 @@ Deno.test("module exports PlainDate factory", () => {
 Deno.test("module exports ExPlainDate factory", () => {
   assertExists(mod.ExPlainDate);
 });
+
+Deno.test("module exports PlainTime factory", () => {
+  assertExists(mod.PlainTime);
+});
