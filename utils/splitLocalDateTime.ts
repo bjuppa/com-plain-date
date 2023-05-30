@@ -1,4 +1,5 @@
 import { PlainDate } from "../PlainDate.ts";
+import { PlainTime } from "../PlainTime.ts";
 import { SplitDateTime } from "../support/date-time-types.ts";
 
 /**
@@ -7,16 +8,17 @@ import { SplitDateTime } from "../support/date-time-types.ts";
  */
 export function splitLocalDateTime(instant?: Date): SplitDateTime {
   instant ??= new Date();
-  const plainDate = PlainDate({
-    year: instant.getFullYear(),
-    month: instant.getMonth() + 1,
-    day: instant.getDate(),
-  });
-  const plainTime = {
-    hour: instant.getHours(),
-    minute: instant.getMinutes(),
-    second: instant.getSeconds(),
-    millisecond: instant.getMilliseconds(),
-  };
-  return [plainDate, plainTime];
+  return [
+    PlainDate({
+      year: instant.getFullYear(),
+      month: instant.getMonth() + 1,
+      day: instant.getDate(),
+    }),
+    PlainTime({
+      hour: instant.getHours(),
+      minute: instant.getMinutes(),
+      second: instant.getSeconds(),
+      millisecond: instant.getMilliseconds(),
+    }),
+  ];
 }
