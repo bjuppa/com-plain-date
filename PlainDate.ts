@@ -109,6 +109,7 @@ export function PlainDate(
   { year = NaN, month = 1, day = 1 }: SloppyDate,
 ): ComPlainDate {
   const utcDate = createUtcInstant({ year, month, day });
+
   if (isNaN(utcDate.valueOf())) {
     throw new TypeError(
       `Input is not a valid date: ${JSON.stringify({ year, month, day })}`,
