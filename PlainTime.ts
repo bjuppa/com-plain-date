@@ -1,8 +1,6 @@
 import { SloppyTime } from "./support/date-time-types.ts";
 import { HOURS_IN_DAY, MS_IN_HOUR } from "./constants.ts";
 import { tallyMilliseconds } from "./support/tallyMilliseconds.ts";
-import { intlParts } from "./support/intlParts.ts";
-import { isTruthy } from "./support/isTruthy.ts";
 
 export type FormatPlainTimeOptions =
   & Omit<
@@ -18,15 +16,6 @@ export type FormatPlainTimeOptions =
     | "era"
   >
   & { timeStyle?: "medium" | "short" };
-
-const intlUtcFormat = Intl.DateTimeFormat("en", {
-  hourCycle: "h23",
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-  fractionalSecondDigits: 3,
-  timeZone: "UTC",
-});
 
 /** Describes a basic time-of-day object with minimal properties */
 export interface ComPlainTime {
@@ -125,16 +114,10 @@ export function PlainTime(
       return ms;
     },
     toString() {
-      const parts = intlParts(intlUtcFormat)(epochUtcDate);
-      return [
-        parts["hour"],
-        parts["minute"],
-        parts["fractionalSecond"] !== "000"
-          ? `${parts["second"]}.${parts["fractionalSecond"]}`
-          : parts["second"] !== "00"
-          ? parts["second"]
-          : undefined,
-      ].filter(isTruthy).join(":");
+      return this.iso.slice(
+        1,
+        this.millisecond ? undefined : this.second ? -4 : -7,
+      );
     },
     toJSON() {
       return this.toString();
