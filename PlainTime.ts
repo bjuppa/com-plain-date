@@ -52,6 +52,18 @@ export interface ComPlainTime {
    * Defaults to "short" time-style if no options given.
    *
    * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat | Intl.DateTimeFormat options on MDN}
+   *
+   * @example
+   * ```ts
+   * // "1:37 PM"
+   * PlainTime({ hour: 13, minute: 37, second: 59, millisecond: 999 }).toLocaleString("en");
+   *
+   * // "1:37:59 PM"
+   * PlainTime({ hour: 13, minute: 37, second: 59, millisecond: 999 }).toLocaleString("en", { timeStyle: "medium" });
+   *
+   * // "5"
+   * PlainTime({ hour: 9, millisecond: 599 }).toLocaleString("en", { fractionalSecondDigits: 1 });
+   * ```
    */
   toLocaleString: (
     locale?: Intl.LocalesArgument,
