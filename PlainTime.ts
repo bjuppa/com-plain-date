@@ -73,6 +73,9 @@ export interface PlainTimeFactory<T extends ComPlainTime> {
  *
  * @param date A time object with optional properties `hour`, `minute`, `second` & 'millisecond'
  * @returns A new immutable plain-time object
+ *
+ * @throws {TypeError} Input total must be less than 24 hours
+ * @throws {TypeError} Input total can't be negative.
  */
 export function PlainTime(
   { hour = 0, minute = 0, second = 0, millisecond = 0 }: SloppyTime,
@@ -81,14 +84,14 @@ export function PlainTime(
 
   if (ms < 0) {
     throw new TypeError(
-      `Input tally must be positive: ${
+      `Input must be positive: ${
         JSON.stringify({ hour, minute, second, millisecond })
       }`,
     );
   }
   if (ms >= HOURS_IN_DAY * MS_IN_HOUR) {
     throw new TypeError(
-      `Input tally must be less than 24 hours: ${
+      `Input must be less than 24 hours: ${
         JSON.stringify({ hour, minute, second, millisecond })
       }`,
     );
