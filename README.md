@@ -126,13 +126,14 @@ make their meaning clear.
 
 ### Explicit named timezones
 
-These utilities are designed to always require a named timezone as the first
-parameter for every operation that would be ambiguous without one.
+These utilities are designed to always require a named timezone for every
+operation that would be ambiguous without one. The timezone is the very first
+argument given to such functions, showing how important it is.
 
 This avoids confusion caused by working with JavaScript `Date` or other
-_DateTime_-like objects where the timezone information is hidden away. Something
-that becomes especially problematic when passing such objects over context
-boundaries.
+_DateTime_-like objects where the timezone information is hidden away. Timezones
+set inside objects are especially problematic when passing those objects over
+context boundaries.
 
 ### Separate plain-date and plain-time objects
 
