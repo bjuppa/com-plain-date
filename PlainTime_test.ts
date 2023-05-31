@@ -65,6 +65,15 @@ Deno.test("value conversion returns number of milliseconds from 00:00", () => {
   assertEquals(Number(plainTime), ms);
 });
 
+Deno.test("ISO string has prefix T and full resolution", () => {
+  const plainTime = PlainTime({
+    hour: 2,
+    minute: 3,
+  });
+
+  assertEquals(plainTime.iso, "T02:03:00.000");
+});
+
 Deno.test("string representation is short for 0 seconds", () => {
   const plainTime = PlainTime({
     hour: 2,

@@ -39,6 +39,8 @@ export interface ComPlainTime {
   /** Millisecond (0-999) */
   millisecond: number;
 
+  /** `Thh:mm:ss.sss` (ISO 8601) */
+  iso: string;
   /** Tallied milliseconds since 00:00 */
   valueOf: () => number;
   /** `hh:mm` / `hh:mm:ss` / `hh:mm:ss.sss` */
@@ -118,6 +120,7 @@ export function PlainTime(
     second: epochUtcDate.getUTCSeconds(),
     millisecond: epochUtcDate.getUTCMilliseconds(),
 
+    iso: epochUtcDate.toISOString().slice(-14, -1),
     valueOf() {
       return ms;
     },
