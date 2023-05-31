@@ -1,10 +1,11 @@
 import { SloppyDate, SloppyTime } from "./support/date-time-types.ts";
 import { MonthNumber } from "./constants.ts";
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
-import {
-  formatPlainDate,
-  FormatPlainDateOptions,
-} from "./utils/formatPlainDate.ts";
+
+export type FormatPlainDateOptions = Omit<
+  Intl.DateTimeFormatOptions,
+  "timeZone" | "timeZoneName"
+>;
 
 /** Describes a basic plain-date object with minimal properties */
 export interface ComPlainDate {
@@ -135,7 +136,10 @@ export function PlainDate(
     },
 
     toLocaleString(locale = undefined, options = { dateStyle: "short" }) {
-      return formatPlainDate(locale)(options)(this);
+      return utcDate.toLocaleDateString(locale, {
+        ...options,
+        timeZone: "UTC",
+      });
     },
 
     toUtcInstant({ hour = 0, minute = 0, second = 0, millisecond = 0 } = {}) {

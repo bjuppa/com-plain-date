@@ -1,9 +1,4 @@
-import { ComPlainDate } from "../PlainDate.ts";
-
-export type FormatPlainDateOptions = Omit<
-  Intl.DateTimeFormatOptions,
-  "timeZone" | "timeZoneName"
->;
+import { ComPlainDate, FormatPlainDateOptions } from "../PlainDate.ts";
 
 /**
  * Get a function curried with a locale,
@@ -17,9 +12,5 @@ export type FormatPlainDateOptions = Omit<
  */
 export function formatPlainDate(locale: Intl.LocalesArgument = undefined) {
   return (options: FormatPlainDateOptions = {}) =>
-  (date: ComPlainDate): string =>
-    date.toUtcInstant().toLocaleDateString(locale, {
-      ...options,
-      timeZone: "UTC",
-    });
+  (date: ComPlainDate): string => date.toLocaleString(locale, options);
 }
