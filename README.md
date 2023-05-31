@@ -18,9 +18,6 @@ ComPlainDate is available as packages for both Deno and npm:
 - [deno.land/x/complaindate](https://deno.land/x/complaindate/mod.ts)
 - [npmjs.com/package/complaindate](https://www.npmjs.com/package/complaindate)
 
-The footprint of a tree-shaken and compressed production build starts below
-`1 kB` when using just the `PlainDate` object API.
-
 ## Quick example
 
 This will show you how to split a native JavaScript `Date` into separate
@@ -165,6 +162,32 @@ accompanying factory functions to create them.
 
 Please don't let this scare you, the ComPlainDate utilities are just as easy to
 use in a non-functional paradigm too!
+
+### Allow for the smallest possible bundle size
+
+First of all, there are no external dependencies, and there will never be any.
+
+The base [`PlainDate`](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate)
+and [`PlainTime`](https://deno.land/x/complaindate/mod.ts?s=ComPlainTime)
+objects are carefully composed to be _minimal loveable objects_, containing only
+what is needed for a neat developer experience. The utility functions are meant
+to be imported and applied with these base objects when required.
+
+When bundle size is not an issue (i.e. server-side), you can work with full
+[`ExPlainDate`]((https://deno.land/x/complaindate/mod.ts?s=ExtendedPlainDate))
+objects if you want to call available operations directly on the plain-date
+object. This may sound convenient, but it is very hard to tree-shake, making
+your bundle size unnecessary big.
+
+There is no extended interface for the plain-time objects, because there are
+actually very few complex operations to do on a wall-time object. Plain-time
+objects are most often used for display purposes, they seldom need to be
+manipulated.
+
+The footprint of a tree-shaken and compressed production build starts below
+`1 kB` when using just the `PlainDate` object API. This will increase a little
+with every imported utility, but you'll probably find that most projects require
+very few of them.
 
 ## Limitations
 

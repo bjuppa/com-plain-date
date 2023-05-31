@@ -33,6 +33,7 @@ await build({
       "curried",
       "pure",
     ],
+    sideEffects: false,
     repository: {
       type: "git",
       url: "git+https://github.com/bjuppa/com-plain-date.git",
