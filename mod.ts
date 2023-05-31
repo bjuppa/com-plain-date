@@ -9,6 +9,10 @@
  * created with the {@link PlainDate} factory, described by the
  * {@link PlainDateFactory} interface.
  *
+ * The {@link ComPlainTime} interface describes wall-time objects, that can be
+ * created with the {@link PlainTime} factory, described by the
+ * {@link PlainTimeFactory} interface.
+ *
  * There is also an extended type of plain-date objects, described by the
  * {@link ExtendedPlainDate} interface. Those objects are created with the
  * {@link ExPlainDate} factory.
@@ -18,11 +22,11 @@
 export { PlainDate } from "./PlainDate.ts";
 export type { ComPlainDate, PlainDateFactory } from "./PlainDate.ts";
 
-export { ExPlainDate } from "./ExPlainDate.ts";
-export type { ExtendedPlainDate } from "./ExPlainDate.ts";
-
 export { PlainTime } from "./PlainTime.ts";
 export type { ComPlainTime, PlainTimeFactory } from "./PlainTime.ts";
+
+export { ExPlainDate } from "./ExPlainDate.ts";
+export type { ExtendedPlainDate } from "./ExPlainDate.ts";
 
 export {
   BUSINESS_DAYS_IN_WEEK,
@@ -50,6 +54,7 @@ export type { PlainDateMapFn } from "./support/function-signatures.ts";
 
 // Utils for parsing strings
 export { parsePlainDate } from "./utils/parsePlainDate.ts";
+export { parsePlainTime } from "./utils/parsePlainTime.ts";
 
 // Utils for splitting native JS `Date` objects into separate date & time objects
 export { splitDateTime } from "./utils/splitDateTime.ts";
