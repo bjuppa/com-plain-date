@@ -62,6 +62,7 @@ export { splitLocalDateTime } from "./utils/splitLocalDateTime.ts";
 export { splitUtcDateTime } from "./utils/splitUtcDateTime.ts";
 
 // Utils for generating a new plain-date from an existing one
+export { pipePlainDate } from "./utils/pipePlainDate.ts";
 export { addBusinessDays } from "./utils/addBusinessDays.ts";
 export { addDays } from "./utils/addDays.ts";
 export { addMonths } from "./utils/addMonths.ts";

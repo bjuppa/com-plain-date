@@ -1,6 +1,6 @@
+import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { SloppyDate, SloppyTime } from "./support/date-time-types.ts";
 import { MonthNumber } from "./constants.ts";
-import { createUtcInstant } from "./utils/createUtcInstant.ts";
 
 export type FormatPlainDateOptions = Omit<
   Intl.DateTimeFormatOptions,
@@ -57,7 +57,10 @@ export interface ComPlainDate {
   constructor: PlainDateFactory<this>;
 
   /**
-   * Create a new plain-date object, applying a pipeline of functions.
+   * Apply a pipeline of functions to this plain-date, from left to right.
+   *
+   * @param fns Functions that take a plain-date and return a plain-date
+   * @returns The output of the last function
    */
   pipe: <T extends ComPlainDate>(
     this: T,
@@ -65,7 +68,10 @@ export interface ComPlainDate {
   ) => T;
 
   /**
-   * Create a new plain-date object, modified by a callback function.
+   * Create a new plain-date object from this one, modified by a function.
+   *
+   * @param f A function that takes a plain-date and returns a sloppy-date
+   * @returns A new plain-date made from the sloppy-date
    */
   map: <T extends ComPlainDate>(
     this: T,
