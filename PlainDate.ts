@@ -1,7 +1,5 @@
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { SloppyDate, SloppyTime } from "./support/date-time-types.ts";
-// deno-lint-ignore no-unused-vars
-import { PlainDateMapFn } from "./support/function-signatures.ts";
 import { MonthNumber } from "./constants.ts";
 
 export type FormatPlainDateOptions = Omit<
@@ -61,9 +59,7 @@ export interface ComPlainDate {
   /**
    * Apply a pipeline of functions to this plain-date, from left to right.
    *
-   * The type {@link PlainDateMapFn} is useful when declaring your own map functions.
-   *
-   * @param {...PlainDateMapFn} fns Functions that take a plain-date and return a plain-date
+   * @param fns Functions that take a plain-date and return a plain-date
    * @returns The output of the last function
    */
   pipe: <T extends ComPlainDate>(
