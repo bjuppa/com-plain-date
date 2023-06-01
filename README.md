@@ -189,6 +189,22 @@ The footprint of a tree-shaken and compressed production build starts below
 with every imported utility, but you'll probably find that most projects require
 very few of them.
 
+### Unambiguous function names
+
+The unfortunate choice of name for `Date` in JavaScript makes any function with
+the word `date` difficult to quickly assess from the name alone. Does it operate
+on `Date` or not? Had `Date` been called `Instant` or even `DateTime`, the
+single word `date` could have been used in the names of our utility functions
+that operates on plain-date objects.
+
+Now that's not the case so a deliberate decision has been made to use the longer
+but less ambiguous `PlainDate` and `PlainTime` in function names. For example,
+our utilities are called `parsePlainDate` and `formatPlainDate`, even though
+`parseDate` and `formatDate` would have been more succinct.
+
+Functions related to JavaScript `Date` objects have the word `Instant` in their
+names whenever needed for clarity.
+
 ## Limitations
 
 Current JavaScript `Date` objects support the Gregorian calendar only, and
