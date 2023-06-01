@@ -1,4 +1,4 @@
-import { datePipe } from "./datePipe.ts";
+import { pipePlainDate } from "./pipePlainDate.ts";
 import { PlainDate } from "../PlainDate.ts";
 import { assertEquals } from "../dev_deps.ts";
 import { PlainDateMapFn } from "../support/function-signatures.ts";
@@ -17,7 +17,7 @@ Deno.test("given pipeline of operations is applied to the plain-date", () => {
     });
 
   assertEquals(
-    String(datePipe(addOneYear, doubleYear)(plainDate)),
+    String(pipePlainDate(addOneYear, doubleYear)(plainDate)),
     "4046-12-22",
   );
 });
