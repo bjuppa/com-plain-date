@@ -13,7 +13,7 @@ available — only time will tell...
 
 ## Installation
 
-ComPlainDate is available as packages for both Deno and npm:
+ComPlainDate is available as packages for **Deno** and **npm**:
 
 - [deno.land/x/complaindate](https://deno.land/x/complaindate/mod.ts)
 - [npmjs.com/package/complaindate](https://www.npmjs.com/package/complaindate)
