@@ -23,6 +23,16 @@ ComPlainDate is distributed as an **npm** package as well as a **Deno** module:
 ComPlainDate provides a few special objects and a bunch of utility functions to
 operate on those objects.
 
+The concepts we need to represent are:
+
+- _instant_, a universal point in time.
+- _calendar date_, a year, month, and day-of-month.
+- _time-of-day_, a wall-time of hours, minutes, and seconds.
+
+None of these concepts have an inherent timezone, on their own they are all
+_timezone-agnostic_. We only need a timezone when converting between the
+concepts.
+
 ### No `Instant`?
 
 First off, ComPlainDate does not provide any special object representing a
@@ -37,9 +47,9 @@ need to do an operation that `Date` doesn't support!
 
 ### Plain-date
 
-ComPlainDate provides `PlainDate` for operations on _dates_, like adding or
-subtracting days, months or years. All the operations you do on plain-dates are
-timezone agnostic, which helps make intentions easy to follow in your code.
+ComPlainDate provides `PlainDate` for operations on local _calendar dates_, like
+adding or subtracting days, months or years. All the operations you do on
+plain-dates are timezone agnostic.
 
 Plain-date objects have three numeric properties (`year`, `month`, and `day`)
 used for most operations. The `iso` property and
