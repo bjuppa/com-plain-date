@@ -13,10 +13,72 @@ available — only time will tell...
 
 ## Installation
 
-ComPlainDate is available as packages for both Deno and npm:
+ComPlainDate is distributed as an **npm** package as well as a **Deno** module:
 
-- [deno.land/x/complaindate](https://deno.land/x/complaindate/mod.ts)
 - [npmjs.com/package/complaindate](https://www.npmjs.com/package/complaindate)
+- [deno.land/x/complaindate](https://deno.land/x/complaindate/mod.ts)
+
+## Introduction
+
+ComPlainDate provides a few special objects and a bunch of utility functions to
+operate on those objects.
+
+The concepts we need to represent are:
+
+- _instant_, a universal point in time.
+- _calendar date_, a year, month, and day-of-month.
+- _time-of-day_, a wall-time of hours, minutes, and seconds.
+
+None of these concepts have an inherent timezone, on their own they are all
+_timezone-agnostic_. We only need a timezone when converting between the
+concepts.
+
+### No `Instant`?
+
+First off, ComPlainDate does not provide any special object representing a
+universal _instant_ in time. JavaScript's `Date` is basically a wrapper around a
+UNIX timestamp (the number of milliseconds since 1970-01-01 00:00:00 UTC) and
+doesn't know about timezones. This UTC-centric aspect of `Date` is good for
+timezone-agnostic operations such as comparing universal points in time and
+adding or subtracting _time_ in hours, minutes, or seconds.
+
+Use native JavaScript `Date` objects with relevant utility functions until you
+need to do an operation that `Date` doesn't support!
+
+### Plain-date
+
+ComPlainDate provides `PlainDate` for operations on local _calendar dates_, like
+adding or subtracting days, months or years. All the operations you do on
+plain-dates are timezone agnostic.
+
+Plain-date objects have three numeric properties (`year`, `month`, and `day`)
+used for most operations. The `iso` property and
+[string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
+gives a string in the format `yyyy-mm-dd` that can be used for simple display
+purposes, while the `toLocaleString` method is good for tailored formatting of
+dates in user interfaces.
+
+Plain-dates have a `map` method that makes it easy to build a new plain-date
+that represents some modification of an existing plain-date. They also have a
+`pipe` method that applies any number of operations, from left to right,
+returning a new plain-date.
+
+### Plain-time
+
+ComPlainDate provides `PlainTime` representing a local _time-of-day_. Plain-time
+objects are mostly used for storing and displaying a fixed time-of-day and
+operations on them are surprisingly uncommon.
+
+Plain-time objects have four numeric properties (`hour`, `minute`, `second`, and
+`millisecond`), that can be used for operations in the rare case it's needed.
+The `iso` property is a string in the format `Thh:mm:ss.sss` that is mostly used
+for technical purposes.
+
+For display,
+[string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
+will give the shortest of the formats `hh:mm` / `hh:mm:ss` / `hh:mm:ss.sss`
+depending on the resolution of the specific plain-time. Of course, the
+`toLocaleString` method is best for controlled formatting in user interfaces.
 
 ## Quick example
 
@@ -162,6 +224,13 @@ accompanying factory functions to create them.
 
 Please don't let this scare you, the ComPlainDate utilities are just as easy to
 use in a non-functional paradigm too!
+
+### Coerce objects to relevant primitive types
+
+Constructed objects include implementations of the common `valueOf`, `toString`,
+`toJSON`, and `toLocaleString` methods, making their behavior and use similar to
+JavaScript's `Date` objects when converting to primitive types. This enables
+comparing objects of the same type with operators `<`, `>`, `<=`, and `>=`.
 
 ### Allow for the smallest possible bundle size
 
