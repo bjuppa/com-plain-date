@@ -1,5 +1,5 @@
 import { ComPlainDate, PlainDate } from "./PlainDate.ts";
-import { assertEquals, assertThrows } from "./dev_deps.ts";
+import { assert, assertEquals, assertFalse, assertThrows } from "./dev_deps.ts";
 import { PlainDateMapFn } from "./support/function-signatures.ts";
 
 Deno.test("factory accepts number date parts", () => {
@@ -116,4 +116,10 @@ Deno.test("can be passed through pipeline of functions", () => {
     });
 
   assertEquals(String(plainDate.pipe(addOneYear, doubleYear)), "4046-12-22");
+});
+
+Deno.test("can be compared as primitives", () => {
+  assert(PlainDate({ year: 2023, month: 2 }) > PlainDate({ year: 2023 }));
+  assert(PlainDate({ year: 2023 }) >= PlainDate({ year: 2023 }));
+  assertFalse(PlainDate({ year: 2022 }) > PlainDate({ year: 2022 }));
 });

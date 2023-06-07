@@ -1,6 +1,6 @@
 import { PlainTime } from "./PlainTime.ts";
 import { MS_IN_HOUR, MS_IN_MINUTE } from "./constants.ts";
-import { assertEquals, assertThrows } from "./dev_deps.ts";
+import { assert, assertEquals, assertFalse, assertThrows } from "./dev_deps.ts";
 
 Deno.test("factory accepts number time parts", () => {
   const plainTime = PlainTime({
@@ -122,4 +122,10 @@ Deno.test("can be localized", () => {
     plainTime.toLocaleString("en", { timeStyle: "medium" }),
     "2:03:00 AM",
   );
+});
+
+Deno.test("can be compared as primitives", () => {
+  assert(PlainTime({ hour: 12, minute: 1 }) > PlainTime({ hour: 12 }));
+  assert(PlainTime({ hour: 12 }) >= PlainTime({ hour: 12 }));
+  assertFalse(PlainTime({ hour: 12 }) > PlainTime({ hour: 12 }));
 });
