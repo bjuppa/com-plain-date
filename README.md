@@ -215,6 +215,13 @@ accompanying factory functions to create them.
 Please don't let this scare you, the ComPlainDate utilities are just as easy to
 use in a non-functional paradigm too!
 
+### Coerce objects to relevant primitive types
+
+Constructed objects include implementations of the common `valueOf`, `toString`,
+`toJSON`, and `toLocaleString` methods, making their behavior and use similar to
+JavaScript's `Date` objects when converting to primitive types. This enables
+comparing objects of the same type with operators `<`, `>`, `<=`, and `>=`.
+
 ### Allow for the smallest possible bundle size
 
 First of all, there are no external dependencies, and there will never be any.
