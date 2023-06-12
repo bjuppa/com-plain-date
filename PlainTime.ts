@@ -40,9 +40,8 @@ export interface ComPlainTime {
   /**
    * Localize the time for display to a user.
    *
-   * Defaults to "short" time-style if no options given.
-   *
-   * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat | Intl.DateTimeFormat options on MDN}
+   * @param locale `Intl` {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument | locale }, defaults to system's locale if not given
+   * @param options `Intl` {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat | format options }, defaults to "short" time-style if not given
    *
    * @example
    * ```ts
@@ -74,7 +73,7 @@ export interface PlainTimeFactory<T extends ComPlainTime> {
 /**
  * Factory function for making basic plain-time objects with minimal properties.
  *
- * @param date A time object with optional properties `hour`, `minute`, `second` & 'millisecond'
+ * @param time A time object with optional properties `hour`, `minute`, `second` & 'millisecond'
  * @returns A new immutable plain-time object
  *
  * @throws {TypeError} Input total must be less than 24 hours

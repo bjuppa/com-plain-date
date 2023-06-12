@@ -3,8 +3,8 @@ import { HOURS_IN_DAY, MS_IN_HOUR } from "../constants.ts";
 import { differenceInMilliseconds } from "./differenceInMilliseconds.ts";
 
 /**
- * Get a function curried with a date, from which to get the number of
- * crossings into days between it and other dates.
+ * Get a function curried with a plain-date, from which to get the number of
+ * crossings into days between it and other plain-dates.
  *
  * @param from A plain-date to calculate the difference from
  * @returns A curried function that operates on plain-dates
