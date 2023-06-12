@@ -1,7 +1,7 @@
 import { createInstant } from "./createInstant.ts";
 import { assert, assertEquals, assertInstanceOf } from "../dev_deps.ts";
 
-Deno.test("returned date object is valid", () => {
+Deno.test("returned Date object is valid", () => {
   // Stockholm is 1 hour ahead of UTC when not in DST
   const instant = createInstant("Europe/Stockholm")({
     year: 2022,

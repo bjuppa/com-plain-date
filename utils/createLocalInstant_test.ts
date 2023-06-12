@@ -6,7 +6,7 @@ import {
   assertStringIncludes,
 } from "../dev_deps.ts";
 
-Deno.test("returned date object is valid", () => {
+Deno.test("returned Date object is valid", () => {
   const localDate = createLocalInstant({
     year: 2022,
     month: 1,
@@ -161,49 +161,49 @@ Deno.test("year can be 6-digits", () => {
   assertStringIncludes(localDate.toTimeString(), "00:00:00");
 });
 
-Deno.test("7-digit year produces invalid date object", () => {
+Deno.test("7-digit year produces invalid Date object", () => {
   const localDate = createLocalInstant({ year: 1000000 });
 
   assert(isNaN(localDate.valueOf()));
 });
 
-Deno.test("invalid year produces invalid date object", () => {
+Deno.test("invalid year produces invalid Date object", () => {
   const localDate = createLocalInstant({ year: NaN });
 
   assert(isNaN(localDate.valueOf()));
 });
 
-Deno.test("invalid month produces invalid date object", () => {
+Deno.test("invalid month produces invalid Date object", () => {
   const localDate = createLocalInstant({ year: 2022, month: NaN });
 
   assert(isNaN(localDate.valueOf()));
 });
 
-Deno.test("invalid day produces invalid date object", () => {
+Deno.test("invalid day produces invalid Date object", () => {
   const localDate = createLocalInstant({ year: 2022, day: NaN });
 
   assert(isNaN(localDate.valueOf()));
 });
 
-Deno.test("invalid hour produces invalid date object", () => {
+Deno.test("invalid hour produces invalid Date object", () => {
   const localDate = createLocalInstant({ year: 2022, hour: NaN });
 
   assert(isNaN(localDate.valueOf()));
 });
 
-Deno.test("invalid minute produces invalid date object", () => {
+Deno.test("invalid minute produces invalid Date object", () => {
   const localDate = createLocalInstant({ year: 2022, minute: NaN });
 
   assert(isNaN(localDate.valueOf()));
 });
 
-Deno.test("invalid second produces invalid date object", () => {
+Deno.test("invalid second produces invalid Date object", () => {
   const localDate = createLocalInstant({ year: 2022, second: NaN });
 
   assert(isNaN(localDate.valueOf()));
 });
 
-Deno.test("invalid millisecond produces invalid date object", () => {
+Deno.test("invalid millisecond produces invalid Date object", () => {
   const localDate = createLocalInstant({
     year: 2022,
     millisecond: NaN,
