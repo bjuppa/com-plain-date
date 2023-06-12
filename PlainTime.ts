@@ -73,7 +73,7 @@ export interface PlainTimeFactory<T extends ComPlainTime> {
 /**
  * Factory function for making basic plain-time objects with minimal properties.
  *
- * @param date A time object with optional properties `hour`, `minute`, `second` & 'millisecond'
+ * @param time A time object with optional properties `hour`, `minute`, `second` & 'millisecond'
  * @returns A new immutable plain-time object
  *
  * @throws {TypeError} Input total must be less than 24 hours
