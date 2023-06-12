@@ -1,14 +1,26 @@
 import { ComPlainTime, FormatPlainTimeOptions } from "../PlainTime.ts";
 
 /**
- * Get a function curried with a locale,
- * to get another function curried with format options,
- * from which to get localized strings of its plain-time arguments.
+ * Curry a function to get localized strings of its plain-time arguments.
  *
- * @param locale An `Intl` locale string, will use system's locale if not given
- * @returns A curried function that takes `Intl` format options and returns another curried function that operates on plain-times
+ * The function is curried in 2 rounds, each setting a property:
  *
- * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat | Intl.DateTimeFormat options on MDN}
+ * 1. `Intl` {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument | locale },
+ *    defaults to system's locale if not given.
+ * 2. `Intl` {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat | format options },
+ *    to "medium" time-style if no options given.
+ *
+ * @param locale `Intl` locale
+ * @returns A curried function that takes `Intl` format options and returns the final curried function that operates on plain-times
+ *
+ * @example
+ * ```ts
+ * const formatPlainTimeDefault = formatPlainTime()(); // Use system's locale and default formatting options
+ * const formatPlainTimeHour = formatPlainTime("en")({ hour: "numeric" });
+ *
+ * formatPlainTimeDefault(PlainTime({ hour: 13, minute: 37 })); // "1:37:00 PM"
+ * formatPlainTimeHour(PlainTime({ hour: 13, minute: 37 }));  // "1 PM"
+ * ```
  */
 export function formatPlainTime(locale: Intl.LocalesArgument = undefined) {
   return (options: FormatPlainTimeOptions = {}) =>
