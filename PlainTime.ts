@@ -40,9 +40,8 @@ export interface ComPlainTime {
   /**
    * Localize the time for display to a user.
    *
-   * Defaults to "short" time-style if no options given.
-   *
-   * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat | Intl.DateTimeFormat options on MDN}
+   * @param locale `Intl` {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument | locale }, defaults to system's locale if not given
+   * @param options `Intl` {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat | format options }, defaults to "short" time-style if not given
    *
    * @example
    * ```ts
