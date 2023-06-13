@@ -14,11 +14,11 @@
  *
  * @example
  * ```ts
- * const formatInstantDefault = formatInstant()()("Europe/Stockholm"); // Use system's locale and default formatting options
- * const formatInstant24h = formatInstant("en")({ hourCycle: "h23" })("Europe/Stockholm");
+ * const formatDateTime = formatInstant()()("Europe/Stockholm"); // Use system's locale and default formatting options
+ * const format24hDateTime = formatInstant("en")({ hourCycle: "h23" })("Europe/Stockholm");
  *
- * formatInstantDefault(new Date()); // "6/11/2023, 4:54:32 PM GMT+2"
- * formatInstant24h(new Date());  // "6/11/2023, 16:54:32"
+ * formatDateTime(new Date()); // "6/11/2023, 4:54:32 PM GMT+2"
+ * format24hDateTime(new Date());  // "6/11/2023, 16:54:32"
  * ```
  */
 export function formatInstant(locale: Intl.LocalesArgument = undefined) {
