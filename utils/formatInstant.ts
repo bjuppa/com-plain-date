@@ -1,3 +1,5 @@
+export type FormatInstantOptions = Omit<Intl.DateTimeFormatOptions, "timeZone">;
+
 /**
  * Curry a function to get localized strings of its JS `Date` arguments.
  *
@@ -14,20 +16,17 @@
  *
  * @example
  * ```ts
- * const formatInstantDefault = formatInstant()()("Europe/Stockholm"); // Use system's locale and default formatting options
- * const formatInstant24h = formatInstant("en")({ hourCycle: "h23" })("Europe/Stockholm");
+ * const formatDateTime = formatInstant()()("Europe/Stockholm"); // Use system's locale and default formatting options
+ * const format24hDateTime = formatInstant("en")({ hourCycle: "h23" })("Europe/Stockholm");
  *
- * formatInstantDefault(new Date()); // "6/11/2023, 4:54:32 PM GMT+2"
- * formatInstant24h(new Date());  // "6/11/2023, 16:54:32"
+ * formatDateTime(new Date()); // "6/11/2023, 4:54:32 PM GMT+2"
+ * format24hDateTime(new Date());  // "6/11/2023, 16:54:32"
  * ```
  */
-export function formatInstant(locale: Intl.LocalesArgument = undefined) {
-  return (options: Omit<
-    Intl.DateTimeFormatOptions,
-    "timeZone"
-  > = { timeZoneName: "short" }) =>
-  (timezone: string) =>
-  (instant: Date): string =>
+export function formatInstant(locale: Intl.LocalesArgument = undefined): (
+  options?: FormatInstantOptions,
+) => (timezone: string) => (instant: Date) => string {
+  return (options = { timeZoneName: "short" }) => (timezone) => (instant) =>
     instant.toLocaleString(locale, {
       ...options,
       timeZone: timezone,

@@ -15,14 +15,15 @@ import { ComPlainDate, FormatPlainDateOptions } from "../PlainDate.ts";
  *
  * @example
  * ```ts
- * const formatPlainDateDefault = formatPlainDate()(); // Use system's locale and default formatting options
- * const formatPlainDateMonthAndDay = formatPlainDate("en")({ month: "long", day: "numeric" });
+ * const formatDate = formatPlainDate()(); // Use system's locale and default formatting options
+ * const formatMonthAndDay = formatPlainDate("en")({ month: "long", day: "numeric" });
  *
- * formatPlainDateDefault(PlainDate({ year: 2023 })); // "1/1/2023"
- * formatPlainDateMonthAndDay(PlainDate({ year: 2023 }));  // "January 1"
+ * formatDate(PlainDate({ year: 2023 })); // "1/1/2023"
+ * formatMonthAndDay(PlainDate({ year: 2023 }));  // "January 1"
  * ```
  */
-export function formatPlainDate(locale: Intl.LocalesArgument = undefined) {
-  return (options: FormatPlainDateOptions = {}) =>
-  (date: ComPlainDate): string => date.toLocaleString(locale, options);
+export function formatPlainDate(
+  locale: Intl.LocalesArgument = undefined,
+): (options?: FormatPlainDateOptions) => (date: ComPlainDate) => string {
+  return (options = {}) => (date) => date.toLocaleString(locale, options);
 }
