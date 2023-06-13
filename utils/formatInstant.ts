@@ -1,3 +1,5 @@
+export type FormatInstantOptions = Omit<Intl.DateTimeFormatOptions, "timeZone">;
+
 /**
  * Curry a function to get localized strings of its JS `Date` arguments.
  *
@@ -21,13 +23,10 @@
  * format24hDateTime(new Date());  // "6/11/2023, 16:54:32"
  * ```
  */
-export function formatInstant(locale: Intl.LocalesArgument = undefined) {
-  return (options: Omit<
-    Intl.DateTimeFormatOptions,
-    "timeZone"
-  > = { timeZoneName: "short" }) =>
-  (timezone: string) =>
-  (instant: Date): string =>
+export function formatInstant(locale: Intl.LocalesArgument = undefined): (
+  options?: FormatInstantOptions,
+) => (timezone: string) => (instant: Date) => string {
+  return (options = { timeZoneName: "short" }) => (timezone) => (instant) =>
     instant.toLocaleString(locale, {
       ...options,
       timeZone: timezone,

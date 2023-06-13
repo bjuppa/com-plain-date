@@ -22,7 +22,8 @@ import { ComPlainTime, FormatPlainTimeOptions } from "../PlainTime.ts";
  * formatHour(PlainTime({ hour: 13, minute: 37 }));  // "1 PM"
  * ```
  */
-export function formatPlainTime(locale: Intl.LocalesArgument = undefined) {
-  return (options: FormatPlainTimeOptions = {}) =>
-  (time: ComPlainTime): string => time.toLocaleString(locale, options);
+export function formatPlainTime(
+  locale: Intl.LocalesArgument = undefined,
+): (options?: FormatPlainTimeOptions) => (time: ComPlainTime) => string {
+  return (options = {}) => (time) => time.toLocaleString(locale, options);
 }

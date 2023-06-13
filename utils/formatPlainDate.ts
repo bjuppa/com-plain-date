@@ -22,7 +22,8 @@ import { ComPlainDate, FormatPlainDateOptions } from "../PlainDate.ts";
  * formatMonthAndDay(PlainDate({ year: 2023 }));  // "January 1"
  * ```
  */
-export function formatPlainDate(locale: Intl.LocalesArgument = undefined) {
-  return (options: FormatPlainDateOptions = {}) =>
-  (date: ComPlainDate): string => date.toLocaleString(locale, options);
+export function formatPlainDate(
+  locale: Intl.LocalesArgument = undefined,
+): (options?: FormatPlainDateOptions) => (date: ComPlainDate) => string {
+  return (options = {}) => (date) => date.toLocaleString(locale, options);
 }
