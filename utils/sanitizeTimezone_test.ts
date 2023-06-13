@@ -17,6 +17,10 @@ Deno.test("spaces are removed around slash", () => {
   assertEquals(sanitizeTimezone("Europe  /  Stockholm"), "Europe/Stockholm");
 });
 
+Deno.test("multiple slashes are condensed to a single slash", () => {
+  assertEquals(sanitizeTimezone("Europe//Stockholm"), "Europe/Stockholm");
+});
+
 Deno.test("spaces between words are replaced with underscore", () => {
   assertEquals(sanitizeTimezone("America/New  York"), "America/New_York");
 });
