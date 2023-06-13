@@ -79,6 +79,7 @@ export { startOfYear } from "./utils/startOfYear.ts";
 export { datetimeLocal } from "./utils/datetimeLocal.ts";
 export { formatPlainDate } from "./utils/formatPlainDate.ts";
 export { formatPlainTime } from "./utils/formatPlainTime.ts";
+export { formatInstant } from "./utils/formatInstant.ts";
 
 // Utils for getting information about a date object
 export { daysInMonth } from "./utils/daysInMonth.ts";
