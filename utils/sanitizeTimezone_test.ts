@@ -29,6 +29,6 @@ Deno.test("backslash is replaced with forward slash", () => {
   assertEquals(sanitizeTimezone("Europe\\Stockholm"), "Europe/Stockholm");
 });
 
-Deno.test("dash is replaced with underscore", () => {
-  assertEquals(sanitizeTimezone("America/New-York"), "America/New_York");
+Deno.test("dash is not replaced", () => {
+  assertEquals(sanitizeTimezone("Africa/Porto-Novo"), "Africa/Porto-Novo");
 });
