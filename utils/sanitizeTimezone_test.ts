@@ -50,3 +50,19 @@ Deno.test("uppercase string is title-cased, but not short words within a valid n
     "Africa/Dar_es_Salaam",
   );
 });
+
+Deno.test("timezone with unique compound location passes unaltered", () => {
+  // See https://en.wikipedia.org/wiki/Tz_database#Location
+  assertEquals(
+    sanitizeTimezone("America/Argentina/La_Rioja"),
+    "America/Argentina/La_Rioja",
+  );
+});
+
+Deno.test("timezone with compound location returns general timezone when available", () => {
+  // See https://en.wikipedia.org/wiki/Tz_database#Location
+  assertEquals(
+    sanitizeTimezone("America/Indiana/Indianapolis"),
+    "America/Indianapolis",
+  );
+});
