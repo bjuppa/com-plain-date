@@ -21,7 +21,7 @@ declare namespace Intl {
  * Get all canonical timezones that are supported by the browser or runtime,
  * or an empty array if the list is not available.
  *
- * This is useful to populate an HTML
+ * This is useful for populating an HTML
  * `<datalist id="availableTimezones">`
  * with all relevant timezones, enabling an ordinary
  * `<input type="text" list="availableTimezones">`
@@ -29,7 +29,7 @@ declare namespace Intl {
  * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist | datalist documentation on MDN }
  * for details and examples.
  *
- * Most browsers and runtimes expose this list of 400+ timezones since
+ * Most browsers and runtime systems expose this list of 400+ timezones since
  * March or April 2022.
  * See {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/supportedValuesOf#browser_compatibility | compatibility data on MDN }
  * for details.
