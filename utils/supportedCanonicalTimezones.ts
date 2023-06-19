@@ -33,6 +33,6 @@ declare namespace Intl {
  * See {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/supportedValuesOf#browser_compatibility | compatibility data on MDN }
  * for details.
  */
-export function supportedNamedTimezones(): string[] {
+export function supportedCanonicalTimezones(): string[] {
   return Intl.supportedValuesOf ? Intl.supportedValuesOf("timeZone") : [];
 }

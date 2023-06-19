@@ -1,6 +1,6 @@
 import { parseTimezone } from "./parseTimezone.ts";
 import { assertEquals, assertThrows } from "../dev_deps.ts";
-import { supportedNamedTimezones } from "./supportedNamedTimezones.ts";
+import { supportedCanonicalTimezones } from "./supportedCanonicalTimezones.ts";
 
 Deno.test("a valid timezone passes unaltered", () => {
   assertEquals(parseTimezone("Europe/Stockholm"), "Europe/Stockholm");
@@ -88,7 +88,7 @@ Deno.test("a named timezone takes precedence over UTC", () => {
 });
 
 Deno.test("all timezones known by the system passes unaltered", async (t) => {
-  for (const tz of supportedNamedTimezones()) {
+  for (const tz of supportedCanonicalTimezones()) {
     await t.step(tz, () => {
       assertEquals(parseTimezone(tz), tz);
     });
