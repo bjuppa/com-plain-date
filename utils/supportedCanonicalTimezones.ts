@@ -28,7 +28,7 @@ declare namespace Intl {
  * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist | datalist documentation on MDN }
  * for details and examples.
  *
- * Most browsers and runtimes expose this list of timezones since
+ * Most browsers and runtimes expose this list of 400+ timezones since
  * March or April 2022.
  * See {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/supportedValuesOf#browser_compatibility | compatibility data on MDN }
  * for details.
