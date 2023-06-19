@@ -17,7 +17,21 @@ declare namespace Intl {
 }
 
 /**
- * Get all canonical timezones that are supported by the browser or runtime, or an empty array if unavailable.
+ * Get all canonical timezones that are supported by the browser or runtime,
+ * or an empty array if the list is not available.
+ *
+ * This is useful to populate an HTML
+ * `<datalist id="availableTimezones">`
+ * with all relevant timezones, enabling an ordinary
+ * `<input type="text" list="availableTimezones">`
+ * to become an autocomplete "combobox" for the user to select from.
+ * See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist | datalist documentation on MDN }
+ * for details and examples.
+ *
+ * Most browsers and runtimes expose this list of timezones since
+ * March or April 2022.
+ * See {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/supportedValuesOf#browser_compatibility | compatibility data on MDN }
+ * for details.
  */
 export function supportedNamedTimezones(): string[] {
   return Intl.supportedValuesOf ? Intl.supportedValuesOf("timeZone") : [];
