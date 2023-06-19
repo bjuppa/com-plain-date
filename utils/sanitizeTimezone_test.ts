@@ -32,3 +32,21 @@ Deno.test("backslash is replaced with forward slash", () => {
 Deno.test("dash is not replaced", () => {
   assertEquals(sanitizeTimezone("Africa/Porto-Novo"), "Africa/Porto-Novo");
 });
+
+Deno.test("lowercase string is title-cased, but not short words within a valid name", () => {
+  assertEquals(
+    sanitizeTimezone("africa/el_aaiun"),
+    "Africa/El_Aaiun",
+  );
+  assertEquals(
+    sanitizeTimezone("africa/dar_es_salaam"),
+    "Africa/Dar_es_Salaam",
+  );
+});
+
+Deno.test("uppercase string is title-cased, but not short words within a valid name", () => {
+  assertEquals(
+    sanitizeTimezone("AFRICA/DAR_ES_SALAAM"),
+    "Africa/Dar_es_Salaam",
+  );
+});
