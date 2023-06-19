@@ -1,6 +1,7 @@
 /**
  * Intl.supportedValuesOf is not shipped until Typescript 5.1
- * Temporary workaround is from https://github.com/microsoft/TypeScript/issues/49231#issuecomment-1137251612
+ * Temporary workaround is from
+ * https://github.com/microsoft/TypeScript/issues/49231#issuecomment-1137251612
  *
  * TODO: When Typescript 5.1 is released with Deno (check with `deno --version`), remove this namespace extension.
  */
