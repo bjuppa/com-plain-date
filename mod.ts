@@ -80,6 +80,7 @@ export { datetimeLocal } from "./utils/datetimeLocal.ts";
 export { formatPlainDate } from "./utils/formatPlainDate.ts";
 export { formatPlainTime } from "./utils/formatPlainTime.ts";
 export { formatInstant } from "./utils/formatInstant.ts";
+export { formatTimezone } from "./utils/formatTimezone.ts";
 
 // Utils for getting information about a date object
 export { daysInMonth } from "./utils/daysInMonth.ts";
@@ -113,3 +114,11 @@ export { subtractTime } from "./utils/subtractTime.ts";
 
 // Utils for comparing native JS `Date` objects
 export { differenceInMilliseconds } from "./utils/differenceInMilliseconds.ts";
+
+// Utils for timezone strings
+export { safeTimezone } from "./utils/safeTimezone.ts";
+export { localTimezone } from "./utils/localTimezone.ts";
+export { supportedCanonicalTimezones } from "./utils/supportedCanonicalTimezones.ts";
+export { isTimezone } from "./utils/isTimezone.ts";
+export { sanitizeTimezone } from "./utils/sanitizeTimezone.ts";
+export { parseTimezone } from "./utils/parseTimezone.ts";
