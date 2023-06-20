@@ -6,8 +6,10 @@ type PartsRecord = Partial<Record<Intl.DateTimeFormatPartTypes, string>>;
  *
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat | Intl.DateTimeFormat on MDN}
  */
-export function intlParts(intlDateTimeFormat: Intl.DateTimeFormat) {
-  return (instant: Date): PartsRecord => {
+export function intlParts(
+  intlDateTimeFormat: Intl.DateTimeFormat,
+): (instant: Date) => PartsRecord {
+  return (instant) => {
     return intlDateTimeFormat.formatToParts(instant).reduce<PartsRecord>(
       (acc, part) => {
         acc[part.type] = part.value;

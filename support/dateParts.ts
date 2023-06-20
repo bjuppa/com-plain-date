@@ -10,7 +10,9 @@
  * @returns An object containing year, month & day properties extracted from the string
  * @returns `null` if no date was found in the string
  */
-export function dateParts(isoDateString: string) {
+export function dateParts(
+  isoDateString: string,
+): { year: number; month: number; day?: number } | null {
   const matches = String(isoDateString).match(
     /(?<year>[+-]?\d+)-(?<month>\d+)(-(?<day>\d+))?/,
   );

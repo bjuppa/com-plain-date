@@ -9,8 +9,10 @@ import { differenceInMilliseconds } from "./differenceInMilliseconds.ts";
  * @param from A plain-date to calculate the difference from
  * @returns A curried function that operates on plain-dates
  */
-export function differenceInDays(from: ComPlainDate) {
-  return (to: ComPlainDate): number =>
+export function differenceInDays(
+  from: ComPlainDate,
+): (to: ComPlainDate) => number {
+  return (to) =>
     Math.round(
       differenceInMilliseconds(from.toUtcInstant())(to.toUtcInstant()) /
         (MS_IN_HOUR * HOURS_IN_DAY),

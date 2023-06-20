@@ -10,8 +10,10 @@ import { ComPlainDate } from "../PlainDate.ts";
  * @param from A plain-date to calculate the difference from
  * @returns A curried function that operates on plain-dates
  */
-export function differenceInBusinessDays(from: ComPlainDate) {
-  return (to: ComPlainDate): number => {
+export function differenceInBusinessDays(
+  from: ComPlainDate,
+): (to: ComPlainDate) => number {
+  return (to) => {
     const totalDays = differenceInDays(from)(to);
     const fullWeeks = Math.trunc(Math.abs(totalDays) / DAYS_IN_WEEK);
     const fullDays = Math.abs(totalDays) % DAYS_IN_WEEK;

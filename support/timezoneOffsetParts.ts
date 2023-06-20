@@ -2,7 +2,9 @@
  * Extract timezone offset in hour & minute parts from
  * an ISO 8601 string representation of a date.
  */
-export function timezoneOffsetParts(s: string) {
+export function timezoneOffsetParts(
+  s: string,
+): { hour: number; minute: number } | null {
   if (["UTC", "GMT"].includes(s) || String(s).endsWith("Z")) {
     return { hour: 0, minute: 0 };
   }

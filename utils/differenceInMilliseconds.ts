@@ -5,6 +5,6 @@
  * @param from A native JS `Date` object to calculate the difference from
  * @returns A curried function that operates on JS `Date` objects
  */
-export function differenceInMilliseconds(from: Date) {
-  return (to: Date): number => to.valueOf() - from.valueOf();
+export function differenceInMilliseconds(from: Date): (to: Date) => number {
+  return (to) => to.valueOf() - from.valueOf();
 }
