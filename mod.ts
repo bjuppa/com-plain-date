@@ -52,16 +52,16 @@ export type {
 
 export type { PlainDateMapFn } from "./support/function-signatures.ts";
 
-// Utils for parsing strings
+// Utils for parsing strings into objects
 export { parsePlainDate } from "./utils/parsePlainDate.ts";
 export { parsePlainTime } from "./utils/parsePlainTime.ts";
 
-// Utils for splitting native JS `Date` objects into separate date & time objects
+// Utils for splitting native JS `Date` objects into separate plain-date & plain-time objects
 export { splitDateTime } from "./utils/splitDateTime.ts";
 export { splitLocalDateTime } from "./utils/splitLocalDateTime.ts";
 export { splitUtcDateTime } from "./utils/splitUtcDateTime.ts";
 
-// Utils for generating a new plain-date from an existing one
+// Utils for generating a new plain-date object from an existing one
 export { pipePlainDate } from "./utils/pipePlainDate.ts";
 export { addBusinessDays } from "./utils/addBusinessDays.ts";
 export { addDays } from "./utils/addDays.ts";
@@ -80,8 +80,9 @@ export { datetimeLocal } from "./utils/datetimeLocal.ts";
 export { formatPlainDate } from "./utils/formatPlainDate.ts";
 export { formatPlainTime } from "./utils/formatPlainTime.ts";
 export { formatInstant } from "./utils/formatInstant.ts";
+export { formatTimezone } from "./utils/formatTimezone.ts";
 
-// Utils for getting information about a date object
+// Utils for getting information about a plain-date object
 export { daysInMonth } from "./utils/daysInMonth.ts";
 export { daysInYear } from "./utils/daysInYear.ts";
 export { isBusinessDay } from "./utils/isBusinessDay.ts";
@@ -95,14 +96,14 @@ export { ordinal } from "./utils/ordinal.ts";
 export { quarter } from "./utils/quarter.ts";
 export { weekDayNumber } from "./utils/weekDayNumber.ts";
 
-// Utils for comparing date objects
+// Utils for comparing plain-date objects
 export { differenceInBusinessDays } from "./utils/differenceInBusinessDays.ts";
 export { differenceInDays } from "./utils/differenceInDays.ts";
 export { differenceInMonths } from "./utils/differenceInMonths.ts";
 export { differenceInQuarters } from "./utils/differenceInQuarters.ts";
 export { differenceInYears } from "./utils/differenceInYears.ts";
 
-// Utils for creating native JS `Date` objects from date & time objects
+// Utils for creating native JS `Date` objects from plain-date & plain-time objects
 export { createInstant } from "./utils/createInstant.ts";
 export { createLocalInstant } from "./utils/createLocalInstant.ts";
 export { createUtcInstant } from "./utils/createUtcInstant.ts";
@@ -113,3 +114,11 @@ export { subtractTime } from "./utils/subtractTime.ts";
 
 // Utils for comparing native JS `Date` objects
 export { differenceInMilliseconds } from "./utils/differenceInMilliseconds.ts";
+
+// Utils for timezone strings
+export { safeTimezone } from "./utils/safeTimezone.ts";
+export { localTimezone } from "./utils/localTimezone.ts";
+export { supportedCanonicalTimezones } from "./utils/supportedCanonicalTimezones.ts";
+export { isTimezone } from "./utils/isTimezone.ts";
+export { sanitizeTimezone } from "./utils/sanitizeTimezone.ts";
+export { parseTimezone } from "./utils/parseTimezone.ts";

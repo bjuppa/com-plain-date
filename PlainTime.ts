@@ -77,7 +77,7 @@ export interface PlainTimeFactory<T extends ComPlainTime> {
  * @returns A new immutable plain-time object
  *
  * @throws {TypeError} Input total must be less than 24 hours
- * @throws {TypeError} Input total can't be negative.
+ * @throws {TypeError} Input total can't be negative
  */
 export function PlainTime(
   { hour = 0, minute = 0, second = 0, millisecond = 0 }: SloppyTime,
