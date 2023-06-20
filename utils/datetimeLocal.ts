@@ -6,7 +6,7 @@ import { createUtcInstant } from "./createUtcInstant.ts";
  *
  * @returns A string in format `yyyy-mm-ddThh:mm`
  *
- * @throws {TypeError} Year must be after year 0
+ * @throws {RangeError} Year must be after year 0
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local | HTML input datetime-local on MDN}
  */
 export function datetimeLocal({
@@ -17,7 +17,7 @@ export function datetimeLocal({
   minute = 0,
 }: SloppyDateTime): string {
   if (Number(year) < 1) {
-    throw new TypeError(
+    throw new RangeError(
       `Years before 0001 can't be represented by HTML datetime-local: ${year}`,
     );
   }
