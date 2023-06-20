@@ -117,7 +117,7 @@ export function PlainDate(
   const utcDate = createUtcInstant({ year, month, day });
 
   if (isNaN(utcDate.valueOf())) {
-    throw new TypeError(
+    throw new RangeError(
       `Input is not a valid date: ${JSON.stringify({ year, month, day })}`,
     );
   }

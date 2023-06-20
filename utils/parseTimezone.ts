@@ -4,7 +4,7 @@ import { isTimezone } from "./isTimezone.ts";
 /**
  * Extract a valid timezone name from a string.
  *
- * @throws {TypeError} No valid timezone found in string
+ * @throws {RangeError} No valid timezone found in string
  *
  * @see {@link https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones | Timezone name format on Wikipedia}
  */
@@ -37,7 +37,7 @@ export function parseTimezone(timezoneString: string): string {
     return "UTC";
   }
 
-  throw new TypeError(
+  throw new RangeError(
     `No valid timezone found in string: ${timezoneString}`,
   );
 }
