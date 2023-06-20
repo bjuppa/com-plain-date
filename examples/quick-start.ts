@@ -19,7 +19,7 @@ const [june6, time1337] = splitDateTime(
 )(
   // Sweden is at UTC+2 in June, so this `Date` represents 13:37 wall-time there
   new Date("2023-06-06T13:37+0200"),
-); // Note: When called without a `Date`, this gives current wall-time (now)
+); // Note: When called without a `Date`, this produces current wall-time (now)
 
 // The plain-date part is an object adhering to the full ComPlainDate interface
 june6; // { year: 2023, month: 6, day: 6, iso: "2023-06-06", ...}
