@@ -8,7 +8,8 @@ import { differenceInYears } from "./differenceInYears.ts";
  * @param from A plain-date to calculate the difference from
  * @returns A curried function that operates on plain-dates
  */
-export function differenceInMonths(from: ComPlainDate) {
-  return (to: ComPlainDate): number =>
-    differenceInYears(from)(to) * 12 + to.month - from.month;
+export function differenceInMonths(
+  from: ComPlainDate,
+): (to: ComPlainDate) => number {
+  return (to) => differenceInYears(from)(to) * 12 + to.month - from.month;
 }

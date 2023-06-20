@@ -25,7 +25,11 @@ const intlOptions: Intl.DateTimeFormatOptions = {
  *
  * @throws {RangeError} Invalid timezone specified
  */
-export function createInstant(timezone: string) {
+export function createInstant(
+  timezone: string,
+): (
+  { year, month, day, hour, minute, second, millisecond }: SloppyDateTime,
+) => Date {
   return (
     {
       year = NaN,
@@ -35,8 +39,8 @@ export function createInstant(timezone: string) {
       minute = 0,
       second = 0,
       millisecond = 0,
-    }: SloppyDateTime,
-  ): Date => {
+    },
+  ) => {
     const intlUtcFormat = Intl.DateTimeFormat("en", {
       ...intlOptions,
       timeZone: "UTC",

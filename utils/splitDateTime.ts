@@ -11,8 +11,10 @@ import { SplitDateTime } from "../support/date-time-types.ts";
  *
  * @throws {RangeError} Invalid timezone specified
  */
-export function splitDateTime(timezone: string) {
-  return (instant?: Date): SplitDateTime => {
+export function splitDateTime(
+  timezone: string,
+): (instant?: Date) => SplitDateTime {
+  return (instant) => {
     instant ??= new Date();
     const locale = "en";
     const options: Intl.DateTimeFormatOptions = {

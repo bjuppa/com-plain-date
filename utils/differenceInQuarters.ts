@@ -9,7 +9,8 @@ import { quarter } from "./quarter.ts";
  * @param from A plain-date to calculate the difference from
  * @returns A curried function that operates on plain-dates
  */
-export function differenceInQuarters(from: ComPlainDate) {
-  return (to: ComPlainDate): number =>
-    differenceInYears(from)(to) * 4 + quarter(to) - quarter(from);
+export function differenceInQuarters(
+  from: ComPlainDate,
+): (to: ComPlainDate) => number {
+  return (to) => differenceInYears(from)(to) * 4 + quarter(to) - quarter(from);
 }
