@@ -46,6 +46,8 @@ export interface ExtendedPlainDate extends ComPlainDate {
   toLocalInstant: (time?: SloppyTime) => Date;
   /**
    * Get a native JS `Date` object in a named timezone.
+   *
+   * @throws {RangeError} Invalid timezone specified
    */
   toInstant: (timezone: string, time?: SloppyTime) => Date;
 
@@ -313,6 +315,8 @@ ExPlainDate.fromLocalInstant = function <T extends ComPlainDate>(
  *
  * @param timezone A named IANA timezone
  * @param instant Optional JS `Date`, fallback to current wall-time
+ *
+ * @throws {RangeError} Invalid timezone specified
  */
 ExPlainDate.fromInstant = function <T extends ComPlainDate>(
   this: PlainDateFactory<T>,

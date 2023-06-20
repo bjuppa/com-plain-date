@@ -8,6 +8,8 @@ import { SplitDateTime } from "../support/date-time-types.ts";
  *
  * @param timezone A named IANA timezone
  * @returns A curried function that operates on JS `Date` objects
+ *
+ * @throws {RangeError} Invalid timezone specified
  */
 export function splitDateTime(timezone: string) {
   return (instant?: Date): SplitDateTime => {

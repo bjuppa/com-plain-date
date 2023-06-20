@@ -22,6 +22,8 @@ const intlOptions: Intl.DateTimeFormatOptions = {
  *
  * @param timezone A named IANA timezone
  * @returns A curried function that operates on date-time objects
+ *
+ * @throws {RangeError} Invalid timezone specified
  */
 export function createInstant(timezone: string) {
   return (

@@ -14,6 +14,8 @@ export type FormatInstantOptions = Omit<Intl.DateTimeFormatOptions, "timeZone">;
  * @param locale `Intl` locale,
  * @returns A curried function that takes `Intl` format options and returns another curried function that takes a timezone and returns the final curried function that operates on JS `Date` objects
  *
+ * @throws {RangeError} Invalid timezone specified
+ *
  * @example
  * ```ts
  * const formatDateTime = formatInstant()()("Europe/Stockholm"); // Use system's locale and default formatting options
