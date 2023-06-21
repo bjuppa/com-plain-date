@@ -27,20 +27,17 @@ const intlOptions: Intl.DateTimeFormatOptions = {
  */
 export function createInstant(
   timezone: string,
-): (
-  { year, month, day, hour, minute, second, millisecond }: SloppyDateTime,
-) => Date {
-  return (
-    {
-      year = NaN,
+): (dateTime: SloppyDateTime) => Date {
+  return (dateTime) => {
+    const {
+      year,
       month = 1,
       day = 1,
       hour = 0,
       minute = 0,
       second = 0,
       millisecond = 0,
-    },
-  ) => {
+    } = dateTime;
     const intlUtcFormat = Intl.DateTimeFormat("en", {
       ...intlOptions,
       timeZone: "UTC",
