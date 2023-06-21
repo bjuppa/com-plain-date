@@ -52,10 +52,10 @@ export type MonthNumber = typeof Month[keyof typeof Month];
 
 /** Quarter of year (1-4) */
 export const Quarter = {
-  Q1: 1,
-  Q2: 2,
-  Q3: 3,
-  Q4: 4,
+  Q1: 1 as const,
+  Q2: 2 as const,
+  Q3: 3 as const,
+  Q4: 4 as const,
 } as const;
 
 /** Quarter of year (1-4) */
