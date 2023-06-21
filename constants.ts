@@ -19,13 +19,13 @@ export const DAYS_IN_LEAP_YEAR = DAYS_IN_COMMON_YEAR + 1;
 
 /** ISO weekday number (1-7) starting with Monday */
 export const WeekDay = {
-  MONDAY: 1,
-  TUESDAY: 2,
-  WEDNESDAY: 3,
-  THURSDAY: 4,
-  FRIDAY: 5,
-  SATURDAY: 6,
-  SUNDAY: 7,
+  MONDAY: 1 as const,
+  TUESDAY: 2 as const,
+  WEDNESDAY: 3 as const,
+  THURSDAY: 4 as const,
+  FRIDAY: 5 as const,
+  SATURDAY: 6 as const,
+  SUNDAY: 7 as const,
 } as const;
 
 /** ISO weekday number (1-7) starting with Monday */
@@ -33,18 +33,18 @@ export type WeekDayNumber = typeof WeekDay[keyof typeof WeekDay];
 
 /** Month (1-12) */
 export const Month = {
-  JANUARY: 1,
-  FEBRUARY: 2,
-  MARCH: 3,
-  APRIL: 4,
-  MAY: 5,
-  JUNE: 6,
-  JULY: 7,
-  AUGUST: 8,
-  SEPTEMBER: 9,
-  OCTOBER: 10,
-  NOVEMBER: 11,
-  DECEMBER: 12,
+  JANUARY: 1 as const,
+  FEBRUARY: 2 as const,
+  MARCH: 3 as const,
+  APRIL: 4 as const,
+  MAY: 5 as const,
+  JUNE: 6 as const,
+  JULY: 7 as const,
+  AUGUST: 8 as const,
+  SEPTEMBER: 9 as const,
+  OCTOBER: 10 as const,
+  NOVEMBER: 11 as const,
+  DECEMBER: 12 as const,
 } as const;
 
 /** Month (1-12) */
