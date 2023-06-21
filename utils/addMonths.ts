@@ -9,10 +9,12 @@ import { startOfMonth } from "./startOfMonth.ts";
  * The resulting day-of-month will always be within the expected month,
  * days will not spill over into the next month.
  *
- * @param {number} months The number of months to add or subtract
+ * @param months The number of months to add or subtract
  * @returns A curried function that operates on plain-dates
  */
-export function addMonths(months = 0): <T extends ComPlainDate>(date: T) => T {
+export function addMonths(
+  months: number,
+): <T extends ComPlainDate>(date: T) => T {
   return (date) =>
     date
       .map((x) => ({ ...x, month: x.month + months }))

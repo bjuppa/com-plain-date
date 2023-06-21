@@ -204,16 +204,16 @@ export function ExPlainDate(
       return daysInMonth(this);
     },
 
-    addDays(days = 0) {
+    addDays(days) {
       return addDays(days)(this);
     },
-    addBusinessDays(days = 0) {
+    addBusinessDays(days) {
       return addBusinessDays(days)(this);
     },
-    addMonths(months = 0) {
+    addMonths(months) {
       return addMonths(months)(this);
     },
-    addYears(years = 0) {
+    addYears(years) {
       return addYears(years)(this);
     },
 
