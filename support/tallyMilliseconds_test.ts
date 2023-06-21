@@ -14,3 +14,7 @@ Deno.test("takes negative parts", () => {
     (60 * 60 + 60 + 1) * -1000 - 1,
   );
 });
+
+Deno.test("takes undefined values", () => {
+  assertEquals(tallyMilliseconds({}), 0);
+});

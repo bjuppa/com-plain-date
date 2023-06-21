@@ -7,6 +7,8 @@ import { SloppyTime } from "./date-time-types.ts";
  * @param time Object of hour, minute, second & millisecond, where each may be negative
  */
 export function tallyMilliseconds(time: SloppyTime): number {
-  return Number(time.hour) * MS_IN_HOUR + Number(time.minute) * MS_IN_MINUTE +
-    Number(time.second) * MS_IN_SECOND + Number(time.millisecond);
+  return Number(time.hour || 0) * MS_IN_HOUR +
+    Number(time.minute || 0) * MS_IN_MINUTE +
+    Number(time.second || 0) * MS_IN_SECOND +
+    Number(time.millisecond || 0);
 }
