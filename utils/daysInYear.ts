@@ -6,7 +6,9 @@ import { SloppyDate } from "../support/date-time-types.ts";
  * Get the number of days in a given year.
  *
  * Leap years have 366 days, otherwise 365.
+ *
+ * @param date Object of year
  */
-export function daysInYear({ year }: SloppyDate): number {
-  return isLeapYear({ year }) ? DAYS_IN_LEAP_YEAR : DAYS_IN_COMMON_YEAR;
+export function daysInYear(date: SloppyDate): number {
+  return isLeapYear(date) ? DAYS_IN_LEAP_YEAR : DAYS_IN_COMMON_YEAR;
 }

@@ -2,7 +2,9 @@ import { SloppyDate } from "../support/date-time-types.ts";
 
 /**
  * Check if a date is the first day of its year.
+ *
+ * @param date Object of month & day
  */
-export function isFirstDayOfYear({ month, day }: Partial<SloppyDate>): boolean {
-  return Number(month) === 1 && Number(day) === 1;
+export function isFirstDayOfYear(date: Partial<SloppyDate>): boolean {
+  return Number(date.month) === 1 && Number(date.day) === 1;
 }
