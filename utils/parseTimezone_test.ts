@@ -44,6 +44,10 @@ Deno.test("UTC is extracted", () => {
   );
 });
 
+Deno.test("UTC is extracted when before a local time", () => {
+  assertEquals(parseTimezone("UTC 20:06:13"), "UTC");
+});
+
 Deno.test("UTC with 0 offset is extracted", () => {
   assertEquals(
     parseTimezone("The meeting is at 2020-08-05T20:06:13 UTC+0, be there!"),
