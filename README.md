@@ -23,19 +23,39 @@ ComPlainDate is distributed as an **npm** package as well as a **Deno** module:
 ComPlainDate provides a few special objects and a bunch of utility functions to
 operate on those objects.
 
-The concepts we need to represent are:
+The main concepts we need to represent are:
 
 - _instant_, a universal point in time.
 - _calendar date_, a year, month, and day-of-month.
 - _time-of-day_, a wall-time of hours, minutes, and seconds.
 
-None of these concepts have an inherent timezone, on their own they are all
-_timezone-agnostic_. We only need a timezone when converting between the
-concepts.
+None of the concepts above have an inherent timezone, in themselves they are all
+timezone-agnostic. But to convert an _instant_ to the corresponding local
+_calendar date_ and _time-of-day_ at a specific place, and vice versa, we need
+to add a supporting concept:
+
+- _timezone_, a set of rules describing how local wall-time in an area relates
+  to universal time.
+
+### Timezones are just strings
+
+Modern JavaScript engines know the rules for timezones around the globe through
+[`Intl`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl),
+and although it's not entirely straight-forward we can tap into that knowledge
+using some clever tricks. The main purpose of ComPlainDate is to abstract those
+tricks away.
+
+All we need to do is provide the name of a timezone, and that name is
+represented as a string, for example `"Europe/Stockholm"`. Underscore is used
+instead of space, as in `"Africa/Dar_es_Salaam"`, and some timezone names have
+three parts like `"America/Argentina/La_Rioja"`.
+
+ComPlainDate has utility functions that helps us parse, validate, sanitize and
+format timezone strings for the benefit of our users.
 
 ### No `Instant`?
 
-First off, ComPlainDate does not provide any special object representing a
+Surprisingly, ComPlainDate does not provide any special object representing a
 universal _instant_ in time. JavaScript's `Date` is basically a wrapper around a
 UNIX timestamp (the number of milliseconds since 1970-01-01 00:00:00 UTC) and
 doesn't know about timezones. This UTC-centric aspect of `Date` is good for
