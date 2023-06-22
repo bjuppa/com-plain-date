@@ -300,3 +300,11 @@ names whenever needed for clarity.
 
 Current JavaScript `Date` objects support the Gregorian calendar only, and
 therefore these tools have the same limitations.
+
+The [IANA timezone database](https://www.iana.org/time-zones) is constantly
+being updated and it takes a little while before changes are available in new
+releases of browsers and runtime systems. This means that timezone operations
+are dependent of the version of the JavaScript engine running the code. The
+results of the same operation may differ between systems depending on their
+version and there is no guarantee that the same code running in a browser and on
+a server produces identical results.
