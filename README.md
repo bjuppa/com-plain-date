@@ -23,24 +23,46 @@ ComPlainDate is distributed as an **npm** package as well as a **Deno** module:
 ComPlainDate provides a few special objects and a bunch of utility functions to
 operate on those objects.
 
-The concepts we need to represent are:
+The main concepts we need to represent are:
 
 - _instant_, a universal point in time.
 - _calendar date_, a year, month, and day-of-month.
 - _time-of-day_, a wall-time of hours, minutes, and seconds.
 
-None of these concepts have an inherent timezone, on their own they are all
-_timezone-agnostic_. We only need a timezone when converting between the
-concepts.
+None of the concepts above have an inherent timezone, in themselves they are all
+timezone-agnostic. But to convert an _instant_ to the corresponding local
+_calendar date_ and _time-of-day_ at a specific place, and vice versa, we need
+to add a supporting concept:
+
+- _timezone_, a set of rules describing how local wall-time in an area relates
+  to universal time.
+
+### Timezones are just strings
+
+Modern JavaScript engines know the rules for timezones around the globe through
+[`Intl`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl),
+and although it's not entirely straight-forward we can tap into that knowledge
+using some clever tricks. The main purpose of ComPlainDate is to abstract those
+tricks away.
+
+All we need to do is provide the name of a timezone, and that name is
+represented as a string, for example `"Europe/Stockholm"`. Underscore is used
+instead of space, as in `"Africa/Dar_es_Salaam"`, and some timezone names have
+three parts like `"America/Argentina/La_Rioja"`.
+
+ComPlainDate has utility functions that helps us parse, validate, sanitize and
+format timezone strings for the benefit of our users.
 
 ### No `Instant`?
 
-First off, ComPlainDate does not provide any special object representing a
-universal _instant_ in time. JavaScript's `Date` is basically a wrapper around a
-UNIX timestamp (the number of milliseconds since 1970-01-01 00:00:00 UTC) and
-doesn't know about timezones. This UTC-centric aspect of `Date` is good for
-timezone-agnostic operations such as comparing universal points in time and
-adding or subtracting _time_ in hours, minutes, or seconds.
+Surprisingly, ComPlainDate does not provide any special object representing a
+universal _instant_ in time. JavaScript's
+[`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+is basically a wrapper around a UNIX timestamp (the number of milliseconds since
+1970-01-01 00:00:00 UTC) and doesn't know about timezones. This UTC-centric
+aspect of `Date` is good for timezone-agnostic operations such as comparing
+universal points in time and adding or subtracting _time_ in hours, minutes, or
+seconds.
 
 Use native JavaScript `Date` objects with relevant utility functions until you
 need to do an operation that `Date` doesn't support!
@@ -165,8 +187,8 @@ combination makes calendar operations in any timezone very easy to implement and
 maintain, for frontend and backend alike.
 
 The entire ComPlainDate API is explicitly designed to prevent developers from
-making hard-to-spot mistakes and aims to remove the need for testing of any
-timezone related edge cases. This is achieved with a few core principles:
+making hard-to-spot mistakes and aims to remove the need for testing of timezone
+related edge cases in local code. This is achieved with a few core principles:
 
 - [Explicit named timezones](#explicit-named-timezones) must be given to any
   operation that actually require a timezone for results to be correct and
@@ -199,7 +221,7 @@ context boundaries.
 By keeping the calendar date and the time-of-day information in separate objects
 we are free to do any operations on them both in an expressive way, with no need
 to worry about such things as crossings into daylight savings time (DST) or what
-start-of-hour means in a timezone with a 30-minute offset.
+start-of-hour means in a timezone with a half-hour offset.
 
 The only operations where we need an explicit timezone are when we split a
 universal representation of an instant (e.g. `Date` object) into separate
@@ -212,6 +234,12 @@ universal representations of specific instants in time. `Date` doesn't have the
 prettiest interface, but it makes little sense to replace it here. ComPlainDate
 provides some useful utilities for those operations that are relevant to do
 directly on instants, but honestly, they are quite few.
+
+### Timezones are represented by strings
+
+All the information we need about any specific timezone is available in the
+JavaScript engine and accessible via the timezone name. So there is no need for
+any fancy timezone object.
 
 ### Composable functions
 
@@ -278,3 +306,11 @@ names whenever needed for clarity.
 
 Current JavaScript `Date` objects support the Gregorian calendar only, and
 therefore these tools have the same limitations.
+
+The [IANA timezone database](https://www.iana.org/time-zones) is constantly
+being updated and it takes a little while before changes are available in new
+releases of browsers and runtime systems. This means that timezone operations
+are dependent of the version of the JavaScript engine running the code. The
+results of the same operation may differ between systems depending on their
+version and there is no guarantee that the same code running in a browser and on
+a server produces identical results.
