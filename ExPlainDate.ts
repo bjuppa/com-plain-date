@@ -114,29 +114,16 @@ export interface ExtendedPlainDate extends ComPlainDate {
  * @param date A date object with properties `year`, `month` & `day`
  * @returns A new immutable extended plain-date object
  */
-export function ExPlainDate(
-  { year = NaN, month = 1, day = 1 }: SloppyDate,
-): ExtendedPlainDate {
+export function ExPlainDate(date: SloppyDate): ExtendedPlainDate {
   const exPlainDate: ExtendedPlainDate = {
-    ...PlainDate({ year, month, day }),
+    ...PlainDate(date),
     constructor: ExPlainDate,
 
-    toLocalInstant(
-      { hour = 0, minute = 0, second = 0, millisecond = 0 } = {},
-    ) {
-      return createLocalInstant({ ...this, hour, minute, second, millisecond });
+    toLocalInstant(time = {}) {
+      return createLocalInstant({ ...this, ...time });
     },
-    toInstant(
-      timezone,
-      { hour = 0, minute = 0, second = 0, millisecond = 0 } = {},
-    ) {
-      return createInstant(timezone)({
-        ...this,
-        hour,
-        minute,
-        second,
-        millisecond,
-      });
+    toInstant(timezone, time = {}) {
+      return createInstant(timezone)({ ...this, ...time });
     },
 
     toLocaleStringMedium(locale = undefined) {

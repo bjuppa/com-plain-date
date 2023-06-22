@@ -79,23 +79,17 @@ export interface PlainTimeFactory<T extends ComPlainTime> {
  * @throws {RangeError} Input total must be less than 24 hours
  * @throws {RangeError} Input total can't be negative
  */
-export function PlainTime(
-  { hour = 0, minute = 0, second = 0, millisecond = 0 }: SloppyTime,
-): ComPlainTime {
-  const ms = tallyMilliseconds({ hour, minute, second, millisecond });
+export function PlainTime(time: SloppyTime): ComPlainTime {
+  const ms = tallyMilliseconds(time);
 
   if (ms < 0) {
     throw new RangeError(
-      `Input must be positive: ${
-        JSON.stringify({ hour, minute, second, millisecond })
-      }`,
+      `Input must be positive: ${JSON.stringify(time)}`,
     );
   }
   if (ms >= HOURS_IN_DAY * MS_IN_HOUR) {
     throw new RangeError(
-      `Input must be less than 24 hours: ${
-        JSON.stringify({ hour, minute, second, millisecond })
-      }`,
+      `Input must be less than 24 hours: ${JSON.stringify(time)}`,
     );
   }
 

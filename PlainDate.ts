@@ -111,15 +111,11 @@ export interface PlainDateFactory<T extends ComPlainDate> {
  * @param date A date object with properties `year`, `month` & `day`
  * @returns A new immutable plain-date object
  */
-export function PlainDate(
-  { year = NaN, month = 1, day = 1 }: SloppyDate,
-): ComPlainDate {
-  const utcDate = createUtcInstant({ year, month, day });
+export function PlainDate(date: SloppyDate): ComPlainDate {
+  const utcDate = createUtcInstant(date);
 
   if (isNaN(utcDate.valueOf())) {
-    throw new RangeError(
-      `Input is not a valid date: ${JSON.stringify({ year, month, day })}`,
-    );
+    throw new RangeError(`Input is not a valid date: ${JSON.stringify(date)}`);
   }
 
   const plainDate: ComPlainDate = {
