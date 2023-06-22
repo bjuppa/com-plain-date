@@ -221,7 +221,7 @@ context boundaries.
 By keeping the calendar date and the time-of-day information in separate objects
 we are free to do any operations on them both in an expressive way, with no need
 to worry about such things as crossings into daylight savings time (DST) or what
-start-of-hour means in a timezone with a 30-minute offset.
+start-of-hour means in a timezone with a half-hour offset.
 
 The only operations where we need an explicit timezone are when we split a
 universal representation of an instant (e.g. `Date` object) into separate
