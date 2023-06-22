@@ -235,6 +235,12 @@ prettiest interface, but it makes little sense to replace it here. ComPlainDate
 provides some useful utilities for those operations that are relevant to do
 directly on instants, but honestly, they are quite few.
 
+### Timezones are represented by strings
+
+All the information we need about any specific timezone is available in the
+JavaScript engine and accessible via the timezone name. So there is no need for
+any fancy timezone object.
+
 ### Composable functions
 
 Inspired by concepts from functional programming, all functions are pure and
