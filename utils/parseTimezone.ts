@@ -31,7 +31,7 @@ export function parseTimezone(timezoneString: string): string {
   }
 
   if (
-    timezoneString.match(/UTC(?!\s*[+-]\d*[1-9])/) ||
+    timezoneString.match(/UTC(?!\s*[+-][\d:]*[1-9])/) ||
     timezoneString.match(/\dZ$/)
   ) {
     return "UTC";
