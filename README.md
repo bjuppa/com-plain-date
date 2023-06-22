@@ -187,8 +187,8 @@ combination makes calendar operations in any timezone very easy to implement and
 maintain, for frontend and backend alike.
 
 The entire ComPlainDate API is explicitly designed to prevent developers from
-making hard-to-spot mistakes and aims to remove the need for testing of any
-timezone related edge cases. This is achieved with a few core principles:
+making hard-to-spot mistakes and aims to remove the need for testing of timezone
+related edge cases in local code. This is achieved with a few core principles:
 
 - [Explicit named timezones](#explicit-named-timezones) must be given to any
   operation that actually require a timezone for results to be correct and
