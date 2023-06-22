@@ -49,11 +49,18 @@ Deno.test("UTC with 0 offset is extracted", () => {
     parseTimezone("The meeting is at 2020-08-05T20:06:13 UTC+0, be there!"),
     "UTC",
   );
+  assertEquals(
+    parseTimezone("The meeting is at 2020-08-05T20:06:13 UTC+00:00, be there!"),
+    "UTC",
+  );
 });
 
 Deno.test("UTC with positive offset is not extracted", () => {
   assertThrows(() =>
     parseTimezone("The meeting is at 2020-08-05T20:06:13 UTC+01, be there!")
+  );
+  assertThrows(() =>
+    parseTimezone("The meeting is at 2020-08-05T20:06:13 UTC+00:30, be there!")
   );
   assertThrows(() =>
     parseTimezone("The meeting is at 2020-08-05T20:06:13 UTC +1, be there!")
@@ -63,6 +70,9 @@ Deno.test("UTC with positive offset is not extracted", () => {
 Deno.test("UTC with negative offset is not extracted", () => {
   assertThrows(() =>
     parseTimezone("The meeting is at 2020-08-05T20:06:13 UTC-01, be there!")
+  );
+  assertThrows(() =>
+    parseTimezone("The meeting is at 2020-08-05T20:06:13 UTC-00:30, be there!")
   );
   assertThrows(() =>
     parseTimezone("The meeting is at 2020-08-05T20:06:13 UTC -1, be there!")
