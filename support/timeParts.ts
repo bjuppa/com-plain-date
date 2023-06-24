@@ -7,7 +7,7 @@
  * - Ignores any date or timezone information in the given string
  *
  * @param isoTimeString A string containing an ISO 8601 time
- * @returns An object containing hour, minute, second & millisecond properties extracted from the string
+ * @returns An object containing `hour`, `minute`, `second` & `millisecond` properties extracted from the string
  * @returns `null` if no time was found in the string
  */
 export function timeParts(
