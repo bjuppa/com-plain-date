@@ -7,7 +7,7 @@
  * - Ignores any time or timezone information in the given string
  *
  * @param isoDateString A string containing an ISO 8601 date
- * @returns An object containing year, month & day properties extracted from the string
+ * @returns An object containing `year`, `month` & `day` properties extracted from the string
  * @returns `null` if no date was found in the string
  */
 export function dateParts(

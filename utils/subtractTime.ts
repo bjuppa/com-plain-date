@@ -5,7 +5,7 @@ import { tallyMilliseconds } from "../support/tallyMilliseconds.ts";
  * Get a function curried with a time duration to subtract
  * from its native JS `Date` arguments.
  *
- * @param duration Object of hour, minute, second & millisecond, where each may be negative
+ * @param duration Object of `hour`, `minute`, `second` & `millisecond`, where each may be negative
  * @returns A curried function that operates on JS `Date` objects
  */
 export function subtractTime({
