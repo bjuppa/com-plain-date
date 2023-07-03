@@ -275,7 +275,7 @@ what is needed for a neat developer experience. The utility functions are meant
 to be imported and applied with these base objects when required.
 
 When bundle size is not an issue (i.e. server-side), you can work with full
-[`ExPlainDate`]((https://deno.land/x/complaindate/mod.ts?s=ExtendedPlainDate))
+[`ExPlainDate`](https://deno.land/x/complaindate/mod.ts?s=ExtendedPlainDate)
 objects if you want to call available operations directly on the plain-date
 object. This may sound convenient, but it is very hard to tree-shake, making
 your bundle size unnecessary big when used.
