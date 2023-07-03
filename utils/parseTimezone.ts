@@ -6,6 +6,7 @@ import { isTimezone } from "./isTimezone.ts";
  *
  * @throws {RangeError} No valid timezone found in string
  *
+ * @category Timezones
  * @see {@link https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones | Timezone name format on Wikipedia}
  */
 export function parseTimezone(timezoneString: string): string {

@@ -1,5 +1,7 @@
 /**
  * Check if a string is a valid timezone in the system.
+ *
+ * @category Timezones
  */
 export function isTimezone(timezone: string): boolean {
   try {

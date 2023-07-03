@@ -7,7 +7,11 @@ export type FormatPlainDateOptions = Omit<
   "timeZone" | "timeZoneName"
 >;
 
-/** Describes a basic plain-date object with minimal properties */
+/**
+ * Describes a basic plain-date object with minimal properties.
+ *
+ * @see {@link PlainDate} factory for creating objects
+ */
 export interface ComPlainDate {
   /** Year may be negative and up to 6 digits */
   year: number;

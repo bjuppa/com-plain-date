@@ -37,6 +37,9 @@ to add a supporting concept:
 - _timezone_, a set of rules describing how local wall-time in an area relates
   to universal time.
 
+Let's go through how ComPlainDate supports working with each of these four
+concepts, starting with the simplest but perhaps most central one.
+
 ### Timezones are just strings
 
 Modern JavaScript engines know the rules for timezones around the globe through
@@ -59,13 +62,14 @@ Surprisingly, ComPlainDate does not provide any special object representing a
 universal _instant_ in time. JavaScript's
 [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 is basically a wrapper around a UNIX timestamp (the number of milliseconds since
-1970-01-01 00:00:00 UTC) and doesn't know about timezones. This UTC-centric
-aspect of `Date` is good for timezone-agnostic operations such as comparing
-universal points in time and adding or subtracting _time_ in hours, minutes, or
-seconds.
+1970-01-01 00:00 UTC) and doesn't know about timezones. This UTC-centric aspect
+of `Date` is good for timezone-agnostic operations such as comparing universal
+points in time and adding or subtracting _time_ in hours, minutes, or seconds.
 
-Use native JavaScript `Date` objects with relevant utility functions until you
-need to do an operation that `Date` doesn't support!
+Aim to use native JavaScript `Date` objects together with relevant ComPlainDate
+utility functions as much as you can. Then, when you need to do an operation
+that the provided instant-utilities doesn't support, it's time to look to
+plain-date in the next section!
 
 ### Plain-date
 
@@ -73,8 +77,10 @@ ComPlainDate provides `PlainDate` for operations on local _calendar dates_, like
 adding or subtracting days, months or years. All the operations you do on
 plain-dates are timezone agnostic.
 
-Plain-date objects have three numeric properties (`year`, `month`, and `day`)
-used for most operations. The `iso` property and
+Plain-date objects adhere to a
+[contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate) and have
+three numeric properties (`year`, `month`, and `day`) used for most operations.
+The `iso` property and
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
 produces a string in the format `yyyy-mm-dd` that can be used for simple display
 purposes, while the `toLocaleString` method is good for tailored formatting of
@@ -87,14 +93,15 @@ returning a new plain-date.
 
 ### Plain-time
 
-ComPlainDate provides `PlainTime` representing a local _time-of-day_. Plain-time
-objects are mostly used for storing and displaying a fixed time-of-day and
-operations on them are surprisingly uncommon.
+ComPlainDate provides `PlainTime` for representing a local _time-of-day_.
+Plain-time objects are mostly used for storing and displaying a fixed
+time-of-day and operations on them are surprisingly uncommon.
 
-Plain-time objects have four numeric properties (`hour`, `minute`, `second`, and
-`millisecond`), that can be used for operations in the rare case it's needed.
-The `iso` property is a string in the format `Thh:mm:ss.sss` that is mostly used
-for technical purposes.
+Plain-time objects adhere to a
+[contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainTime) and have four
+numeric properties (`hour`, `minute`, `second`, and `millisecond`), that may be
+used for operations in the rare case it's needed. The `iso` property is a string
+in the format `Thh:mm:ss.sss` that is mostly used for technical purposes.
 
 For display,
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
@@ -174,6 +181,70 @@ createInstant(
 }); // 2023-01-01T10:15:00.000Z
 ```
 
+## Working with timezone strings
+
+JavaScript throws exceptions whenever it encounters invalid timezone names. User
+input timezones will clearly need validation before use, but support for a
+specific timezone name may also differ between JavaScript engines. For example,
+a timezone supported in your backend may not be supported in the user's current
+browser.
+
+Before using a timezone string in frontend code, pass it through the
+[`safeTimezone`](https://deno.land/x/complaindate/mod.ts?s=safeTimezone) utility
+to get a string guaranteed to be a valid timezone in the local system. Should
+the given timezone name be unsuitable, it will return the operating system's
+named timezone instead, or `"UTC"` if no timezone can be determined. For the
+user, this should make for the best possible graceful degradation when their
+preferred timezone is unavailable.
+
+When your application doesn't support timezone as a user preference, the
+[`localTimezone`](https://deno.land/x/complaindate/mod.ts?s=localTimezone)
+utility can be used to retrieve a relevant timezone for the current view.
+Although, be careful with server side rendering&hellip;
+
+### Show the timezone name in the user interface
+
+Because the timezone used may be a fallback and not what the user expects, it's
+important to _always_ display the actual timezone name whenever time information
+is present in the user interface.
+
+[`formatTimezone`](https://deno.land/x/complaindate/mod.ts?s=formatTimezone)
+will make a timezone name look pretty for the user. It replaces underscores with
+spaces to give a less technical impression, for example `"Africa/Dar es Salaam"`
+instead of `"Africa/Dar_es_Salaam"`.
+
+### Guided timezone preference input
+
+If your user interface provides a way for users to select their preferred
+timezone, use
+[`supportedCanonicalTimezones`](https://deno.land/x/complaindate/mod.ts?s=supportedCanonicalTimezones)
+to get a list of all the named timezones in the system. You may even create an
+endpoint that returns the timezones supported by your backend and intersect that
+with the browser's timezones to really make sure no unhandled timezone is
+suggested.
+
+You may populate an HTML `<datalist id="availableTimezones">` with all relevant
+timezones, enabling an ordinary `<input type="text" list="availableTimezones">`
+to become an autocomplete "combobox" for the user to select from. See the
+[datalist documentation on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist)
+for details and examples.
+
+Don't forget to use
+[`localTimezone`](https://deno.land/x/complaindate/mod.ts?s=localTimezone) to
+set a sensible initial value for the input!
+
+### Validating timezones
+
+User input can be run through
+[`sanitizeTimezone`](https://deno.land/x/complaindate/mod.ts?s=sanitizeTimezone)
+to clean up a timezone string, removing some common user typos and converting
+whitespace to underscore. The result can be checked with
+[`isTimezone`](https://deno.land/x/complaindate/mod.ts?s=isTimezone).
+
+If you rather throw an exception on failure, use
+[`parseTimezone`](https://deno.land/x/complaindate/mod.ts?s=parseTimezone)
+directly to both sanitize and validate the result.
+
 ## Why another JavaScript date-time library?
 
 Most other date-time libraries either don't provide any clear strategy for
@@ -235,12 +306,6 @@ prettiest interface, but it makes little sense to replace it here. ComPlainDate
 provides some useful utilities for those operations that are relevant to do
 directly on instants, but honestly, they are quite few.
 
-### Timezones are represented by strings
-
-All the information we need about any specific timezone is available in the
-JavaScript engine and accessible via the timezone name. So there is no need for
-any fancy timezone object.
-
 ### Composable functions
 
 Inspired by concepts from functional programming, all functions are pure and
@@ -271,10 +336,10 @@ what is needed for a neat developer experience. The utility functions are meant
 to be imported and applied with these base objects when required.
 
 When bundle size is not an issue (i.e. server-side), you can work with full
-[`ExPlainDate`]((https://deno.land/x/complaindate/mod.ts?s=ExtendedPlainDate))
+[`ExPlainDate`](https://deno.land/x/complaindate/mod.ts?s=ExtendedPlainDate)
 objects if you want to call available operations directly on the plain-date
 object. This may sound convenient, but it is very hard to tree-shake, making
-your bundle size unnecessary big.
+your bundle size unnecessary big when used.
 
 There is no extended interface for the plain-time objects, because there are
 actually very few complex operations to do on a wall-time object. Plain-time

@@ -3,7 +3,7 @@
  *
  * Date-time utilities that keeps timezones on the surface.
  *
- * ## Plain-date objects
+ * ## Main objects
  *
  * The {@link ComPlainDate} interface describes plain-date objects, that can be
  * created with the {@link PlainDate} factory, described by the

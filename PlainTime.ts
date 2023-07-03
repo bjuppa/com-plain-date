@@ -17,7 +17,11 @@ export type FormatPlainTimeOptions =
   >
   & { timeStyle?: "medium" | "short" };
 
-/** Describes a basic time-of-day object with minimal properties */
+/**
+ * Describes a basic time-of-day object with minimal properties.
+ *
+ * @see {@link PlainTime} factory for creating objects
+ */
 export interface ComPlainTime {
   /** Hour (1-23) */
   hour: number;

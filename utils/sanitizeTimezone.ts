@@ -1,6 +1,8 @@
 /**
  * Clean up a timezone string, removing some common user typos and converting
  * whitespace to underscore.
+ *
+ * @category Timezones
  */
 export function sanitizeTimezone(timezoneString: string): string {
   const tz = timezoneString

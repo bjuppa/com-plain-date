@@ -33,6 +33,8 @@ declare namespace Intl {
  * March or April 2022.
  * See {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/supportedValuesOf#browser_compatibility | compatibility data on MDN }
  * for details.
+ *
+ * @category Timezones
  */
 export function supportedCanonicalTimezones(): string[] {
   return Intl.supportedValuesOf ? Intl.supportedValuesOf("timeZone") : [];
