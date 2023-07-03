@@ -3,7 +3,8 @@
  * doesn't expose a timezone.
  *
  * This is useful for setting the initial value of an HTML input where the user
- * enters their timezone.
+ * enters their timezone, or in a UI where the user has no option of selecting a
+ * preferred timezone.
  *
  * @category Timezones
  */
