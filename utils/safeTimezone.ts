@@ -7,9 +7,10 @@ import { parseTimezone } from "./parseTimezone.ts";
  * Falls back to the timezone of the local system if no valid timezone was found
  * in the given string.
  *
- * This is useful for sanitizing the current user's timezone preference before
- * applying operations that takes a timezone parameter, and thus throws
- * exceptions for invalid timezones.
+ * This is useful for sanitizing the current user's timezone preference into a
+ * guaranteed valid timezone before applying any operations taking that timezone
+ * as parameter. This avoids `RangeError` being thrown should the timezone be
+ * invalid.
  *
  * @category Timezones
  */
