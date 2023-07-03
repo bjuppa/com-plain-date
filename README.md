@@ -63,8 +63,8 @@ is basically a wrapper around a UNIX timestamp (the number of milliseconds since
 of `Date` is good for timezone-agnostic operations such as comparing universal
 points in time and adding or subtracting _time_ in hours, minutes, or seconds.
 
-Use native JavaScript `Date` objects with relevant utility functions until you
-need to do an operation that `Date` doesn't support!
+Use native JavaScript `Date` objects together with relevant ComPlainDate utility
+functions until you need to do an operation that `Date` doesn't support!
 
 ### Plain-date
 
