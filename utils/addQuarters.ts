@@ -8,11 +8,11 @@ import { addMonths } from "./addMonths.ts";
  * The resulting day-of-month will always be within the expected quarter,
  * days will not spill over into the next quarter.
  *
- * @param {number} quarters The number of quarters to add or subtract
+ * @param quarters The number of quarters to add or subtract
  * @returns A curried function that operates on plain-dates
  */
 export function addQuarters(
-  quarters = 0,
+  quarters: number,
 ): <T extends ComPlainDate>(date: T) => T {
   return (date) => addMonths(3 * quarters)(date);
 }
