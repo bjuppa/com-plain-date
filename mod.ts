@@ -76,7 +76,7 @@ export { startOfWeekend } from "./utils/startOfWeekend.ts";
 export { startOfYear } from "./utils/startOfYear.ts";
 
 // Utils for making strings
-export { datetimeLocal } from "./utils/datetimeLocal.ts";
+export { formatDatetimeLocal } from "./utils/formatDatetimeLocal.ts";
 export { formatPlainDate } from "./utils/formatPlainDate.ts";
 export { formatPlainTime } from "./utils/formatPlainTime.ts";
 export { formatInstant } from "./utils/formatInstant.ts";

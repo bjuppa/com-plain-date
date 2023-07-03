@@ -9,7 +9,7 @@ import { createUtcInstant } from "./createUtcInstant.ts";
  * @throws {RangeError} Year must be after year 0
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local | HTML input datetime-local on MDN}
  */
-export function datetimeLocal({
+export function formatDatetimeLocal({
   year = NaN,
   month = 1,
   day = 1,
