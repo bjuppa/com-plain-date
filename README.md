@@ -181,6 +181,70 @@ createInstant(
 }); // 2023-01-01T10:15:00.000Z
 ```
 
+## Working with timezone strings
+
+JavaScript throws exceptions whenever it encounters invalid timezone names. User
+input timezones will clearly need validation before use, but support for a
+specific timezone name may also differ between JavaScript engines. For example,
+a timezone supported in your backend may not be supported in the user's current
+browser.
+
+Before using a timezone string in frontend code, pass it through the
+[`safeTimezone`](https://deno.land/x/complaindate/mod.ts?s=safeTimezone) utility
+to get a string guaranteed to be a valid timezone in the local system. Should
+the given timezone name be unsuitable, it will return the operating system's
+named timezone instead, or `"UTC"` if no timezone can be determined. For the
+user, this should make for the best possible graceful degradation when their
+preferred timezone is unavailable.
+
+When your application doesn't support timezone as a user preference, the
+[`localTimezone`](https://deno.land/x/complaindate/mod.ts?s=localTimezone)
+utility can be used to retrieve a relevant timezone for the current view.
+Although, be careful with server side rendering&hellip;
+
+### Show the timezone name in the user interface
+
+Because the timezone used may be a fallback and not what the user expects, it's
+important to _always_ display the actual timezone name whenever time information
+is present in the user interface.
+
+[`formatTimezone`](https://deno.land/x/complaindate/mod.ts?s=formatTimezone)
+will make a timezone name look pretty for the user. It replaces underscores with
+spaces to give a less technical impression, for example `"Africa/Dar es Salaam"`
+instead of `"Africa/Dar_es_Salaam"`.
+
+### Guided timezone preference input
+
+If your user interface provides a way for users to select their preferred
+timezone, use
+[`supportedCanonicalTimezones`](https://deno.land/x/complaindate/mod.ts?s=supportedCanonicalTimezones)
+to get a list of all the named timezones in the system. You may even create an
+endpoint that returns the timezones supported by your backend and intersect that
+with the browser's timezones to really make sure no unhandled timezone is
+suggested.
+
+You may populate an HTML `<datalist id="availableTimezones">` with all relevant
+timezones, enabling an ordinary `<input type="text" list="availableTimezones">`
+to become an autocomplete "combobox" for the user to select from. See the
+[datalist documentation on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist)
+for details and examples.
+
+Don't forget to use
+[`localTimezone`](https://deno.land/x/complaindate/mod.ts?s=localTimezone) to
+set a sensible initial value for the input!
+
+### Validating timezones
+
+User input can be run through
+[`sanitizeTimezone`](https://deno.land/x/complaindate/mod.ts?s=sanitizeTimezone)
+to clean up a timezone string, removing some common user typos and converting
+whitespace to underscore. The result can be checked with
+[`isTimezone`](https://deno.land/x/complaindate/mod.ts?s=isTimezone).
+
+If you rather throw an exception on failure, use
+[`parseTimezone`](https://deno.land/x/complaindate/mod.ts?s=parseTimezone)
+directly to both sanitize and validate the result.
+
 ## Why another JavaScript date-time library?
 
 Most other date-time libraries either don't provide any clear strategy for
