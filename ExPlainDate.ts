@@ -38,6 +38,8 @@ import { splitDateTime } from "./utils/splitDateTime.ts";
 /**
  * Describes an extended plain-date object with extra properties and
  * convenience methods for common operations, of which many are chainable.
+ *
+ * @see {@link ExPlainDate} factory for creating objects
  */
 export interface ExtendedPlainDate extends ComPlainDate {
   /**
