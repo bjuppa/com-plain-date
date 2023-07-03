@@ -241,7 +241,8 @@ to clean up a timezone string, removing some common user typos and converting
 whitespace to underscore. The result can be checked with
 [`isTimezone`](https://deno.land/x/complaindate/mod.ts?s=isTimezone).
 
-If you'd rather throw `RangeError` on failure, use
+If you'd rather throw `RangeError` on failure, or want to extract a timezone
+name that is part of a longer string, use
 [`parseTimezone`](https://deno.land/x/complaindate/mod.ts?s=parseTimezone)
 directly to both sanitize and validate the result.
 
