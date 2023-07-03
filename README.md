@@ -66,8 +66,10 @@ is basically a wrapper around a UNIX timestamp (the number of milliseconds since
 of `Date` is good for timezone-agnostic operations such as comparing universal
 points in time and adding or subtracting _time_ in hours, minutes, or seconds.
 
-Use native JavaScript `Date` objects together with relevant ComPlainDate utility
-functions until you need to do an operation that `Date` doesn't support!
+Aim to use native JavaScript `Date` objects together with relevant ComPlainDate
+utility functions as much as you can. Then, when you need to do an operation
+that `Date` or ComPlainDate's instant-utilities doesn't support, it's time to
+look to plain-date in the next section!
 
 ### Plain-date
 
@@ -89,9 +91,9 @@ returning a new plain-date.
 
 ### Plain-time
 
-ComPlainDate provides `PlainTime` representing a local _time-of-day_. Plain-time
-objects are mostly used for storing and displaying a fixed time-of-day and
-operations on them are surprisingly uncommon.
+ComPlainDate provides `PlainTime` for representing a local _time-of-day_.
+Plain-time objects are mostly used for storing and displaying a fixed
+time-of-day and operations on them are surprisingly uncommon.
 
 Plain-time objects have four numeric properties (`hour`, `minute`, `second`, and
 `millisecond`), that can be used for operations in the rare case it's needed.
@@ -276,7 +278,7 @@ When bundle size is not an issue (i.e. server-side), you can work with full
 [`ExPlainDate`]((https://deno.land/x/complaindate/mod.ts?s=ExtendedPlainDate))
 objects if you want to call available operations directly on the plain-date
 object. This may sound convenient, but it is very hard to tree-shake, making
-your bundle size unnecessary big.
+your bundle size unnecessary big when used.
 
 There is no extended interface for the plain-time objects, because there are
 actually very few complex operations to do on a wall-time object. Plain-time
