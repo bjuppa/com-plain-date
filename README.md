@@ -68,8 +68,8 @@ points in time and adding or subtracting _time_ in hours, minutes, or seconds.
 
 Aim to use native JavaScript `Date` objects together with relevant ComPlainDate
 utility functions as much as you can. Then, when you need to do an operation
-that `Date` or ComPlainDate's instant-utilities doesn't support, it's time to
-look to plain-date in the next section!
+that the provided instant-utilities doesn't support, it's time to look to
+plain-date in the next section!
 
 ### Plain-date
 
