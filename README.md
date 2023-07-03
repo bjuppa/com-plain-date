@@ -183,8 +183,8 @@ createInstant(
 
 ## Working with timezone strings
 
-JavaScript throws exceptions whenever it encounters invalid timezone names. User
-input timezones will clearly need validation before use, but support for a
+JavaScript throws `RangeError` whenever it encounters an invalid timezone name.
+User input timezones will clearly need validation before use, but support for a
 specific timezone name may also differ between JavaScript engines. For example,
 a timezone supported in your backend may not be supported in the user's current
 browser.
@@ -241,7 +241,8 @@ to clean up a timezone string, removing some common user typos and converting
 whitespace to underscore. The result can be checked with
 [`isTimezone`](https://deno.land/x/complaindate/mod.ts?s=isTimezone).
 
-If you rather throw an exception on failure, use
+If you'd rather throw `RangeError` on failure, or want to extract a timezone
+name that is part of a longer string, use
 [`parseTimezone`](https://deno.land/x/complaindate/mod.ts?s=parseTimezone)
 directly to both sanitize and validate the result.
 
