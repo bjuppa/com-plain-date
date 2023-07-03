@@ -37,6 +37,9 @@ to add a supporting concept:
 - _timezone_, a set of rules describing how local wall-time in an area relates
   to universal time.
 
+Let's go through how ComPlainDate supports working with each of these four
+concepts, starting with the simplest but perhaps most central one.
+
 ### Timezones are just strings
 
 Modern JavaScript engines know the rules for timezones around the globe through
