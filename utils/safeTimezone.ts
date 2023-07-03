@@ -10,6 +10,8 @@ import { parseTimezone } from "./parseTimezone.ts";
  * This is useful for sanitizing the current user's timezone preference before
  * applying operations that takes a timezone parameter, and thus throws
  * exceptions for invalid timezones.
+ *
+ * @category Timezones
  */
 export function safeTimezone(preferredTimezone: string): string {
   try {
