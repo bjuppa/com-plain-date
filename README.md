@@ -77,8 +77,10 @@ ComPlainDate provides `PlainDate` for operations on local _calendar dates_, like
 adding or subtracting days, months or years. All the operations you do on
 plain-dates are timezone agnostic.
 
-Plain-date objects have three numeric properties (`year`, `month`, and `day`)
-used for most operations. The `iso` property and
+Plain-date objects adhere to a
+[contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate) and have
+three numeric properties (`year`, `month`, and `day`) used for most operations.
+The `iso` property and
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
 produces a string in the format `yyyy-mm-dd` that can be used for simple display
 purposes, while the `toLocaleString` method is good for tailored formatting of
@@ -95,10 +97,11 @@ ComPlainDate provides `PlainTime` for representing a local _time-of-day_.
 Plain-time objects are mostly used for storing and displaying a fixed
 time-of-day and operations on them are surprisingly uncommon.
 
-Plain-time objects have four numeric properties (`hour`, `minute`, `second`, and
-`millisecond`), that can be used for operations in the rare case it's needed.
-The `iso` property is a string in the format `Thh:mm:ss.sss` that is mostly used
-for technical purposes.
+Plain-time objects adhere to a
+[contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainTime) and have four
+numeric properties (`hour`, `minute`, `second`, and `millisecond`), that may be
+used for operations in the rare case it's needed. The `iso` property is a string
+in the format `Thh:mm:ss.sss` that is mostly used for technical purposes.
 
 For display,
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
