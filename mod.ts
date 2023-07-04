@@ -19,8 +19,8 @@
  *
  * ## Utilities for parsing strings into objects
  *
- * - {@link parsePlainDate}
- * - {@link parsePlainTime}
+ * - {@link parsePlainDate} (extract plain-date from string)
+ * - {@link parsePlainTime} (extract plain-time from string)
  *
  * ## Utilities for splitting native JS `Date` objects into separate plain-date & plain-time objects
  *
@@ -50,19 +50,16 @@
  * - {@link formatPlainDate}
  * - {@link formatPlainTime}
  * - {@link formatInstant} - requires a named timezone
- * - {@link formatTimezone} - replaces underscore with space
- *
- * See {@link formatDatetimeLocal} for use with HTML datetime-local inputs
+ * - {@link formatTimezone}
+ * - {@link formatDatetimeLocal} (for HTML datetime-local inputs)
  *
  * ## Utilities for getting information about a plain-date object
  *
  * - {@link daysInMonth}
  * - {@link daysInYear}
  * - {@link isBusinessDay} and inverse {@link isWeekendDay}
- * - {@link isFirstDayOfMonth}
- * - {@link isFirstDayOfYear}
- * - {@link isLastDayOfMonth}
- * - {@link isLastDayOfYear}
+ * - {@link isFirstDayOfMonth} and {@link isLastDayOfMonth}
+ * - {@link isFirstDayOfYear} and {@link isLastDayOfYear}
  * - {@link isLeapYear}
  * - {@link ordinal} (day of the year)
  * - {@link quarter}
@@ -94,11 +91,11 @@
  * ## Utilities for timezone strings
  *
  * - {@link safeTimezone} - falls back to system timezone
- * - {@link localTimezone} - get system timezone
- * - {@link supportedCanonicalTimezones} - list supported timezones
+ * - {@link localTimezone} (operating system timezone)
+ * - {@link supportedCanonicalTimezones}
  * - {@link isTimezone}
- * - {@link sanitizeTimezone} - clean up a timezone string
- * - {@link parseTimezone} - extract timezone name from string & throw error on failure
+ * - {@link sanitizeTimezone} (clean up timezone name)
+ * - {@link parseTimezone} (extract timezone name from string) - throws error on failure
  *
  * @module()
  */
