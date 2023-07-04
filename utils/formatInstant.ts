@@ -25,7 +25,7 @@ export type FormatInstantOptions = Omit<Intl.DateTimeFormatOptions, "timeZone">;
  * format24hDateTime(new Date());  // "6/11/2023, 16:54:32"
  * ```
  */
-export function formatInstant(locale: Intl.LocalesArgument = undefined): (
+export function formatInstant(locale?: Intl.LocalesArgument): (
   options?: FormatInstantOptions,
 ) => (timezone?: string) => (instant: Date) => string {
   return (options = { timeZoneName: "short" }) => (timezone) => (instant) =>
