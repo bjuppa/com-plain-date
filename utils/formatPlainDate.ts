@@ -23,7 +23,7 @@ import { ComPlainDate, FormatPlainDateOptions } from "../PlainDate.ts";
  * ```
  */
 export function formatPlainDate(
-  locale: Intl.LocalesArgument = undefined,
+  locale?: Intl.LocalesArgument,
 ): (options?: FormatPlainDateOptions) => (date: ComPlainDate) => string {
   return (options = {}) => (date) => date.toLocaleString(locale, options);
 }

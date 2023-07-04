@@ -23,7 +23,7 @@ import { ComPlainTime, FormatPlainTimeOptions } from "../PlainTime.ts";
  * ```
  */
 export function formatPlainTime(
-  locale: Intl.LocalesArgument = undefined,
+  locale?: Intl.LocalesArgument,
 ): (options?: FormatPlainTimeOptions) => (time: ComPlainTime) => string {
   return (options = {}) => (time) => time.toLocaleString(locale, options);
 }
