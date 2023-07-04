@@ -144,7 +144,7 @@ export function PlainDate(
       return this.iso;
     },
 
-    toLocaleString(locale = undefined, options = { dateStyle: "short" }) {
+    toLocaleString(locale, options = { dateStyle: "short" }) {
       return utcDate.toLocaleDateString(locale, {
         ...options,
         timeZone: "UTC",
