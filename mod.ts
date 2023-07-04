@@ -24,7 +24,7 @@
  *
  * ## Utilities for splitting native JS `Date` objects into separate plain-date & plain-time objects
  *
- * - {@link splitDateTime} - takes a timezone
+ * - {@link splitDateTime} - requires a named timezone
  * - {@link splitLocalDateTime}
  * - {@link splitUtcDateTime}
  *
@@ -49,7 +49,7 @@
  *
  * - {@link formatPlainDate}
  * - {@link formatPlainTime}
- * - {@link formatInstant} - takes a timezone
+ * - {@link formatInstant} - requires a named timezone
  * - {@link formatTimezone} - replaces underscore with space
  *
  * See {@link formatDatetimeLocal} for use with HTML datetime-local inputs
@@ -78,7 +78,7 @@
  *
  * ## Utilities for creating native JS `Date` objects from plain-date & plain-time objects
  *
- * - {@link createInstant} - takes a timezone
+ * - {@link createInstant} - requires a named timezone
  * - {@link createLocalInstant}
  * - {@link createUtcInstant}
  *
