@@ -107,15 +107,19 @@
  *
  * @module()
  */
+
+// Main objects
 export { PlainDate } from "./PlainDate.ts";
 export type { ComPlainDate, PlainDateFactory } from "./PlainDate.ts";
 
 export { PlainTime } from "./PlainTime.ts";
 export type { ComPlainTime, PlainTimeFactory } from "./PlainTime.ts";
 
+// Extended objects
 export { ExPlainDate } from "./ExPlainDate.ts";
 export type { ExtendedPlainDate } from "./ExPlainDate.ts";
 
+// Constants
 export {
   BUSINESS_DAYS_IN_WEEK,
   DAYS_IN_COMMON_YEAR,
@@ -131,13 +135,13 @@ export {
 } from "./constants.ts";
 export type { MonthNumber, QuarterNumber, WeekDayNumber } from "./constants.ts";
 
+// Types
 export type {
   SloppyDate,
   SloppyDateTime,
   SloppyTime,
   SplitDateTime,
 } from "./support/date-time-types.ts";
-
 export type { PlainDateMapFn } from "./support/function-signatures.ts";
 
 // Utils for parsing strings into objects
