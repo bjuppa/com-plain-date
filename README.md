@@ -9,7 +9,7 @@ and runtime systems.
 It may well be that ComPlainDate will stay useful even after Temporal is
 available — only time will tell...
 
-[API documentation at deno.land](https://deno.land/x/complaindate/mod.ts)
+[API documentation and lists of available functions at deno.land](https://deno.land/x/complaindate/mod.ts)
 
 ## Installation
 
