@@ -141,31 +141,31 @@ export function ExPlainDate(
       });
     },
 
-    toLocaleStringMedium(locale = undefined) {
+    toLocaleStringMedium(locale) {
       return formatPlainDate(locale)({ dateStyle: "medium" })(this);
     },
-    toLocaleStringLong(locale = undefined) {
+    toLocaleStringLong(locale) {
       return formatPlainDate(locale)({ dateStyle: "long" })(this);
     },
-    toLocaleStringFull(locale = undefined) {
+    toLocaleStringFull(locale) {
       return formatPlainDate(locale)({ dateStyle: "full" })(this);
     },
-    dayName(locale = undefined) {
+    dayName(locale) {
       return formatPlainDate(locale)({ weekday: "long" })(this);
     },
-    dayNameShort(locale = undefined) {
+    dayNameShort(locale) {
       return formatPlainDate(locale)({ weekday: "short" })(this);
     },
-    dayNameNarrow(locale = undefined) {
+    dayNameNarrow(locale) {
       return formatPlainDate(locale)({ weekday: "narrow" })(this);
     },
-    monthName(locale = undefined) {
+    monthName(locale) {
       return formatPlainDate(locale)({ month: "long" })(this);
     },
-    monthNameShort(locale = undefined) {
+    monthNameShort(locale) {
       return formatPlainDate(locale)({ month: "short" })(this);
     },
-    monthNameNarrow(locale = undefined) {
+    monthNameNarrow(locale) {
       return formatPlainDate(locale)({ month: "narrow" })(this);
     },
 

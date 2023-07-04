@@ -126,7 +126,7 @@ export function PlainTime(
       return this.toString();
     },
 
-    toLocaleString(locale = undefined, options = { timeStyle: "short" }) {
+    toLocaleString(locale, options = { timeStyle: "short" }) {
       return epochUtcDate.toLocaleTimeString(locale, {
         ...options,
         timeZone: "UTC",
