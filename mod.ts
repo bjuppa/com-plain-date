@@ -57,7 +57,7 @@
  *
  * - {@link formatPlainDate}
  * - {@link formatPlainTime}
- * - {@link formatInstant} - requires a named timezone
+ * - {@link formatInstant}
  * - {@link formatTimezone}
  * - {@link formatDatetimeLocal} (for HTML datetime-local inputs)
  *

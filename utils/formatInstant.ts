@@ -22,7 +22,7 @@ export type FormatInstantOptions = Omit<Intl.DateTimeFormatOptions, "timeZone">;
  * const format24hDateTime = formatInstant("en")({ hourCycle: "h23" })("Europe/Stockholm");
  *
  * formatDateTime(new Date()); // "6/11/2023, 4:54:32 PM GMT+2"
- * format24hDateTime(new Date());  // "6/11/2023, 16:54:32"
+ * format24hDateTime(new Date());  // "6/11/2023, 16:54:32 GMT+2"
  * ```
  */
 export function formatInstant(locale?: Intl.LocalesArgument): (
