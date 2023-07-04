@@ -8,7 +8,7 @@ export type FormatInstantOptions = Omit<Intl.DateTimeFormatOptions, "timeZone">;
  * 1. `Intl` {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument | locale },
  *    defaults to system's locale if not given.
  * 2. `Intl` {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat | format options },
- *    defaults to include a "short" timezone-style if no options given.
+ *    defaults to include a "short" timezone-style unless `timeZoneName` is explicitly `undefined`.
  * 3. A named IANA timezone, defaults to system's timezone if not given.
  *
  * @param locale `Intl` locale,
@@ -30,6 +30,7 @@ export function formatInstant(locale?: Intl.LocalesArgument): (
 ) => (timezone?: string) => (instant: Date) => string {
   return (options = { timeZoneName: "short" }) => (timezone) => (instant) =>
     instant.toLocaleString(locale, {
+      timeZoneName: "short",
       ...options,
       timeZone: timezone,
     });

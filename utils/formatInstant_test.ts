@@ -1,5 +1,5 @@
 import { formatInstant } from "./formatInstant.ts";
-import { assert, assertEquals } from "../dev_deps.ts";
+import { assertEquals } from "../dev_deps.ts";
 
 Deno.test("returns localized string for English locale and UK timezone", () => {
   const instant = new Date("2023-06-10T13:20:30+0100");
@@ -27,17 +27,41 @@ Deno.test("takes Intl options", () => {
   );
 });
 
-Deno.test("ignores timezone in options", () => {
+Deno.test("adds timeZoneName to options if left out", () => {
   const instant = new Date("2023-06-10T13:20:30+0100");
   assertEquals(
-    // @ts-ignore: Pass timeZone even if not allowed by type
-    formatInstant("en")({ timeZone: "America/Chicago" })("Europe/London")(
+    formatInstant("en")({ hourCycle: "h23" })("Europe/London")(
+      instant,
+    ),
+    "6/10/2023, 13:20:30 GMT+1",
+  );
+});
+
+Deno.test("doesn't add timeZoneName when explicitly set to undefined", () => {
+  const instant = new Date("2023-06-10T13:20:30+0100");
+  assertEquals(
+    formatInstant("en")({ timeZoneName: undefined })("Europe/London")(
       instant,
     ),
     "6/10/2023, 1:20:30 PM",
   );
 });
 
-Deno.test("accepts leaving all parameters empty", () => {
-  assert(formatInstant()()()(new Date()));
+Deno.test("ignores timeZone in options", () => {
+  const instant = new Date("2023-06-10T13:20:30+0100");
+  assertEquals(
+    // @ts-ignore: Pass timeZone even if not allowed by type
+    formatInstant("en")({ timeZone: "America/Chicago" })("Europe/London")(
+      instant,
+    ),
+    "6/10/2023, 1:20:30 PM GMT+1",
+  );
+});
+
+Deno.test("accepts leaving all parameters empty for system defaults and short timezone name", () => {
+  const instant = new Date("2023-06-10T13:20:30+0100");
+  assertEquals(
+    formatInstant()()()(instant),
+    instant.toLocaleString(undefined, { timeZoneName: "short" }),
+  );
 });
