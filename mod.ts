@@ -13,22 +13,30 @@
  * created with the {@link PlainTime} factory, described by the
  * {@link PlainTimeFactory} interface.
  *
- * There is also an extended type of plain-date objects, described by the
+ * ### Extended objects
+ *
+ * _Note:_ These objects are not tree-shakable, so using them will increase your
+ * bundle size... a lot. Extended objects are meant for use in backend code only,
+ * always use the main objects with utility functions in frontend code!
+ *
+ * An extended type of plain-date object is described by the
  * {@link ExtendedPlainDate} interface. Those objects are created with the
  * {@link ExPlainDate} factory.
  *
- * ## Utilities for parsing strings into objects
+ * ## Utility functions
+ *
+ * ### Parsing strings into objects
  *
  * - {@link parsePlainDate} (extract plain-date from string)
  * - {@link parsePlainTime} (extract plain-time from string)
  *
- * ## Utilities for splitting native JS `Date` objects into separate plain-date & plain-time objects
+ * ### Splitting native JS `Date` objects into separate plain-date & plain-time objects
  *
  * - {@link splitDateTime} - requires a named timezone
  * - {@link splitLocalDateTime}
  * - {@link splitUtcDateTime}
  *
- * ## Utilities for generating a new plain-date object from an existing one
+ * ### Generating a new plain-date object from an existing one
  *
  * - {@link addBusinessDays}
  * - {@link addDays}
@@ -45,7 +53,7 @@
  * Also see {@link pipePlainDate} and related type {@link PlainDateMapFn} that
  * are useful when implementing your own plain-date mapper functions.
  *
- * ## Utilities for making strings
+ * ### Making user interface strings
  *
  * - {@link formatPlainDate}
  * - {@link formatPlainTime}
@@ -53,7 +61,7 @@
  * - {@link formatTimezone}
  * - {@link formatDatetimeLocal} (for HTML datetime-local inputs)
  *
- * ## Utilities for getting information about a plain-date object
+ * ### Getting information about a plain-date object
  *
  * - {@link daysInMonth}
  * - {@link daysInYear}
@@ -65,7 +73,7 @@
  * - {@link quarter}
  * - {@link weekDayNumber}
  *
- * ## Utilities for comparing plain-date objects
+ * ### Comparing plain-date objects
  *
  * - {@link differenceInBusinessDays}
  * - {@link differenceInDays}
@@ -73,22 +81,22 @@
  * - {@link differenceInQuarters}
  * - {@link differenceInYears}
  *
- * ## Utilities for creating native JS `Date` objects from plain-date & plain-time objects
+ * ### Creating native JS `Date` objects from plain-date & plain-time objects
  *
  * - {@link createInstant} - requires a named timezone
  * - {@link createLocalInstant}
  * - {@link createUtcInstant}
  *
- * ## Utilities for generating a new native JS `Date` object from an existing one
+ * ### Generating a new native JS `Date` object from an existing one
  *
  * - {@link addTime}
  * - {@link subtractTime}
  *
- * ## Utilities for comparing native JS `Date` objects
+ * ### Comparing native JS `Date` objects
  *
  * - {@link differenceInMilliseconds}
  *
- * ## Utilities for timezone strings
+ * ### Working with timezone names
  *
  * - {@link safeTimezone} - falls back to system timezone
  * - {@link localTimezone} (operating system timezone)
@@ -155,7 +163,7 @@ export { startOfQuarter } from "./utils/startOfQuarter.ts";
 export { startOfWeekend } from "./utils/startOfWeekend.ts";
 export { startOfYear } from "./utils/startOfYear.ts";
 
-// Utilities for making strings
+// Utilities for making user interface strings
 export { formatDatetimeLocal } from "./utils/formatDatetimeLocal.ts";
 export { formatPlainDate } from "./utils/formatPlainDate.ts";
 export { formatPlainTime } from "./utils/formatPlainTime.ts";
@@ -195,7 +203,7 @@ export { subtractTime } from "./utils/subtractTime.ts";
 // Utilities for comparing native JS `Date` objects
 export { differenceInMilliseconds } from "./utils/differenceInMilliseconds.ts";
 
-// Utilities for timezone strings
+// Utilities for working with timezone names
 export { safeTimezone } from "./utils/safeTimezone.ts";
 export { localTimezone } from "./utils/localTimezone.ts";
 export { supportedCanonicalTimezones } from "./utils/supportedCanonicalTimezones.ts";
