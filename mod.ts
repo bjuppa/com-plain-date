@@ -13,22 +13,30 @@
  * created with the {@link PlainTime} factory, described by the
  * {@link PlainTimeFactory} interface.
  *
- * There is also an extended type of plain-date objects, described by the
+ * ### Extended objects
+ *
+ * _Note:_ These objects are not tree-shakable, so using them will increase your
+ * bundle size... a lot. Extended objects are meant for use in backend code only,
+ * always use the main objects with utility functions in frontend code!
+ *
+ * An extended type of plain-date object is described by the
  * {@link ExtendedPlainDate} interface. Those objects are created with the
  * {@link ExPlainDate} factory.
  *
- * ## Utilities for parsing strings into objects
+ * ## Utility functions
  *
- * - {@link parsePlainDate}
- * - {@link parsePlainTime}
+ * ### Parsing strings into objects
  *
- * ## Utilities for splitting native JS `Date` objects into separate plain-date & plain-time objects
+ * - {@link parsePlainDate} (extract plain-date from string)
+ * - {@link parsePlainTime} (extract plain-time from string)
  *
- * - {@link splitDateTime} - takes a timezone
+ * ### Splitting native JS `Date` objects into separate plain-date & plain-time objects
+ *
+ * - {@link splitDateTime} - requires a named timezone
  * - {@link splitLocalDateTime}
  * - {@link splitUtcDateTime}
  *
- * ## Utilities for generating a new plain-date object from an existing one
+ * ### Generating a new plain-date object from an existing one
  *
  * - {@link addBusinessDays}
  * - {@link addDays}
@@ -45,30 +53,27 @@
  * Also see {@link pipePlainDate} and related type {@link PlainDateMapFn} that
  * are useful when implementing your own plain-date mapper functions.
  *
- * ## Utilities for making strings
+ * ### Making user interface strings
  *
  * - {@link formatPlainDate}
  * - {@link formatPlainTime}
- * - {@link formatInstant} - takes a timezone
- * - {@link formatTimezone} - replaces underscore with space
+ * - {@link formatInstant} - requires a named timezone
+ * - {@link formatTimezone}
+ * - {@link formatDatetimeLocal} (for HTML datetime-local inputs)
  *
- * See {@link formatDatetimeLocal} for use with HTML datetime-local inputs
- *
- * ## Utilities for getting information about a plain-date object
+ * ### Getting information about a plain-date object
  *
  * - {@link daysInMonth}
  * - {@link daysInYear}
  * - {@link isBusinessDay} and inverse {@link isWeekendDay}
- * - {@link isFirstDayOfMonth}
- * - {@link isFirstDayOfYear}
- * - {@link isLastDayOfMonth}
- * - {@link isLastDayOfYear}
+ * - {@link isFirstDayOfMonth} and {@link isLastDayOfMonth}
+ * - {@link isFirstDayOfYear} and {@link isLastDayOfYear}
  * - {@link isLeapYear}
  * - {@link ordinal} (day of the year)
  * - {@link quarter}
  * - {@link weekDayNumber}
  *
- * ## Utilities for comparing plain-date objects
+ * ### Comparing plain-date objects
  *
  * - {@link differenceInBusinessDays}
  * - {@link differenceInDays}
@@ -76,41 +81,45 @@
  * - {@link differenceInQuarters}
  * - {@link differenceInYears}
  *
- * ## Utilities for creating native JS `Date` objects from plain-date & plain-time objects
+ * ### Creating native JS `Date` objects from plain-date & plain-time objects
  *
- * - {@link createInstant} - takes a timezone
+ * - {@link createInstant} - requires a named timezone
  * - {@link createLocalInstant}
  * - {@link createUtcInstant}
  *
- * ## Utilities for generating a new native JS `Date` object from an existing one
+ * ### Generating a new native JS `Date` object from an existing one
  *
  * - {@link addTime}
  * - {@link subtractTime}
  *
- * ## Utilities for comparing native JS `Date` objects
+ * ### Comparing native JS `Date` objects
  *
  * - {@link differenceInMilliseconds}
  *
- * ## Utilities for timezone strings
+ * ### Working with timezone names
  *
  * - {@link safeTimezone} - falls back to system timezone
- * - {@link localTimezone} - get system timezone
- * - {@link supportedCanonicalTimezones} - list supported timezones
+ * - {@link localTimezone} (operating system timezone)
+ * - {@link supportedCanonicalTimezones}
  * - {@link isTimezone}
- * - {@link sanitizeTimezone} - clean up a timezone string
- * - {@link parseTimezone} - extract timezone name from string & throw error on failure
+ * - {@link sanitizeTimezone} (clean up timezone name)
+ * - {@link parseTimezone} (extract timezone name from string) - throws error on failure
  *
  * @module()
  */
+
+// Main objects
 export { PlainDate } from "./PlainDate.ts";
 export type { ComPlainDate, PlainDateFactory } from "./PlainDate.ts";
 
 export { PlainTime } from "./PlainTime.ts";
 export type { ComPlainTime, PlainTimeFactory } from "./PlainTime.ts";
 
+// Extended objects
 export { ExPlainDate } from "./ExPlainDate.ts";
 export type { ExtendedPlainDate } from "./ExPlainDate.ts";
 
+// Constants
 export {
   BUSINESS_DAYS_IN_WEEK,
   DAYS_IN_COMMON_YEAR,
@@ -126,25 +135,25 @@ export {
 } from "./constants.ts";
 export type { MonthNumber, QuarterNumber, WeekDayNumber } from "./constants.ts";
 
+// Types
 export type {
   SloppyDate,
   SloppyDateTime,
   SloppyTime,
   SplitDateTime,
 } from "./support/date-time-types.ts";
-
 export type { PlainDateMapFn } from "./support/function-signatures.ts";
 
-// Utilities for parsing strings into objects
+// Utils for parsing strings into objects
 export { parsePlainDate } from "./utils/parsePlainDate.ts";
 export { parsePlainTime } from "./utils/parsePlainTime.ts";
 
-// Utilities for splitting native JS `Date` objects into separate plain-date & plain-time objects
+// Utils for splitting native JS `Date` objects into separate plain-date & plain-time objects
 export { splitDateTime } from "./utils/splitDateTime.ts";
 export { splitLocalDateTime } from "./utils/splitLocalDateTime.ts";
 export { splitUtcDateTime } from "./utils/splitUtcDateTime.ts";
 
-// Utilities for generating a new plain-date object from an existing one
+// Utils for generating a new plain-date object from an existing one
 export { pipePlainDate } from "./utils/pipePlainDate.ts";
 export { addBusinessDays } from "./utils/addBusinessDays.ts";
 export { addDays } from "./utils/addDays.ts";
@@ -158,14 +167,14 @@ export { startOfQuarter } from "./utils/startOfQuarter.ts";
 export { startOfWeekend } from "./utils/startOfWeekend.ts";
 export { startOfYear } from "./utils/startOfYear.ts";
 
-// Utilities for making strings
+// Utils for making user interface strings
 export { formatDatetimeLocal } from "./utils/formatDatetimeLocal.ts";
 export { formatPlainDate } from "./utils/formatPlainDate.ts";
 export { formatPlainTime } from "./utils/formatPlainTime.ts";
 export { formatInstant } from "./utils/formatInstant.ts";
 export { formatTimezone } from "./utils/formatTimezone.ts";
 
-// Utilities for getting information about a plain-date object
+// Utils for getting information about a plain-date object
 export { daysInMonth } from "./utils/daysInMonth.ts";
 export { daysInYear } from "./utils/daysInYear.ts";
 export { isBusinessDay } from "./utils/isBusinessDay.ts";
@@ -179,26 +188,26 @@ export { ordinal } from "./utils/ordinal.ts";
 export { quarter } from "./utils/quarter.ts";
 export { weekDayNumber } from "./utils/weekDayNumber.ts";
 
-// Utilities for comparing plain-date objects
+// Utils for comparing plain-date objects
 export { differenceInBusinessDays } from "./utils/differenceInBusinessDays.ts";
 export { differenceInDays } from "./utils/differenceInDays.ts";
 export { differenceInMonths } from "./utils/differenceInMonths.ts";
 export { differenceInQuarters } from "./utils/differenceInQuarters.ts";
 export { differenceInYears } from "./utils/differenceInYears.ts";
 
-// Utilities for creating native JS `Date` objects from plain-date & plain-time objects
+// Utils for creating native JS `Date` objects from plain-date & plain-time objects
 export { createInstant } from "./utils/createInstant.ts";
 export { createLocalInstant } from "./utils/createLocalInstant.ts";
 export { createUtcInstant } from "./utils/createUtcInstant.ts";
 
-// Utilities for generating a new native JS `Date` object from an existing one
+// Utils for generating a new native JS `Date` object from an existing one
 export { addTime } from "./utils/addTime.ts";
 export { subtractTime } from "./utils/subtractTime.ts";
 
-// Utilities for comparing native JS `Date` objects
+// Utils for comparing native JS `Date` objects
 export { differenceInMilliseconds } from "./utils/differenceInMilliseconds.ts";
 
-// Utilities for timezone strings
+// Utils for working with timezone names
 export { safeTimezone } from "./utils/safeTimezone.ts";
 export { localTimezone } from "./utils/localTimezone.ts";
 export { supportedCanonicalTimezones } from "./utils/supportedCanonicalTimezones.ts";

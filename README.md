@@ -9,7 +9,7 @@ and runtime systems.
 It may well be that ComPlainDate will stay useful even after Temporal is
 available — only time will tell...
 
-[API documentation at deno.land](https://deno.land/x/complaindate/mod.ts)
+[API documentation and lists of available functions at deno.land](https://deno.land/x/complaindate/mod.ts)
 
 ## Installation
 
@@ -25,16 +25,16 @@ operate on those objects.
 
 The main concepts we need to represent are:
 
-- _instant_, a universal point in time.
-- _calendar date_, a year, month, and day-of-month.
-- _time-of-day_, a wall-time of hours, minutes, and seconds.
+- _instant_: a universal point in time.
+- _calendar date_: a year, month, and day-of-month.
+- _time-of-day_: a wall-time of hours, minutes, and seconds.
 
 None of the concepts above have an inherent timezone, in themselves they are all
 timezone-agnostic. But to convert an _instant_ to the corresponding local
 _calendar date_ and _time-of-day_ at a specific place, and vice versa, we need
 to add a supporting concept:
 
-- _timezone_, a set of rules describing how local wall-time in an area relates
+- _timezone_: a set of rules describing how local wall-time in an area relates
   to universal time.
 
 Let's go through how ComPlainDate supports working with each of these four
@@ -54,9 +54,9 @@ instead of space, as in `"Africa/Dar_es_Salaam"`, and some timezone names have
 three parts like `"America/Argentina/La_Rioja"`.
 
 ComPlainDate has utility functions that helps us parse, validate, sanitize and
-format timezone strings for the benefit of our users.
+format timezone strings.
 
-### No `Instant`?
+### What, no `Instant`?
 
 Surprisingly, ComPlainDate does not provide any special object representing a
 universal _instant_ in time. JavaScript's
@@ -66,16 +66,17 @@ is basically a wrapper around a UNIX timestamp (the number of milliseconds since
 of `Date` is good for timezone-agnostic operations such as comparing universal
 points in time and adding or subtracting _time_ in hours, minutes, or seconds.
 
-Aim to use native JavaScript `Date` objects together with relevant ComPlainDate
-utility functions as much as you can. Then, when you need to do an operation
-that the provided instant-utilities doesn't support, it's time to look to
-plain-date in the next section!
+ComPlainDate has a few utility functions supporting those operations and you
+should aim to use native JavaScript `Date` objects as much as you can. When you
+need to do an operation that the provided instant-utilities doesn't support it's
+time to reach for plain-date, described in the next section!
 
 ### Plain-date
 
-ComPlainDate provides `PlainDate` for operations on local _calendar dates_, like
-adding or subtracting days, months or years. All the operations you do on
-plain-dates are timezone agnostic.
+ComPlainDate provides `PlainDate` along with many utility functions for
+operations on local _calendar dates_, like adding or subtracting days, months or
+years. All the operations applying to plain-dates are timezone agnostic, and
+this is what makes plain-dates easy to work with.
 
 Plain-date objects adhere to a
 [contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate) and have
@@ -86,10 +87,12 @@ produces a string in the format `yyyy-mm-dd` that can be used for simple display
 purposes, while the `toLocaleString` method is good for tailored formatting of
 dates in user interfaces.
 
-Plain-dates have a `map` method that makes it easy to build a new plain-date
-that represents some modification of an existing plain-date. They also have a
-`pipe` method that applies any number of operations, from left to right,
-returning a new plain-date.
+Plain-dates have a `map` method taking a callback function that makes it easy to
+build a new plain-date that represents some modification of an existing
+plain-date. They also have a `pipe` method that applies any number of
+operations, from left to right, returning a new plain-date. The provided
+plain-date utility functions can be used with `map` and `pipe`, and you are
+encouraged to build your own mapper functions on top of the existing ones.
 
 ### Plain-time
 
