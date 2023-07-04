@@ -1,5 +1,5 @@
 import { formatInstant } from "./formatInstant.ts";
-import { assertEquals } from "../dev_deps.ts";
+import { assert, assertEquals } from "../dev_deps.ts";
 
 Deno.test("returns localized string for English locale and UK timezone", () => {
   const instant = new Date("2023-06-10T13:20:30+0100");
@@ -36,4 +36,8 @@ Deno.test("ignores timezone in options", () => {
     ),
     "6/10/2023, 1:20:30 PM",
   );
+});
+
+Deno.test("accepts leaving all parameters empty", () => {
+  assert(formatInstant()()()(new Date()));
 });
