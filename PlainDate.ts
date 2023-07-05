@@ -77,15 +77,15 @@ export interface ComPlainDate {
   /**
    * Create a new plain-date object from this one, modified by a function.
    *
-   * @param f A function that takes a plain-date and returns a sloppy-date
-   * @returns A new plain-date made from the sloppy-date
+   * @param f A function that takes a plain-date and returns a date object with properties `year`, `month` & `day`
+   * @returns A new plain-date made from the date
    */
   map: <T extends ComPlainDate>(
     this: T,
     f: (x: T) => {
       year: number | string;
-      month?: number | string;
-      day?: number | string;
+      month: number | string;
+      day: number | string;
     },
   ) => T;
 }
