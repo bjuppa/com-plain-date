@@ -166,9 +166,7 @@ export function PlainDate({ year, month = 1, day = 1 }: {
     },
 
     toUtcInstant({ hour = 0, minute = 0, second = 0, millisecond = 0 } = {}) {
-      return (hour || minute || second || millisecond)
-        ? createUtcInstant({ ...this, hour, minute, second, millisecond })
-        : utcDate;
+      return createUtcInstant({ ...this, hour, minute, second, millisecond });
     },
 
     pipe(...fns) {
