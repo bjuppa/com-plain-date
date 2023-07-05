@@ -1,5 +1,5 @@
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
-import { SloppyDate, SloppyTime } from "./support/date-time-types.ts";
+import { SloppyDate } from "./support/date-time-types.ts";
 import { MonthNumber } from "./constants.ts";
 
 export type FormatPlainDateOptions = Omit<
@@ -55,7 +55,12 @@ export interface ComPlainDate {
   /**
    * Get a native JS `Date` object in UTC.
    */
-  toUtcInstant: (time?: SloppyTime) => Date;
+  toUtcInstant: (time?: {
+    hour?: number | string;
+    minute?: number | string;
+    second?: number | string;
+    millisecond?: number | string;
+  }) => Date;
 
   constructor: PlainDateFactory<this>;
 

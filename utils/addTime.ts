@@ -1,4 +1,3 @@
-import { SloppyTime } from "../support/date-time-types.ts";
 import { tallyMilliseconds } from "../support/tallyMilliseconds.ts";
 
 /**
@@ -13,7 +12,12 @@ export function addTime({
   minute = 0,
   second = 0,
   millisecond = 0,
-}: SloppyTime) {
+}: {
+  hour?: number | string;
+  minute?: number | string;
+  second?: number | string;
+  millisecond?: number | string;
+}) {
   return (instant: Date): Date =>
     new Date(
       instant.valueOf() +

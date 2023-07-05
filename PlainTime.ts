@@ -1,4 +1,3 @@
-import { SloppyTime } from "./support/date-time-types.ts";
 import { HOURS_IN_DAY, MS_IN_HOUR } from "./constants.ts";
 import { tallyMilliseconds } from "./support/tallyMilliseconds.ts";
 
@@ -71,7 +70,12 @@ export interface ComPlainTime {
  * Describes a factory function that creates plain-time objects.
  */
 export interface PlainTimeFactory<T extends ComPlainTime> {
-  (x: SloppyTime): T;
+  (x: {
+    hour?: number | string;
+    minute?: number | string;
+    second?: number | string;
+    millisecond?: number | string;
+  }): T;
 }
 
 /**
@@ -84,7 +88,12 @@ export interface PlainTimeFactory<T extends ComPlainTime> {
  * @throws {RangeError} Input total can't be negative
  */
 export function PlainTime(
-  { hour = 0, minute = 0, second = 0, millisecond = 0 }: SloppyTime,
+  { hour = 0, minute = 0, second = 0, millisecond = 0 }: {
+    hour?: number | string;
+    minute?: number | string;
+    second?: number | string;
+    millisecond?: number | string;
+  },
 ): ComPlainTime {
   const ms = tallyMilliseconds({ hour, minute, second, millisecond });
 

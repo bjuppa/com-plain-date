@@ -139,7 +139,6 @@ export type { MonthNumber, QuarterNumber, WeekDayNumber } from "./constants.ts";
 export type {
   SloppyDate,
   SloppyDateTime,
-  SloppyTime,
   SplitDateTime,
 } from "./support/date-time-types.ts";
 export type { PlainDateMapFn } from "./support/function-signatures.ts";
