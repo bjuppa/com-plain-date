@@ -98,8 +98,9 @@ const offsetCandidatesMap =
       timeZone: timezone,
       timeZoneName: "longOffset",
     });
-    const future = addTime({ hour: HOURS_IN_DAY })(instant);
-    const past = addTime({ hour: -HOURS_IN_DAY })(instant);
+    const margin = { hour: HOURS_IN_DAY };
+    const future = addTime(margin)(instant);
+    const past = subtractTime(margin)(instant);
     return new Map(
       (prioritizeLaterCandidate ? [future, past] : [past, future])
         .map((instant) =>
