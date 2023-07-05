@@ -1,5 +1,4 @@
 import { ComPlainDate, PlainDate, PlainDateFactory } from "./PlainDate.ts";
-import { SloppyDate } from "./support/date-time-types.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
 import { QuarterNumber, WeekDay, WeekDayNumber } from "./constants.ts";
@@ -127,7 +126,11 @@ export interface ExtendedPlainDate extends ComPlainDate {
  * @returns A new immutable extended plain-date object
  */
 export function ExPlainDate(
-  { year = NaN, month = 1, day = 1 }: SloppyDate,
+  { year = NaN, month = 1, day = 1 }: {
+    year: number | string;
+    month?: number | string;
+    day?: number | string;
+  },
 ): ExtendedPlainDate {
   const exPlainDate: ExtendedPlainDate = {
     ...PlainDate({ year, month, day }),

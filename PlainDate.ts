@@ -1,5 +1,4 @@
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
-import { SloppyDate } from "./support/date-time-types.ts";
 import { MonthNumber } from "./constants.ts";
 
 export type FormatPlainDateOptions = Omit<
@@ -83,7 +82,11 @@ export interface ComPlainDate {
    */
   map: <T extends ComPlainDate>(
     this: T,
-    f: (x: T) => SloppyDate,
+    f: (x: T) => {
+      year: number | string;
+      month?: number | string;
+      day?: number | string;
+    },
   ) => T;
 }
 
@@ -94,7 +97,11 @@ export interface ComPlainDate {
  * takes other kinds of arguments.
  */
 export interface PlainDateFactory<T extends ComPlainDate> {
-  (x: SloppyDate): T;
+  (x: {
+    year: number | string;
+    month?: number | string;
+    day?: number | string;
+  }): T;
   fromString?: <T extends ComPlainDate>(
     this: PlainDateFactory<T>,
     s: string,
@@ -121,7 +128,11 @@ export interface PlainDateFactory<T extends ComPlainDate> {
  * @returns A new immutable plain-date object
  */
 export function PlainDate(
-  { year = NaN, month = 1, day = 1 }: SloppyDate,
+  { year = NaN, month = 1, day = 1 }: {
+    year: number | string;
+    month?: number | string;
+    day?: number | string;
+  },
 ): ComPlainDate {
   const utcDate = createUtcInstant({ year, month, day });
 
