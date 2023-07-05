@@ -1,12 +1,11 @@
-import { PlainDate } from "../PlainDate.ts";
-import { PlainTime } from "../PlainTime.ts";
-import { SplitDateTime } from "../support/date-time-types.ts";
+import { ComPlainDate, PlainDate } from "../PlainDate.ts";
+import { ComPlainTime, PlainTime } from "../PlainTime.ts";
 
 /**
  * Split native JS `Date` objects into separate
  * plain-date and plain-time parts in UTC.
  */
-export function splitUtcDateTime(instant?: Date): SplitDateTime {
+export function splitUtcDateTime(instant?: Date): [ComPlainDate, ComPlainTime] {
   instant ??= new Date();
   return [
     PlainDate({

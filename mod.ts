@@ -136,7 +136,6 @@ export {
 export type { MonthNumber, QuarterNumber, WeekDayNumber } from "./constants.ts";
 
 // Types
-export type { SplitDateTime } from "./support/date-time-types.ts";
 export type { PlainDateMapFn } from "./support/function-signatures.ts";
 
 // Utils for parsing strings into objects

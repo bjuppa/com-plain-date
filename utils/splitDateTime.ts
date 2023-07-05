@@ -1,6 +1,5 @@
-import { PlainDate } from "../PlainDate.ts";
-import { PlainTime } from "../PlainTime.ts";
-import { SplitDateTime } from "../support/date-time-types.ts";
+import { ComPlainDate, PlainDate } from "../PlainDate.ts";
+import { ComPlainTime, PlainTime } from "../PlainTime.ts";
 
 /**
  * Get a function curried with a timezone, to split native JS `Date` objects
@@ -13,7 +12,7 @@ import { SplitDateTime } from "../support/date-time-types.ts";
  */
 export function splitDateTime(
   timezone: string,
-): (instant?: Date) => SplitDateTime {
+): (instant?: Date) => [ComPlainDate, ComPlainTime] {
   return (instant) => {
     instant ??= new Date();
     const locale = "en";
