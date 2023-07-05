@@ -1,7 +1,7 @@
 import { PlainDate } from "../PlainDate.ts";
 
 /**
- * Get the number of days in a month for a given date.
+ * Get the number of days in the month for a given date.
  *
  * February has 29 days in a leap year, otherwise 28.
  */
