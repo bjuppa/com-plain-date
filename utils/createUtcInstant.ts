@@ -1,5 +1,3 @@
-import { SloppyDateTime } from "../support/date-time-types.ts";
-
 /**
  * Create a native JS `Date` object from a date-time interpreted in UTC.
  */
@@ -11,7 +9,15 @@ export function createUtcInstant({
   minute = 0,
   second = 0,
   millisecond = 0,
-}: SloppyDateTime): Date {
+}: {
+  year: number | string;
+  month?: number | string;
+  day?: number | string;
+  hour?: number | string;
+  minute?: number | string;
+  second?: number | string;
+  millisecond?: number | string;
+}): Date {
   const utcDate = new Date(0);
   utcDate.setUTCFullYear(Number(year), Number(month) - 1, Number(day));
   utcDate.setUTCHours(

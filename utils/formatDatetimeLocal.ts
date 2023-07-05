@@ -1,4 +1,3 @@
-import { SloppyDateTime } from "../support/date-time-types.ts";
 import { createUtcInstant } from "./createUtcInstant.ts";
 
 /**
@@ -15,7 +14,13 @@ export function formatDatetimeLocal({
   day = 1,
   hour = 0,
   minute = 0,
-}: SloppyDateTime): string {
+}: {
+  year: number | string;
+  month?: number | string;
+  day?: number | string;
+  hour?: number | string;
+  minute?: number | string;
+}): string {
   if (Number(year) < 1) {
     throw new RangeError(
       `Years before 0001 can't be represented by HTML datetime-local: ${year}`,
