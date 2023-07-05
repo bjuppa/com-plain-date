@@ -1,5 +1,4 @@
 import { ComPlainDate, PlainDate, PlainDateFactory } from "./PlainDate.ts";
-import { SloppyDate, SloppyTime } from "./support/date-time-types.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
 import { QuarterNumber, WeekDay, WeekDayNumber } from "./constants.ts";
@@ -45,13 +44,23 @@ export interface ExtendedPlainDate extends ComPlainDate {
   /**
    * Get a native JS `Date` object in the system's local timezone.
    */
-  toLocalInstant: (time?: SloppyTime) => Date;
+  toLocalInstant: (time?: {
+    hour?: number | string;
+    minute?: number | string;
+    second?: number | string;
+    millisecond?: number | string;
+  }) => Date;
   /**
    * Get a native JS `Date` object in a named timezone.
    *
    * @throws {RangeError} Invalid timezone specified
    */
-  toInstant: (timezone: string, time?: SloppyTime) => Date;
+  toInstant: (timezone: string, time?: {
+    hour?: number | string;
+    minute?: number | string;
+    second?: number | string;
+    millisecond?: number | string;
+  }) => Date;
 
   toLocaleStringMedium: (locale?: Intl.LocalesArgument) => string;
   toLocaleStringLong: (locale?: Intl.LocalesArgument) => string;
@@ -116,9 +125,11 @@ export interface ExtendedPlainDate extends ComPlainDate {
  * @param date A date object with properties `year`, `month` & `day`
  * @returns A new immutable extended plain-date object
  */
-export function ExPlainDate(
-  { year = NaN, month = 1, day = 1 }: SloppyDate,
-): ExtendedPlainDate {
+export function ExPlainDate({ year, month = 1, day = 1 }: {
+  year: number | string;
+  month?: number | string;
+  day?: number | string;
+}): ExtendedPlainDate {
   const exPlainDate: ExtendedPlainDate = {
     ...PlainDate({ year, month, day }),
     constructor: ExPlainDate,

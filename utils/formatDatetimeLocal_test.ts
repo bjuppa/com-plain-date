@@ -22,7 +22,9 @@ Deno.test("cuts off second and millisecond", () => {
       day: 3,
       hour: 4,
       minute: 5,
+      // @ts-ignore Override argument not allowed in type
       second: 6,
+      // @ts-ignore Override argument not allowed in type
       millisecond: 7,
     }),
     "2022-02-03T04:05",

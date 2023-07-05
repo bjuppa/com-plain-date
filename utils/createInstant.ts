@@ -5,7 +5,6 @@ import { intlParts } from "../support/intlParts.ts";
 import { timezoneOffsetParts } from "../support/timezoneOffsetParts.ts";
 import { HOURS_IN_DAY } from "../constants.ts";
 import { isTruthy } from "../support/isTruthy.ts";
-import { SloppyDateTime } from "../support/date-time-types.ts";
 
 const intlOptions: Intl.DateTimeFormatOptions = {
   hourCycle: "h23",
@@ -28,11 +27,19 @@ const intlOptions: Intl.DateTimeFormatOptions = {
 export function createInstant(
   timezone: string,
 ): (
-  { year, month, day, hour, minute, second, millisecond }: SloppyDateTime,
+  { year, month, day, hour, minute, second, millisecond }: {
+    year: number | string;
+    month?: number | string;
+    day?: number | string;
+    hour?: number | string;
+    minute?: number | string;
+    second?: number | string;
+    millisecond?: number | string;
+  },
 ) => Date {
   return (
     {
-      year = NaN,
+      year,
       month = 1,
       day = 1,
       hour = 0,
