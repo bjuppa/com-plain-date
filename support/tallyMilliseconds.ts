@@ -1,7 +1,7 @@
 import { MS_IN_HOUR, MS_IN_MINUTE, MS_IN_SECOND } from "../constants.ts";
 
 /**
- * Convert a sloppy time object to a total number of milliseconds.
+ * Convert a time object to a total number of milliseconds.
  */
 export function tallyMilliseconds({
   hour = 0,
