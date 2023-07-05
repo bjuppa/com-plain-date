@@ -75,6 +75,12 @@ Deno.test("can be converted to instant in UTC", () => {
   );
 });
 
+Deno.test("converted instant in UTC is a fresh object", () => {
+  const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
+
+  assert(plainDate.toUtcInstant() != plainDate.toUtcInstant());
+});
+
 Deno.test("functor obeys identity law", () => {
   const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });
   const identityFunction = <T>(x: T): T => x;

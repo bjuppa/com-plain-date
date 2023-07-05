@@ -132,9 +132,9 @@ export function PlainDate({ year, month = 1, day = 1 }: {
   month?: number | string;
   day?: number | string;
 }): ComPlainDate {
-  const utcDate = createUtcInstant({ year, month, day });
+  const utcInstant = createUtcInstant({ year, month, day });
 
-  if (isNaN(utcDate.valueOf())) {
+  if (isNaN(utcInstant.valueOf())) {
     throw new RangeError(
       `Input is not a valid date: ${JSON.stringify({ year, month, day })}`,
     );
@@ -143,11 +143,11 @@ export function PlainDate({ year, month = 1, day = 1 }: {
   const plainDate: ComPlainDate = {
     constructor: PlainDate,
 
-    year: utcDate.getUTCFullYear(),
-    month: utcDate.getUTCMonth() + 1 as MonthNumber,
-    day: utcDate.getUTCDate(),
+    year: utcInstant.getUTCFullYear(),
+    month: utcInstant.getUTCMonth() + 1 as MonthNumber,
+    day: utcInstant.getUTCDate(),
 
-    iso: utcDate.toISOString().split("T")[0],
+    iso: utcInstant.toISOString().split("T")[0],
     valueOf() {
       return this.iso;
     },
@@ -159,16 +159,14 @@ export function PlainDate({ year, month = 1, day = 1 }: {
     },
 
     toLocaleString(locale, options = { dateStyle: "short" }) {
-      return utcDate.toLocaleDateString(locale, {
+      return utcInstant.toLocaleDateString(locale, {
         ...options,
         timeZone: "UTC",
       });
     },
 
     toUtcInstant({ hour = 0, minute = 0, second = 0, millisecond = 0 } = {}) {
-      return (hour || minute || second || millisecond)
-        ? createUtcInstant({ ...this, hour, minute, second, millisecond })
-        : utcDate;
+      return createUtcInstant({ ...this, hour, minute, second, millisecond });
     },
 
     pipe(...fns) {
