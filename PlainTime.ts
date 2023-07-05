@@ -134,7 +134,5 @@ export function PlainTime(
     },
   };
 
-  Object.freeze(plainTime);
-
-  return plainTime;
+  return Object.freeze(plainTime);
 }

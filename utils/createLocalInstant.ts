@@ -22,6 +22,5 @@ export function createLocalInstant({
     Number(millisecond),
   );
 
-  Object.freeze(localDate);
-  return localDate;
+  return Object.freeze(localDate);
 }
