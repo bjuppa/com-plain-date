@@ -103,16 +103,16 @@ export function PlainTime(
     );
   }
 
-  const epochUtcDate = new Date(ms);
+  const epochUtcInstant = new Date(ms);
 
   const plainTime: ComPlainTime = {
     constructor: PlainTime,
-    hour: epochUtcDate.getUTCHours(),
-    minute: epochUtcDate.getUTCMinutes(),
-    second: epochUtcDate.getUTCSeconds(),
-    millisecond: epochUtcDate.getUTCMilliseconds(),
+    hour: epochUtcInstant.getUTCHours(),
+    minute: epochUtcInstant.getUTCMinutes(),
+    second: epochUtcInstant.getUTCSeconds(),
+    millisecond: epochUtcInstant.getUTCMilliseconds(),
 
-    iso: epochUtcDate.toISOString().slice(-14, -1),
+    iso: epochUtcInstant.toISOString().slice(-14, -1),
     valueOf() {
       return ms;
     },
@@ -127,7 +127,7 @@ export function PlainTime(
     },
 
     toLocaleString(locale, options = { timeStyle: "short" }) {
-      return epochUtcDate.toLocaleTimeString(locale, {
+      return epochUtcInstant.toLocaleTimeString(locale, {
         ...options,
         timeZone: "UTC",
       });
