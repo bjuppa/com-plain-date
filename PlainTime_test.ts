@@ -48,7 +48,7 @@ Deno.test("enumerable properties can not be set", async (t) => {
     await t.step(`property '${property}'`, () => {
       assertThrows(() => {
         // @ts-ignore: Bypass readonly
-        plainDate[property] = 1;
+        plainTime[property] = 1;
       });
     });
   }

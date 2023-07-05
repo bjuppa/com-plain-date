@@ -271,9 +271,7 @@ export function ExPlainDate(
     },
   };
 
-  Object.freeze(exPlainDate);
-
-  return exPlainDate;
+  return Object.freeze(exPlainDate);
 }
 
 /**

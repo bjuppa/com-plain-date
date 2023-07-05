@@ -165,7 +165,5 @@ export function PlainDate(
     },
   };
 
-  Object.freeze(plainDate);
-
-  return plainDate;
+  return Object.freeze(plainDate);
 }
