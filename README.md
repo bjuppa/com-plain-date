@@ -310,6 +310,43 @@ prettiest interface, but it makes little sense to replace it here. ComPlainDate
 provides some useful utilities for those operations that are relevant to do
 directly on instants, but honestly, they are quite few.
 
+### Allow partial and relaxed objects where possible
+
+Many operations that take some date or time representation as input don't
+actually require the full object to produce correct results. For example, to
+determine if a given calendar date is in a leap year, we don't care about the
+month or day-of-month, only the year of the date has any significance.
+
+Functions in ComPlainDate use object destructuring of parameters to extract only
+the properties that are actually needed.
+
+It still makes sense to keep a common expected _shape_ of objects, with some
+shared properties that can be mixed and matched for different purposes:
+
+- `year`
+- `month`
+- `day`
+
+- `hour`
+- `minute`
+- `second`
+- `millisecond`
+
+The plain-date and plain-time objects are the strictest forms of this common
+shape where every property exists as an integer.
+
+Whenever possible, relaxed objects having interchangeable number or string type
+properties can also be passed to functions, making it easier to combine user
+input into valid parameters.
+
+### Avoid type aliases
+
+We've chosen not to extract type aliases for reuse within ComPlainDate, but
+instead type every function parameter explicitly making IDE tools and the API
+documentation show the expected object shapes up front. There exists some type
+aliases but those are meant to support developers when implementing their own
+utilities outside of ComPlainDate.
+
 ### Composable functions
 
 Inspired by concepts from functional programming, all functions are pure and
