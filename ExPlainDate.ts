@@ -125,13 +125,11 @@ export interface ExtendedPlainDate extends ComPlainDate {
  * @param date A date object with properties `year`, `month` & `day`
  * @returns A new immutable extended plain-date object
  */
-export function ExPlainDate(
-  { year = NaN, month = 1, day = 1 }: {
-    year: number | string;
-    month?: number | string;
-    day?: number | string;
-  },
-): ExtendedPlainDate {
+export function ExPlainDate({ year, month = 1, day = 1 }: {
+  year: number | string;
+  month?: number | string;
+  day?: number | string;
+}): ExtendedPlainDate {
   const exPlainDate: ExtendedPlainDate = {
     ...PlainDate({ year, month, day }),
     constructor: ExPlainDate,

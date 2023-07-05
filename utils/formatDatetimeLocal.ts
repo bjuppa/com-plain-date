@@ -9,7 +9,7 @@ import { createUtcInstant } from "./createUtcInstant.ts";
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local | HTML input datetime-local on MDN}
  */
 export function formatDatetimeLocal({
-  year = NaN,
+  year,
   month = 1,
   day = 1,
   hour = 0,

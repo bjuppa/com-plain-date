@@ -39,7 +39,7 @@ export function createInstant(
 ) => Date {
   return (
     {
-      year = NaN,
+      year,
       month = 1,
       day = 1,
       hour = 0,

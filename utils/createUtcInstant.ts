@@ -2,7 +2,7 @@
  * Create a native JS `Date` object from a date-time interpreted in UTC.
  */
 export function createUtcInstant({
-  year = NaN,
+  year,
   month = 1,
   day = 1,
   hour = 0,

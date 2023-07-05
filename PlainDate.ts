@@ -127,13 +127,11 @@ export interface PlainDateFactory<T extends ComPlainDate> {
  * @param date A date object with properties `year`, `month` & `day`
  * @returns A new immutable plain-date object
  */
-export function PlainDate(
-  { year = NaN, month = 1, day = 1 }: {
-    year: number | string;
-    month?: number | string;
-    day?: number | string;
-  },
-): ComPlainDate {
+export function PlainDate({ year, month = 1, day = 1 }: {
+  year: number | string;
+  month?: number | string;
+  day?: number | string;
+}): ComPlainDate {
   const utcDate = createUtcInstant({ year, month, day });
 
   if (isNaN(utcDate.valueOf())) {

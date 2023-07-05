@@ -3,7 +3,7 @@
  * interpreted in the system's local timezone.
  */
 export function createLocalInstant({
-  year = NaN,
+  year,
   month = 1,
   day = 1,
   hour = 0,
