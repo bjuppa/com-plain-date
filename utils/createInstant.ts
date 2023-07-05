@@ -75,7 +75,7 @@ export function createInstant(
         candidateParts.month === targetParts.month &&
         candidateParts.year === targetParts.year
       ) {
-        return Object.freeze(candidateInstant);
+        return candidateInstant;
       }
     }
 

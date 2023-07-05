@@ -21,5 +21,5 @@ export function createUtcInstant({
     Number(millisecond),
   );
 
-  return Object.freeze(utcDate);
+  return utcDate;
 }
