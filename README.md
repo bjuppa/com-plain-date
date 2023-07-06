@@ -7,9 +7,12 @@ times** on top of the JavaScript features already available in today's browsers
 and runtime systems.
 
 It may well be that ComPlainDate will stay useful even after Temporal is
-available — only time will tell...
+available — only time will tell&hellip;
 
-[API documentation and lists of available functions at deno.land](https://deno.land/x/complaindate/mod.ts)
+## API documentation
+
+The full [API documentation](https://deno.land/x/complaindate/mod.ts) and
+categorized lists of available functions are available at deno.land.
 
 ## Installation
 
@@ -17,6 +20,15 @@ ComPlainDate is distributed as an **npm** package as well as a **Deno** module:
 
 - [npmjs.com/package/complaindate](https://www.npmjs.com/package/complaindate)
 - [deno.land/x/complaindate](https://deno.land/x/complaindate/mod.ts)
+
+## Table of contents
+
+1. [Introduction](#introduction)
+2. [Quick example](#quick-example)
+3. [Working with timezone strings](#working-with-timezone-strings)
+4. [Why another JavaScript date-time library?](#why-another-javascript-date-time-library)
+5. [Guiding principles](#guiding-principles)
+6. [Limitations](#limitations)
 
 ## Introduction
 

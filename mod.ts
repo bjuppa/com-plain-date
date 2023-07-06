@@ -3,15 +3,13 @@
  *
  * Date-time utilities that keeps timezones on the surface.
  *
- * ## Main objects
+ * ## Objects
  *
- * The {@link ComPlainDate} interface describes plain-date objects, that can be
- * created with the {@link PlainDate} factory, described by the
- * {@link PlainDateFactory} interface.
+ * The {@link ComPlainDate} interface describes plain-date objects that can be
+ * created with the {@link PlainDate} factory.
  *
- * The {@link ComPlainTime} interface describes wall-time objects, that can be
- * created with the {@link PlainTime} factory, described by the
- * {@link PlainTimeFactory} interface.
+ * The {@link ComPlainTime} interface describes wall-time objects that can be
+ * created with the {@link PlainTime} factory.
  *
  * ### Extended objects
  *
@@ -20,8 +18,9 @@
  * always use the main objects with utility functions in frontend code!
  *
  * An extended type of plain-date object is described by the
- * {@link ExtendedPlainDate} interface. Those objects are created with the
- * {@link ExPlainDate} factory.
+ * {@link ExtendedPlainDate} interface.
+ * Those objects are created with the {@link ExPlainDate} factory, which also
+ * implements the optional functions of the {@link PlainDateFactory} interface.
  *
  * ## Utility functions
  *
