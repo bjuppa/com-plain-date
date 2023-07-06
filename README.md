@@ -18,6 +18,15 @@ ComPlainDate is distributed as an **npm** package as well as a **Deno** module:
 - [npmjs.com/package/complaindate](https://www.npmjs.com/package/complaindate)
 - [deno.land/x/complaindate](https://deno.land/x/complaindate/mod.ts)
 
+## Table of contents
+
+1. [Introduction](#introduction)
+2. [Quick example](#quick-example)
+3. [Working with timezone strings](#working-with-timezone-strings)
+4. [Why another JavaScript date-time library?](#why-another-javascript-date-time-library)
+5. [Guiding principles](#guiding-principles)
+6. [Limitations](#limitations)
+
 ## Introduction
 
 ComPlainDate provides a few special objects and a bunch of utility functions to
