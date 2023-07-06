@@ -7,7 +7,7 @@ times** on top of the JavaScript features already available in today's browsers
 and runtime systems.
 
 It may well be that ComPlainDate will stay useful even after Temporal is
-available — only time will tell...
+available — only time will tell&hellip;
 
 [API documentation and lists of available functions at deno.land](https://deno.land/x/complaindate/mod.ts)
 
