@@ -299,7 +299,8 @@ argument given to such functions, showing how important it is.
 This avoids confusion caused by working with JavaScript `Date` or other
 _DateTime_-like objects where the timezone information is hidden away. Timezones
 set inside objects are especially problematic when passing those objects over
-context boundaries.
+context boundaries. With ComPlainDate, developers are compelled to pass the
+timezone separate from the date-time objects, making that timezone very visible.
 
 ### Separate plain-date and plain-time objects
 
