@@ -14,7 +14,7 @@ await build({
     // package.json properties
     name: "complaindate",
     version: Deno.args[0]?.replace(/^v/, ""),
-    description: "Date-time utilities that keeps timezones on the surface.",
+    description: "Date-time utilities that keep timezones on the surface.",
     license: "MIT",
     keywords: [
       "plain-date",

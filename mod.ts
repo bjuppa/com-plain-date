@@ -1,7 +1,7 @@
 /**
  * # ComPlainDate
  *
- * Date-time utilities that keeps timezones on the surface.
+ * Date-time utilities that keep timezones on the surface.
  *
  * ## Objects
  *
