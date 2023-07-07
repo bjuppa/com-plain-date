@@ -5,6 +5,7 @@ import { QuarterNumber, WeekDay, WeekDayNumber } from "./constants.ts";
 import { addDays } from "./utils/addDays.ts";
 import { addBusinessDays } from "./utils/addBusinessDays.ts";
 import { addMonths } from "./utils/addMonths.ts";
+import { addQuarters } from "./utils/addQuarters.ts";
 import { addYears } from "./utils/addYears.ts";
 import { startOfBusinessWeek } from "./utils/startOfBusinessWeek.ts";
 import { startOfWeekend } from "./utils/startOfWeekend.ts";
@@ -94,6 +95,7 @@ export interface ExtendedPlainDate extends ComPlainDate {
   addDays: (days: number) => this;
   addBusinessDays: (days: number) => this;
   addMonths: (months: number) => this;
+  addQuarters: (quarters: number) => this;
   addYears: (years: number) => this;
 
   /** Monday of the current week */
@@ -225,6 +227,9 @@ export function ExPlainDate({ year, month = 1, day = 1 }: {
     },
     addMonths(months) {
       return addMonths(months)(this);
+    },
+    addQuarters(quarters) {
+      return addQuarters(quarters)(this);
     },
     addYears(years) {
       return addYears(years)(this);
