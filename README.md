@@ -6,6 +6,10 @@ collection of tools for **expressive and timezone-safe manipulation of dates and
 times** on top of the JavaScript features already available in today's browsers
 and runtime systems.
 
+The central idea in ComPlainDate is to provide timezone-agnostic
+[`PlainDate`](#plain-date) and [`PlainTime`](#plain-time) objects with
+composable utility functions for common calendar and time related operations.
+
 It may well be that ComPlainDate will stay useful even after Temporal is
 available — only time will tell&hellip;
 
