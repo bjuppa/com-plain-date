@@ -11,11 +11,11 @@
  * The {@link ComPlainTime} interface describes wall-time objects that can be
  * created with the {@link PlainTime} factory.
  *
- * ### Extended objects
+ * ### Objects extended for convenience
  *
- * _Note:_ These objects are not tree-shakable, so using them will increase your
- * bundle size... a lot. Extended objects are meant for use in backend code only,
- * always use the main objects with utility functions in frontend code!
+ * _Note:_ The extended objects are not tree-shakable, so using them will
+ * increase your bundle size... a lot. They are meant for use in backend code
+ * only — *always use the main objects with utility functions in frontend code!*
  *
  * An extended type of plain-date object is described by the
  * {@link ExtendedPlainDate} interface.
