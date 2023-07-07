@@ -74,7 +74,8 @@ Surprisingly, ComPlainDate does not provide any special object representing a
 universal _instant_ in time. JavaScript's
 [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 is basically a wrapper around a UNIX timestamp (the number of milliseconds since
-1970-01-01 00:00 UTC) and doesn't know about timezones. This UTC-centric aspect
+1970-01-01 00:00 UTC) and doesn't know about timezones. This
+[UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)-centric aspect
 of `Date` is good for timezone-agnostic operations such as comparing universal
 points in time and adding or subtracting _time_ in hours, minutes, or seconds.
 
