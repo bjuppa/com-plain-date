@@ -7,8 +7,9 @@ times** on top of the JavaScript features already available in today's browsers
 and runtime systems.
 
 The central idea in ComPlainDate is to provide timezone-agnostic
-[`PlainDate`](#plain-date) and [`PlainTime`](#plain-time) objects with
-composable utility functions for common calendar and time related operations.
+[`PlainDate`](#plaindate-for-calendar-dates) and
+[`PlainTime`](#plaintime-for-time-of-day) objects with composable utility
+functions for common calendar and time related operations.
 
 It may well be that ComPlainDate will stay useful even after Temporal is
 available — only time will tell&hellip;
@@ -56,26 +57,27 @@ to add a supporting concept:
 Let's go through how ComPlainDate supports working with each of these four
 concepts, starting with the simplest but perhaps most central one.
 
-### Timezones are just strings
+### _Timezones_ are just strings
 
-Modern JavaScript engines know the rules for timezones around the globe through
+Modern JavaScript engines know the rules for
+[timezones](https://en.wikipedia.org/wiki/Time_zone) around the globe through
 [`Intl`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl),
 and although it's not entirely straight-forward we can tap into that knowledge
 using some clever tricks. The main purpose of ComPlainDate is to abstract those
 tricks away.
 
-All we need to do is provide the name of a timezone, and that name is
-represented as a string, for example `"Europe/Stockholm"`. Underscore is used
-instead of space, as in `"Africa/Dar_es_Salaam"`, and some timezone names have
-three parts like `"America/Argentina/La_Rioja"`.
+All we need is the name of a timezone, and those names are represented by simple
+strings with underscore replacing space, like `"Africa/Dar_es_Salaam"`.
 
-ComPlainDate has utility functions that helps us parse, validate, sanitize and
+ComPlainDate has utility functions that helps parse, validate, sanitize and
 format timezone strings.
 
 ### What, no `Instant`?
 
 Surprisingly, ComPlainDate does not provide any special object representing a
-universal _instant_ in time. JavaScript's
+universal _instant_ in time.
+
+JavaScript's
 [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 is basically a wrapper around a UNIX timestamp (the number of milliseconds since
 1970-01-01 00:00 UTC) and doesn't know about timezones. This
@@ -86,14 +88,9 @@ points in time and adding or subtracting _time_ in hours, minutes, or seconds.
 ComPlainDate has a few utility functions supporting those operations and you
 should aim to use native JavaScript `Date` objects as much as you can. When you
 need to do an operation that the provided instant-utilities doesn't support it's
-time to reach for plain-date, described in the next section!
+time to reach for the other concepts, described below!
 
-### Plain-date
-
-ComPlainDate provides `PlainDate` along with many utility functions for
-operations on local _calendar dates_, like adding or subtracting days, months or
-years. All the operations applying to plain-dates are timezone agnostic, and
-this is what makes plain-dates easy to work with.
+### `PlainDate` for _calendar dates_
 
 Plain-date objects adhere to a
 [contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate) and have
@@ -111,17 +108,13 @@ operations, from left to right, returning a new plain-date. The provided
 plain-date utility functions can be used with `map` and `pipe`, and you are
 encouraged to build your own mapper functions on top of the existing ones.
 
-### Plain-time
-
-ComPlainDate provides `PlainTime` for representing a local _time-of-day_.
-Plain-time objects are mostly used for storing and displaying a fixed
-time-of-day and operations on them are surprisingly uncommon.
+### `PlainTime` for _time-of-day_
 
 Plain-time objects adhere to a
 [contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainTime) and have four
 numeric properties (`hour`, `minute`, `second`, and `millisecond`), that may be
-used for operations in the rare case it's needed. The `iso` property is a string
-in the format `Thh:mm:ss.sss` that is mostly used for technical purposes.
+used for operations, but they are surprisingly uncommon. The `iso` property is a
+string in the format `Thh:mm:ss.sss` that is mostly used for technical purposes.
 
 For display,
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
@@ -306,7 +299,8 @@ argument given to such functions, showing how important it is.
 This avoids confusion caused by working with JavaScript `Date` or other
 _DateTime_-like objects where the timezone information is hidden away. Timezones
 set inside objects are especially problematic when passing those objects over
-context boundaries.
+context boundaries. With ComPlainDate, developers are compelled to pass the
+timezone separate from the date-time objects, making that timezone very visible.
 
 ### Separate plain-date and plain-time objects
 
