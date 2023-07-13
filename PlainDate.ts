@@ -62,7 +62,9 @@ export interface ComPlainDate {
     millisecond?: number | string;
   }) => Date;
 
-  /** Check for partial or complete equality */
+  /**
+   * Check for partial or complete equality.
+   */
   is: (
     x: RequireAtLeastOne<{
       year?: number | string;

@@ -64,7 +64,9 @@ export interface ComPlainTime {
     options?: FormatPlainTimeOptions,
   ) => string;
 
-  /** Check for partial or complete equality */
+  /**
+   * Check for partial or complete equality.
+   */
   is: (
     x: RequireAtLeastOne<{
       hour?: number | string;
