@@ -1,5 +1,6 @@
 import { HOURS_IN_DAY, MS_IN_HOUR } from "./constants.ts";
 import { tallyMilliseconds } from "./support/tallyMilliseconds.ts";
+import { RequireAtLeastOne } from "./support/utility-types.ts";
 
 export type FormatPlainTimeOptions =
   & Omit<
@@ -62,6 +63,16 @@ export interface ComPlainTime {
     locale?: Intl.LocalesArgument,
     options?: FormatPlainTimeOptions,
   ) => string;
+
+  /** Check for partial or complete equality */
+  is: (
+    x: RequireAtLeastOne<{
+      hour?: number | string;
+      minute?: number | string;
+      second?: number | string;
+      millisecond?: number | string;
+    }>,
+  ) => boolean;
 
   constructor: PlainTimeFactory<this>;
 }
@@ -140,6 +151,13 @@ export function PlainTime(
         ...options,
         timeZone: "UTC",
       });
+    },
+
+    is({ hour, minute, second, millisecond }) {
+      return (hour === undefined || this.hour == hour) &&
+        (minute === undefined || this.minute == minute) &&
+        (second === undefined || this.second == second) &&
+        (millisecond === undefined || this.millisecond == millisecond);
     },
   };
 

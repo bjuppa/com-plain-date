@@ -129,3 +129,88 @@ Deno.test("can be compared as primitives", () => {
   assert(PlainTime({ hour: 12 }) >= PlainTime({ hour: 12 }));
   assertFalse(PlainTime({ hour: 12 }) > PlainTime({ hour: 12 }));
 });
+
+Deno.test("can be compared for full equality", () => {
+  assert(PlainTime({ hour: 12 }).is(PlainTime({ hour: 12 })));
+  assert(
+    PlainTime({ hour: 12, minute: 1, second: 2, millisecond: 3 })
+      .is({ hour: 12, minute: 1, second: 2, millisecond: 3 }),
+  );
+  assert(
+    PlainTime({ hour: 1, minute: 1, second: 2, millisecond: 3 })
+      .is({ hour: "01", minute: "01", second: "02", millisecond: "03" }),
+  );
+
+  assertFalse(
+    PlainTime({ hour: 12, minute: 1, second: 2, millisecond: 3 })
+      .is({ hour: 12, minute: 1, second: 2, millisecond: 4 }),
+  );
+  assertFalse(
+    PlainTime({ hour: 12, minute: 1, second: 2, millisecond: 3 })
+      .is({ hour: 12, minute: 1, second: 3, millisecond: 3 }),
+  );
+  assertFalse(
+    PlainTime({ hour: 12, minute: 1, second: 2, millisecond: 3 })
+      .is({ hour: 12, minute: 2, second: 2, millisecond: 3 }),
+  );
+  assertFalse(
+    PlainTime({ hour: 12, minute: 1, second: 2, millisecond: 3 })
+      .is({ hour: 11, minute: 1, second: 2, millisecond: 3 }),
+  );
+});
+
+Deno.test("can be compared for partial equality", () => {
+  assert(
+    PlainTime({ hour: 12, minute: 1, second: 2, millisecond: 3 }).is({
+      hour: 12,
+    }),
+  );
+  assert(
+    PlainTime({ hour: 12, minute: 1, second: 2, millisecond: 3 }).is({
+      minute: 1,
+    }),
+  );
+  assert(
+    PlainTime({ hour: 12, minute: 1, second: 2, millisecond: 3 }).is({
+      second: 2,
+    }),
+  );
+  assert(
+    PlainTime({ hour: 12, minute: 1, second: 2, millisecond: 3 }).is({
+      millisecond: 3,
+    }),
+  );
+
+  assert(
+    PlainTime({ hour: 12, minute: 1, second: 2, millisecond: 3 }).is({
+      hour: 12,
+      minute: 1,
+      second: 2,
+    }),
+  );
+  assert(
+    PlainTime({ hour: 12, minute: 1, second: 2, millisecond: 3 }).is({
+      hour: 12,
+      minute: 1,
+    }),
+  );
+  assert(
+    PlainTime({ hour: 12, minute: 1, second: 2, millisecond: 3 }).is({
+      hour: 12,
+      millisecond: 3,
+    }),
+  );
+
+  assertFalse(PlainTime({ hour: 12 }).is({ hour: 13 }));
+  assertFalse(PlainTime({ hour: 12 }).is({ minute: 1 }));
+  assertFalse(PlainTime({ hour: 12 }).is({ second: 1 }));
+  assertFalse(PlainTime({ hour: 12 }).is({ millisecond: 1 }));
+
+  // Empty comparison object matches, although not allowed by type
+  assert(
+    PlainTime({ hour: 12 }).is(
+      // @ts-ignore Force passing empty object
+      {},
+    ),
+  );
+});
