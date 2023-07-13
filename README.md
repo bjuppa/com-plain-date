@@ -135,7 +135,7 @@ The final step will merge a plain-date and a plain-time into a native JavaScript
 `Date`, completing the circle.
 
 ```ts
-// If you're using Deno, you can import directly from deno.land
+// Deno users can import directly from deno.land, like this:
 import {
   addDays,
   createInstant,
@@ -161,6 +161,7 @@ const [june6, time1337] = splitDateTime(
 // The plain-date part is an object adhering to the full ComPlainDate interface
 june6; // { year: 2023, month: 6, day: 6, iso: "2023-06-06", ...}
 june6.toLocaleString("en"); // "6/6/23"
+june6.is({ month: 6, day: 6 }); // true
 
 // The plain-time part is an object adhering to the full ComPlainTime interface
 time1337; // { hour: 13, minute: 37, second: 0, millisecond: 0, ... }
@@ -174,6 +175,10 @@ const midsummersEve = june6.pipe(
   firstWeekDay(WeekDay.FRIDAY), // Find the first Friday
 ); // 2023-06-23
 
+// Objects can be compared
+midsummersEve.is(june6); // false
+midsummersEve > june6; // true
+
 // Utility functions can be used independently with plain-dates, for example:
 const newYearsDay = startOfYear(midsummersEve); // 2023-01-01
 daysInMonth(newYearsDay); // 31
@@ -184,7 +189,7 @@ differenceInMonths(midsummersEve)(newYearsDay); // -5
 // Quickly turn a plain-date into a UTC "instant", a JS `Date` at UTC midnight
 newYearsDay.toUtcInstant(); // 2023-01-01T00:00:00.000Z
 
-// Combine any shape of date & time into an "instant", a JS `Date`
+// Combine any shape of local date & time into an "instant", a JS `Date`
 createInstant(
   // The Wiener Musikverein is at UTC+1 in January
   "Europe/Vienna", // Note: A timezone is required for this operation

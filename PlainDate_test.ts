@@ -129,3 +129,49 @@ Deno.test("can be compared as primitives", () => {
   assert(PlainDate({ year: 2023 }) >= PlainDate({ year: 2023 }));
   assertFalse(PlainDate({ year: 2022 }) > PlainDate({ year: 2022 }));
 });
+
+Deno.test("can be compared for full equality", () => {
+  assert(PlainDate({ year: 2023 }).is(PlainDate({ year: 2023 })));
+  assert(
+    PlainDate({ year: 2023, month: 2, day: 3 })
+      .is({ year: 2023, month: 2, day: 3 }),
+  );
+  assert(
+    PlainDate({ year: 2023, month: 2, day: 3 })
+      .is({ year: "2023", month: "02", day: "03" }),
+  );
+
+  assertFalse(
+    PlainDate({ year: 2023, month: 2, day: 3 })
+      .is({ year: 2023, month: 2, day: 4 }),
+  );
+  assertFalse(
+    PlainDate({ year: 2023, month: 2, day: 3 })
+      .is({ year: 2023, month: 3, day: 3 }),
+  );
+  assertFalse(
+    PlainDate({ year: 2023, month: 2, day: 3 })
+      .is({ year: 2022, month: 2, day: 3 }),
+  );
+});
+
+Deno.test("can be compared for partial equality", () => {
+  assert(PlainDate({ year: 2023 }).is({ year: 2023 }));
+  assert(PlainDate({ year: 2023 }).is({ day: 1 }));
+  assert(PlainDate({ year: 2023 }).is({ month: 1 }));
+
+  assert(PlainDate({ year: 2023 }).is({ month: 1, day: 1 }));
+  assert(PlainDate({ year: 2023 }).is({ year: 2023, month: 1 }));
+
+  assertFalse(PlainDate({ year: 2023 }).is({ year: 2022 }));
+  assertFalse(PlainDate({ year: 2023 }).is({ day: 2 }));
+  assertFalse(PlainDate({ year: 2023 }).is({ month: 2 }));
+
+  // Empty comparison object matches, although not allowed by type
+  assert(
+    PlainDate({ year: 2023 }).is(
+      // @ts-ignore Force passing empty object
+      {},
+    ),
+  );
+});

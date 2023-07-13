@@ -1,5 +1,6 @@
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
 import { MonthNumber } from "./constants.ts";
+import { RequireAtLeastOne } from "./support/utility-types.ts";
 
 export type FormatPlainDateOptions = Omit<
   Intl.DateTimeFormatOptions,
@@ -60,6 +61,17 @@ export interface ComPlainDate {
     second?: number | string;
     millisecond?: number | string;
   }) => Date;
+
+  /**
+   * Check for partial or complete equality.
+   */
+  is: (
+    x: RequireAtLeastOne<{
+      year?: number | string;
+      month?: number | string;
+      day?: number | string;
+    }>,
+  ) => boolean;
 
   constructor: PlainDateFactory<this>;
 
@@ -167,6 +179,12 @@ export function PlainDate({ year, month = 1, day = 1 }: {
 
     toUtcInstant({ hour = 0, minute = 0, second = 0, millisecond = 0 } = {}) {
       return createUtcInstant({ ...this, hour, minute, second, millisecond });
+    },
+
+    is({ year, month, day }) {
+      return (year === undefined || this.year == year) &&
+        (month === undefined || this.month == month) &&
+        (day === undefined || this.day == day);
     },
 
     pipe(...fns) {
