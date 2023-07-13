@@ -89,6 +89,7 @@ time to reach for the other concepts, described below!
 Plain-date objects adhere to a
 [contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate) and have
 three numeric properties (`year`, `month`, and `day`) used for most operations.
+
 The `iso` property and
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
 produces a string in the format `yyyy-mm-dd` that can be used for simple display
@@ -107,14 +108,13 @@ encouraged to build your own mapper functions on top of the existing ones.
 Plain-time objects adhere to a
 [contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainTime) and have four
 numeric properties (`hour`, `minute`, `second`, and `millisecond`), that may be
-used for operations, but they are surprisingly uncommon. The `iso` property is a
-string in the format `Thh:mm:ss.sss` that is mostly used for technical purposes.
+used for operations, but those are surprisingly uncommon.
 
 For display,
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
 will give the shortest of the formats `hh:mm` / `hh:mm:ss` / `hh:mm:ss.sss`
-depending on the resolution of the specific plain-time. Of course, the
-`toLocaleString` method is best for controlled formatting in user interfaces.
+depending on the resolution of the specific plain-time, but the `toLocaleString`
+method is best for controlled formatting in user interfaces.
 
 ## Quick example
 
