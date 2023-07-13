@@ -46,7 +46,7 @@ The main concepts we need to represent are:
 - _calendar date_: a year, month, and day-of-month.
 - _time-of-day_: a wall-time of hours, minutes, and seconds.
 
-None of the concepts above have an inherent timezone, in themselves they are all
+None of the concepts above have an inherent timezone, they are all
 timezone-agnostic. But to convert an _instant_ to the corresponding local
 _calendar date_ and _time-of-day_ at a specific place, and vice versa, we need
 to add a supporting concept:
