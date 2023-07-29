@@ -316,9 +316,7 @@ plain-date and plain-time objects, and when we merge them back together.
 
 The native JavaScript `Date` object is actually good enough for keeping
 universal representations of specific instants in time. `Date` doesn't have the
-prettiest interface, but it makes little sense to replace it here. ComPlainDate
-provides some useful utilities for those operations that are relevant to do
-directly on instants, but honestly, they are quite few.
+prettiest interface, but it makes little sense to replace it here.
 
 ### Allow partial and relaxed objects where possible
 
