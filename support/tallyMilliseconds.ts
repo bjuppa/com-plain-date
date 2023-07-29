@@ -1,19 +1,19 @@
 import { MS_IN_HOUR, MS_IN_MINUTE, MS_IN_SECOND } from "../constants.ts";
 
 /**
- * Convert a time object to a total number of milliseconds.
+ * Convert a time duration object to a total number of milliseconds.
  */
 export function tallyMilliseconds({
-  hour = 0,
-  minute = 0,
-  second = 0,
-  millisecond = 0,
+  hours = 0,
+  minutes = 0,
+  seconds = 0,
+  milliseconds = 0,
 }: {
-  hour?: number | string;
-  minute?: number | string;
-  second?: number | string;
-  millisecond?: number | string;
+  hours?: number | string;
+  minutes?: number | string;
+  seconds?: number | string;
+  milliseconds?: number | string;
 }): number {
-  return Number(hour) * MS_IN_HOUR + Number(minute) * MS_IN_MINUTE +
-    Number(second) * MS_IN_SECOND + Number(millisecond);
+  return Number(hours) * MS_IN_HOUR + Number(minutes) * MS_IN_MINUTE +
+    Number(seconds) * MS_IN_SECOND + Number(milliseconds);
 }

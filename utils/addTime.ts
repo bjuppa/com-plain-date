@@ -4,23 +4,23 @@ import { tallyMilliseconds } from "../support/tallyMilliseconds.ts";
  * Get a function curried with a time duration
  * to add to its native JS `Date` arguments.
  *
- * @param duration Object of `hour`, `minute`, `second` & `millisecond`, where each may be negative
+ * @param duration Object of `hours`, `minutes`, `seconds` & `milliseconds`, where each may be negative
  * @returns A curried function that operates on JS `Date` objects
  */
 export function addTime({
-  hour = 0,
-  minute = 0,
-  second = 0,
-  millisecond = 0,
+  hours = 0,
+  minutes = 0,
+  seconds = 0,
+  milliseconds = 0,
 }: {
-  hour?: number | string;
-  minute?: number | string;
-  second?: number | string;
-  millisecond?: number | string;
+  hours?: number | string;
+  minutes?: number | string;
+  seconds?: number | string;
+  milliseconds?: number | string;
 }) {
   return (instant: Date): Date =>
     new Date(
       instant.valueOf() +
-        tallyMilliseconds({ hour, minute, second, millisecond }),
+        tallyMilliseconds({ hours, minutes, seconds, milliseconds }),
     );
 }

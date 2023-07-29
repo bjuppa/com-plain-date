@@ -1,16 +1,16 @@
 /**
- * Extract timezone offset in hour & minute parts from
+ * Extract timezone offset as a time-duration of hours & minutes from
  * an ISO 8601 string representation of a date.
  */
 export function timezoneOffsetParts(
   s: string,
-): { hour: number; minute: number } | null {
+): { hours: number; minutes: number } | null {
   if (["UTC", "GMT"].includes(s) || String(s).endsWith("Z")) {
-    return { hour: 0, minute: 0 };
+    return { hours: 0, minutes: 0 };
   }
 
   const matches = String(s).match(
-    /(?<sign>[-+])?(?<hour>\d{1,2}):?(?<minute>\d{2})?(?=\D*$)/,
+    /(?<sign>[-+])?(?<hours>\d{1,2}):?(?<minutes>\d{2})?(?=\D*$)/,
   );
 
   const multiplier = (matches?.groups?.sign && matches.groups.sign != "+")
@@ -19,7 +19,7 @@ export function timezoneOffsetParts(
 
   return matches &&
     {
-      hour: multiplier * Number(matches.groups?.hour || 0),
-      minute: multiplier * Number(matches.groups?.minute || 0),
+      hours: multiplier * Number(matches.groups?.hours || 0),
+      minutes: multiplier * Number(matches.groups?.minutes || 0),
     };
 }
