@@ -46,7 +46,7 @@ The main concepts we need to represent are:
 - _calendar date_: a year, month, and day-of-month.
 - _time-of-day_: a wall-time of hours, minutes, and seconds.
 
-None of the concepts above have an inherent timezone, in themselves they are all
+None of the concepts above have an inherent timezone, they are all
 timezone-agnostic. But to convert an _instant_ to the corresponding local
 _calendar date_ and _time-of-day_ at a specific place, and vice versa, we need
 to add a supporting concept:
@@ -74,18 +74,12 @@ format timezone strings.
 
 ### What, no `Instant`?
 
-Surprisingly, ComPlainDate does not provide any special object representing a
-universal _instant_ in time.
-
-JavaScript's
+ComPlainDate does not provide any special object representing a universal
+_instant_ in time because JavaScript's
 [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
-is basically a wrapper around a UNIX timestamp (the number of milliseconds since
-1970-01-01 00:00 UTC) and doesn't know about timezones. This
-[UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)-centric aspect
-of `Date` is good for timezone-agnostic operations such as comparing universal
-points in time and adding or subtracting _time_ in hours, minutes, or seconds.
+already works well for timezone-agnostic operations.
 
-ComPlainDate has a few utility functions supporting those operations and you
+ComPlainDate has a few utility functions supporting such operations and you
 should aim to use native JavaScript `Date` objects as much as you can. When you
 need to do an operation that the provided instant-utilities doesn't support it's
 time to reach for the other concepts, described below!
@@ -95,6 +89,7 @@ time to reach for the other concepts, described below!
 Plain-date objects adhere to a
 [contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate) and have
 three numeric properties (`year`, `month`, and `day`) used for most operations.
+
 The `iso` property and
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
 produces a string in the format `yyyy-mm-dd` that can be used for simple display
@@ -113,14 +108,13 @@ encouraged to build your own mapper functions on top of the existing ones.
 Plain-time objects adhere to a
 [contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainTime) and have four
 numeric properties (`hour`, `minute`, `second`, and `millisecond`), that may be
-used for operations, but they are surprisingly uncommon. The `iso` property is a
-string in the format `Thh:mm:ss.sss` that is mostly used for technical purposes.
+used for operations, but those are surprisingly uncommon.
 
 For display,
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
 will give the shortest of the formats `hh:mm` / `hh:mm:ss` / `hh:mm:ss.sss`
-depending on the resolution of the specific plain-time. Of course, the
-`toLocaleString` method is best for controlled formatting in user interfaces.
+depending on the resolution of the specific plain-time, but the `toLocaleString`
+method is best for controlled formatting in user interfaces.
 
 ## Quick example
 
@@ -322,9 +316,7 @@ plain-date and plain-time objects, and when we merge them back together.
 
 The native JavaScript `Date` object is actually good enough for keeping
 universal representations of specific instants in time. `Date` doesn't have the
-prettiest interface, but it makes little sense to replace it here. ComPlainDate
-provides some useful utilities for those operations that are relevant to do
-directly on instants, but honestly, they are quite few.
+prettiest interface, but it makes little sense to replace it here.
 
 ### Allow partial and relaxed objects where possible
 
