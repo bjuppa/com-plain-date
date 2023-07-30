@@ -315,8 +315,8 @@ plain-date and plain-time objects, and when we merge them back together.
 ### Instants are represented by `Date` objects
 
 The native JavaScript `Date` object is actually good enough for keeping
-universal representations of specific instants in time. `Date` doesn't have the
-prettiest interface, but it makes little sense to replace it here.
+universal representations of specific instants in time, even though it doesn't
+have the prettiest interface.
 
 ### Coerce objects to relevant primitive types
 
