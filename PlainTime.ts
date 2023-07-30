@@ -108,12 +108,7 @@ export function PlainTime(
     millisecond?: number | string;
   },
 ): ComPlainTime {
-  const ms = tallyMilliseconds({
-    hours: hour,
-    minutes: minute,
-    seconds: second,
-    milliseconds: millisecond,
-  });
+  const ms = tallyMilliseconds(hour, minute, second, millisecond);
 
   if (ms < 0) {
     throw new RangeError(

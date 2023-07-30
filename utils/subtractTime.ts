@@ -21,6 +21,6 @@ export function subtractTime({
   return (instant: Date): Date =>
     new Date(
       instant.valueOf() -
-        tallyMilliseconds({ hours, minutes, seconds, milliseconds }),
+        tallyMilliseconds(hours, minutes, seconds, milliseconds),
     );
 }
