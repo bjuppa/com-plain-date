@@ -22,6 +22,13 @@ Deno.test("takes string parameters", () => {
   );
 });
 
+Deno.test("takes large parameters", () => {
+  assertEquals(
+    tallyMilliseconds(9999, 9999, 9999, 9999),
+    (9999 * 60 * 60 + 9999 * 60 + 9999) * 1000 + 9999,
+  );
+});
+
 Deno.test("takes undefined values", () => {
   assertEquals(tallyMilliseconds(), 0);
 });
