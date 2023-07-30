@@ -15,6 +15,13 @@ Deno.test("takes negative parameters", () => {
   );
 });
 
+Deno.test("takes string parameters", () => {
+  assertEquals(
+    tallyMilliseconds("01", "01", "01", "01"),
+    (60 * 60 + 60 + 1) * 1000 + 1,
+  );
+});
+
 Deno.test("takes undefined values", () => {
   assertEquals(tallyMilliseconds(), 0);
 });
