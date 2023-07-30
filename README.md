@@ -325,7 +325,7 @@ Constructed objects include implementations of the common `valueOf`, `toString`,
 JavaScript's `Date` objects when converting to primitive types. This enables
 comparing objects of the same type with operators `<`, `>`, `<=`, and `>=`.
 
-### Object shape has meaning
+### Object shape carries meaning
 
 Plural property names is an indication that an object represents a duration of
 time, while singular property names are used for calendar date and time-of-day
