@@ -3,14 +3,19 @@ import { tallyMilliseconds } from "./tallyMilliseconds.ts";
 
 Deno.test("sums time parts into milliseconds", () => {
   assertEquals(
-    tallyMilliseconds({ hour: 1, minute: 1, second: 1, millisecond: 1 }),
+    tallyMilliseconds({ hours: 1, minutes: 1, seconds: 1, milliseconds: 1 }),
     (60 * 60 + 60 + 1) * 1000 + 1,
   );
 });
 
 Deno.test("takes negative parts", () => {
   assertEquals(
-    tallyMilliseconds({ hour: -1, minute: -1, second: -1, millisecond: -1 }),
+    tallyMilliseconds({
+      hours: -1,
+      minutes: -1,
+      seconds: -1,
+      milliseconds: -1,
+    }),
     (60 * 60 + 60 + 1) * -1000 - 1,
   );
 });

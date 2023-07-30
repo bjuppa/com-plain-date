@@ -315,8 +315,41 @@ plain-date and plain-time objects, and when we merge them back together.
 ### Instants are represented by `Date` objects
 
 The native JavaScript `Date` object is actually good enough for keeping
-universal representations of specific instants in time. `Date` doesn't have the
-prettiest interface, but it makes little sense to replace it here.
+universal representations of specific instants in time, even though it doesn't
+have the prettiest interface.
+
+### Coerce objects to relevant primitive types
+
+Constructed objects include implementations of the common `valueOf`, `toString`,
+`toJSON`, and `toLocaleString` methods, making their behavior and use similar to
+JavaScript's `Date` objects when converting to primitive types. This enables
+comparing objects of the same type with operators `<`, `>`, `<=`, and `>=`.
+
+### Object shape carries meaning
+
+Plural property names is an indication that an object represents a duration of
+time, while singular property names are used for calendar date and time-of-day
+objects.
+
+Duration properties:
+
+- `hours`
+- `minutes`
+- `seconds`
+- `milliseconds`
+
+Calendar date properties:
+
+- `year`
+- `month`
+- `day`
+
+Time-of-day properties:
+
+- `hour`
+- `minute`
+- `second`
+- `millisecond`
 
 ### Allow partial and relaxed objects where possible
 
@@ -328,24 +361,9 @@ month or day-of-month, only the year of the date has any significance.
 Functions in ComPlainDate use object destructuring of parameters to extract only
 the properties that are actually needed.
 
-It still makes sense to keep a common expected _shape_ of objects, with some
-shared properties that can be mixed and matched for different purposes:
-
-- `year`
-- `month`
-- `day`
-
-- `hour`
-- `minute`
-- `second`
-- `millisecond`
-
-The plain-date and plain-time objects are the strictest forms of this common
-shape where every property exists as an integer.
-
-Whenever possible, relaxed objects having interchangeable number or string type
-properties can also be passed to functions, making it easier to combine user
-input into valid parameters.
+Whenever possible, relaxed objects having interchangeable `number` or `string`
+type properties can also be passed to functions, making it easier to combine
+user input into valid parameters.
 
 ### Avoid type aliases
 
@@ -366,13 +384,6 @@ accompanying factory functions to create them.
 
 Please don't let this scare you, the ComPlainDate utilities are just as easy to
 use in a non-functional paradigm too!
-
-### Coerce objects to relevant primitive types
-
-Constructed objects include implementations of the common `valueOf`, `toString`,
-`toJSON`, and `toLocaleString` methods, making their behavior and use similar to
-JavaScript's `Date` objects when converting to primitive types. This enables
-comparing objects of the same type with operators `<`, `>`, `<=`, and `>=`.
 
 ### Allow for the smallest possible bundle size
 

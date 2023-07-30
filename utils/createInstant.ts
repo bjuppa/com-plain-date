@@ -105,7 +105,7 @@ const offsetCandidatesMap =
       timeZone: timezone,
       timeZoneName: "longOffset",
     });
-    const margin = { hour: HOURS_IN_DAY };
+    const margin = { hours: HOURS_IN_DAY };
     const future = addTime(margin)(instant);
     const past = subtractTime(margin)(instant);
     return new Map(
