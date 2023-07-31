@@ -5,6 +5,9 @@ import { ComPlainTime, PlainTime } from "../PlainTime.ts";
  * Get a function curried with a timezone, to split native JS `Date` objects
  * into separate plain-date and plain-time parts.
  *
+ * If called without `Date` parameter, the current date in the timezone will be
+ * returned.
+ *
  * @param timezone A named IANA timezone
  * @returns A curried function that operates on JS `Date` objects
  *
