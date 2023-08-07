@@ -334,7 +334,13 @@ directly to both sanitize and validate the result.
 
 ## Working with JavaScript `Date` objects
 
-JavaScript `Date` objects, that is _instants_, can be created from any date-time
+JavaScript `Date` objects, that is _instants_, can of course be created in the
+usual way using
+[`new Date(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date)
+with different arguments. It's perfect if you get a date-time as an ISO string,
+like you usually do from a JSON API.
+
+With ComPlainDate `Date` objects can also be created from any date-time
 **shaped** objects in a specified timezone:
 
 ```ts
