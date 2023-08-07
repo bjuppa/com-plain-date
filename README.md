@@ -330,6 +330,50 @@ name that is part of a longer string, use
 [`parseTimezone`](https://deno.land/x/complaindate/mod.ts?s=parseTimezone)
 directly to both sanitize and validate the result.
 
+## Working with JavaScript `Date` objects
+
+JavaScript `Date` objects, that is _instants_, can be created from any date-time
+**shaped** objects in a specified timezone:
+
+```ts
+const noon2023Feb3InSweden = createInstant("Europe/Stockholm")({
+  year: 2023,
+  month: 2,
+  day: 3,
+  hour: 12,
+  minute: 0,
+  second: 0,
+  millisecond: 0,
+}); // 2023-02-03T11:00:00.000Z
+```
+
+These examples combine existing plain-date and plain-time objects:
+
+```ts
+const jsDateInSweden = createInstant("Europe/Stockholm")({
+  ...jan1,
+  ...midday,
+}); // 2023-01-01T11:00:00.000Z
+
+const jsDateInSystemTz = createLocalInstant({
+  ...jan1,
+  ...midday,
+});
+
+const jsDateInUtc = createUtcInstant({
+  ...jan1,
+  ...midday,
+}); // 2023-01-01T12:00:00.000Z
+```
+
+For UTC, that last example can also be written using the
+[`toUtcInstant`](https://deno.land/x/complaindate/mod.ts?s=toUtcInstant) method
+of the plain-date object, passing an optional wall-time shaped object:
+
+```ts
+jan1.toUtcInstant(...midday); // 2023-01-01T12:00:00.000Z
+```
+
 ## Why another JavaScript date-time library?
 
 Most other date-time libraries either don't provide any clear strategy for
