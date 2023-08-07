@@ -116,6 +116,78 @@ will give the shortest of the formats `hh:mm` / `hh:mm:ss` / `hh:mm:ss.sss`
 depending on the resolution of the specific plain-time, but the `toLocaleString`
 method is best for controlled formatting in user interfaces.
 
+## Creating date and time objects
+
+Pass any _calendar-date_ or _wall-time_ **shaped** objects to the factory
+functions [`PlainDate`](https://deno.land/x/complaindate/mod.ts?s=PlainDate) and
+[`PlainTime`](https://deno.land/x/complaindate/mod.ts?s=PlainTime):
+
+```ts
+const someDate = PlainDate({
+  year: 2023,
+  month: 7,
+  day: 31,
+});
+
+const someTime = PlainTime({
+  hour: 13,
+  minute: 37,
+  second: 59,
+  millisecond: 999,
+});
+```
+
+Object properties may be numbers or strings and only `year` is required, the
+others default to `1` for dates and `0` for times:
+
+```ts
+const jan1 = PlainDate({ year: "2023" }); // 2023-01-01
+const midnight = PlainTime({}); // 00:00
+```
+
+Functions
+[`parsePlainDate`](https://deno.land/x/complaindate/mod.ts?s=parsePlainDate) and
+[`parsePlainTime`](https://deno.land/x/complaindate/mod.ts?s=parsePlainTime)
+creates objects from **strings**:
+
+```ts
+const xMasDay = parsePlainDate("2023-12-25");
+const june1 = parsePlainDate("2023-06"); // 2023-06-01
+
+const highResTime = parsePlainTime("01:02:03.004");
+const midday = parsePlainTime("12:00");
+```
+
+If you have a JavaScript `Date` object, calling
+[`splitDateTime`](https://deno.land/x/complaindate/mod.ts?s=splitDateTime) will
+extract separate plain-date and plain-time objects for a given **timezone**:
+
+```ts
+// Sweden is at UTC+2 in June, so this `Date` represents 13:37 wall-time there
+const aJsDate = new Date("2023-06-06T13:37+0200");
+
+const [june6, time1337] = splitDateTime("Europe/Stockholm")(aJsDate);
+```
+
+A `Date` can also be split in UTC using
+[`splitUtcDateTime`](https://deno.land/x/complaindate/mod.ts?s=splitUtcDateTime)
+or the system's timezone with
+[`splitLocalDateTime`](https://deno.land/x/complaindate/mod.ts?s=splitLocalDateTime):
+
+```ts
+const [june6, time1137] = splitUtcDateTime(aJsDate);
+const [aSystemDate, aSystemTime] = splitLocalDateTime(aJsDate);
+```
+
+Leaving out the `Date` parameter for the split-functions will extract objects
+representing **now**, the current date and current wall-time:
+
+```ts
+const [todayInSweden, timeInSweden] = splitDateTime("Europe/Stockholm")();
+const [todayInUtc, timeInUtc] = splitUtcDateTime();
+const [todayInSystemTz, timeInSystemTz] = splitLocalDateTime();
+```
+
 ## Quick example
 
 This will show you how to split a native JavaScript `Date` into separate
