@@ -29,11 +29,13 @@ ComPlainDate is distributed as an **npm** package as well as a **Deno** module:
 ## Table of contents
 
 1. [Introduction](#introduction)
-2. [Quick example](#quick-example)
-3. [Working with timezone strings](#working-with-timezone-strings)
-4. [Why another JavaScript date-time library?](#why-another-javascript-date-time-library)
-5. [Guiding principles](#guiding-principles)
-6. [Limitations](#limitations)
+2. [Creating date and time objects](#creating-date-and-time-objects)
+3. [Quick example](#quick-example)
+4. [Working with timezone strings](#working-with-timezone-strings)
+5. [Working with JavaScript `Date` objects](#working-with-javascript-date-objects)
+6. [Why another JavaScript date-time library?](#why-another-javascript-date-time-library)
+7. [Guiding principles](#guiding-principles)
+8. [Limitations](#limitations)
 
 ## Introduction
 
