@@ -88,9 +88,10 @@ time to reach for the other concepts, described below!
 
 ### `PlainDate` for _calendar dates_
 
-Plain-date objects adhere to a
-[contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate) and have
-three numeric properties (`year`, `month`, and `day`) used for most operations.
+Plain-date objects adhere to the
+[`ComPlainDate` contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate)
+and have three numeric properties (`year`, `month`, and `day`) used for most
+operations.
 
 The `iso` property and
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
@@ -107,10 +108,11 @@ encouraged to build your own mapper functions on top of the existing ones.
 
 ### `PlainTime` for _time-of-day_
 
-Plain-time objects adhere to a
-[contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainTime) and have four
-numeric properties (`hour`, `minute`, `second`, and `millisecond`), that may be
-used for operations, but those are surprisingly uncommon.
+Plain-time objects adhere to the
+[`ComPlainTime` contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainTime)
+and have four numeric properties (`hour`, `minute`, `second`, and
+`millisecond`), that may be used for operations, but those are surprisingly
+uncommon.
 
 For display,
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
