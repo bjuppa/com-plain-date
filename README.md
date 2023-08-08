@@ -147,6 +147,8 @@ const jan1 = PlainDate({ year: "2023" }); // 2023-01-01
 const midnight = PlainTime({}); // 00:00
 ```
 
+### Extracting from strings
+
 Functions
 [`parsePlainDate`](https://deno.land/x/complaindate/mod.ts?s=parsePlainDate) and
 [`parsePlainTime`](https://deno.land/x/complaindate/mod.ts?s=parsePlainTime)
@@ -159,6 +161,8 @@ const june1 = parsePlainDate("2023-06"); // 2023-06-01
 const highResTime = parsePlainTime("01:02:03.004");
 const midday = parsePlainTime("12:00");
 ```
+
+### Extracting from JavaScript `Date` objects
 
 If you have a JavaScript `Date` object, calling
 [`splitDateTime`](https://deno.land/x/complaindate/mod.ts?s=splitDateTime) will
