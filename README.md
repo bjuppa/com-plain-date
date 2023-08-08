@@ -280,10 +280,10 @@ Because the timezone used may be a fallback and not what the user expects, it's
 important to _always_ display the actual timezone name whenever time information
 is present in the user interface.
 
-[`formatTimezone`](https://deno.land/x/complaindate/mod.ts?s=formatTimezone)
-will make a timezone name look pretty for the user. It replaces underscores with
-spaces to give a less technical impression, for example `"Africa/Dar es Salaam"`
-instead of `"Africa/Dar_es_Salaam"`.
+The [`formatTimezone`](https://deno.land/x/complaindate/mod.ts?s=formatTimezone)
+utility will make a timezone name look pretty for the user. It replaces
+underscores with spaces to give a less technical impression, for example
+`"Africa/Dar es Salaam"` instead of `"Africa/Dar_es_Salaam"`.
 
 ### Guided timezone preference input
 
