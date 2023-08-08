@@ -47,9 +47,6 @@ isLastDayOfMonth(newYearsDay); // false
 weekDayNumber(midsummersEve); // 5 (equal to `WeekDay.FRIDAY`)
 differenceInMonths(midsummersEve)(newYearsDay); // -5
 
-// Quickly turn a plain-date into a UTC "instant", a JS `Date` at UTC midnight
-newYearsDay.toUtcInstant(); // 2023-01-01T00:00:00.000Z
-
 // Combine any shape of local date & time into an "instant", a JS `Date`
 createInstant(
   "Europe/Vienna", // Note: A timezone is required for this operation
