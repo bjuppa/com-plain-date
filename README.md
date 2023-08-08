@@ -16,8 +16,10 @@ available — only time will tell&hellip;
 
 ## API documentation
 
-The full [API documentation](https://deno.land/x/complaindate/mod.ts) and
-categorized lists of available functions are available at deno.land.
+The detailed documentation and categorized lists of available functions are
+available at the _deno.land_ website.
+[The API documentation](https://deno.land/x/complaindate/mod.ts) is where you'll
+find what utilities will help you solve your specific problem.
 
 ## Installation
 
