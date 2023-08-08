@@ -390,8 +390,8 @@ const jsDateInUtc = createUtcInstant({
 ```
 
 For UTC, that last example can also be written using the
-[`toUtcInstant`](https://deno.land/x/complaindate/mod.ts?s=toUtcInstant) method
-of the plain-date object, passing an optional wall-time shaped object:
+[`toUtcInstant`](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate#prop_toUtcInstant)
+method of the plain-date object, passing an optional wall-time shaped object:
 
 ```ts
 jan1.toUtcInstant(...midday); // 2023-01-01T12:00:00.000Z
