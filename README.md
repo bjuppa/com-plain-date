@@ -397,7 +397,33 @@ method of the plain-date object, passing an optional wall-time shaped object:
 jan1.toUtcInstant(...midday); // 2023-01-01T12:00:00.000Z
 ```
 
-### Operations on `Date` objects
+### Displaying a `Date` to users
+
+The [`formatInstant`](https://deno.land/x/complaindate/mod.ts?s=formatInstant)
+utility generates formatting functions to reuse for consistency throughout a
+user interface. It is curried in three rounds with a locale, format options, and
+a timezone. Each parameter has a sensible default if left out, using the
+system's locale and timezone, and including a short timezone name in the format.
+
+```ts
+const formatDateTime = formatInstant()()(); // All defaults
+
+// Building a user specific formatter
+const userLocale = "en-US";
+const userTimezone = "America/New_York";
+const format24hDateTimeForUser = formatInstant(userLocale)({
+  hourCycle: "h23",
+})(userTimezone);
+
+const aJsDate = new Date("2023-06-13T12:00Z");
+
+// For a browser in Sweden:
+formatDateTime(aJsDate); // "2023-06-13 14:00:00 CEST"
+
+format24hDateTimeForUser(aJsDate); // "6/13/2023, 08:00:00 EDT"
+```
+
+### Operations on `Date`
 
 Use functions [`addTime`](https://deno.land/x/complaindate/mod.ts?s=addTime) and
 [`subtractTime`](https://deno.land/x/complaindate/mod.ts?s=subtractTime) to get
