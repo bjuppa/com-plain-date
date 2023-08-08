@@ -352,10 +352,9 @@ const noon2023Feb3InSweden = createInstant("Europe/Stockholm")({
 These examples combine existing plain-date and plain-time objects:
 
 ```ts
-// Sweden is at UTC+1 in January
 const jsDateInSweden = createInstant("Europe/Stockholm")({
   ...jan1,
-  ...midday,
+  ...midday, // Sweden is at UTC+1 in January
 }); // 2023-01-01T11:00:00.000Z
 
 const jsDateInSystemTz = createLocalInstant({
