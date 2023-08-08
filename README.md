@@ -341,7 +341,11 @@ with different arguments. It's perfect if you get a date-time as an ISO string,
 like you usually do from a JSON API.
 
 With ComPlainDate `Date` objects can also be created from any date-time
-**shaped** objects in a specified timezone:
+**shaped** objects in a specified timezone with
+[`createInstant`](https://deno.land/x/complaindate/mod.ts?s=createInstant),
+[`createLocalInstant`](https://deno.land/x/complaindate/mod.ts?s=createLocalInstant)
+and
+[`createUtcInstant`](https://deno.land/x/complaindate/mod.ts?s=createUtcInstant):
 
 ```ts
 const noon2023Feb3InSweden = createInstant("Europe/Stockholm")({
