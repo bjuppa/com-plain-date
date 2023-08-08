@@ -149,7 +149,7 @@ const jan1 = PlainDate({ year: "2023" }); // 2023-01-01
 const midnight = PlainTime({}); // 00:00
 ```
 
-### Extracting from strings
+### Extraction from strings
 
 Functions
 [`parsePlainDate`](https://deno.land/x/complaindate/mod.ts?s=parsePlainDate) and
@@ -164,7 +164,7 @@ const highResTime = parsePlainTime("01:02:03.004");
 const midday = parsePlainTime("12:00");
 ```
 
-### Extracting from JavaScript `Date` objects
+### Extraction from JavaScript `Date` objects
 
 If you have a JavaScript `Date` object, calling
 [`splitDateTime`](https://deno.land/x/complaindate/mod.ts?s=splitDateTime) will
@@ -424,7 +424,7 @@ const earlierJsDate = subtractTime({
 
 Adding `days` or larger duration units to a `Date` object must take timezones
 into account and you should
-[split that `Date` into plain-date and plain-time objects](#extracting-from-javascript-date-objects).
+[split that `Date` into plain-date and plain-time objects](#extraction-from-javascript-date-objects).
 
 ## Background
 
