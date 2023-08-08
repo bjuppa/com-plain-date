@@ -16,8 +16,10 @@ available — only time will tell&hellip;
 
 ## API documentation
 
-The full [API documentation](https://deno.land/x/complaindate/mod.ts) and
-categorized lists of available functions are available at deno.land.
+The detailed documentation and categorized lists of available functions are
+available at the _deno.land_ website.
+[The API documentation](https://deno.land/x/complaindate/mod.ts) is where you'll
+find what utilities will help you solve your specific problem.
 
 ## Installation
 
@@ -29,11 +31,13 @@ ComPlainDate is distributed as an **npm** package as well as a **Deno** module:
 ## Table of contents
 
 1. [Introduction](#introduction)
-2. [Quick example](#quick-example)
-3. [Working with timezone strings](#working-with-timezone-strings)
-4. [Why another JavaScript date-time library?](#why-another-javascript-date-time-library)
-5. [Guiding principles](#guiding-principles)
-6. [Limitations](#limitations)
+2. [Creating plain-date and plain-time objects](#creating-plain-date-and-plain-time-objects)
+3. [Quick example](#quick-example)
+4. [Working with timezone strings](#working-with-timezone-strings)
+5. [Working with JavaScript `Date` objects](#working-with-javascript-date-objects)
+6. [Background](#background)
+7. [Guiding principles](#guiding-principles)
+8. [Limitations](#limitations)
 
 ## Introduction
 
@@ -86,9 +90,10 @@ time to reach for the other concepts, described below!
 
 ### `PlainDate` for _calendar dates_
 
-Plain-date objects adhere to a
-[contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate) and have
-three numeric properties (`year`, `month`, and `day`) used for most operations.
+Plain-date objects adhere to the
+[`ComPlainDate` contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate)
+and have three numeric properties (`year`, `month`, and `day`) used for most
+operations.
 
 The `iso` property and
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
@@ -105,16 +110,93 @@ encouraged to build your own mapper functions on top of the existing ones.
 
 ### `PlainTime` for _time-of-day_
 
-Plain-time objects adhere to a
-[contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainTime) and have four
-numeric properties (`hour`, `minute`, `second`, and `millisecond`), that may be
-used for operations, but those are surprisingly uncommon.
+Plain-time objects adhere to the
+[`ComPlainTime` contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainTime)
+and have four numeric properties (`hour`, `minute`, `second`, and
+`millisecond`), that may be used for operations, but those are surprisingly
+uncommon.
 
 For display,
 [string coercion](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#string_coercion)
 will give the shortest of the formats `hh:mm` / `hh:mm:ss` / `hh:mm:ss.sss`
 depending on the resolution of the specific plain-time, but the `toLocaleString`
 method is best for controlled formatting in user interfaces.
+
+## Creating plain-date and plain-time objects
+
+Pass any _calendar-date_ or _wall-time_ **shaped** objects to the factory
+functions [`PlainDate`](https://deno.land/x/complaindate/mod.ts?s=PlainDate) and
+[`PlainTime`](https://deno.land/x/complaindate/mod.ts?s=PlainTime):
+
+```ts
+const someDate = PlainDate({
+  year: 2023,
+  month: 7,
+  day: 31,
+});
+
+const someTime = PlainTime({
+  hour: 13,
+  minute: 37,
+  second: 59,
+  millisecond: 999,
+});
+```
+
+Object properties may be numbers or strings and only `year` is required, the
+others default to `1` for dates and `0` for times:
+
+```ts
+const jan1 = PlainDate({ year: "2023" }); // 2023-01-01
+const midnight = PlainTime({}); // 00:00
+```
+
+### Extraction from strings
+
+Functions
+[`parsePlainDate`](https://deno.land/x/complaindate/mod.ts?s=parsePlainDate) and
+[`parsePlainTime`](https://deno.land/x/complaindate/mod.ts?s=parsePlainTime)
+creates objects from **strings**:
+
+```ts
+const xMasDay = parsePlainDate("2023-12-25");
+const june1 = parsePlainDate("2023-06"); // 2023-06-01
+
+const highResTime = parsePlainTime("01:02:03.004");
+const midday = parsePlainTime("12:00");
+```
+
+### Extraction from JavaScript `Date` objects
+
+If you have a JavaScript `Date` object, calling
+[`splitDateTime`](https://deno.land/x/complaindate/mod.ts?s=splitDateTime) will
+extract separate plain-date and plain-time objects for a given **timezone**:
+
+```ts
+// Sweden is at UTC+2 in June, so this `Date` represents 13:37 wall-time there
+const aJsDate = new Date("2023-06-06T13:37+0200");
+
+const [june6, time1337] = splitDateTime("Europe/Stockholm")(aJsDate);
+```
+
+A `Date` can also be split in UTC using
+[`splitUtcDateTime`](https://deno.land/x/complaindate/mod.ts?s=splitUtcDateTime)
+or the system's timezone with
+[`splitLocalDateTime`](https://deno.land/x/complaindate/mod.ts?s=splitLocalDateTime):
+
+```ts
+const [june6, time1137] = splitUtcDateTime(aJsDate);
+const [aSystemDate, aSystemTime] = splitLocalDateTime(aJsDate);
+```
+
+Leaving out the `Date` parameter for the split-functions will extract objects
+representing **now**, the current date and current wall-time:
+
+```ts
+const [todayInSweden, timeInSweden] = splitDateTime("Europe/Stockholm")();
+const [todayInUtc, timeInUtc] = splitUtcDateTime();
+const [todayInSystemTz, timeInSystemTz] = splitLocalDateTime();
+```
 
 ## Quick example
 
@@ -129,28 +211,13 @@ The final step will merge a plain-date and a plain-time into a native JavaScript
 `Date`, completing the circle.
 
 ```ts
-// Deno users can import directly from deno.land, like this:
-import {
-  addDays,
-  createInstant,
-  daysInMonth,
-  differenceInMonths,
-  firstWeekDay,
-  isLastDayOfMonth,
-  splitDateTime,
-  startOfMonth,
-  startOfYear,
-  WeekDay,
-  weekDayNumber,
-} from "https://deno.land/x/complaindate/mod.ts";
-
 // Extract a plain-date and a plain-time from any JS `Date`
 const [june6, time1337] = splitDateTime(
   "Europe/Stockholm", // Note: A timezone is required for this operation
 )(
   // Sweden is at UTC+2 in June, so this `Date` represents 13:37 wall-time there
   new Date("2023-06-06T13:37+0200"),
-); // Note: When called without a `Date`, this produces current wall-time (now)
+);
 
 // The plain-date part is an object adhering to the full ComPlainDate interface
 june6; // { year: 2023, month: 6, day: 6, iso: "2023-06-06", ...}
@@ -162,7 +229,6 @@ time1337; // { hour: 13, minute: 37, second: 0, millisecond: 0, ... }
 time1337.toLocaleString("en"); // "1:37 PM"
 
 // Apply any pipeline of operations to get a new plain-date
-// ...free from any hassle involving timezones!
 const midsummersEve = june6.pipe(
   startOfMonth, // Go back to the 1st day of June
   addDays(18), // Move to the first possible midsummer's eve candidate (June 19)
@@ -180,16 +246,12 @@ isLastDayOfMonth(newYearsDay); // false
 weekDayNumber(midsummersEve); // 5 (equal to `WeekDay.FRIDAY`)
 differenceInMonths(midsummersEve)(newYearsDay); // -5
 
-// Quickly turn a plain-date into a UTC "instant", a JS `Date` at UTC midnight
-newYearsDay.toUtcInstant(); // 2023-01-01T00:00:00.000Z
-
 // Combine any shape of local date & time into an "instant", a JS `Date`
 createInstant(
-  // The Wiener Musikverein is at UTC+1 in January
   "Europe/Vienna", // Note: A timezone is required for this operation
 )({
   ...newYearsDay,
-  ...{ hour: 11, minute: 15 },
+  ...{ hour: 11, minute: 15 }, // The Wiener Musikverein is at UTC+1 in January
 }); // 2023-01-01T10:15:00.000Z
 ```
 
@@ -220,10 +282,10 @@ Because the timezone used may be a fallback and not what the user expects, it's
 important to _always_ display the actual timezone name whenever time information
 is present in the user interface.
 
-[`formatTimezone`](https://deno.land/x/complaindate/mod.ts?s=formatTimezone)
-will make a timezone name look pretty for the user. It replaces underscores with
-spaces to give a less technical impression, for example `"Africa/Dar es Salaam"`
-instead of `"Africa/Dar_es_Salaam"`.
+The [`formatTimezone`](https://deno.land/x/complaindate/mod.ts?s=formatTimezone)
+utility will make a timezone name look pretty for the user. It replaces
+underscores with spaces to give a less technical impression, for example
+`"Africa/Dar es Salaam"` instead of `"Africa/Dar_es_Salaam"`.
 
 ### Guided timezone preference input
 
@@ -258,7 +320,120 @@ name that is part of a longer string, use
 [`parseTimezone`](https://deno.land/x/complaindate/mod.ts?s=parseTimezone)
 directly to both sanitize and validate the result.
 
-## Why another JavaScript date-time library?
+## Working with JavaScript `Date` objects
+
+JavaScript `Date` objects, that is _instants_, can of course be created the
+usual way with
+[different arguments to the constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date#parameters).
+It's perfect when you have a date-time as an ISO string, like you usually get
+from a JSON API.
+
+```ts
+const instant = new Date(...);
+```
+
+With ComPlainDate `Date` objects can also be created from any date-time
+**shaped** objects in a specified timezone with
+[`createInstant`](https://deno.land/x/complaindate/mod.ts?s=createInstant),
+[`createLocalInstant`](https://deno.land/x/complaindate/mod.ts?s=createLocalInstant)
+and
+[`createUtcInstant`](https://deno.land/x/complaindate/mod.ts?s=createUtcInstant):
+
+```ts
+const noon2023Feb3InSweden = createInstant("Europe/Stockholm")({
+  year: 2023,
+  month: 2,
+  day: 3,
+  hour: 12,
+  minute: 0,
+  second: 0,
+  millisecond: 0,
+}); // 2023-02-03T11:00:00.000Z
+```
+
+These examples combine existing plain-date and plain-time objects:
+
+```ts
+const jsDateInSweden = createInstant("Europe/Stockholm")({
+  ...jan1,
+  ...midday, // Sweden is at UTC+1 in January
+}); // 2023-01-01T11:00:00.000Z
+
+const jsDateInSystemTz = createLocalInstant({
+  ...jan1,
+  ...midday,
+});
+
+const jsDateInUtc = createUtcInstant({
+  ...jan1,
+  ...midday,
+}); // 2023-01-01T12:00:00.000Z
+```
+
+For UTC, that last example can also be written using the
+[`toUtcInstant`](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate#prop_toUtcInstant)
+method of the plain-date object, passing an optional wall-time shaped object:
+
+```ts
+jan1.toUtcInstant(...midday); // 2023-01-01T12:00:00.000Z
+```
+
+### Displaying a `Date` to users
+
+The [`formatInstant`](https://deno.land/x/complaindate/mod.ts?s=formatInstant)
+utility generates formatting functions to reuse for consistency throughout a
+user interface. It is curried in three rounds with a locale, format options, and
+a timezone. Each parameter has a sensible default if left out, using the
+system's locale and timezone, and including a short timezone name in the format.
+
+```ts
+const formatDateTime = formatInstant()()(); // All defaults
+
+// Building a user specific formatter
+const userLocale = "en-US";
+const userTimezone = "America/New_York";
+const format24hDateTimeForUser = formatInstant(userLocale)({
+  hourCycle: "h23",
+})(userTimezone);
+
+const aJsDate = new Date("2023-06-13T12:00Z");
+
+// For a browser in Sweden:
+formatDateTime(aJsDate); // "2023-06-13 14:00:00 CEST"
+
+format24hDateTimeForUser(aJsDate); // "6/13/2023, 08:00:00 EDT"
+```
+
+### Operations on `Date`
+
+Use functions [`addTime`](https://deno.land/x/complaindate/mod.ts?s=addTime) and
+[`subtractTime`](https://deno.land/x/complaindate/mod.ts?s=subtractTime) to get
+a new `Date` object shifted some **duration** from an existing one. Units up to
+`hours` make sense here because an hour is exactly 60 minutes no matter what
+timezone you're in. These methods just sum up the total milliseconds before
+adjusting the given `Date` object.
+
+```ts
+const jan1st1970 = new Date(0); // 1970-01-01T00:00:00.000Z
+
+const laterJsDate = addTime({
+  hours: 25,
+  minutes: 61,
+  seconds: 61,
+  milliseconds: 1001,
+})(jan1st1970); // 1970-01-02T02:02:02.001Z
+
+const earlierJsDate = subtractTime({
+  hours: 1,
+  minutes: 1,
+})(jan1st1970); // 1969-12-31T22:59:00.000Z
+```
+
+Adding `days` or larger duration units to a `Date` object must take timezones
+into account and you should
+[split that `Date` into plain-date and plain-time objects](#extraction-from-javascript-date-objects).
+
+## Background
 
 Most other date-time libraries either don't provide any clear strategy for
 timezone handling, for example [date-fns](https://date-fns.org), or keep the

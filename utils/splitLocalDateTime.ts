@@ -4,6 +4,9 @@ import { ComPlainTime, PlainTime } from "../PlainTime.ts";
 /**
  * Split native JS `Date` objects into separate plain-date and plain-time parts
  * in the system's local timezone.
+ *
+ * If called without `Date` parameter, the current date in the local timezone
+ * will be returned.
  */
 export function splitLocalDateTime(
   instant?: Date,
