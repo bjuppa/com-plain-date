@@ -395,6 +395,35 @@ of the plain-date object, passing an optional wall-time shaped object:
 jan1.toUtcInstant(...midday); // 2023-01-01T12:00:00.000Z
 ```
 
+### Operations on `Date` objects
+
+Use functions [`addTime`](https://deno.land/x/complaindate/mod.ts?s=addTime) and
+[`subtractTime`](https://deno.land/x/complaindate/mod.ts?s=subtractTime) to get
+a new `Date` object shifted some **duration** from an existing one. Units up to
+`hours` make sense here because an hour is exactly 60 minutes no matter what
+timezone you're in. These methods just sum up the total milliseconds before
+adjusting the given `Date` object.
+
+```ts
+const jan1st1970 = new Date(0); // 1970-01-01T00:00:00.000Z
+
+const laterJsDate = addTime({
+  hours: 25,
+  minutes: 61,
+  seconds: 61,
+  milliseconds: 1001,
+})(jan1st1970); // 1970-01-02T02:02:02.001Z
+
+const earlierJsDate = subtractTime({
+  hours: 1,
+  minutes: 1,
+})(jan1st1970); // 1969-12-31T22:59:00.000Z
+```
+
+Adding `days` or larger duration units to a `Date` object must take timezones
+into account and you should
+[split that `Date` into plain-date and plain-time objects](#extracting-from-javascript-date-objects).
+
 ## Why another JavaScript date-time library?
 
 Most other date-time libraries either don't provide any clear strategy for
