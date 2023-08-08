@@ -29,7 +29,7 @@ ComPlainDate is distributed as an **npm** package as well as a **Deno** module:
 ## Table of contents
 
 1. [Introduction](#introduction)
-2. [Creating date and time objects](#creating-date-and-time-objects)
+2. [Creating plain-date and plain-time objects](#creating-plain-date-and-plain-time-objects)
 3. [Quick example](#quick-example)
 4. [Working with timezone strings](#working-with-timezone-strings)
 5. [Working with JavaScript `Date` objects](#working-with-javascript-date-objects)
@@ -120,7 +120,7 @@ will give the shortest of the formats `hh:mm` / `hh:mm:ss` / `hh:mm:ss.sss`
 depending on the resolution of the specific plain-time, but the `toLocaleString`
 method is best for controlled formatting in user interfaces.
 
-## Creating date and time objects
+## Creating plain-date and plain-time objects
 
 Pass any _calendar-date_ or _wall-time_ **shaped** objects to the factory
 functions [`PlainDate`](https://deno.land/x/complaindate/mod.ts?s=PlainDate) and
