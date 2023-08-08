@@ -33,7 +33,7 @@ ComPlainDate is distributed as an **npm** package as well as a **Deno** module:
 3. [Quick example](#quick-example)
 4. [Working with timezone strings](#working-with-timezone-strings)
 5. [Working with JavaScript `Date` objects](#working-with-javascript-date-objects)
-6. [Why another JavaScript date-time library?](#why-another-javascript-date-time-library)
+6. [Background](#background)
 7. [Guiding principles](#guiding-principles)
 8. [Limitations](#limitations)
 
@@ -424,7 +424,7 @@ Adding `days` or larger duration units to a `Date` object must take timezones
 into account and you should
 [split that `Date` into plain-date and plain-time objects](#extracting-from-javascript-date-objects).
 
-## Why another JavaScript date-time library?
+## Background
 
 Most other date-time libraries either don't provide any clear strategy for
 timezone handling, for example [date-fns](https://date-fns.org), or keep the
