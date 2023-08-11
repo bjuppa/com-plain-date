@@ -95,7 +95,7 @@ already works well for timezone-agnostic operations.
 ComPlainDate has a few utility functions supporting such operations and you
 should aim to use native JavaScript `Date` objects as much as you can. When you
 need to do an operation that the provided instant-utilities doesn't support it's
-time to reach for the other concepts, described below!
+time to reach for the other concepts, described below.
 
 ### `PlainDate` for _calendar dates_
 
@@ -283,7 +283,7 @@ preferred timezone is unavailable.
 When your application doesn't support timezone as a user preference, the
 [`localTimezone`](https://deno.land/x/complaindate/mod.ts?s=localTimezone)
 utility can be used to retrieve a relevant timezone for the current view.
-Although, be careful with server side rendering&hellip;
+Although, be careful with server side rendering here&hellip;
 
 ### Show the timezone name in the user interface
 
@@ -439,7 +439,7 @@ const earlierJsDate = subtractTime({
 ```
 
 Adding `days` or larger duration units to a `Date` object must take timezones
-into account and you should
+into account and therefore you should first
 [split that `Date` into plain-date and plain-time objects](#extraction-from-javascript-date-objects).
 
 ## Background
@@ -475,7 +475,7 @@ make their meaning clear.
 
 ### Explicit named timezones
 
-These utilities are designed to always require a named timezone for every
+ComPlainDate utilities are designed to always require a named timezone for every
 operation that would be ambiguous without one. The timezone is the very first
 argument given to such functions, showing how important it is.
 
@@ -488,9 +488,9 @@ timezone separate from the date-time objects, making that timezone very visible.
 ### Separate plain-date and plain-time objects
 
 By keeping the calendar date and the time-of-day information in separate objects
-we are free to do any operations on them both in an expressive way, with no need
-to worry about such things as crossings into daylight savings time (DST) or what
-start-of-hour means in a timezone with a half-hour offset.
+we are free to do relevant operations on them both in an expressive way, with no
+need to worry about such things as crossings into daylight savings time (DST) or
+what start-of-hour means in a timezone with a half-hour offset.
 
 The only operations where we need an explicit timezone are when we split a
 universal representation of an instant (e.g. `Date` object) into separate
@@ -559,7 +559,7 @@ utilities outside of ComPlainDate.
 
 ### Composable functions
 
-Inspired by concepts from functional programming, all functions are pure and
+Inspired by concepts from functional programming, functions are pure and
 composable and all operations requiring multiple arguments are implemented as
 higher-order functions for currying.
 
