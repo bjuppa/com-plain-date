@@ -21,10 +21,14 @@ timezones on the surface_.
 
 ## API documentation
 
-The detailed documentation and categorized lists of available functions are
-available at the _deno.land_ website.
-[The API documentation](https://deno.land/x/complaindate/mod.ts) is where you'll
-find what utilities will help you solve your specific problem.
+This readme aims to explain how ComPlainDate works, but doesn't contain full
+explanations of all available operations. The detailed documentation and
+categorized lists of available functions are available at the _deno.land_
+website:
+
+Visit
+[the ComPlainDate API documentation](https://deno.land/x/complaindate/mod.ts) to
+explore which specific utilities you can use to solve your problem.
 
 ## Installation
 
