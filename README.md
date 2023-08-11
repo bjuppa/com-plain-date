@@ -1,18 +1,23 @@
 # ComPlainDate
 
-Date-time handling in JavaScript has always been hard. While we're all waiting
-for [Temporal](https://tc39.es/proposal-temporal/) to arrive, this is a
-collection of tools for **expressive and timezone-safe manipulation of dates and
-times** on top of the JavaScript features already available in today's browsers
-and runtime systems.
+Date-time handling in JavaScript has always been hard, mainly because
+[`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+objects don't handle timezones very well.
+
+ComPlainDate is a collection of tools for **expressive and timezone-safe
+manipulation of dates and times** on top of the JavaScript features already
+available in today's browsers and runtime systems.
 
 The central idea in ComPlainDate is to provide timezone-agnostic
 [`PlainDate`](#plaindate-for-calendar-dates) and
 [`PlainTime`](#plaintime-for-time-of-day) objects with composable utility
 functions for common calendar and time related operations.
 
-It may well be that ComPlainDate will stay useful even after Temporal is
-available — only time will tell&hellip;
+Code utilizing ComPlainDate is easier to follow because whenever timezones are
+actually needed they are super obvious. And for operations where timezones are
+_not_ needed, there is no way to accidentally introduce one. Timezone
+information is never hidden from plain sight — ComPlainDate utilities _keep
+timezones on the surface_.
 
 ## API documentation
 
