@@ -6,7 +6,9 @@ objects don't handle timezones very well.
 
 ComPlainDate is a collection of tools for **expressive and timezone-safe
 manipulation of dates and times** on top of the JavaScript features already
-available in today's browsers and runtime systems.
+available in today's browsers and runtime systems. The package is
+dependency-free and supports tree-shaking, making production bundle size
+increase as little as `1 kB` for most projects.
 
 The central idea in ComPlainDate is to provide timezone-agnostic
 [`PlainDate`](#plaindate-for-calendar-dates) and
