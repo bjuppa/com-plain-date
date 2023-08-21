@@ -565,8 +565,8 @@ Inspired by concepts from functional programming, functions are pure and
 composable and all operations requiring multiple arguments are implemented as
 higher-order functions for currying.
 
-Also, there are no classes here, only objects adhering to interfaces and
-accompanying factory functions to create them.
+Also, there are no classes here, only immutable objects adhering to interfaces
+and accompanying factory functions to create them.
 
 Please don't let this scare you, the ComPlainDate utilities are just as easy to
 use in a non-functional paradigm too!
