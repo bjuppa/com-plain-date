@@ -562,7 +562,7 @@ utilities outside of ComPlainDate.
 ### Composable functions
 
 Inspired by concepts from functional programming, functions are pure and
-composable and all operations requiring multiple arguments are implemented as
+composable and operations requiring multiple arguments are implemented as
 higher-order functions for currying.
 
 Also, there are no classes here, only immutable objects adhering to interfaces
