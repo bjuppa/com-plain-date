@@ -10,7 +10,7 @@ available in today's browsers and runtime systems. The package is
 dependency-free and supports tree-shaking, making production bundle size
 increase as little as `1 kB` for most projects.
 
-The central idea in ComPlainDate is to provide timezone-agnostic
+The central idea in ComPlainDate is to provide immutable timezone-agnostic
 [`PlainDate`](#plaindate-for-calendar-dates) and
 [`PlainTime`](#plaintime-for-time-of-day) objects with composable utility
 functions for common calendar and time related operations.
