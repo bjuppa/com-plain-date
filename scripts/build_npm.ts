@@ -16,6 +16,7 @@ await build({
     version: Deno.args[0]?.replace(/^v/, ""),
     description: "Date-time utilities that keep timezones on the surface.",
     license: "MIT",
+    author: { name: "Björn Nilsved" },
     keywords: [
       "plain-date",
       "plain-time",
