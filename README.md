@@ -25,19 +25,23 @@ timezones on the surface_.
 
 This readme aims to explain how ComPlainDate works, but doesn't contain full
 explanations of all available operations. The detailed documentation and
-categorized lists of available functions are available at the _deno.land_
-website:
+categorized lists of available functions were once available at the _deno.land_
+website, but that is no longer the case.
 
-Visit
-[the ComPlainDate API documentation](https://deno.land/x/complaindate/mod.ts) to
-explore which specific utilities you can use to solve your problem.
+We hope to regain documentation once this package is published at JSR instead,
+see [Issue #88](https://github.com/bjuppa/com-plain-date/issues/88) for progress.
+
+Please note that all the links to the _deno.land_ docs from this readme are currently not working.
+The simplest workaround is to browse the source files on GitHub instead,
+and read the docblocks straight from the source.
+Not ideal, we know, sorry.
 
 ## Installation
 
 ComPlainDate is distributed as an **npm** package as well as a **Deno** module:
 
 - [npmjs.com/package/complaindate](https://www.npmjs.com/package/complaindate)
-- [deno.land/x/complaindate](https://deno.land/x/complaindate/mod.ts)
+- [deno.land/x/complaindate](https://deno.land/x/complaindate)
 
 ## Table of contents
 
