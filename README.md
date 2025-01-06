@@ -33,10 +33,9 @@ see [Issue #88](https://github.com/bjuppa/com-plain-date/issues/88) for
 progress.
 
 Please note that all the links to the _deno.land_ docs from this readme are
-currently not working.
-The simplest workaround is to browse the source files on GitHub instead,
-and read the docblocks straight from the source.
-Not ideal, we know, sorry.
+currently not working. The simplest workaround is to browse the source files on
+GitHub instead, and read the docblocks straight from the source. Not ideal, we
+know, sorry.
 
 ## Installation
 
