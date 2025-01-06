@@ -29,7 +29,8 @@ categorized lists of available functions were once available at the _deno.land_
 website, but that is no longer the case.
 
 We hope to regain documentation once this package is published at JSR instead,
-see [Issue #88](https://github.com/bjuppa/com-plain-date/issues/88) for progress.
+see [Issue #88](https://github.com/bjuppa/com-plain-date/issues/88) for
+progress.
 
 Please note that all the links to the _deno.land_ docs from this readme are currently not working.
 The simplest workaround is to browse the source files on GitHub instead,
