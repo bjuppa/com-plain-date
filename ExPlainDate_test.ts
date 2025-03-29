@@ -1,11 +1,11 @@
-import { ExPlainDate, ExtendedPlainDate } from "./ExPlainDate.ts";
+import { ExPlainDate, type ExtendedPlainDate } from "./ExPlainDate.ts";
 import { PlainDate } from "./PlainDate.ts";
 import {
   assertEquals,
   assertStringIncludes,
   assertThrows,
 } from "./dev_deps.ts";
-import { PlainDateMapFn } from "./support/function-signatures.ts";
+import type { PlainDateMapFn } from "./support/function-signatures.ts";
 
 Deno.test("factory accepts PlainDate", () => {
   const exPlainDate = ExPlainDate(PlainDate({ year: 2022, month: 2, day: 2 }));

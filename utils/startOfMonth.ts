@@ -1,4 +1,4 @@
-import { ComPlainDate } from "../PlainDate.ts";
+import type { ComPlainDate } from "../PlainDate.ts";
 
 /**
  * Jump to the first day of a plain-date's month.

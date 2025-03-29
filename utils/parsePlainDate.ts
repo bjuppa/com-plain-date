@@ -1,4 +1,4 @@
-import { ComPlainDate, PlainDate } from "../PlainDate.ts";
+import { type ComPlainDate, PlainDate } from "../PlainDate.ts";
 import { dateParts } from "../support/dateParts.ts";
 
 /**

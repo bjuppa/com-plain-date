@@ -1,5 +1,5 @@
-import { DAYS_IN_WEEK, WeekDayNumber } from "../constants.ts";
-import { ComPlainDate } from "../PlainDate.ts";
+import { DAYS_IN_WEEK, type WeekDayNumber } from "../constants.ts";
+import type { ComPlainDate } from "../PlainDate.ts";
 
 /**
  * Get the ISO weekday number (1-7) starting with Monday from a plain-date.

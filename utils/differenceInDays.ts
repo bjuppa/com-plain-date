@@ -1,4 +1,4 @@
-import { ComPlainDate } from "../PlainDate.ts";
+import type { ComPlainDate } from "../PlainDate.ts";
 import { HOURS_IN_DAY, MS_IN_HOUR } from "../constants.ts";
 import { differenceInMilliseconds } from "./differenceInMilliseconds.ts";
 

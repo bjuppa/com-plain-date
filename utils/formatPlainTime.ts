@@ -1,4 +1,4 @@
-import { ComPlainTime, FormatPlainTimeOptions } from "../PlainTime.ts";
+import type { ComPlainTime, FormatPlainTimeOptions } from "../PlainTime.ts";
 
 /**
  * Curry a function to get localized strings of its plain-time arguments.

@@ -1,7 +1,7 @@
 import { pipePlainDate } from "./pipePlainDate.ts";
 import { PlainDate } from "../PlainDate.ts";
 import { assertEquals } from "../dev_deps.ts";
-import { PlainDateMapFn } from "../support/function-signatures.ts";
+import type { PlainDateMapFn } from "../support/function-signatures.ts";
 
 Deno.test("given pipeline of operations is applied to the plain-date", () => {
   const plainDate = PlainDate({ year: "2022", month: "12", day: "22" });

@@ -1,5 +1,5 @@
-import { ComPlainDate } from "../PlainDate.ts";
-import { QuarterNumber } from "../constants.ts";
+import type { ComPlainDate } from "../PlainDate.ts";
+import type { QuarterNumber } from "../constants.ts";
 
 /**
  * Get the quarter of the year for a plain-date.

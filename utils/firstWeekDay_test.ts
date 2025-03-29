@@ -1,7 +1,7 @@
 import { firstWeekDay } from "./firstWeekDay.ts";
 import { assertEquals } from "../dev_deps.ts";
 import { PlainDate } from "../PlainDate.ts";
-import { WeekDay, WeekDayNumber } from "../constants.ts";
+import { WeekDay, type WeekDayNumber } from "../constants.ts";
 
 Deno.test("returns same day from a monday", () => {
   assertEquals(

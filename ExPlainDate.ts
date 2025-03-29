@@ -1,7 +1,7 @@
-import { ComPlainDate, PlainDate, PlainDateFactory } from "./PlainDate.ts";
+import { type ComPlainDate, PlainDate, type PlainDateFactory } from "./PlainDate.ts";
 import { createLocalInstant } from "./utils/createLocalInstant.ts";
 import { createInstant } from "./utils/createInstant.ts";
-import { QuarterNumber, WeekDay, WeekDayNumber } from "./constants.ts";
+import { type QuarterNumber, WeekDay, type WeekDayNumber } from "./constants.ts";
 import { addDays } from "./utils/addDays.ts";
 import { addBusinessDays } from "./utils/addBusinessDays.ts";
 import { addMonths } from "./utils/addMonths.ts";

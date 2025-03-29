@@ -1,4 +1,4 @@
-import { ComPlainDate } from "../PlainDate.ts";
+import type { ComPlainDate } from "../PlainDate.ts";
 import { differenceInDays } from "./differenceInDays.ts";
 import { startOfYear } from "./startOfYear.ts";
 
