@@ -5,7 +5,15 @@
   "exports": "./mod.ts",
   "lock": false,
   "publish": {
-    "exclude": ["**/*_test.ts"]
+    "exclude": [
+      "**/*_test.ts",
+      ".github",
+      ".vscode",
+      "examples",
+      "scripts",
+      "DEVELOPMENT.md",
+      "dev_deps.ts"
+    ]
   },
   "lint": {
     "exclude": ["npm/"]
