@@ -14,10 +14,14 @@ deno fmt
 
 ## Releases
 
+Set a new version in [`deno.json`](deno.json) and push to `main` branch to
+[automatically publish to JSR](https://jsr.io/docs/publishing-packages#publishing-from-github-actions)
+via a [GitHub Action](https://github.com/bjuppa/com-plain-date/actions).
+
 Releases are to be created and managed through
 [GitHub Releases](https://github.com/bjuppa/com-plain-date/releases).
 
-New releases are automatically published to
+GitHub releases are automatically published to
 [deno.land](https://deno.land/x/complaindate) with a
 [GitHub Webhook](https://github.com/bjuppa/com-plain-date/settings/hooks) and to
 [npm](https://www.npmjs.com/package/complaindate) with a
