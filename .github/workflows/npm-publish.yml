@@ -17,9 +17,9 @@ jobs:
         run: echo TAG_VERSION=${GITHUB_REF/refs\/tags\//} >> $GITHUB_OUTPUT
 
       - name: Setup Deno
-        uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@v2
         with:
-          deno-version: v1.x # Run with latest stable Deno.
+          deno-version: v2.x # Run with latest stable Deno.
 
       - name: Setup Node
         uses: actions/setup-node@v3
