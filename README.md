@@ -102,7 +102,7 @@ time to reach for the other concepts, described below.
 ### `PlainDate` for _calendar dates_
 
 Plain-date objects adhere to the
-[`ComPlainDate` contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate)
+[`ComPlainDate` contract](https://jsr.io/@bjuppa/complaindate/doc/~/ComPlainDate)
 and have three numeric properties (`year`, `month`, and `day`) used for most
 operations.
 
@@ -122,7 +122,7 @@ encouraged to build your own mapper functions on top of the existing ones.
 ### `PlainTime` for _time-of-day_
 
 Plain-time objects adhere to the
-[`ComPlainTime` contract](https://deno.land/x/complaindate/mod.ts?s=ComPlainTime)
+[`ComPlainTime` contract](https://jsr.io/@bjuppa/complaindate/doc/~/ComPlainTime)
 and have four numeric properties (`hour`, `minute`, `second`, and
 `millisecond`), that may be used for operations, but those are surprisingly
 uncommon.
@@ -136,8 +136,8 @@ method is best for controlled formatting in user interfaces.
 ## Creating plain-date and plain-time objects
 
 Pass any _calendar-date_ or _wall-time_ **shaped** objects to the factory
-functions [`PlainDate`](https://deno.land/x/complaindate/mod.ts?s=PlainDate) and
-[`PlainTime`](https://deno.land/x/complaindate/mod.ts?s=PlainTime):
+functions [`PlainDate`](https://jsr.io/@bjuppa/complaindate/doc/~/PlainDate) and
+[`PlainTime`](https://jsr.io/@bjuppa/complaindate/doc/~/PlainTime):
 
 ```ts
 const someDate = PlainDate({
@@ -165,8 +165,8 @@ const midnight = PlainTime({}); // 00:00
 ### Extraction from strings
 
 Functions
-[`parsePlainDate`](https://deno.land/x/complaindate/mod.ts?s=parsePlainDate) and
-[`parsePlainTime`](https://deno.land/x/complaindate/mod.ts?s=parsePlainTime)
+[`parsePlainDate`](https://jsr.io/@bjuppa/complaindate/doc/~/parsePlainDate) and
+[`parsePlainTime`](https://jsr.io/@bjuppa/complaindate/doc/~/parsePlainTime)
 creates objects from **strings**:
 
 ```ts
@@ -180,7 +180,7 @@ const midday = parsePlainTime("12:00");
 ### Extraction from JavaScript `Date` objects
 
 If you have a JavaScript `Date` object, calling
-[`splitDateTime`](https://deno.land/x/complaindate/mod.ts?s=splitDateTime) will
+[`splitDateTime`](https://jsr.io/@bjuppa/complaindate/doc/~/splitDateTime) will
 extract separate plain-date and plain-time objects for a given **timezone**:
 
 ```ts
@@ -191,9 +191,9 @@ const [june6, time1337] = splitDateTime("Europe/Stockholm")(aJsDate);
 ```
 
 A `Date` can also be split in UTC using
-[`splitUtcDateTime`](https://deno.land/x/complaindate/mod.ts?s=splitUtcDateTime)
+[`splitUtcDateTime`](https://jsr.io/@bjuppa/complaindate/doc/~/splitUtcDateTime)
 or the system's timezone with
-[`splitLocalDateTime`](https://deno.land/x/complaindate/mod.ts?s=splitLocalDateTime):
+[`splitLocalDateTime`](https://jsr.io/@bjuppa/complaindate/doc/~/splitLocalDateTime):
 
 ```ts
 const [june6, time1137] = splitUtcDateTime(aJsDate);
@@ -275,7 +275,7 @@ a timezone supported in your backend may not be supported in the user's current
 browser.
 
 Before using a timezone string in frontend code, pass it through the
-[`safeTimezone`](https://deno.land/x/complaindate/mod.ts?s=safeTimezone) utility
+[`safeTimezone`](https://jsr.io/@bjuppa/complaindate/doc/~/safeTimezone) utility
 to get a string guaranteed to be a valid timezone in the local system. Should
 the given timezone name be unsuitable, it will return the operating system's
 named timezone instead, or `"UTC"` if no timezone can be determined. For the
@@ -283,7 +283,7 @@ user, this should make for the best possible graceful degradation when their
 preferred timezone is unavailable.
 
 When your application doesn't support timezone as a user preference, the
-[`localTimezone`](https://deno.land/x/complaindate/mod.ts?s=localTimezone)
+[`localTimezone`](https://jsr.io/@bjuppa/complaindate/doc/~/localTimezone)
 utility can be used to retrieve a relevant timezone for the current view.
 Although, be careful with server side rendering here&hellip;
 
@@ -293,7 +293,7 @@ Because the timezone used may be a fallback and not what the user expects, it's
 important to _always_ display the actual timezone name whenever time information
 is present in the user interface.
 
-The [`formatTimezone`](https://deno.land/x/complaindate/mod.ts?s=formatTimezone)
+The [`formatTimezone`](https://jsr.io/@bjuppa/complaindate/doc/~/formatTimezone)
 utility will make a timezone name look pretty for the user. It replaces
 underscores with spaces to give a less technical impression, for example
 `"Africa/Dar es Salaam"` instead of `"Africa/Dar_es_Salaam"`.
@@ -302,7 +302,7 @@ underscores with spaces to give a less technical impression, for example
 
 If your user interface provides a way for users to select their preferred
 timezone, use
-[`supportedCanonicalTimezones`](https://deno.land/x/complaindate/mod.ts?s=supportedCanonicalTimezones)
+[`supportedCanonicalTimezones`](https://jsr.io/@bjuppa/complaindate/doc/~/supportedCanonicalTimezones)
 to get a list of all the named timezones in the system. You may even create an
 endpoint that returns the timezones supported by your backend and intersect that
 with the browser's timezones to really make sure no unhandled timezone is
@@ -315,20 +315,20 @@ to become an autocomplete "combobox" for the user to select from. See the
 for details and examples.
 
 Don't forget to use
-[`localTimezone`](https://deno.land/x/complaindate/mod.ts?s=localTimezone) to
+[`localTimezone`](https://jsr.io/@bjuppa/complaindate/doc/~/localTimezone) to
 set a sensible initial value for the input!
 
 ### Validating timezones
 
 User input can be run through
-[`sanitizeTimezone`](https://deno.land/x/complaindate/mod.ts?s=sanitizeTimezone)
+[`sanitizeTimezone`](https://jsr.io/@bjuppa/complaindate/doc/~/sanitizeTimezone)
 to clean up a timezone string, removing some common user typos and converting
 whitespace to underscore. The result can be checked with
-[`isTimezone`](https://deno.land/x/complaindate/mod.ts?s=isTimezone).
+[`isTimezone`](https://jsr.io/@bjuppa/complaindate/doc/~/isTimezone).
 
 If you'd rather throw `RangeError` on failure, or want to extract a timezone
 name that is part of a longer string, use
-[`parseTimezone`](https://deno.land/x/complaindate/mod.ts?s=parseTimezone)
+[`parseTimezone`](https://jsr.io/@bjuppa/complaindate/doc/~/parseTimezone)
 directly to both sanitize and validate the result.
 
 ## Working with JavaScript `Date` objects
@@ -345,10 +345,10 @@ const instant = new Date(...);
 
 With ComPlainDate `Date` objects can also be created from any date-time
 **shaped** objects in a specified timezone with
-[`createInstant`](https://deno.land/x/complaindate/mod.ts?s=createInstant),
-[`createLocalInstant`](https://deno.land/x/complaindate/mod.ts?s=createLocalInstant)
+[`createInstant`](https://jsr.io/@bjuppa/complaindate/doc/~/createInstant),
+[`createLocalInstant`](https://jsr.io/@bjuppa/complaindate/doc/~/createLocalInstant)
 and
-[`createUtcInstant`](https://deno.land/x/complaindate/mod.ts?s=createUtcInstant):
+[`createUtcInstant`](https://jsr.io/@bjuppa/complaindate/doc/~/createUtcInstant):
 
 ```ts
 const noon2023Feb3InSweden = createInstant("Europe/Stockholm")({
@@ -382,7 +382,7 @@ const jsDateInUtc = createUtcInstant({
 ```
 
 For UTC, that last example can also be written using the
-[`toUtcInstant`](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate#prop_toUtcInstant)
+[`toUtcInstant`](https://jsr.io/@bjuppa/complaindate/doc/~/ComPlainDate#property_toutcinstant)
 method of the plain-date object, passing an optional wall-time shaped object:
 
 ```ts
@@ -391,7 +391,7 @@ jan1.toUtcInstant(...midday); // 2023-01-01T12:00:00.000Z
 
 ### Displaying a `Date` to users
 
-The [`formatInstant`](https://deno.land/x/complaindate/mod.ts?s=formatInstant)
+The [`formatInstant`](https://jsr.io/@bjuppa/complaindate/doc/~/formatInstant)
 utility generates formatting functions to reuse for consistency throughout a
 user interface. It is curried in three rounds with a locale, format options, and
 a timezone. Each parameter has a sensible default if left out, using the
@@ -417,8 +417,8 @@ format24hDateTimeForUser(aJsDate); // "6/13/2023, 08:00:00 EDT"
 
 ### Operations on `Date`
 
-Use functions [`addTime`](https://deno.land/x/complaindate/mod.ts?s=addTime) and
-[`subtractTime`](https://deno.land/x/complaindate/mod.ts?s=subtractTime) to get
+Use functions [`addTime`](https://jsr.io/@bjuppa/complaindate/doc/~/addTime) and
+[`subtractTime`](https://jsr.io/@bjuppa/complaindate/doc/~/subtractTime) to get
 a new `Date` object shifted some **duration** from an existing one. Units up to
 `hours` make sense here because an hour is exactly 60 minutes no matter what
 timezone you're in. These methods just sum up the total milliseconds before
@@ -575,14 +575,14 @@ use in a non-functional paradigm too!
 
 First of all, there are no external dependencies, and there will never be any.
 
-The base [`PlainDate`](https://deno.land/x/complaindate/mod.ts?s=ComPlainDate)
-and [`PlainTime`](https://deno.land/x/complaindate/mod.ts?s=ComPlainTime)
+The base [`PlainDate`](https://jsr.io/@bjuppa/complaindate/doc/~/ComPlainDate)
+and [`PlainTime`](https://jsr.io/@bjuppa/complaindate/doc/~/ComPlainTime)
 objects are carefully composed to be _minimal loveable objects_, containing only
 what is needed for a neat developer experience. The utility functions are meant
 to be imported and applied with these base objects when required.
 
 When bundle size is not an issue (i.e. server-side), you can work with full
-[`ExPlainDate`](https://deno.land/x/complaindate/mod.ts?s=ExtendedPlainDate)
+[`ExPlainDate`](https://jsr.io/@bjuppa/complaindate/doc/~/ExtendedPlainDate)
 objects if you want to call available operations directly on the plain-date
 object. This may sound convenient, but it is very hard to tree-shake, making
 your bundle size unnecessary big when used.
