@@ -10,7 +10,7 @@ import {
   startOfYear,
   WeekDay,
   weekDayNumber,
-} from "https://deno.land/x/complaindate/mod.ts";
+} from "jsr:@bjuppa/complaindate";
 
 // Extract a plain-date and a plain-time from any JS `Date`
 const [june6, time1337] = splitDateTime(
