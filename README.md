@@ -34,10 +34,10 @@ explore which specific utilities you can use to solve your problem.
 
 ## Installation
 
-ComPlainDate is distributed as an **npm** package as well as a **Deno** module:
+ComPlainDate is distributed as packages via both **jsr** and **npm**:
 
+- [jsr.io/@bjuppa/complaindate](https://jsr.io/@bjuppa/complaindate)
 - [npmjs.com/package/complaindate](https://www.npmjs.com/package/complaindate)
-- [deno.land/x/complaindate](https://deno.land/x/complaindate)
 
 ## Table of contents
 
