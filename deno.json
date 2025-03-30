@@ -11,6 +11,7 @@
       ".vscode/",
       "examples/",
       "scripts/",
+      "deno.json",
       "DEVELOPMENT.md",
       "dev_deps.ts"
     ]
