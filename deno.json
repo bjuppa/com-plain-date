@@ -7,10 +7,10 @@
   "publish": {
     "exclude": [
       "**/*_test.ts",
-      ".github",
-      ".vscode",
-      "examples",
-      "scripts",
+      ".github/",
+      ".vscode/",
+      "examples/",
+      "scripts/",
       "DEVELOPMENT.md",
       "dev_deps.ts"
     ]
