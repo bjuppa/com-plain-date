@@ -10,6 +10,9 @@ await build({
       test: "dev",
     },
   },
+  compilerOptions: {
+    lib: ["ESNext"],
+  },
   package: {
     // package.json properties
     name: "complaindate",
