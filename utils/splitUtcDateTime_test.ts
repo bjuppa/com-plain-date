@@ -1,5 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.168.0/testing/asserts.ts";
-import { assert } from "../dev_deps.ts";
+import { assert, assertEquals } from "../dev_deps.ts";
 import { splitUtcDateTime } from "./splitUtcDateTime.ts";
 
 Deno.test("splits instant to date and time in UTC", () => {

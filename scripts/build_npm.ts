@@ -1,4 +1,4 @@
-import { build, emptyDir } from "https://deno.land/x/dnt/mod.ts";
+import { build, emptyDir } from "jsr:@deno/dnt@^0.41.3";
 
 await emptyDir("./npm");
 
@@ -9,6 +9,9 @@ await build({
     deno: {
       test: "dev",
     },
+  },
+  compilerOptions: {
+    lib: ["ESNext"],
   },
   package: {
     // package.json properties

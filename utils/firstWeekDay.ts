@@ -1,5 +1,5 @@
-import { ComPlainDate } from "../PlainDate.ts";
-import { DAYS_IN_WEEK, WeekDayNumber } from "../constants.ts";
+import type { ComPlainDate } from "../PlainDate.ts";
+import { DAYS_IN_WEEK, type WeekDayNumber } from "../constants.ts";
 import { addDays } from "./addDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 

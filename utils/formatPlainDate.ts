@@ -1,4 +1,4 @@
-import { ComPlainDate, FormatPlainDateOptions } from "../PlainDate.ts";
+import type { ComPlainDate, FormatPlainDateOptions } from "../PlainDate.ts";
 
 /**
  * Curry a function to get localized strings of its plain-date arguments.

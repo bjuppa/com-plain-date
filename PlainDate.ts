@@ -1,6 +1,6 @@
 import { createUtcInstant } from "./utils/createUtcInstant.ts";
-import { MonthNumber } from "./constants.ts";
-import { RequireAtLeastOne } from "./support/utility-types.ts";
+import type { MonthNumber } from "./constants.ts";
+import type { RequireAtLeastOne } from "./support/utility-types.ts";
 
 export type FormatPlainDateOptions = Omit<
   Intl.DateTimeFormatOptions,

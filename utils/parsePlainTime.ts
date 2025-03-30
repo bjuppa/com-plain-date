@@ -1,4 +1,4 @@
-import { ComPlainTime, PlainTime } from "../PlainTime.ts";
+import { type ComPlainTime, PlainTime } from "../PlainTime.ts";
 import { timeParts } from "../support/timeParts.ts";
 
 /**

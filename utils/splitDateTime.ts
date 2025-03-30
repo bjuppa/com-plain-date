@@ -1,5 +1,5 @@
-import { ComPlainDate, PlainDate } from "../PlainDate.ts";
-import { ComPlainTime, PlainTime } from "../PlainTime.ts";
+import { type ComPlainDate, PlainDate } from "../PlainDate.ts";
+import { type ComPlainTime, PlainTime } from "../PlainTime.ts";
 
 /**
  * Get a function curried with a timezone, to split native JS `Date` objects

@@ -1,6 +1,6 @@
 import { HOURS_IN_DAY, MS_IN_HOUR } from "./constants.ts";
 import { tallyMilliseconds } from "./support/tallyMilliseconds.ts";
-import { RequireAtLeastOne } from "./support/utility-types.ts";
+import type { RequireAtLeastOne } from "./support/utility-types.ts";
 
 export type FormatPlainTimeOptions =
   & Omit<

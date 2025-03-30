@@ -1,5 +1,5 @@
-import { ComPlainDate, PlainDate } from "../PlainDate.ts";
-import { ComPlainTime, PlainTime } from "../PlainTime.ts";
+import { type ComPlainDate, PlainDate } from "../PlainDate.ts";
+import { type ComPlainTime, PlainTime } from "../PlainTime.ts";
 
 /**
  * Split native JS `Date` objects into separate plain-date and plain-time parts

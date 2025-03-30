@@ -1,7 +1,7 @@
 import { differenceInDays } from "./differenceInDays.ts";
 import { weekDayNumber } from "./weekDayNumber.ts";
 import { BUSINESS_DAYS_IN_WEEK, DAYS_IN_WEEK, WeekDay } from "../constants.ts";
-import { ComPlainDate } from "../PlainDate.ts";
+import type { ComPlainDate } from "../PlainDate.ts";
 
 /**
  * Get a function curried with a plain-date, from which to get the number of

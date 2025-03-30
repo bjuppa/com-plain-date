@@ -1,18 +1,20 @@
 {
+  "name": "@bjuppa/complaindate",
+  "version": "1.0.1",
+  "license": "MIT",
+  "exports": "./mod.ts",
   "lock": false,
-  "lint": {
+  "publish": {
     "exclude": [
-      "npm/"
+      "**/*_test.ts",
+      ".github/",
+      ".vscode/",
+      "examples/",
+      "scripts/",
+      "deno.json",
+      "dev_deps.ts",
+      "DEVELOPMENT.md"
     ]
   },
-  "fmt": {
-    "exclude": [
-      "npm/"
-    ]
-  },
-  "test": {
-    "exclude": [
-      "npm/"
-    ]
-  }
+  "exclude": ["npm/"]
 }

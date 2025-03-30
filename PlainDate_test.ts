@@ -1,6 +1,6 @@
-import { ComPlainDate, PlainDate } from "./PlainDate.ts";
+import { type ComPlainDate, PlainDate } from "./PlainDate.ts";
 import { assert, assertEquals, assertFalse, assertThrows } from "./dev_deps.ts";
-import { PlainDateMapFn } from "./support/function-signatures.ts";
+import type { PlainDateMapFn } from "./support/function-signatures.ts";
 
 Deno.test("factory accepts number date parts", () => {
   const plainDate = PlainDate({ year: 2022, month: 2, day: 2 });
