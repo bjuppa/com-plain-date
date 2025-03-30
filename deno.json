@@ -5,18 +5,12 @@
   "exports": "./mod.ts",
   "lock": false,
   "lint": {
-    "exclude": [
-      "npm/"
-    ]
+    "exclude": ["npm/"]
   },
   "fmt": {
-    "exclude": [
-      "npm/"
-    ]
+    "exclude": ["npm/"]
   },
   "test": {
-    "exclude": [
-      "npm/"
-    ]
+    "exclude": ["npm/"]
   }
 }
