@@ -17,7 +17,7 @@ export function subtractTime({
   minutes?: number | string;
   seconds?: number | string;
   milliseconds?: number | string;
-}): (instant: Date) => Date{
+}): (instant: Date) => Date {
   return (instant: Date): Date =>
     new Date(
       instant.valueOf() -
