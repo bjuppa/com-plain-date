@@ -22,11 +22,11 @@ with a [GitHub Action](https://github.com/bjuppa/com-plain-date/actions/).
 Releases are to be created and managed through
 [GitHub Releases](https://github.com/bjuppa/com-plain-date/releases).
 
-GitHub releases are automatically published to
-[deno.land](https://deno.land/x/complaindate) with a
-[GitHub Webhook](https://github.com/bjuppa/com-plain-date/settings/hooks) and to
+When created, GitHub releases are automatically published to
 [npm](https://www.npmjs.com/package/complaindate) with a
-[GitHub Action](https://github.com/bjuppa/com-plain-date/actions).
+[GitHub Action](https://github.com/bjuppa/com-plain-date/actions) and to
+[deno.land](https://deno.land/x/complaindate) with a
+[GitHub Webhook](https://github.com/bjuppa/com-plain-date/settings/hooks).
 
 ## Testing the package
 
