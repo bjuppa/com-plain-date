@@ -25,17 +25,12 @@ timezones on the surface_.
 
 This readme aims to explain how ComPlainDate works, but doesn't contain full
 explanations of all available operations. The detailed documentation and
-categorized lists of available functions were once available at the _deno.land_
-website, but that is no longer the case.
+categorized lists of available functions are available at the _jsr.io_
+website:
 
-We hope to regain documentation once this package is published at JSR instead,
-see [Issue #88](https://github.com/bjuppa/com-plain-date/issues/88) for
-progress.
-
-Please note that all the links to the _deno.land_ docs from this readme are
-currently not working. The simplest workaround is to browse the source files on
-GitHub instead, and read the docblocks straight from the source. Not ideal, we
-know, sorry.
+Visit
+[the ComPlainDate API documentation](https://jsr.io/@bjuppa/complaindate) to
+explore which specific utilities you can use to solve your problem.
 
 ## Installation
 
