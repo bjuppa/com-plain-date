@@ -16,8 +16,8 @@ deno fmt
 
 Set a new `version` in [`deno.json`](deno.json) and push to `main` branch to
 [automatically publish](https://jsr.io/docs/publishing-packages#publishing-from-github-actions)
-to [jsr](https://jsr.io/@bjuppa/complaindate)
-with a [GitHub Action](https://github.com/bjuppa/com-plain-date/actions/).
+to [jsr](https://jsr.io/@bjuppa/complaindate) with a
+[GitHub Action](https://github.com/bjuppa/com-plain-date/actions/).
 
 Releases are to be created and managed through
 [GitHub Releases](https://github.com/bjuppa/com-plain-date/releases).

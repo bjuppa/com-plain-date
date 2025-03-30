@@ -25,12 +25,10 @@ timezones on the surface_.
 
 This readme aims to explain how ComPlainDate works, but doesn't contain full
 explanations of all available operations. The detailed documentation and
-categorized lists of available functions are available at the _jsr.io_
-website:
+categorized lists of available functions are available at the _jsr.io_ website:
 
-Visit
-[the ComPlainDate API documentation](https://jsr.io/@bjuppa/complaindate) to
-explore which specific utilities you can use to solve your problem.
+Visit [the ComPlainDate API documentation](https://jsr.io/@bjuppa/complaindate)
+to explore which specific utilities you can use to solve your problem.
 
 ## Installation
 
