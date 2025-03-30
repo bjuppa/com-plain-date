@@ -12,8 +12,8 @@
       "examples/",
       "scripts/",
       "deno.json",
-      "DEVELOPMENT.md",
-      "dev_deps.ts"
+      "dev_deps.ts",
+      "DEVELOPMENT.md"
     ]
   },
   "exclude": ["npm/"]
