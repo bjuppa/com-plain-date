@@ -44,3 +44,9 @@ package using a local path:
 ```sh
 npm install path/to/com-plain-date/npm
 ```
+
+## Troubleshooting
+
+If publishing to npm gives 404 errors, check that `NPM_TOKEN` is not expired at
+<https://www.npmjs.com/settings/bjuppa/tokens> and set properly at
+<https://github.com/bjuppa/com-plain-date/settings/secrets/actions>.
