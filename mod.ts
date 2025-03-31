@@ -3,6 +3,10 @@
  *
  * Date-time utilities that keep timezones on the surface.
  *
+ * This document is the entry point for the API documentation.
+ * For an introduction to the package, see the full readme published online at:
+ * <https://github.com/bjuppa/com-plain-date#readme>.
+ *
  * ## Objects
  *
  * The {@link ComPlainDate} interface describes plain-date objects that can be
